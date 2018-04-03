@@ -1,0 +1,31 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+.markdown-body {
+  max-width: 888px;
+  margin: 0 auto;
+}
+
+.mermaid {
+  text-align: center;
+}
+.mermaid:not([data-processed]) {
+  color: rgba(0,0,0,0.5);
+  background: #f6f8fa;
+  padding: 10px;
+  white-space: pre;
+  text-align: left;
+}
+
+@media (min-width: 960px) {
+  .mermaid {
+    margin-left: -36px; margin-right: -36px;
+  }
+}
+@media (min-width: 1200px) {
+  .mermaid {
+    margin-left: -148px; margin-right: -148px;
+  }
+}
