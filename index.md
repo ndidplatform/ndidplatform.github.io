@@ -1,15 +1,16 @@
 ---
-title: NDID Platform
+title: Home
 ---
 
 Development hub for Thailand National Digital ID platform.
 
-| Title             | URL                                           |
-| ----------------- | --------------------------------------------- |
-| **Official site** | <http://www.digitalid.or.th/>                 |
-| **Facebook page** | <https://www.facebook.com/NationalDigitalID/> |
-| **Whitepaper**    | <https://goo.gl/v4Cfpe>                       |
-| **Slack**         | <https://bit.ly/2GFWyIn>                      |
+| Title                   | URL                                           |
+| ----------------------- | --------------------------------------------- |
+| **Official site**       | <http://www.digitalid.or.th/>                 |
+| **GitHub organization** | <https://github.com/ndidplatform>             |
+| **Facebook page**       | <https://www.facebook.com/NationalDigitalID/> |
+| **Whitepaper**          | <https://goo.gl/v4Cfpe>                       |
+| **Slack**               | <https://bit.ly/2GFWyIn>                      |
 
 ## Architecture overview
 
@@ -75,5 +76,5 @@ sequenceDiagram
 
 #### Questions:
 
-- Q6: What data is stored on blockchain.
-- Q7: Which part is HTTP API? Which part is sent through message bus?
+* Q6: What data is stored on blockchain.
+* Q7: Which part is HTTP API? Which part is sent through message bus?
