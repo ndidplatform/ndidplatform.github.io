@@ -1,3 +1,9 @@
 title: NDID platform
 markdown: CommonMark
 theme: jekyll-theme-primer
+github:
+  private: false
+  source:
+    branch: "master"
+    path: "/"
+  repository_url: "https://github.com/ndidplatform/ndidplatform.github.io"
