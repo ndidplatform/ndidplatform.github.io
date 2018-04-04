@@ -12,7 +12,7 @@ Sorry for the mess. This page should be cleaned up.
 
 <div markdown="1" class="flash mb-3 flash-warn">
 
-**Note:** The purpose of this page is to illustrate the scenario outlined in the [quick overview](/#quick-overview) using concrete examples, to help make it easier to grasp how the platform works. This document is **not** the definitive source of information, just a learning aid.
+**Note:** The purpose of this page is to illustrate the scenario outlined in the [quick overview](/#quick-overview) using concrete examples, to help make it easier to grasp how the platform works. This document is **not** the definitive source of information, just a learning aid. (TODO: link to definitive source!)
 
 </div>
 
