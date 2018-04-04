@@ -25,7 +25,7 @@ From the whitepaper:
 > The users will interact with a **Relying Party (RP)** to receive services –
 > offline or online. In order to successfully receive the services, the users
 > are obliged to prove their identities in the form of online or offline
-> identity confirmation with any available **Identity Provider (IDP)** who hold
+> identity confirmation with any available **Identity Provider (IdP)** who hold
 > their identities.
 >
 > An **Authoritative Source (AS)** is considered as Source of Truth for any
@@ -48,7 +48,7 @@ sequenceDiagram
     participant User
     participant RP
     participant Platform
-    participant IDP
+    participant IdP
     participant AS
     User->>RP: Use service
     RP->>User: Please provide ID
@@ -57,11 +57,11 @@ sequenceDiagram
     RP->>+Platform: send_data_request_to_id_at_idp_async
     Note over RP,Platform: Q2: Is this an SDK function call? How do RP communicate with the platform? HTTP API or via message bus?
     Platform-->>-RP: request_id
-    Platform-->>IDP: authentication_request
-    IDP->>User: Authentication/consent request
-    User-->>IDP: Accept
-    Note over Platform,IDP: Q3: This looks like a synchronous call. Since a consent may take a long time, should it be asynchronous? If so, should IDP tell the platform, or should the platform poll the IDP for response?
-    IDP-->>Platform: confirm
+    Platform-->>IdP: authentication_request
+    IdP->>User: Authentication/consent request
+    User-->>IdP: Accept
+    Note over Platform,IdP: Q3: This looks like a synchronous call. Since a consent may take a long time, should it be asynchronous? If so, should IDP tell the platform, or should the platform poll the IDP for response?
+    IdP-->>Platform: confirm
     Platform->>RP: (callback)
     Note over RP,Platform: Q4: In the whitepaper, RP does not have a callback URL. Should the RP implement a callback URL (like OAuth) or should RP poll for status (using check_request_status)? In case of callback, why not send the status along with callback?
     RP->>+Platform: check_request_status
@@ -78,3 +78,13 @@ sequenceDiagram
 
 * Q6: What data is stored on blockchain.
 * Q7: Which part is HTTP API? Which part is sent through message bus?
+
+<div markdown="1">
+
+**xa**
+
+</div>
+
+<div>
+**b**
+</div>
