@@ -25,10 +25,10 @@ From the whitepaper:
 > The users will interact with a **Relying Party (RP)** to receive services –
 > offline or online. In order to successfully receive the services, the users
 > are obliged to prove their identities in the form of online or offline
-> identity confirmation with any available Identity Provider, aka. IDP who hold
+> identity confirmation with any available **Identity Provider (IDP)** who hold
 > their identities.
 >
-> An Authoritative Source (AS) is considered as Source of Truth for any
+> An **Authoritative Source (AS)** is considered as Source of Truth for any
 > information relevant to the users. There are currently multiple Source of
 > Truth entities. Each entity may keep one or multiple classification of user
 > information. The RP can request more user information from AS, if necessary,
