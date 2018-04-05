@@ -29,6 +29,22 @@
   }
 }
 
+x-guid {
+  font-size: 80%;
+  display: inline-block;
+  max-width: 10em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.875;
+  vertical-align: middle;
+}
+x-pk {
+  font-size: 80%;
+  white-space: nowrap;
+  display: inline-block;
+}
+
 /* primer-alerts (MIT Licensed) https://unpkg.com/primer-alerts@1.5.5/build/build.css */
 .flash {
   position: relative;

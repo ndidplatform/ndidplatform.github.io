@@ -4,154 +4,193 @@ title: Technical overview
 
 # Technical Overview
 
-To be written.
-
-For now here’s the (messy) meeting minute where we map out the scenario outlined in the [quick overview](/#quick-overview).
-
-Sorry for the mess. This page should be cleaned up.
-
 <div markdown="1" class="flash mb-3 flash-warn">
 
-**Note:** The purpose of this page is to illustrate the scenario outlined in the [quick overview](/#quick-overview) using concrete examples, to help make it easier to grasp how the platform works. This document is **not** the definitive source of information, just a learning aid. (TODO: link to definitive source!)
+**Disclaimer:** The purpose of this page is to illustrate the scenario outlined in the [quick overview](/#quick-overview) using concrete examples, to help make it easier to grasp how the platform works. This document is **not** the definitive source of information, just a learning aid. Please look at the [whitepaper](https://docs.google.com/document/d/1SKydNM-Nyox62m3vuvYgFYCr8ABVQV8RhjwiMjdCpQ8/edit#heading=h.qf2lmu8vfgym) for the full description of the platform.
 
 </div>
 
+## Scenario: Requesting a bank statement for Visa application
+
+In this scenario, the User is at an embassy to apply for a Visa.
+The embassy is the **Relying Party (RP)** as they relies on NDID platform
+to verify the user’s identity through an **Identity Provider (IdP)**
+and retrieving the bank statement form the **Authoritative Source (AS)**, the bank.
+
+### Background
+
+- Each participating party (RP, IdP, AS) runs the **NDID Node**,
+  which operates the NDID Platform in a decentralized way.
+
+  From the whitepaper:
+
+  > The system is decentralized. Every participants shall host their own digital identification platform. The platform uses blockchain to synchronize necessary database between each participant. In term of blockchain, each participant becomes a node in the blockchain system.
+  >
+  > ![Architecture diagram](images/architecture.png)
+
+- The **NDID Node:**
+
+  - Exposes a **REST API** for integration with client applications.
+  - Synchronizes the shared state (transaction history) through blockchain technology (Tendermint).
+  - Stores local state specific to the node.
+  - Communicates securely with other nodes through NSQ.
+
+  > ![NDID Node](images/ndid-node.png)
+
+  **Communication between node:**
+
+  > ![Communication between nodes](images/communication.png)
+
+- Given the following node exists:
+
+  | participant | node\_id |
+  | --- | --- |
+  | RP | <x-guid>RP_06626-b9c7-4c52-abf2-019220637c91</x-guid> |
+  | IdP | <x-guid>IdP_f924-5069-4c6a-a4e4-134cd1a3d3d0</x-guid> |
+  | AS | <x-guid>AS_12767-0030-4a73-9593-ffd6d010c63c</x-guid> |
+
+  Note: A node ID may be a GUID, but we use this format to make the document easier to read.
+
+- When an NDID Node joins the platform, they have to advertise their service.
+  This data will go into the blockchain:
+
+  - **node_id → public_key mapping** to allow secure private data communication via NSQ.
+
+    | node\_id | public\_key |
+    | --- | --- |
+    | <x-guid>RP_06626-b9c7-4c52-abf2-019220637c91</x-guid> | AAAAB3NzaC1yc2EAAAADAQABAAABAQC+RP+svJPfe… |
+    | <x-guid>IdP_f924-5069-4c6a-a4e4-134cd1a3d3d0</x-guid> | AAAAB3NzaC1yc2EAAAADAQABAAABAQC+IdP+lk1ax… |
+    | <x-guid>AS_12767-0030-4a73-9593-ffd6d010c63c</x-guid> | AAAAB3NzaC1yc2EAAAADAQABAAABAQD+AS+n0IWKC… |
+
+- **IDP Onboarding:** The User must have their identities be registered with an IdP.
+  Check out the flow [in the whitepaper](https://docs.google.com/document/d/1R48Vr5xeLQdq2AvdHKpSClUinWzykKB2Nfh_G9z3pvM/edit#heading=h.fw1fc2xwjef7).
+
+  In this scenario, the user onboarded with the IDP using his **citizen ID, 1-2345-67890-12-3**.
+
+  - **How identity data is stored:** Some parts of data related to each identity is stored privately by each participating party, while others are on the blockchain.
+
+    > ![Identity data](images/identity-data.png)
+
+  - The IDP holds this data privately:
+
+    | namespace | id | secret | accessor\_id | accessor\_private\_key |
+    | --- | --- | --- | --- | --- |
+    | citizenid | 1234567890123 | (magic) | <x-guid>acc_f328-53da-4d51-a927-3cc6d3ed3feb</x-guid> | <x-pk>-----BEGIN RSA PRIVATE KEY-----<br />MIIEowIBAAKCAQEAxy/CSXWu...</x-pk> |
+
+  - These data are stored on the blockchain:
+
+    - **hash({ns}/{id}) → node_id mapping** for sending message to IDP without sacrificing privacy.
+
+      | hash({ns}/{id}) | node\_id |
+      | --- | --- |
+      | hash('citizenid/1234567890123') | <x-guid>IdP_f924-5069-4c6a-a4e4-134cd1a3d3d0</x-guid> |
+
+    - **Accessor method** to allow zero-knowledge proof of consent:
+
+      | accessor\_id | accessor\_type | accessor\_key | commitment |
+      | --- | --- | --- | --- |
+      | <x-guid>acc_f328-53da-4d51-a927-3cc6d3ed3feb</x-guid> | RSA-2048 | AAAAB3NzaC1yc2EAAAADAQABAAAB… | (magic) |
+
+Given these data, let’s proceed with the scenario.
+
+<div markdown="1" class="flash mb-3">
+
+**Note:** The request body is written in a format similar to YAML, for ease of reading.
+
+</div>
+
+### RP&rarr;Platform: [POST /rp/requests/citizenid/01234567890123](https://app.swaggerhub.com/apis/ndid/relying_party_api/0.1#/default/send_request_to_id)
+
+```yaml
+# Reference ID is used in case of communication error between RP and platform,
+# to prevent the same request from being executed twice.
+reference_id: 'e3cb44c9-8848-4dec-98c8-8083f373b1f7'
+
+# List of IdPs. May be empty to allow any IdP.
+idp_list: []
+
+# Synchronous mode:
+# true - Wait until transaction is finished before returning.
+# false - Return immediately with `request_id`.
+synchronous: false
+
+# If provided, this URL will be invoked when request status is updated.
+call_back_url: 'https://<rp-webservice>/webhook'
+
+# List of data to request from AS.
+# This can be empty.
+data_request_list:
+    # { service_id,       as_id, request_params }
+    - { 'bank_statement', 'AS',  { format: 'pdf' } }
+
+# Message to display to user to ask for consent.
+# (RP must send message in correct language.)
+request_message: 'Please allow the embassy to access your bank statement for purpose of obtaining a Visa.'
+
+# Identity assurance level. Assurance level of KYC process.
+# Example:
+#   0 = email
+#   1 = copy of id card
+#   2 = e.g. telephone call
+#   3 = e.g. face-to-face
+min_ial: 2
+
+# Authentication assurance level. Assurance level of authentication process.
+# Example:
+#   0 = bot / auto-approve?
+#   1 = username/password
+#   2 = multi-factor auth
+#   3 = identity owner signs the consent request with their private key
+min_aal: 1
+
+# Minimum number of IdP approvals for auth request to be confirmed.
+min_idp: 1
+
+# Transaction timeout.
+timeout: 4320 # minutes = 3 days
+```
+
+The API validates the request, generates a request ID and returns a response:
+
+```yaml
+200 OK
+
+request_id: 'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'
+```
+
+This `request_id` can be used to check the status of request through [GET /rp/requests/{request_id}](https://app.swaggerhub.com/apis/ndid/relying_party_api/0.1#/default/get_request_status) API.
+
+The `reference_id` &rarr; `request_id` mapping is stored in the node’s local storage, in case of communication error, to make this request idempotent.
+
+| reference_id | request_id |
+| --- | --- |
+| <x-guid>e3cb44c9-8848-4dec-98c8-8083f373b1f7</x-guid> | <x-guid>ef6f4c9c-818b-42b8-8904-3d97c4c520f6</x-guid> |
+
+The information about the request is stored in the blockchain.
+
+```yaml
+request_id: 'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'
+min_idp: 1
+min_aal: 1
+min_ial: 2
+timeout: 4320
+data_request_list:
+    # { service_id,       as_id }
+    - { 'bank_statement', 'AS1' }
+message_hash: hash('Please allow...')
+
+# Note: Neither {ns}/{id} not its hash is stored here.
+#       We want to keep each transaction private.
+#       Elsewise, one could brute-force to find a transaction of any ID.
+```
+
 ---
 
-## **Scenario: ขอ Statement จาก 1 bank เพื่อขอ\*\***วีซ่า\*\*
+**This page is under construction...**
 
-**Background** Shared state in blockchain
-
-Given 1 IDP, 1 RP, (3 AS [not pictured in table below]), user’s identity
-
-**Shared state in blockchain [stored as transactions forever]:**
-
-| Mapping                   | Purpose                    |
-| ------------------------- | -------------------------- |
-| node_id → public_key      | For communication via NSQ  |
-| hash({ns}/{id}) → node_id | For sending message to IDP |
-| { accessor_id, accessor_type, accessor_key, commitment }<br/>// Commitment is one ingredient for magic identity proof. | To allow zero-knowledge proof of consent. |
-
-**IDP’s local data [as long as relevant]:**
-
-| Mapping | Purpose |
-| ------- | ------- |
-| {ns}/{id} → { secret, accessor_id, accessor_private_key }<br/>// accessor_private_key may be on user side instead for increased security<br/>// accessor_private_key is RSA-2048. | For generating proof of consent. |
-
-**User → Relying party**
-
-เลขประจำตัวประชาชน
-
-**RP → RP Node** **POST** /rp/requests/{namespace}/{identifier}
-
-namespace = “citizenid” identifier = “01234567890123” (no dash) idp_list: [] #
-Optional/empty = Any IDP is OK call_back_url:
-'https://<rp-webservice>/webhook' # Leave out for polling/synchronous
-synchronous: false # = Poll/Webhook
-
-    data_request_list: # This can be empty for authentication-only mode
-      # { service_id, as_id, request_params }
-      - { 'bank_statement', 'AS1', { format: 'pdf' } }
-      - { 'bank_statement', 'AS2', { format: 'pdf' } }
-      - { 'location', 'AS3', { format: 'json', language: 'en' } }
-
-    # RP must send message in correct language
-    request_message: 'ขอ Bank statement เพื่อทำ VISA ที่สถานฑูตลาว'
-
-    min_ial: 2 # Identity assurance level
-      # Example:
-      # 0 = email
-      # 1 = สำเนาบัตร
-      # 2 = e.g. โทรคุยกัน
-      # 3 = Face-to-face
-
-    min_aal: 1 # Authentication assurance level
-      # Example:
-      # 0 = bot / auto-approve?
-      # 1 = username/password
-      # 2 = multi-factor auth
-      # 3 = public key
-
-    min_idp: 1 # Minimum number of IDP
-    timeout: 4320 # minutes = 3 days
-
-    # RP runs a node (or rent a node).
-    # The node takes care of signing the request.
-    reference_id: 'e3cb44c9-8848-4dec-98c8-8083f373b1f7'
-
-**Synchronous vs Asynchronous**
-
-* Sync: Wait for operation to complete — platform keep HTTP request open until
-  complete
-* Async:
-  * Polling (pull) — retry responsibility is at RP (caller)
-  * Callback (push) — retry responsibility is at platform
-  * Long polling (pull but platform can delay response until timeout)
-* What should we offer?
-
-**Timeout**
-
-* Transaction timeout
-* HTTP request timeout (for polling mode/synchronous)
-
-**Service ID — Type of service provided (string)**
-
-* Domain (Apple/Java) — th.or.digitalid.service.statement
-  * **Problem:** Each AS may create its own proprietary service type, leading to
-    fragmentation and painful standardization process.
-* URL (XML Namespace) — https://service.digitalid.or.th/statement.html
-  * The URL can display a documentation about service type.
-* Numeric (00001 = statement)
-* GUID
-* String (built-in service ID, defined by NDID)
-  * service_id: ‘bank_statement’
-
-**AS ID — ID of authoritative service**
-
-* TBD
-
-**Request type**
-
-* Authentication only: Don’t need extra data from AS
-* Data consent: Need more data (e.g. personal data / verification data) from AS.
-
-**Issue:**
-
-* Idempotency — What if API die before sending response.
-  * Can be solved by returning request ID before adding data to blockchain.
-    * What about network error?
-      * Solved by adding reference ID to the request and provide another API
-        endpoint to map the reference ID back.
-        * ref_id cannot solve every case.
+For now here’s the (messy) meeting minute where we map out the scenario outlined in the [quick overview](/#quick-overview). Sorry for the mess. This page should be cleaned up. [Contributions welcome!](https://github.com/ndidplatform/ndidplatform.github.io/edit/master/technical-overview.md).
 
 ---
-
-**Input validation succeeded**
-
-* Must also check if reference ID already exists, if so, return the result of
-  that request.
-
-**API Call return 200**
-
-    request_id: 'ef6f4c9c-818b-42b8-8904-3d97c4c520f6' # UUID
-
-**Store (reference ID → request ID) in node’s database**
-
-* To allow idempotency. reference_id: 'e3cb44c9-8848-4dec-98c8-8083f373b1f7'
-  request_id: 'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'
-
-**Create blockchain request**
-
-    request_id: 'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'
-    min_idp: 1
-    min_aal: 1
-    min_ial: 2
-    timeout: 4320
-    data_request_list:
-      bank_statement: [ 'AS1', 'AS2' ]
-      location: [ 'AS3' ]
-    message_hash: hash('ขอ Bank statement เพื่อทำ VISA ที่สถานฑูตลาว') # SHA3 (TBD)
-    # No namespace/identifier — this would enable brute-forcing.
 
 **Every node (including RP) knows [hash({namespace}/{id}) → {node_id}]
 mapping.**
