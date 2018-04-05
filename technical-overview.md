@@ -17,7 +17,7 @@ The embassy is the **Relying Party (RP)** as they relies on NDID platform
 to verify the user’s identity through an **Identity Provider (IdP)**
 and retrieving the bank statement form the **Authoritative Source (AS)**, the bank.
 
-### Background
+## Background
 
 - Each participating party (RP, IdP, AS) runs the **NDID Node**,
   which operates the NDID Platform in a decentralized way.
@@ -99,7 +99,7 @@ Given these data, let’s proceed with the scenario.
 
 </div>
 
-### RP&rarr;Platform: [POST /rp/requests/citizenid/01234567890123](https://app.swaggerhub.com/apis/ndid/relying_party_api/0.1#/default/send_request_to_id)
+## RP&rarr;Platform: [POST /rp/requests/citizenid/01234567890123](https://app.swaggerhub.com/apis/ndid/relying_party_api/0.1#/default/send_request_to_id)
 
 ```yaml
 # Reference ID is used in case of communication error between RP and platform,
@@ -184,112 +184,127 @@ message_hash: hash('Please allow...')
 #       Elsewise, one could brute-force to find a transaction of any ID.
 ```
 
+## Communication from RP’s Node to IdP’s Node
+
+The target node IDs are obtained.
+
+| hash({ns}/{id}) | node\_id |
+| --- | --- |
+| hash('citizenid/1234567890123') | <x-guid>IdP_f924-5069-4c6a-a4e4-134cd1a3d3d0</x-guid> |
+
+Then the corresponding public key is obtained.
+
+| node\_id | public\_key |
+| --- | --- |
+| <x-guid>IdP_f924-5069-4c6a-a4e4-134cd1a3d3d0</x-guid> | AAAAB3NzaC1yc2EAAAADAQABAAABAQC+IdP+lk1ax… |
+
+Then a message is constructed, encrypted with the public key, and sent to the nodes through NSQ:
+
+```yaml
+namespace: 'citizenid'
+identifier: '01234567890123'
+data_request_list:
+    # { service_id,       as_id }
+    - { 'bank_statement', 'AS1' }
+request_message: 'Please allow...'
+min_ial: 2
+min_aal: 1
+min_idp: 1
+timeout: 4320
+request_id: 'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'
+```
+
+IDP Node receives the request message from NSQ and decrypts it.
+
+It reads the request from the blockchain:
+
+- Verify that the parameters (`min_idp`, `min_aal`, `min_ial`, `timeout`, `data_request_list`) matches.
+- Verify that `hash(request_message) === message_hash`.
+- Check with the blockchain if the request is still necessary. (Request may be fulfilled by another IdP, in case the user onboarded with multiple IdPs.)
+
+## Platform&rarr;IdP: [POST /idp/request/citizenid/01234567890123](https://app.swaggerhub.com/apis/ndid/idp_callback/0.1#/default/request_for_authentication)
+
+At this point, IDP Node has checked that the consent is still needed. It issues a webhook to IDP’s web service, passing the above message.
+
+## IdP&rarr;User
+
+IdP asks the user to:
+
+- Verify their identity.
+- Give consent to allow RP to access the data from AS.
+
+The message from is shown to the user:<br />“Please allow the embassy to access your bank statement for purpose of obtaining a Visa.”
+
+## User&rarr;IdP
+
+In this example, the user gave IdP the consent.
+
+## IdP&rarr;Platform: [POST /idp/response](https://app.swaggerhub.com/apis/ndid/identity_provider/0.1#/default/respond_to_request)
+
+IdP retrieves the `secret`, `accessor_id` and `accessor_private_key from private storage.
+
+| namespace | id | secret | accessor\_id | accessor\_private\_key |
+| --- | --- | --- | --- | --- |
+| citizenid | 1234567890123 | (magic) | <x-guid>acc_f328-53da-4d51-a927-3cc6d3ed3feb</x-guid> | <x-pk>-----BEGIN RSA PRIVATE KEY-----<br />MIIEowIBAAKCAQEAxy/CSXWu...</x-pk> |
+
+It then generates a signature by signing the `request_message` with that private key.
+
+- `<signature>` = `RSA256(request_message, accessor_private_key)`
+
+<div markdown="1" class="flash mb-3 flash-warn">
+
+TBD: Should the message to be signed include the approval status and list of requested data?
+
+</div>
+
+Then it sends the `secret` and `signature` to the `POST /idp/response` API.
+
+```yaml
+request_id: 'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'
+namespace: 'citizenid'
+identifier: '01234567890123'
+loa: 3
+secret: 'MAGIC'
+approval: CONFIRM
+signature: '<signature>'
+accessor_id: 'acc_f328-53da-4d51-a927-3cc6d3ed3feb'
+```
+
+Before AS can give out the data (or before the RP can accept this confirmation), they must verify that the user has really given the required consent and this consent is recorded in the blockchain.
+
+However, the blockchain does not contain any identity information. But somehow, we need to verify that the `request_id` really corresponds to the identity in question (zero-knowledge proof). Thus, a magic formula [algorithm TBD] is used to calculate the `identity_proof`, a very long number.
+
+The information is recorded in the blockchain:
+
+```yaml
+request_id: 'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'
+aal: 3
+ial: 2
+approval: CONFIRM
+signature: '<signature>'
+accessor_id: '12a8f328-53da-4d51-a927-3cc6d3ed3feb'
+identity_proof: <identity_proof>
+```
+
+## Platform&rarr;RP: [POST /idp/request/ef6f4c9c-818b-…](https://app.swaggerhub.com/apis/ndid/rp_callback/0.1#/default/request_for_authentication)
+
+At this point, RP-Node sees the above transaction committed in the blockchain.
+It knows that the authentication request has been approved.
+(However, data has not arrived yet.)
+
+It updates the request state and notifies the RP through callback URL (if provided).
+
+<div markdown="1" class="flash mb-3">
+
+**Note:** Every time request status is updated, a callback is issued (if provided).
+
+</div>
+
 ---
 
 **This page is under construction...**
 
 For now here’s the (messy) meeting minute where we map out the scenario outlined in the [quick overview](/#quick-overview). Sorry for the mess. This page should be cleaned up. [Contributions welcome!](https://github.com/ndidplatform/ndidplatform.github.io/edit/master/technical-overview.md).
-
----
-
-**Every node (including RP) knows [hash({namespace}/{id}) → {node_id}]
-mapping.**
-
-* An IDP can declare multiple node IDs.
-* RP (node) looks up the Node IDs from above table, and sends the message to
-  every node ID found associated to that ID.
-  * Concern: Since RP is a node, it also knows this mapping.
-
-**Create messaging request to node_ids** Encrypt and send from Node to IDP
-through NSQ (message queue)
-
-    namespace = 'citizenid'
-    identifier = '01234567890123'
-    data_request_list: # This can be empty -- for authentication only
-      bank_statement: [ 'AS1', 'AS2' ]
-      location: [ 'AS3' ]
-    request_message: 'ขอ Bank statement เพื่อทำ VISA ที่สถานฑูตลาว'
-    min_ial: 2
-    min_aal: 1
-    min_idp: 1
-    timeout: 4320
-    request_id: 'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'
-
-**IDP node receives request from NSQ and decrypts it.**
-
-* IDP has to check with the blockchain if request is still necessary.
-* If consent still needed, issue a webhook to IDP’s webservice (sending message
-  above)
-
-**IDP talks to user**
-
----
-
-**User accepted**
-
-**Aside:** For a successful authentication, IDP needs to sign a message using a
-private key associated with the identity ({ns}/{id}). When onboarding, the
-private key may be generated by the user (e.g. the user gives IDP the public
-key, while they hold private key locally), or user can also allow the message to
-be signed on behalf of IDP (using IDP’s own key). This data is known as
-“accessor method” {accessor*id, accessor_type /* ECC / RSA / … \_/,
-accessor_key}.
-
-Assume user has these accessor method stored in blockchain (stored when onboard)
-
-| **accessor_id**                      | **accessor_type** | **accessor_key [public key]** |
-| ------------------------------------ | ----------------- | ----------------------------- |
-| 12a8f328-53da-4d51-a927-3cc6d3ed3feb | RSA2048           | AAAAB3NzaC1yc2EAAAADAQABAAAB  |
-| AQDHL8JJda7RVn5ZRqni03Uo5Ku8b…       |
-
-**IDP calls the IDP API** **POST /idp/response**
-
-    request_id: 'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'
-    namespace: 'citizenid'
-    identifier: '01234567890123'
-
-    # Unique value that only IDP knows.
-    # When user on-board with IDP, it generates a secret.
-    # 1 secret <==> 1 {ns}/{id}.
-    secret: 'MAGIC'
-
-    loa: 3
-
-    # CONFIRM / REJECT
-    approval: CONFIRM
-
-    # When IDP onboards user, IDP adds “accessor method” to blockchain.
-    #   { accessor_id, accessor_type, accessor_key }
-    signature: '<RSA signature of signing the request_message(ขอ Bank statement...) with accessor type>'
-    accessor_id: '12a8f328-53da-4d51-a927-3cc6d3ed3feb'
-
-**API → Node**
-
-Add a new transaction into blockchain, representing the response.
-
-    request_id: 'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'
-    aal: 3
-    ial: 2
-    approval: CONFIRM
-    signature: '<RSA signature of signing the message with accessor type>'
-    accessor_id: '12a8f328-53da-4d51-a927-3cc6d3ed3feb'
-
-    # AS will use this later....
-    identity_proof: 0x---------------------------------
-      # A very long number... Zero knowledge mathematical proof
-      # that the “request_id” is associated with “{ns}/{id}”
-      # (which will be sent separately through NSQ to AS)
-      # and that the user already provided consent to IDP.
-      #
-      # [ { ns, id, secret } ] ---(magic)---> identity_proof
-      #                           trapdoor
-      # Algorithm TBD.
-
-**RP-Node sees this transaction committed in the blockchain,** **updates the
-request state and notifies the RP through callback URL (if provided)** // Every
-time request status is updated, a callback is issued (if provided)
-
-**At this point, RP knows that consent requirement is satisfied.**
 
 ---
 
