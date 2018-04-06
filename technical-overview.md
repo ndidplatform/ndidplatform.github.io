@@ -55,7 +55,7 @@ and retrieving the bank statement form the **Authoritative Source (AS)**, the ba
   This data will go into the blockchain:
 
   <div class="flash mb-3 flash-warn">
-    @todo #2 Give a name to each of these mappings.
+    @todo #2 Also give a name to each of these mappings.
   </div>
 
   - **node_id → public_key mapping** to allow secure private data communication via NSQ.
@@ -404,3 +404,5 @@ It returns with:
   source_signature: sign(<PDF BINARY DATA>, AS1’s private key)
   data: '<PDF BINARY DATA>'
 ```
+
+Now, RP has all the necessary data to process the transaction!
