@@ -54,6 +54,10 @@ and retrieving the bank statement form the **Authoritative Source (AS)**, the ba
 - When an NDID Node joins the platform, they have to advertise their service.
   This data will go into the blockchain:
 
+  <div class="flash mb-3 flash-warn">
+    @todo #2 Give a name to each of these mappings.
+  </div>
+
   - **node_id → public_key mapping** to allow secure private data communication via NSQ.
 
     | node\_id | public\_key |
@@ -78,6 +82,10 @@ and retrieving the bank statement form the **Authoritative Source (AS)**, the ba
     | citizenid | 1234567890123 | (magic) | <x-guid>acc_f328-53da-4d51-a927-3cc6d3ed3feb</x-guid> | <x-pk>-----BEGIN RSA PRIVATE KEY-----<br />MIIEowIBAAKCAQEAxy/CSXWu...</x-pk> |
 
   - These data are stored on the blockchain:
+
+    <div class="flash mb-3 flash-warn">
+      @todo #2 Give a name to each of these mappings.
+    </div>
 
     - **hash({ns}/{id}) → node_id mapping** for sending message to IDP without sacrificing privacy.
 
@@ -121,7 +129,7 @@ call_back_url: 'https://<rp-webservice>/webhook'
 # This can be empty.
 data_request_list:
     # { service_id,       as_id, request_params }
-    - { 'bank_statement', 'AS',  { format: 'pdf' } }
+    - { 'bank_statement', 'AS1', { format: 'pdf' } }
 
 # Message to display to user to ask for consent.
 # (RP must send message in correct language.)
@@ -251,11 +259,9 @@ It then generates a signature by signing the `request_message` with that private
 
 - `<signature>` = `RSA256(request_message, accessor_private_key)`
 
-<div markdown="1" class="flash mb-3 flash-warn">
-
-@todo #2 Should the message to be signed also include the user’s approval status?
- Otherwise, the signature for CONFIRM is identical to REJECT…
-
+<div class="flash mb-3 flash-warn">
+  @todo #2 Should the message to be signed also include the user’s approval status?
+   Otherwise, the signature for CONFIRM is identical to REJECT…
 </div>
 
 Then it sends the `secret` and `signature` to the `POST /idp/response` API.
@@ -275,10 +281,8 @@ Before AS can give out the data (or before the RP can accept this confirmation),
 
 However, the blockchain does not contain any identity information. But somehow, we need to verify that the `request_id` really corresponds to the identity in question (zero-knowledge proof). Thus, a magic formula [algorithm TBD] is used to calculate the `identity_proof`, a very long number.
 
-<div markdown="1" class="flash mb-3 flash-warn">
-
-@todo #2 How is the `identity_proof` calculated?
-
+<div class="flash mb-3 flash-warn">
+  @todo #2 How is the `identity_proof` calculated?
 </div>
 
 The information is recorded in the blockchain:
@@ -307,66 +311,96 @@ It updates the request state and notifies the RP through callback URL (if provid
 
 </div>
 
----
+## Communication from RP’s Node to AS’s Node
 
-**This page is under construction...**
+Now, it’s time to fetch the data from AS.
 
-For now here’s the (messy) meeting minute where we map out the scenario outlined in the [quick overview](/#quick-overview). Sorry for the mess. This page should be cleaned up. [Contributions welcome!](https://github.com/ndidplatform/ndidplatform.github.io/edit/master/technical-overview.md).
-
----
-
-<div markdown="1" class="flash mb-3 flash-warn">
-
-@todo #2 Properly format the data request section.
-
+<div class="flash mb-3 flash-warn">
+  @todo #2 Update the Background section to include this data in the setup.
 </div>
 
-## Data request
+RP node looks up the `node_id` corresponding to the service in the blockchain:
 
-**RP node looks up ({as_service_id, as_id} → node_id) and encrypts & sends data
-request to AS node via NSQ** (no data stored in blockchain in request phase)
+| as_id | as_service_id | node_id |
+| --- | --- | --- |
+| AS1 | bank_statement | <x-guid>AS_12767-0030-4a73-9593-ffd6d010c63c</x-guid> |
 
-    request_id: 'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'
-    namespace: 'citizenid'
-    identifier: '01234567890123'
-    service_id: 'bank_statement'
-    rp_node_id: <node id of relying party>
-    request_message: 'ขอ Bank statement เพื่อทำ VISA ที่สถานฑูตลาว'
+Again, we look up the public key corresponding to this node from the blockchain:
 
-**AS node** looks up the request and consent transactions with matching
-request_id in the blockchain.
+| node_id | public_key |
+| --- | --- |
+| <x-guid>AS_12767-0030-4a73-9593-ffd6d010c63c</x-guid> | AAAAB3NzaC1yc2EAAAADAQABAAABAQD+AS+n0IWKC… |
 
-* Verify that (number of consent ≥ min_idp in request)
-* For each consent with matching request ID
-  * takes {ns,id,identity_proof} through magic function to verify that consent
-    is authentic.
-  * verifies that `hash(request_message) === request.message_hash`
+It encrypts the following the message and sends it to the AS’ node via NSQ. (Note: No data stored in blockchain in request phase.)
 
-**AS node sends callback to AS (synchronous)** **POST
-/service/{namespace}/{identifier}**
+```yml
+request_id: 'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'
+namespace: 'citizenid'
+identifier: '01234567890123'
+service_id: 'bank_statement'
+rp_node_id: <node id of relying party>
+request_message: 'ขอ Bank statement เพื่อทำ VISA ที่สถานฑูตลาว'
+```
 
-namespace = “citizenid” identifier = “01234567890123” # required for e.g. letter
-of guarantee request_params: { format: 'pdf' }
+## Platform&rarr;AS: [POST /service/citizenid/01234567890123](https://app.swaggerhub.com/apis/ndid/as_callback/0.1#/default/get_service__namespace___identifier_)
 
-    # maybe from multiple IDPs
-    signatures: [
-      '<RSA signature of signing the request_message(ขอ Bank statement...) with accessor type>'
-    ]
-    max_ial: 2
-    max_aal: 3
+Now, AS Node received a data request through the NSQ. It then looks up the request and consent transactions with matching `request_id` in the blockchain.
 
-**AS replies synchronously**
+* Verify that (number of consent ≥ min_idp in request).
+* For each consent with matching request ID:
+  * Verify the identity proof.
+  * Verify the signature.
+  * Verify that the `message_hash` is matching with the request.
 
-    HTTP/1.1 200 OK
+Then it sends the API call to the AS through the registered callback URL.
 
-    <PDF BINARY DATA>
+```yaml
+request_params: { format: 'pdf' }
 
-**AS node encrypts the response and sends it to RP via NSQ.** **AS node adds
-transaction to blockchain**
+# An array because signature may come from different IdPs.
+signatures: [
+  '<signature>'
+]
 
-    as_id: 'AS1'
-    request_id: 'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'
-    signatures: sign(<PDF BINARY DATA>, AS1’s private key)
+# The IAL and AAL. In case of multiple IdPs, take the maximum.
+max_ial: 2
+max_aal: 3
+```
 
-Data is in blockchain RP node receives the data via NSQ and verifies signature
-in blockchain. RP node updates status and call callback to RP.
+## AS&rarr;Platform
+
+The AS replies synchronously with the requested data:
+
+```yaml
+data: '<PDF BINARY DATA>'
+```
+
+AS node encrypts the response and sends it back to RP via NSQ.
+
+AS node adds transaction to blockchain:
+
+```yaml
+as_id: 'AS1'
+request_id: 'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'
+signature: sign(<PDF BINARY DATA>, AS1’s private key)
+```
+
+## Platform&rarr;RP
+
+RP node receives the data via NSQ and verifies signature in blockchain.
+RP node updates the request status and call callback to RP.
+
+## Retrieving data: [GET /rp/requests/data/ef6f4c9c-818b-…](https://app.swaggerhub.com/apis/ndid/relying_party_api/0.1#/default/get_request_data)
+
+Finally, RP calls the API to retrieve the request data.
+It returns with:
+
+```yaml
+- source_id: AS1 # @todo #2 Is source_id a node_id or as_id or service_id?
+                 #  Should we also include a service_id,
+                 #  since the same Node/AS may provide multiple
+                 #  services, and the same service may be provided
+                 #  by multiple AS/node?
+  source_signature: sign(<PDF BINARY DATA>, AS1’s private key)
+  data: '<PDF BINARY DATA>'
+```
