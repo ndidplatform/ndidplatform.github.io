@@ -253,7 +253,7 @@ It then generates a signature by signing the `request_message` with that private
 
 <div markdown="1" class="flash mb-3 flash-warn">
 
-@todo #1 Should the message to be signed also include the user’s approval status?
+@todo #2 Should the message to be signed also include the user’s approval status?
  Otherwise, the signature for CONFIRM is identical to REJECT…
 
 </div>
@@ -277,7 +277,7 @@ However, the blockchain does not contain any identity information. But somehow, 
 
 <div markdown="1" class="flash mb-3 flash-warn">
 
-@todo #1 How is the `identity_proof` calculated?
+@todo #2 How is the `identity_proof` calculated?
 
 </div>
 
@@ -317,7 +317,7 @@ For now here’s the (messy) meeting minute where we map out the scenario outlin
 
 <div markdown="1" class="flash mb-3 flash-warn">
 
-@todo #1 Properly format the data request section.
+@todo #2 Properly format the data request section.
 
 </div>
 
