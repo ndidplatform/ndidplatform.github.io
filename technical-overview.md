@@ -253,7 +253,8 @@ It then generates a signature by signing the `request_message` with that private
 
 <div markdown="1" class="flash mb-3 flash-warn">
 
-TBD: Should the message to be signed include the approval status and list of requested data?
+@todo #1 Should the message to be signed also include the user’s approval status?
+ Otherwise, the signature for CONFIRM is identical to REJECT…
 
 </div>
 
@@ -273,6 +274,12 @@ accessor_id: 'acc_f328-53da-4d51-a927-3cc6d3ed3feb'
 Before AS can give out the data (or before the RP can accept this confirmation), they must verify that the user has really given the required consent and this consent is recorded in the blockchain.
 
 However, the blockchain does not contain any identity information. But somehow, we need to verify that the `request_id` really corresponds to the identity in question (zero-knowledge proof). Thus, a magic formula [algorithm TBD] is used to calculate the `identity_proof`, a very long number.
+
+<div markdown="1" class="flash mb-3 flash-warn">
+
+@todo #1 How is the `identity_proof` calculated?
+
+</div>
 
 The information is recorded in the blockchain:
 
@@ -307,6 +314,12 @@ It updates the request state and notifies the RP through callback URL (if provid
 For now here’s the (messy) meeting minute where we map out the scenario outlined in the [quick overview](/#quick-overview). Sorry for the mess. This page should be cleaned up. [Contributions welcome!](https://github.com/ndidplatform/ndidplatform.github.io/edit/master/technical-overview.md).
 
 ---
+
+<div markdown="1" class="flash mb-3 flash-warn">
+
+@todo #1 Properly format the data request section.
+
+</div>
 
 ## Data request
 
