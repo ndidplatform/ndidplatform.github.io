@@ -146,20 +146,20 @@ data_request_list:
 # (RP must send message in correct language.)
 request_message: 'Please allow the embassy to access your bank statement for purpose of obtaining a Visa.'
 
-# Identity assurance level. Assurance level of KYC process.
-# Example:
-#   0 = email
-#   1 = copy of id card
-#   2 = e.g. telephone call
-#   3 = e.g. face-to-face
+# Identity Assurance Level. Assurance level of KYC process.
+# Examples:
+#   IAL1 = self-asserted. e.g. email/facebook account
+#   IAL2 = rudimentary identity verification. e.g. copy of id card
+#   IAL3 = more strict verification, utilizing biometric data
 min_ial: 2
 
 # Authentication assurance level. Assurance level of authentication process.
-# Example:
-#   0 = bot / auto-approve?
-#   1 = username/password
-#   2 = multi-factor auth
-#   3 = identity owner signs the consent request with their private key
+# Examples:
+#   AAL1 = single-factor authentication. e.g. username/password
+#          (not allowed for IAL1)
+#   AAL2 = two-factor authentication. e.g. PIN + OTP
+#   AAL3 = multi-factor authentication, utilizing cryptographic key.
+#          e.g. USB token containing password-protected private key
 min_aal: 1
 
 # Minimum number of IdP approvals for auth request to be confirmed.
