@@ -17,7 +17,16 @@
           <h1><a href="{{ "/" | absolute_url }}">{{ site.title }}</a></h1>
           {% endif %}
 
-          {{ content }}
+          <!--
+            @todo #2 Add a link to "Jump to navigation".
+             On mobile, this link should display so that user can click to go to navigation section.
+             On desktop, this link should be hidden but focusable. It should reveal itself when focused.
+             This allows keyboard users to use this site easily.
+          -->
+
+          <article>
+            {{ content }}
+          </article>
 
           {% if site.github.private != true %}
           <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
