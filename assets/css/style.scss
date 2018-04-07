@@ -16,16 +16,22 @@
   white-space: pre;
   text-align: left;
 }
-@media (min-width: 960px) {
+@media (min-width: 1200px) {
   .mermaid {
     margin-left: -36px;
     margin-right: -36px;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1250px) {
   .mermaid {
-    margin-left: -148px;
-    margin-right: -148px;
+    margin-left: -64px;
+    margin-right: -64px;
+  }
+}
+@media (min-width: 1276px) {
+  .mermaid {
+    margin-left: -72px;
+    margin-right: -72px;
   }
 }
 
@@ -43,6 +49,29 @@ x-pk {
   font-size: 80%;
   white-space: nowrap;
   display: inline-block;
+}
+
+.main {
+  min-height: 100vh;
+}
+.main-nav {
+  border-top: 1px #e1e4e8 solid;
+}
+@media (min-width: 960px) {
+  .main {
+    display: grid;
+    grid-template-columns: 256px auto;
+  }
+  .main-content {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+  }
+  .main-nav {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    border-right: 1px #e1e4e8 solid;
+    border-top: 0;
+  }
 }
 
 /* primer-alerts (MIT Licensed) https://unpkg.com/primer-alerts@1.5.5/build/build.css */

@@ -10,21 +10,35 @@
     <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
   </head>
   <body>
-    <div class="px-3 my-5 markdown-body">
-      {% if site.title and site.title != page.title %}
-      <h1><a href="{{ "/" | absolute_url }}">{{ site.title }}</a></h1>
-      {% endif %}
+    <div class="main">
+      <main class="main-content">
+        <div class="px-3 my-5 markdown-body">
+          {% if site.title and site.title != page.title %}
+          <h1><a href="{{ "/" | absolute_url }}">{{ site.title }}</a></h1>
+          {% endif %}
 
-      {{ content }}
+          {{ content }}
 
-      {% if site.github.private != true %}
-      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
-        {% github_edit_link "Edit this page" %}.
+          {% if site.github.private != true %}
+          <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+            {% github_edit_link "Edit this page" %}.
+          </div>
+          {% endif %}
+        </div>
+      </main>
+      <div class="main-nav">
+        <nav id="#nav">
+          <h2 class="bg-gray-light border-bottom f4 text-bold text-center py-2 px-3">Navigation</h2>
+          <ul class="py-1">
+            {% for item in site.data.nav %}
+              <li><a class="d-block py-1 px-3{% if item.url == page.url %} text-bold text-gray-dark{% endif %}" href="{{ item.url }}" title="{{ item.title }}">{{ item.title }}</a></li>
+            {% endfor %}
+           </ul>
+        </nav>
       </div>
-      {% endif %}
     </div>
     <script src="{{ "assets/javascript/anchor-js/anchor.min.js" | relative_url }}"></script>
-    <script>anchors.add();</script>
+    <script>anchors.add('main h2, main h3, main h4, main h5, main h6');</script>
     <script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
     <script>
       function mermaidify (el) {
