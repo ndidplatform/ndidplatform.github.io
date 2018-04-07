@@ -12,7 +12,7 @@ title: Technical overview
 
 <div markdown="1" class="flash mb-3">
 
-**Information:** There are many terms used in this document. We recommend you to look at the [Digital Identity Guideline for Thailand – Overview and Glossary (DRAFT)](https://standard.etda.or.th/?p=8577) document to understand the precise meaning of each term.
+**Recommended reading:** If you haven’t read it yet, we highly recommend that you read the [Digital Identity Guideline for Thailand – Overview and Glossary (DRAFT)](https://standard.etda.or.th/?p=8577) document to understand the overall process of the Digital ID model, as well as precise meanings of each term.
 
 </div>
 

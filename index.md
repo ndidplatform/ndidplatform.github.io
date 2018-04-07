@@ -16,6 +16,12 @@ Development hub for Thailand National Digital ID platform.
 
 ## Architecture overview
 
+<div markdown="1" class="flash mb-3">
+
+**Recommended reading:** For newcomers, we highly recommend that you [watch the TEDxChiangMai talk](https://www.youtube.com/watch?v=E8HHNRRlsoo) which describes the importance and benefits of having a digital ID infrastructure in Thailand, and read the [Digital Identity Guideline for Thailand – Overview and Glossary (DRAFT)](https://standard.etda.or.th/?p=8577) document to understand the overall process of the Digital ID model.
+
+</div>
+
 From the whitepaper:
 
 > The Digital Identity Platform is intended to provide a flexible and highly
@@ -55,6 +61,12 @@ There are 2 main processes when using NDID:
       Authentication process. Source: [Digital Identity Guideline for Thailand – Overview and Glossary (DRAFT)](https://standard.etda.or.th/?p=8577)
     </figcaption>
   </figure>
+
+<div markdown="1" class="flash mb-3">
+
+**Recommended reading:** [บทความเกี่ยวกับแนวคิดพื้นฐานในความแตกต่างของ Identity Proofing และ Authentication รวมทั้งความเชื่อมโยงของสองเรื่องนี้ที่เป็นเรื่องพื้นฐานของ Digital ID](https://narudomr.blogspot.com/2018/02/identity-proofing-authentication.html)
+
+</div>
 
 <figure>
   <span markdown="span">![Digital ID Model Diagram](images/did-model-by-etda.png)</span>
