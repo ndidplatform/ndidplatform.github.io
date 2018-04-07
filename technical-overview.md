@@ -300,7 +300,7 @@ However, the blockchain does not contain any identity information. But somehow, 
   @todo #2 How is the `identity_proof` calculated?
 </div>
 
-The information is recorded in the blockchain:
+The ‘assertion’ is recorded in the blockchain:
 
 ```yaml
 request_id: 'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'
