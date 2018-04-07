@@ -10,6 +10,12 @@ title: Technical overview
 
 </div>
 
+<div markdown="1" class="flash mb-3">
+
+**Information:** There are many terms used in this document. We recommend you to look at the [Digital Identity Guideline for Thailand – Overview and Glossary (DRAFT)](https://standard.etda.or.th/?p=8577) document to understand the precise meaning of each term.
+
+</div>
+
 ## Scenario: Requesting a bank statement for Visa application
 
 In this scenario, the User is at an embassy to apply for a Visa.
@@ -66,8 +72,13 @@ and retrieving the bank statement form the **Authoritative Source (AS)**, the ba
     | <x-guid>IdP_f924-5069-4c6a-a4e4-134cd1a3d3d0</x-guid> | AAAAB3NzaC1yc2EAAAADAQABAAABAQC+IdP+lk1ax… |
     | <x-guid>AS_12767-0030-4a73-9593-ffd6d010c63c</x-guid> | AAAAB3NzaC1yc2EAAAADAQABAAABAQD+AS+n0IWKC… |
 
-- **IDP Onboarding:** The User must have their identities be registered with an IdP.
+- **IDP Enrolment/Onboarding:** The User must have their identities registered with an IdP (through an “enrolment” process).
   Check out the flow [in the whitepaper](https://docs.google.com/document/d/1R48Vr5xeLQdq2AvdHKpSClUinWzykKB2Nfh_G9z3pvM/edit#heading=h.fw1fc2xwjef7).
+
+  First, the user has to apply to enrol with the IdP.
+  The IdP will verify the applicant’s identity (identity proofing).
+  If the identity proofing process is very strict,
+  the registered identity will have a high **IAL (Identity Assurance Level)**.
 
   In this scenario, the user onboarded with the IDP using his **citizen ID, 1-2345-67890-12-3**.
 
@@ -238,10 +249,14 @@ At this point, IDP Node has checked that the consent is still needed. It issues 
 
 IdP asks the user to:
 
-- Verify their identity.
-- Give consent to allow RP to access the data from AS.
+- Verify their identity (authentication).
+- Give consent to allow RP to access the data from AS (data access authorization).
 
 The message from is shown to the user:<br />“Please allow the embassy to access your bank statement for purpose of obtaining a Visa.”
+
+Different ways of authentication has different security level.
+Authentication using PIN or username/password combination can be considered low security, while public-key authentication can be considered having higher security.
+Authentication method that has higher security gets a higher **AAL (Authentication Assurance Level)**.
 
 ## User&rarr;IdP
 

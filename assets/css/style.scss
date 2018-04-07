@@ -74,6 +74,20 @@ x-pk {
   }
 }
 
+figure {
+  background: #fafbfc;
+  border: 1px solid #e1e4e8;
+  text-align: center;
+  display: block;
+  padding: 4px;
+  img {
+    box-sizing: border-box !important;
+    margin: 0 auto;
+    background: white;
+    border: 1px solid #e1e4e8;
+  }
+}
+
 /* primer-alerts (MIT Licensed) https://unpkg.com/primer-alerts@1.5.5/build/build.css */
 .flash {
   position: relative;
