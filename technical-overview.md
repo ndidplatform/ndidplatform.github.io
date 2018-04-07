@@ -166,7 +166,7 @@ min_aal: 1
 min_idp: 1
 
 # Transaction timeout.
-timeout: 4320 # minutes = 3 days
+timeout: 259200 # seconds = 3 days
 ```
 
 The API validates the request, generates a request ID and returns a response:
@@ -192,7 +192,7 @@ request_id: 'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'
 min_idp: 1
 min_aal: 1
 min_ial: 2
-timeout: 4320
+timeout: 259200
 data_request_list:
     # { service_id,       as_id }
     - { 'bank_statement', 'AS1' }
@@ -229,7 +229,7 @@ request_message: 'Please allow...'
 min_ial: 2
 min_aal: 1
 min_idp: 1
-timeout: 4320
+timeout: 259200
 request_id: 'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'
 ```
 
