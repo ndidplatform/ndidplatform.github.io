@@ -168,11 +168,12 @@ min_aal: 1
 min_idp: 1
 
 # Transaction timeout.
-# @todo #2 In SwaggerHub this is called `request_timeout` and has unit of milliseconds.
-#  But the word ‘request’ may refer to HTTP request and also authentication request.
-#  Should we name it `transaction_timeout` instead?
-#  Resolve the discrepancy between SwaggerHub and this doc.
-timeout: 259200 # seconds = 3 days
+# request_timeout is the request transaction timeout
+request_timeout: 259200 # seconds = 3 days
+
+# timeout: http session timeout
+# this should not be in the API request body, should be in the API request query.  (e.g. path?timeout=120000)
+timeout: 120000 # ms = 2 minutes
 ```
 
 The API validates the request, generates a request ID and returns a response:
