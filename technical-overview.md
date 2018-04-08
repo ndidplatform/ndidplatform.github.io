@@ -134,7 +134,7 @@ idp_list: []
 synchronous: false
 
 # If provided, this URL will be invoked when request status is updated.
-call_back_url: 'https://<rp-webservice>/webhook'
+callback_url: 'https://<rp-webservice>/webhook'
 
 # List of data to request from AS.
 # This can be empty.
