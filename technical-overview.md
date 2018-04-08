@@ -395,16 +395,11 @@ request_id: 'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'
 request_params: { format: 'pdf' }
 
 # An array because signature may come from different IdPs.
-# @todo #2 In SwaggerHub this field is `signature` and is a string.
-#  Here it is an array because signature may come from different IdPs.
-#  Resolve this discrepancy.
 signatures: [
   '<signature>'
 ]
 
 # The IAL and AAL. In case of multiple IdPs, take the maximum.
-# @todo #2 In SwaggerHub `max_ial` and `max_aal` is called `ial` and `aal`.
-#  Resolve this discrepancy.
 max_ial: 2
 max_aal: 3
 ```
