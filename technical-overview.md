@@ -292,9 +292,7 @@ Then it sends the `secret` and `signature` to the `POST /idp/response` API.
 request_id: 'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'
 namespace: 'citizenid'
 identifier: '01234567890123'
-# @todo #2 Should this be called `aal` instead?
-#  Should this change, update the SwaggerHub as well.
-loa: 3
+aal: 3
 secret: 'MAGIC'
 status: 'accept'
 signature: '<signature>'
