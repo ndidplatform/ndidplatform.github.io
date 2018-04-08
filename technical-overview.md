@@ -138,15 +138,11 @@ call_back_url: 'https://<rp-webservice>/webhook'
 
 # List of data to request from AS.
 # This can be empty.
-# @todo #2 In SwaggerHub this is called `as_service_list` with
-#  slightly different parameter names and an extra parameter `count`.
-#  Also, `as_id` is an array in SwaggerHub.
-#  But since we may send different requests of different params to different AS.
-#  We also may send multiple requests with different params to a same AS.
-#  Resolve the discrepancy between SwaggerHub and this doc.
+# Multiple as_id can be provided as a list.  If the list is empty, then the platform will send request to all AS providing the service.  All AS should provide the same interface for the same service_id, so we can send the same set of params to all of them.
+# Count is the number of expected response.  One service_id maybe provided by multiple ASes, but RP may require answer from only n number of them, this number is count.  If count is larger than the number of item in [as_id] list, then count is set as count([as_id]).  (e.g. count <= count([as_id]))
 data_request_list:
-  # { service_id,       as_id, request_params }
-  - { 'bank_statement', 'AS1', { format: 'pdf' } }
+  # { service_id, [as_id]  , count, request_params }
+  - { 'bank_statement', ['AS1', 'AS2'], 1, { format: 'pdf' } }
 
 # Message to display to user to ask for consent.
 # (RP must send message in correct language.)
