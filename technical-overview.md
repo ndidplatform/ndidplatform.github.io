@@ -438,12 +438,10 @@ Finally, RP calls the API to retrieve the request data.
 It returns with:
 
 ```yaml
-- source_id: AS1 # @todo #2 Is source_id a node_id or as_id or service_id?
-                 #  Should we also include a service_id,
-                 #  since the same Node/AS may provide multiple
-                 #  services, and the same service may be provided
-                 #  by multiple AS/node?
+- source_node_id: AS1 
+  service_id: bank_statement
   source_signature: sign(<PDF BINARY DATA>, AS1’s private key)
+  signature_type: "SHA256_RSA2048"
   data: '<PDF BINARY DATA>'
 ```
 
