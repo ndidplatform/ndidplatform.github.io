@@ -229,11 +229,9 @@ Then a message is constructed, encrypted with the public key, and sent to the no
 ```yaml
 namespace: 'citizenid'
 identifier: '01234567890123'
-# @todo #2 In SwaggerHub this is called `service_id_list`.
-#  Discuss in issue #6 and resolve this discrepancy.
-data_request_list:
-  # { service_id,       as_id }
-  - { 'bank_statement', 'AS1' }
+as_service_list:
+  # { service_id,       as_id, count, request_params }
+  - { 'bank_statement', ['AS1', 'AS2'], 1, { format: 'pdf' }}
 request_message: 'Please allow...'
 min_ial: 2
 min_aal: 1
