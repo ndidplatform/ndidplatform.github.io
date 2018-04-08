@@ -134,10 +134,6 @@ idp_list: []
 synchronous: false
 
 # If provided, this URL will be invoked when request status is updated.
-# @todo #2 The word “callback” is usually a single word.
-#  But in SwaggerHub the spec uses `call_back_url`.
-#  Should this param be named `callback_url` instead?
-#  Resolve the discrepancy between SwaggerHub and this doc.
 call_back_url: 'https://<rp-webservice>/webhook'
 
 # List of data to request from AS.
