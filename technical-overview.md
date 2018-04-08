@@ -144,9 +144,6 @@ call_back_url: 'https://<rp-webservice>/webhook'
 #  But since we may send different requests of different params to different AS.
 #  We also may send multiple requests with different params to a same AS.
 #  Resolve the discrepancy between SwaggerHub and this doc.
-# @todo #2 In SwaggerHub there is `service_id_list`.
-#  But we already have `as_service_list` which contains the same information.
-#  Resolve the discrepancy between SwaggerHub and this doc.
 data_request_list:
   # { service_id,       as_id, request_params }
   - { 'bank_statement', 'AS1', { format: 'pdf' } }
