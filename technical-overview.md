@@ -134,26 +134,15 @@ idp_list: []
 synchronous: false
 
 # If provided, this URL will be invoked when request status is updated.
-# @todo #2 The word “callback” is usually a single word.
-#  But in SwaggerHub the spec uses `call_back_url`.
-#  Should this param be named `callback_url` instead?
-#  Resolve the discrepancy between SwaggerHub and this doc.
-call_back_url: 'https://<rp-webservice>/webhook'
+callback_url: 'https://<rp-webservice>/webhook'
 
 # List of data to request from AS.
 # This can be empty.
-# @todo #2 In SwaggerHub this is called `as_service_list` with
-#  slightly different parameter names and an extra parameter `count`.
-#  Also, `as_id` is an array in SwaggerHub.
-#  But since we may send different requests of different params to different AS.
-#  We also may send multiple requests with different params to a same AS.
-#  Resolve the discrepancy between SwaggerHub and this doc.
-# @todo #2 In SwaggerHub there is `service_id_list`.
-#  But we already have `as_service_list` which contains the same information.
-#  Resolve the discrepancy between SwaggerHub and this doc.
+# Multiple as_id can be provided as a list.  If the list is empty, then the platform will send request to all AS providing the service.  All AS should provide the same interface for the same service_id, so we can send the same set of params to all of them.
+# Count is the number of expected response.  One service_id maybe provided by multiple ASes, but RP may require answer from only n number of them, this number is count.  If count is larger than the number of item in [as_id] list, then count is set as count([as_id]).  (e.g. count <= count([as_id]))
 data_request_list:
-  # { service_id,       as_id, request_params }
-  - { 'bank_statement', 'AS1', { format: 'pdf' } }
+  # { service_id, [as_id]  , count, request_params }
+  - { 'bank_statement', ['AS1', 'AS2'], 1, { format: 'pdf' } }
 
 # Message to display to user to ask for consent.
 # (RP must send message in correct language.)
@@ -179,11 +168,12 @@ min_aal: 1
 min_idp: 1
 
 # Transaction timeout.
-# @todo #2 In SwaggerHub this is called `request_timeout` and has unit of milliseconds.
-#  But the word ‘request’ may refer to HTTP request and also authentication request.
-#  Should we name it `transaction_timeout` instead?
-#  Resolve the discrepancy between SwaggerHub and this doc.
-timeout: 259200 # seconds = 3 days
+# request_timeout is the request transaction timeout
+request_timeout: 259200 # seconds = 3 days
+
+# timeout: http session timeout
+# this should not be in the API request body, should be in the API request query.  (e.g. path?timeout=120000)
+timeout: 120000 # ms = 2 minutes
 ```
 
 The API validates the request, generates a request ID and returns a response:
@@ -239,11 +229,9 @@ Then a message is constructed, encrypted with the public key, and sent to the no
 ```yaml
 namespace: 'citizenid'
 identifier: '01234567890123'
-# @todo #2 In SwaggerHub this is called `service_id_list`.
-#  Discuss in issue #6 and resolve this discrepancy.
-data_request_list:
-  # { service_id,       as_id }
-  - { 'bank_statement', 'AS1' }
+as_service_list:
+  # { service_id,       as_id, count, request_params }
+  - { 'bank_statement', ['AS1', 'AS2'], 1, { format: 'pdf' }}
 request_message: 'Please allow...'
 min_ial: 2
 min_aal: 1
@@ -304,9 +292,7 @@ Then it sends the `secret` and `signature` to the `POST /idp/response` API.
 request_id: 'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'
 namespace: 'citizenid'
 identifier: '01234567890123'
-# @todo #2 Should this be called `aal` instead?
-#  Should this change, update the SwaggerHub as well.
-loa: 3
+aal: 3
 secret: 'MAGIC'
 status: 'accept'
 signature: '<signature>'
