@@ -201,8 +201,8 @@ min_aal: 1
 min_ial: 2
 timeout: 259200
 data_request_list:
-    # { service_id,       as_id }
-    - { 'bank_statement', 'AS1' }
+    # { service_id, [as_id]  , count, request_params }
+    - { 'bank_statement', ['AS1', 'AS2'], 1, { format: 'pdf' } }
 message_hash: hash('Please allow...')
 
 # Note: Neither {ns}/{id} not its hash is stored here.
@@ -229,7 +229,7 @@ Then a message is constructed, encrypted with the public key, and sent to the no
 ```yaml
 namespace: 'citizenid'
 identifier: '01234567890123'
-as_service_list:
+data_request_list:
   # { service_id,       as_id, count, request_params }
   - { 'bank_statement', ['AS1', 'AS2'], 1, { format: 'pdf' }}
 request_message: 'Please allow...'
@@ -320,7 +320,7 @@ accessor_id: '12a8f328-53da-4d51-a927-3cc6d3ed3feb'
 identity_proof: <identity_proof>
 ```
 
-## Platform&rarr;RP: [POST /idp/request/ef6f4c9c-818b-…](https://app.swaggerhub.com/apis/ndid/rp_callback/0.1#/default/request_for_authentication)
+## Platform&rarr;RP: [POST /rp/request/ef6f4c9c-818b-…](https://app.swaggerhub.com/apis/ndid/rp_callback/0.1#/default/request_for_authentication)
 
 At this point, RP-Node sees the above transaction committed in the blockchain.
 It knows that the authentication request has been approved.
