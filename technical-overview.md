@@ -73,7 +73,7 @@ and retrieving the bank statement form the **Authoritative Source (AS)**, the ba
     | <x-guid>AS_12767-0030-4a73-9593-ffd6d010c63c</x-guid> | AAAAB3NzaC1yc2EAAAADAQABAAABAQD+AS+n0IWKC… |
 
 - **IDP Enrolment/Onboarding:** The User must have their identities registered with an IdP (through an “enrolment” process).
-  Check out the flow [in the whitepaper](https://docs.google.com/document/d/1SKydNM-Nyox62m3vuvYgFYCr8ABVQV8RhjwiMjdCpQ8/edit#heading=h.fw1fc2xwjef7).
+  Check out the flow [in the whitepaper](https://docs.google.com/document/d/1R48Vr5xeLQdq2AvdHKpSClUinWzykKB2Nfh_G9z3pvM/edit#heading=h.fw1fc2xwjef7).
 
   First, the user has to apply to enrol with the IdP.
   The IdP will verify the applicant’s identity (identity proofing).
@@ -276,6 +276,8 @@ IdP retrieves the `secret`, `accessor_id` and `accessor_private_key from private
 | namespace | id | secret | accessor\_id | accessor\_private\_key |
 | --- | --- | --- | --- | --- |
 | citizenid | 1234567890123 | (magic) | <x-guid>acc_f328-53da-4d51-a927-3cc6d3ed3feb</x-guid> | <x-pk>-----BEGIN RSA PRIVATE KEY-----<br />MIIEowIBAAKCAQEAxy/CSXWu...</x-pk> |
+
+** Secret is a salt. Different ns/id accessor id will result in different secret. 
 
 It then generates a signature by signing the `request_message` with that private key.
 
