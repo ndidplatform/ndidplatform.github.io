@@ -73,7 +73,7 @@ and retrieving the bank statement form the **Authoritative Source (AS)**, the ba
     | <x-guid>AS_12767-0030-4a73-9593-ffd6d010c63c</x-guid> | AAAAB3NzaC1yc2EAAAADAQABAAABAQD+AS+n0IWKC… |
 
 - **IDP Enrolment/Onboarding:** The User must have their identities registered with an IdP (through an “enrolment” process).
-  Check out the flow [in the whitepaper](https://docs.google.com/document/d/1R48Vr5xeLQdq2AvdHKpSClUinWzykKB2Nfh_G9z3pvM/edit#heading=h.fw1fc2xwjef7).
+  Check out the flow [in the whitepaper](https://docs.google.com/document/d/1SKydNM-Nyox62m3vuvYgFYCr8ABVQV8RhjwiMjdCpQ8/edit#heading=h.fw1fc2xwjef7).
 
   First, the user has to apply to enrol with the IdP.
   The IdP will verify the applicant’s identity (identity proofing).
