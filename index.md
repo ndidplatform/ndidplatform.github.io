@@ -9,7 +9,7 @@ Development hub for Thailand National Digital ID platform.
 | **Official site**       | <http://www.digitalid.or.th/>                 |
 | **TEDxChiangMai Talk**  | <https://www.youtube.com/watch?v=E8HHNRRlsoo> |
 | **GitHub organization** | <https://github.com/ndidplatform>             |
-| **HTTP API schema**     | <https://app.swaggerhub.com/apis/ndid/>       |
+| **HTTP API schema**     | <https://app.swaggerhub.com/apis/NDID/>       |
 | **Facebook page**       | <https://www.facebook.com/NationalDigitalID/> |
 | **Whitepaper**          | <https://goo.gl/v4Cfpe>                       |
 | **Slack**               | <https://bit.ly/2GFWyIn>                      |
