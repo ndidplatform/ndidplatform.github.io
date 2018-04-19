@@ -1,5 +1,5 @@
 ---
-title: Technical overview
+title: Example authentication flow
 ---
 
 # Example Authentication Flow
@@ -15,7 +15,7 @@ title: Technical overview
 - [ndid-smart-contract](https://github.com/ndidplatform/ndid-smart-contract)
   is a repository for implementation of NDID platform at blockchain level.
   This contains tendermint and golang implementation responsible 
-  for storing/querying data to/from blockchain. Basically, it is an tendermint ABCI app.
+  for storing/querying data to/from blockchain. Basically, it is a tendermint ABCI app.
 
 - [ndid-api](https://github.com/ndidplatform/ndid-api)
   is a repository for implementation of NDID platform at API level.
