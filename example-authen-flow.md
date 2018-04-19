@@ -25,7 +25,7 @@ title: Technical overview
   - src/main main logic
   - src/mq message queue interface
 
-- [ndid-client-app-idp-example)](https://github.com/ndidplatform/ndid-client-app-idp-example)
+- [ndid-client-app-idp-example](https://github.com/ndidplatform/ndid-client-app-idp-example)
   and [ndid-client-app-rp-example](https://github.com/ndidplatform/ndid-client-app-rp-example)
   is **not** part of the platform but examples of client application to 
   help developer understand how to communicate with platform and handle callback.
