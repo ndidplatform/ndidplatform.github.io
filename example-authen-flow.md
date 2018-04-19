@@ -59,7 +59,7 @@ At `$GOPATH/src/github.com/digital-id/ndid-smart-contract`
   ```
   CALLBACK_URI=http://localhost:3001/callback go run abci/server.go tcp://127.0.0.1:46001
   ```
-- idp-tendermint
+- rp-tendermint
   ```
   tendermint --home ./config/tendermint/RP unsafe_reset_all && \
   tendermint --home ./config/tendermint/RP node --consensus.create_empty_blocks=false
