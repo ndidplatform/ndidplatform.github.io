@@ -123,7 +123,7 @@ If you also run in same machine, you can run these scripts.
   ```
   API_SERVER_ADDRESS=http://localhost:8081 \
   NDID_API_CALLBACK_PORT=5001 \
-  SERVER_PORT=8001
+  SERVER_PORT=8001 \
   npm start
   ```
 
