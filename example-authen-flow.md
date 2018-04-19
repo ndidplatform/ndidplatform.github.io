@@ -15,11 +15,11 @@ title: Technical overview
 - [ndid-smart-contract](https://github.com/ndidplatform/ndid-smart-contract)
   is a repository for implementation of NDID platform at blockchain level.
   This contains tendermint and golang implementation responsible 
-  for store/query data to/from blockchain
+  for storing/querying data to/from blockchain. Basically, it is an tendermint ABCI app.
 
 - [ndid-api](https://github.com/ndidplatform/ndid-api)
   is a repository for implementation of NDID platform at API level.
-  This contains nodejs implementation responsible for communicate with application
+  This contains nodejs implementation responsible for communicating with cllient application
   via HTTP API and platform logic such as encryption/decryption and message queue.
   - src/routes HTTP API
   - src/main main logic
@@ -27,22 +27,22 @@ title: Technical overview
 
 - [ndid-client-app-idp-example](https://github.com/ndidplatform/ndid-client-app-idp-example)
   and [ndid-client-app-rp-example](https://github.com/ndidplatform/ndid-client-app-rp-example)
-  is **not** part of the platform but examples of client application to 
-  help developer understand how to communicate with platform and handle callback.
+  is **not** a part of the platform but examples of client application to 
+  help developers understand how to communicate with the platform and handle callback.
 
 ## Before we start
 
-To run the authentication flow there is an issue we must discuss, the onboarding process.
-To visualize the flow, IDP must register themself and their customer to the system.
-This is not part of the flow but has to be done, so `ndid-api` automatically do this when start. 
+To run the authentication flow, there is an issue we must discuss, the onboarding process.
+To visualize the flow, IDP must register themselves and their customers to the system.
+This is not a part of the flow but has to be done. `ndid-api` automatically do this when start. 
 
 ## To run the example flow
 
 Clone `ndid-smart-contract` and `ndid-api` to your machine. (client-app-example is optional)
-We recommend to clone `ndid-smart-contract` to `$GOPATH/src/github.com/digital-id/`.
+We recommend cloning `ndid-smart-contract` to `$GOPATH/src/github.com/digital-id/`.
 
-Follow the setup and start step in each repository.
-If you want to run all repository in **same machine without VM** you can use these scripts to start the flow (6 terminals).
+Follow the setup and start steps in each repository.
+If you want to run all repository on **the same machine without VM**, you can use these scripts to start the flow (6 terminals).
 
 At `$GOPATH/src/github.com/digital-id/ndid-smart-contract`
 
@@ -70,7 +70,7 @@ Wait for **both** `idp-abci` and `rp-abci` to display
 Commit
 Commit
 ```
-before proceed at `ndid-api` directory
+before proceeding to `ndid-api` directory
 
 - idp-api
   ```
@@ -91,24 +91,24 @@ before proceed at `ndid-api` directory
   npm start
   ```
 
-After start `ndid-api`, wait for `Commit` to display in `idp-abci` and `rp-abci`,
+After starting `ndid-api`, wait for `Commit` to display in `idp-abci` and `rp-abci`,
 then you can start the flow.
 
 ## Test the flow with POSTMAN
 
 You can download [POSTMAN collection](/assets/authen-flow-postman.json) and import to POSTMAN.
 
-At tab `http://localhost:8081/rp/requests/cid/1234567890123` in POSTMAN is use to create request, note that we hard-coded IDP to responsible for only authentication request for namespace `cid` and identifier `1234567890123`, if you want IDP to be responsible for others namespace and identifier please edit users.json and restart `idp-api`.
+At tab `http://localhost:8081/rp/requests/cid/1234567890123` in POSTMAN is use to create request, note that we hard-coded IDP to be responsible for only authentication request for namespace `cid` and identifier `1234567890123`. If you want IDP to be responsible for other namespaces and identifiers, edit `users.json` and restart `idp-api`.
 
-After create request you can see at `idp-api` that IDP receive message via message queue.
+After creating a request you can see at `idp-api` that IDP receive message via message queue.
 Now you can use POSTMAN tab `http://localhost:8081/rp/requests/...` and replace ... with `request_id` you get from former step to see request status in blockchain.
 
-At tab `http://localhost:8080/idp/response`, replace `request_id` in body with above id and you will see at `rp-api` that platform try to callback to RP via `callback_url` we send in `/rp/request/`. Which may result in error if you do not have any HTTP server listen to that url.
+At tab `http://localhost:8080/idp/response`, replace `request_id` in body with above id and you will see at `rp-api` that the platform will try to callback to RP via `callback_url` we send in `/rp/request/`. Which may result in error if you do not have any HTTP server listening to that url.
 
 ## Test the flow with our client-example
 
-You can also test the flow with our `client-example` repository.
-If you also run in same machine, you can run these scripts.
+You can also test the flow with our `client-example` repositories.
+If you run the examples in the same machine, you can use these scripts.
 
 - idp-client-app
   ```
@@ -127,9 +127,9 @@ If you also run in same machine, you can run these scripts.
   npm start
   ```
 
-For these repository, `idp-client-app` will register callback_url according to `NDID_API_CALLBACK_IP` and `NDID_API_CALLBACK_PORT` at start.
-And `rp-client-app` is hard-coded to create request for namespace `cid` and identifier `1234567890123`, and will send `callback_url` according to `NDID_API_CALLBACK_PORT`.
+For these repositories, `idp-client-app` will register callback url according to `NDID_API_CALLBACK_IP` and `NDID_API_CALLBACK_PORT` on start.
+And `rp-client-app` is hard-coded to create a request for namespace `cid` and identifier `1234567890123`, and will send `callback_url` according to `NDID_API_CALLBACK_PORT`.
 
-To test the flow, please navigate to `http://localhost:8080` for IDP and `http://localhost:8081` for RP.
-When you press `verify identity` at RP, IDP will be notify and display option for accept/reject.
-And when you response at IDP, RP will display accordingly.
+To test the flow, open a web browser and navigate to `http://localhost:8080` for IDP and `http://localhost:8081` for RP.
+When you press `verify identity` button at RP, IDP will be notified and display options for accepting or rejecting a request.
+When you choose to either accepting or rejecting at IDP, RP will display the result accordingly.
