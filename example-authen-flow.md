@@ -122,13 +122,14 @@ If you run the examples in the same machine, you can use these scripts.
 - rp-client-app
   ```
   API_SERVER_ADDRESS=http://localhost:8081 \
+  NDID_API_CALLBACK_IP=localhost \
   NDID_API_CALLBACK_PORT=5001 \
   SERVER_PORT=8001 \
   npm start
   ```
 
-For these repositories, `idp-client-app` will register callback url according to `NDID_API_CALLBACK_IP` and `NDID_API_CALLBACK_PORT` on start.
-And `rp-client-app` is hard-coded to create a request for namespace `cid` and identifier `1234567890123`, and will send `callback_url` according to `NDID_API_CALLBACK_PORT`.
+`idp-client-app` will register callback a url according to `NDID_API_CALLBACK_IP` and `NDID_API_CALLBACK_PORT` set on start.
+`rp-client-app` is hard-coded to create a request for namespace `cid` and identifier `1234567890123`, and will send `callback_url` according to `NDID_API_CALLBACK_IP` and `NDID_API_CALLBACK_PORT` set on start.
 
 To test the flow, open a web browser and navigate to `http://localhost:8080` for IDP and `http://localhost:8081` for RP.
 When you press `verify identity` button at RP, IDP will be notified and display options for accepting or rejecting a request.
