@@ -3,3 +3,6 @@
 
 - title: Technical overview
   url: /technical-overview.html
+
+- title: Example authentication flow
+  url: /example-authen-flow.html
