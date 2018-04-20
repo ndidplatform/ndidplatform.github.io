@@ -140,14 +140,13 @@ callback_url: 'https://<rp-webservice>/webhook'
 # This can be empty.
 # Multiple as_id can be provided as a list.  If the list is empty, then the platform will send request to all AS providing the service.  All AS should provide the same interface for the same service_id, so we can send the same set of params to all of them.
 # Count is the number of expected response.  One service_id maybe provided by multiple ASes, but RP may require answer from only n number of them, this number is count.  If count is larger than the number of item in [as_id] list, then count is set as count([as_id]).  (e.g. count <= count([as_id]))
-data_request_list:
-  # { service_id, [as_id]  , count, request_params }
-  - { 
+data_request_list: [{ 
     service_id: 'bank_statement', 
     as_id_list: ['AS1', 'AS2'],
     count: 1,
     request_params: { format: 'pdf' } 
-  }
+  }, ...
+]
 
 # Message to display to user to ask for consent.
 # (RP must send message in correct language.)
@@ -205,12 +204,13 @@ min_idp: 1
 min_aal: 1
 min_ial: 2
 timeout: 259200
-data_request_list: { 
-  service_id: 'bank_statement', 
-  as_id_list: ['AS1', 'AS2'],
-  count: 1,
-  request_params_hash: hash({ format: 'pdf' })
-}
+data_request_list: [{ 
+    service_id: 'bank_statement', 
+    as_id_list: ['AS1', 'AS2'],
+    count: 1,
+    request_params_hash: hash({ format: 'pdf' })
+  },...
+]
 message_hash: hash('Please allow...')
 
 # Note: Neither {ns}/{id} not its hash is stored here.
@@ -237,12 +237,13 @@ Then a message is constructed, encrypted with the public key, and sent to the no
 ```yaml
 namespace: 'citizenid'
 identifier: '01234567890123'
-data_request_list: { 
-  service_id: 'bank_statement', 
-  as_id_list: ['AS1', 'AS2'],
-  count: 1,
-  request_params: { format: 'pdf' } 
-}
+data_request_list: [{ 
+    service_id: 'bank_statement', 
+    as_id_list: ['AS1', 'AS2'],
+    count: 1,
+    request_params: { format: 'pdf' } 
+  },...
+]
 request_message: 'Please allow...'
 min_ial: 2
 min_aal: 1
