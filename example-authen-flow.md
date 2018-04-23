@@ -87,6 +87,8 @@ before proceeding to `ndid-api` directory
   ```
   ROLE=rp \
   ABCI_APP_CALLBACK_PORT=3001 \
+  MQ_CONTACT_IP=127.0.0.1 \
+  MQ_BINDING_PORT=5556 \
   SERVER_PORT=8081 \
   npm start
   ```
