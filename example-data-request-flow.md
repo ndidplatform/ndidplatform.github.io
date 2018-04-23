@@ -62,8 +62,8 @@ You can download [POSTMAN collection](/assets/request-data-flow-postman.json) an
 The only difference from `authen-flow` is that `data_request_list` is now not empty.
 
 The test steps is same as `authen-flow` but for these flow, when the request status is `complete`,
-AS will receive callback from platform along with message from RP via message queue.
-AS will now check the integrity of message and IDP's signature(s) for that request, and send data back to RP via message queue.
+AS will receive callback from platform along with message from RP via message queue and check the integrity of message and IDP's signature(s) for that request, then send data back to RP via message queue.
+This steps is done automatically in this example (`as-api` returns mock data).
 Note that the data sent back to RP **may not** be real data, but may be a token of some kind for RP to retrieve data by another channel.
 This can be used to offload tha platform if the data is large, or to benefit AS to enforce another access control to the data.
 Example: AS may send a URL for the data to RP which is only valid for some period of time.
