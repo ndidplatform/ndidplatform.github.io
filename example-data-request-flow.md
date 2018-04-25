@@ -80,6 +80,7 @@ NDID_API_CALLBACK_PORT=5003 \
 npm start
 ```
 
+Start `rp-client` and `idp-client` as in authentication-only flow.
 In RP webpage, instead of press `verify identity` as in authentication flow, press `verify identity with data request`. The only visible different in UI is that IDP's webpage will display what data RP request (which is mockup in this client).
 
 When authentication complete for data-request, `as-client` will automatically return mock data (which you can change in the code).
