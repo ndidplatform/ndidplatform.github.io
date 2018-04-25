@@ -63,11 +63,23 @@ The only difference from `authen-flow` is that `data_request_list` is now not em
 
 The test steps is same as `authen-flow` but for these flow, when the request status is `complete`,
 AS will receive callback from platform along with message from RP via message queue and check the integrity of message and IDP's signature(s) for that request, then send data back to RP via message queue.
-This steps is done automatically in this example (`as-api` returns mock data).
+**This step (AS return data to platform) is done synchronously, you will not see any data return (because there is no AS)** 
 Note that the data sent back to RP **may not** be real data, but may be a token of some kind for RP to retrieve data by another channel.
 This can be used to offload tha platform if the data is large, or to benefit AS to enforce another access control to the data.
 Example: AS may send a URL for the data to RP which is only valid for some period of time.
 
 ## Test the flow with our client-example
 
+Please clone [ndid-client-app-as-example](https://github.com/ndidplatform/ndid-client-app-as-example) to return data.
+
+For those who run everything in same machine, use this script to start AS client.
+```
+API_SERVER_ADDRESS=http://localhost:8082 \
+NDID_API_CALLBACK_IP=localhost \
+NDID_API_CALLBACK_PORT=5003 \
+npm start
+```
+
 In RP webpage, instead of press `verify identity` as in authentication flow, press `verify identity with data request`. The only visible different in UI is that IDP's webpage will display what data RP request (which is mockup in this client).
+
+When authentication complete for data-request, `as-client` will automatically return mock data (which you can change in the code).
