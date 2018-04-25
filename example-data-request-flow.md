@@ -67,3 +67,7 @@ This steps is done automatically in this example (`as-api` returns mock data).
 Note that the data sent back to RP **may not** be real data, but may be a token of some kind for RP to retrieve data by another channel.
 This can be used to offload tha platform if the data is large, or to benefit AS to enforce another access control to the data.
 Example: AS may send a URL for the data to RP which is only valid for some period of time.
+
+## Test the flow with our client-example
+
+In RP webpage, instead of press `verify identity` as in authentication flow, press `verify identity with data request`. The only visible different in UI is that IDP's webpage will display what data RP request (which is mockup in this client).
