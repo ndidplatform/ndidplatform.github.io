@@ -34,7 +34,8 @@ title: Example authentication flow
 
 To run the authentication flow, there is an issue we must discuss, the onboarding process.
 To visualize the flow, IDP must register themselves and their customers to the system.
-This is not a part of the flow but has to be done. `ndid-api` automatically do this when start. 
+This is not a part of the flow but has to be done. `ndid-api` automatically register themself this when start (IDP onboarding). 
+But for register user (user onboarding) you have to run it yourself which we discuss how to do this in this page.
 
 ## To run the example flow
 
@@ -77,7 +78,6 @@ before proceeding to `ndid-api` directory
   ROLE=idp \
   MQ_CONTACT_IP=127.0.0.1 \
   MQ_BINDING_PORT=5555 \
-  ASSOC_USERS=users.json \
   ABCI_APP_CALLBACK_PORT=3000 \
   SERVER_PORT=8080 \
   npm start
@@ -99,6 +99,8 @@ then you can start the flow.
 ## Test the flow with POSTMAN
 
 You can download [POSTMAN collection](/assets/authen-flow-postman.json) and import to POSTMAN.
+
+at tab `http://localhost:8080/identity` you specify what user the IDP will assiciate to, and IDP will only receive request from its associated user.
 
 At tab `http://localhost:8081/rp/requests/cid/1234567890123` in POSTMAN is use to create request, note that we hard-coded IDP to be responsible for only authentication request for namespace `cid` and identifier `1234567890123`. If you want IDP to be responsible for other namespaces and identifiers, edit `users.json` and restart `idp-api`.
 
@@ -131,8 +133,11 @@ If you run the examples in the same machine, you can use these scripts.
   ```
 
 `idp-client-app` will register callback a url according to `NDID_API_CALLBACK_IP` and `NDID_API_CALLBACK_PORT` set on start.
-`rp-client-app` is hard-coded to create a request for namespace `cid` and identifier `1234567890123`, and will send `callback_url` according to `NDID_API_CALLBACK_IP` and `NDID_API_CALLBACK_PORT` set on start.
+`rp-client-app` will set `callback_url` (parameter when create new request) 
+according to `NDID_API_CALLBACK_IP` and `NDID_API_CALLBACK_PORT` set on start.
 
 To test the flow, open a web browser and navigate to `http://localhost:8080` for IDP and `http://localhost:8081` for RP.
-When you press `verify identity` button at RP, IDP will be notified and display options for accepting or rejecting a request.
+You will need to visit `http://localhost:8080/identity` to register user associate with IDP.
+When you press `verify identity` button at RP with `namespace` and `identifier` that IDP recognize,
+IDP will be notified and display options for accepting or rejecting a request.
 When you choose to either accepting or rejecting at IDP, RP will display the result accordingly.
