@@ -136,8 +136,10 @@ If you run the examples in the same machine, you can use these scripts.
 `rp-client-app` will set `callback_url` (parameter when create new request) 
 according to `NDID_API_CALLBACK_IP` and `NDID_API_CALLBACK_PORT` set on start.
 
-To test the flow, open a web browser and navigate to `http://localhost:8080` for IDP and `http://localhost:8081` for RP.
-You will need to visit `http://localhost:8080/identity` to register user associate with IDP.
+Before you can test, you will need to visit `http://localhost:8080/identity` to register user associate with IDP.
+To test the flow, open a web browser and navigate to `http://localhost:8080/__namespace__/__identifier__` for IDP and `http://localhost:8081` for RP.
 When you press `verify identity` button at RP with `namespace` and `identifier` that IDP recognize,
 IDP will be notified and display options for accepting or rejecting a request.
 When you choose to either accepting or rejecting at IDP, RP will display the result accordingly.
+
+Note: to remove all register users for IDP, remove `db.json`.
