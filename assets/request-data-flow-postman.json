@@ -102,6 +102,35 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "http://localhost:8080/idp/response",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"namespace\": \"cid\",\n\t\"identifier\": \"1234567890123\",\n\t\"secret\": \"MAGIC\",\n\t\"accessor_type\": \"awesome-type\",\n\t\"accessor_key\": \"awesome-key\",\n\t\"accessor_id\": \"some-awesome-accessor\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/identity/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"identity",
+						""
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
