@@ -25,8 +25,7 @@ title: Example authentication flow
   - src/main main logic
   - src/mq message queue interface
 
-- [ndid-client-app-idp-example](https://github.com/ndidplatform/ndid-client-app-idp-example)
-  and [ndid-client-app-rp-example](https://github.com/ndidplatform/ndid-client-app-rp-example)
+- [ndid-example](https://github.com/ndidplatform/examples)
   is **not** a part of the platform but examples of client application to 
   help developers understand how to communicate with the platform and handle callback.
 
