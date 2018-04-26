@@ -70,8 +70,6 @@ Example: AS may send a URL for the data to RP which is only valid for some perio
 
 ## Test the flow with our client-example
 
-Please clone [ndid-client-app-as-example](https://github.com/ndidplatform/ndid-client-app-as-example) to return data.
-
 For those who run everything in same machine, use this script to start AS client.
 ```
 API_SERVER_ADDRESS=http://localhost:8082 \
