@@ -51,6 +51,7 @@ before proceeding to `ndid-api` directory
   MQ_BINDING_PORT=5557 \
   ABCI_APP_CALLBACK_PORT=3002 \
   SERVER_PORT=8082 \
+  AS_ID=AS1 \
   npm start
   ```
 
