@@ -48,7 +48,7 @@ At `$GOPATH/src/github.com/digital-id/ndid-smart-contract`
 
 - idp-abci
   ```
-  CALLBACK_URI=http://localhost:3000/callback go run abci/server.go tcp://127.0.0.1:46000
+  go run abci/server.go tcp://127.0.0.1:46000
   ```
 - idp-tendermint
   ```
@@ -57,7 +57,7 @@ At `$GOPATH/src/github.com/digital-id/ndid-smart-contract`
   ```
 - rp-abci
   ```
-  CALLBACK_URI=http://localhost:3001/callback go run abci/server.go tcp://127.0.0.1:46001
+  go run abci/server.go tcp://127.0.0.1:46001
   ```
 - rp-tendermint
   ```
@@ -77,7 +77,6 @@ before proceeding to `ndid-api` directory
   ROLE=idp \
   MQ_CONTACT_IP=127.0.0.1 \
   MQ_BINDING_PORT=5555 \
-  ABCI_APP_CALLBACK_PORT=3000 \
   SERVER_PORT=8080 \
   npm start
   ```
@@ -85,7 +84,6 @@ before proceeding to `ndid-api` directory
 - rp-api
   ```
   ROLE=rp \
-  ABCI_APP_CALLBACK_PORT=3001 \
   MQ_CONTACT_IP=127.0.0.1 \
   MQ_BINDING_PORT=5556 \
   SERVER_PORT=8081 \
