@@ -32,9 +32,11 @@ title: Example authentication flow
 ## Before we start
 
 To run the authentication flow, there is an issue we must discuss, the onboarding process.
-To visualize the flow, IDP must register themselves and their customers to the system.
-This is not a part of the flow but has to be done. `ndid-api` automatically register themself this when start (IDP onboarding). 
-But for register user (user onboarding) you have to run it yourself which we discuss how to do this in this page.
+To visualize the flow, RP,IDP,AS must register themselves (and their customers, for IDP) to the system.
+This is not a part of the flow but has to be done. 
+In production, all parties need to contact NDID to add their public key to the system.
+In development, please run `npm run initDevKey` to add their pre-generated keys to the system.
+For register customer (user onboarding) you have to run it yourself which we discuss how to do this in this page.
 
 ## To run the example flow
 
