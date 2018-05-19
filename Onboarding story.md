@@ -27,7 +27,6 @@ callback_url: "https://<idp-webservice>/webhook"
 "identifier": "1234567890123"
 
 
-#Idp app need to grenerate random secret with 2048 bits
 #Secret is a salt. Different ns/id accessor id will result in different secret
 #Discrete logarithms > 128 bit
 "secret": "<magic>"
@@ -35,9 +34,8 @@ callback_url: "https://<idp-webservice>/webhook"
 
 #Accessor method to allow zero-knowledge proof of consent
 # 1 device 1 accessor value
-# accessor_id > index of accessor_key ? local 
+# accessor_id > index of accessor_key > local ?
 # accessor_key > pub key
-# accessor pub key
 #Example
 "accessor_type": "RSA-2048"
 "accessor_key": "AAAAB3NzaC1yc2EAAAADAQABAAAB…"
