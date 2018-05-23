@@ -61,7 +61,7 @@ identifiers: [
 - IDP→Platform : POST: /identity(body) 
 ```yaml 
 {   
-"reference_id":"e3cb44c9-8848-4dec-98c8-8083f373b1f7",
+"reference_number":"123456789",
 "callback_url": "https://<idp-webservice>/webhook",
 "namespace": "citizenid",
 "identifier": "1234567890123",
@@ -102,7 +102,8 @@ request_id: 'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'
 
 
 ## Scenario#2 : Adding new accessor
-> ![NDID Node](images/new-accessor.png)
+> ![NDID Node](images/add-new-accessor.png)
+
 - IDP->Platform : POST /identity/citizenid/1234567890123/accessors
 ```yaml
 {
@@ -137,7 +138,9 @@ request_id: 'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'
 
 
 ## Scenario#3 : Adding new identifier 
-> ![NDID Node](images/new-identifier.png)
+> ![NDID Node](images/add-new-identifier.png)
+
+
 - IDP/RP/AS->Platform : POST /identity/{namespace}/{identifier}
 ```yaml
 {
