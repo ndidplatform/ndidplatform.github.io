@@ -19,17 +19,17 @@ synchronous: false
 callback_url: "https://<idp-webservice>/webhook"
 
 #The namespace of the ID (i.e. ID Card, Passport, etc)
-"namespace": "citizenid"
+namespace: "citizenid"
 
 
 #Identifier : The unique identifier under the namespace (i.e. ID Card Number, Passport Number, etc). 
 #The list of {namespace, Identifier} pair can be grouped together to identify an individual.
-"identifier": "1234567890123"
+identifier: "1234567890123"
 
 
 #Secret is a salt. Different ns/id accessor id will result in different secret
 #Discrete logarithms > 128 bit [320 bit as of May 2018]
-"secret": "<magic>"
+secret: "<magic>"
 
 
 #Accessor method to allow zero-knowledge proof of consent
@@ -37,20 +37,20 @@ callback_url: "https://<idp-webservice>/webhook"
 # accessor_id > index of accessor_key > local ?
 # accessor_key is a public key of the user
 #Example
-"accessor_type": "RSA-2048"
-"accessor_key": "AAAAB3NzaC1yc2EAAAADAQABAAAB…"
-"accessor_id": "acc_f328-53da-4d51-a927-3cc6d3ed3feb"
+accessor_type: "RSA-2048"
+accessor_key: "AAAAB3NzaC1yc2EAAAADAQABAAAB…"
+accessor_id: "acc_f328-53da-4d51-a927-3cc6d3ed3feb"
 
 # Identity Assurance Level. Assurance level of KYC process.
 # Currently [as of May 2018]:
 #   IAL1 = minimal proof of identity = weak identity verification e.g. copy of id card
 #   IAL2.1-2.3 = Stronger identity verification with option to verify biometric data as a tougher measure
 #   IAL3 = Strongest identity assurance level requiring more than one identification documents and biometric comparison is compulsary
-"ial": "2.3"
+ial: "2.3"
 
 #Adding new Identifier data
 #[{new namespace, new identifier}] 
-"identifiers": [
+identifiers: [
     "passport|AA123456789","mobile|0831111111"
   ]
 ```
