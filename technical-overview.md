@@ -333,9 +333,7 @@ Before AS can give out the data (or before the RP can accept this confirmation),
 
 However, the blockchain does not contain any identity information. But somehow, we need to verify that the `request_id` really corresponds to the identity in question (zero-knowledge proof). Thus, a magic formula [algorithm TBD] is used to calculate the `identity_proof`, a very long number.
 
-<div class="flash mb-3 flash-warn">
-  Zero knowledge proof details can be found [here](/zero-knowledge)
-</div>
+Zero knowledge proof details can be found [here](/zero-knowledge)
 
 After verify zk-proof, RP must also verify signature that it indeed sign with private key corresponse to `accessor_id`
 
