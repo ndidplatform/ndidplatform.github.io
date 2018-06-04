@@ -35,7 +35,7 @@ To run the authentication flow, there is an issue we must discuss, the onboardin
 To visualize the flow, RP,IDP,AS must register themselves (and their customers, for IDP) to the system.
 This is not a part of the flow but has to be done. 
 In production, all parties need to contact NDID to add their public key to the system.
-In development, please run `npm run initDevKey` to add their pre-generated keys to the system.
+In development, please run `npm run initDevKey` after platform is ready to add their pre-generated keys to the system.
 For register customer (user onboarding) you have to run it yourself which we discuss how to do this in this page.
 
 ## To run the example flow
@@ -69,10 +69,11 @@ At `$GOPATH/src/github.com/digital-id/ndid-smart-contract`
 
 Wait for **both** `idp-abci` and `rp-abci` to display
 ```
-Commit
+BeginBlock: 1
+EndBlock
 Commit
 ```
-before proceeding to `ndid-api` directory
+before proceeding to `ndid-api` directory and then run `npm run initDevKey` wait for it to finish and start platform by
 
 - idp-api
   ```
@@ -92,25 +93,11 @@ before proceeding to `ndid-api` directory
   npm start
   ```
 
-After starting `ndid-api`, wait for `Commit` to display in `idp-abci` and `rp-abci`,
-then you can start the flow.
-
-## Test the flow with POSTMAN
-
-You can download [POSTMAN collection](/assets/authen-flow-postman.json) and import to POSTMAN.
-
-at tab `http://localhost:8080/identity` you specify what user the IDP will assiciate to, and IDP will only receive request from its associated user.
-
-At tab `http://localhost:8081/rp/requests/cid/1234567890123` in POSTMAN is use to create request, note that we hard-coded IDP to be responsible for only authentication request for namespace `cid` and identifier `1234567890123`. If you want IDP to be responsible for other namespaces and identifiers, edit `users.json` and restart `idp-api`.
-
-After creating a request you can see at `idp-api` that IDP receive message via message queue.
-Now you can use POSTMAN tab `http://localhost:8081/rp/requests/...` and replace ... with `request_id` you get from former step to see request status in blockchain.
-
-At tab `http://localhost:8080/idp/response`, replace `request_id` in body with above id and you will see at `rp-api` that the platform will try to callback to RP via `callback_url` we send in `/rp/request/`. Which may result in error if you do not have any HTTP server listening to that url.
+After starting `ndid-api` you can start the flow, you can test with our `client-example` or with `HTTP` tool of your choice ex. `POSTMAN`.
 
 ## Test the flow with our client-example
 
-You can also test the flow with our `client-example` repositories.
+Go to our `client-example` repositories.
 If you run the examples in the same machine, you can use these scripts.
 
 - idp-client-app
@@ -141,4 +128,18 @@ When you press `verify identity` button at RP with `namespace` and `identifier` 
 IDP will be notified and display options for accepting or rejecting a request.
 When you choose to either accepting or rejecting at IDP, RP will display the result accordingly.
 
-Note: to remove all register users for IDP, remove `db.json`.
+Note: to remove all register users for IDP, remove `db.json` and `dev_user_key/`.
+
+## Test the flow with POSTMAN (under maintenance)
+
+~~You can download [POSTMAN collection](/assets/authen-flow-postman.json) and import to POSTMAN.
+
+at tab `http://localhost:8080/identity` you specify what user the IDP will assiciate to, and IDP will only receive request from its associated user.
+...
+
+At tab `http://localhost:8081/rp/requests/cid/1234567890123` in POSTMAN is use to create request, note that we hard-coded IDP to be responsible for only authentication request for namespace `cid` and identifier `1234567890123`. If you want IDP to be responsible for other namespaces and identifiers, edit `users.json` and restart `idp-api`.
+
+After creating a request you can see at `idp-api` that IDP receive message via message queue.
+Now you can use POSTMAN tab `http://localhost:8081/rp/requests/...` and replace ... with `request_id` you get from former step to see request status in blockchain.
+
+At tab `http://localhost:8080/idp/response`, replace `request_id` in body with above id and you will see at `rp-api` that the platform will try to callback to RP via `callback_url` we send in `/rp/request/`. Which may result in error if you do not have any HTTP server listening to that url.~~

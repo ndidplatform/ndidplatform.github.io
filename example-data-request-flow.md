@@ -14,7 +14,7 @@ title: Example data-request flow
 
 Please read [Example authentication flow](/example-authen-flow.html) before read this document.
 
-Similar to IDP's registration in authentication flow, AS will automatically register itself and its service list to platform every time it start.
+Similar to IDP's registration in authentication flow, `as-client` will automatically register itself and its service list to platform every time it start.
 In production, however, it will only register once.
 
 Also, for backward compatability, AS's tendermint node is not acting as validator.
@@ -56,18 +56,6 @@ before proceeding to `ndid-api` directory
 
 After starting `as-api`, wait for `Commit` to display in `ap-abci` then you can start the flow.
 
-## Test the flow with POSTMAN
-
-You can download [POSTMAN collection](/assets/request-data-flow-postman.json) and import to POSTMAN.
-The only difference from `authen-flow` is that `data_request_list` is now not empty.
-
-The test steps is same as `authen-flow` but for these flow, when the request status is `complete`,
-AS will receive callback from platform along with message from RP via message queue and check the integrity of message and IDP's signature(s) for that request, then send data back to RP via message queue.
-**This step (AS return data to platform) is done synchronously, you will not see any data return (because there is no AS)** 
-Note that the data sent back to RP **may not** be real data, but may be a token of some kind for RP to retrieve data by another channel.
-This can be used to offload tha platform if the data is large, or to benefit AS to enforce another access control to the data.
-Example: AS may send a URL for the data to RP which is only valid for some period of time.
-
 ## Test the flow with our client-example
 
 For those who run everything in same machine, use this script to start AS client.
@@ -83,3 +71,15 @@ In RP webpage, instead of press `verify identity` as in authentication flow, pre
 
 When authentication complete for data-request, `as-client` will automatically return mock data (which you can change or add delay to simulate AS delay).
 You can see this data in `rp-api` terminal as well as `rp-client`.
+
+## Test the flow with POSTMAN (under maintenance)
+
+~~You can download [POSTMAN collection](/assets/request-data-flow-postman.json) and import to POSTMAN.
+The only difference from `authen-flow` is that `data_request_list` is now not empty.
+
+The test steps is same as `authen-flow` but for these flow, when the request status is `complete`,
+AS will receive callback from platform along with message from RP via message queue and check the integrity of message and IDP's signature(s) for that request, then send data back to RP via message queue.
+**This step (AS return data to platform) is done synchronously, you will not see any data return (because there is no AS)** 
+Note that the data sent back to RP **may not** be real data, but may be a token of some kind for RP to retrieve data by another channel.
+This can be used to offload tha platform if the data is large, or to benefit AS to enforce another access control to the data.
+Example: AS may send a URL for the data to RP which is only valid for some period of time.~~
