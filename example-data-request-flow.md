@@ -82,4 +82,4 @@ The only difference from `authen-flow` is that `data_request_list` is now not em
 <del>**This step (AS return data to platform) is done synchronously, you will not see any data return (because there is no AS)** 
 <del>Note that the data sent back to RP **may not** be real data, but may be a token of some kind for RP to retrieve data by another channel.
 <del>This can be used to offload tha platform if the data is large, or to benefit AS to enforce another access control to the data.
-<del>Example: AS may send a URL for the data to RP which is only valid for some period of time.~~
+<del>Example: AS may send a URL for the data to RP which is only valid for some period of time.
