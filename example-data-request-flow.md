@@ -74,12 +74,12 @@ You can see this data in `rp-api` terminal as well as `rp-client`.
 
 ## Test the flow with POSTMAN (under maintenance)
 
-~~You can download [POSTMAN collection](/assets/request-data-flow-postman.json) and import to POSTMAN.
+<del>You can download [POSTMAN collection](/assets/request-data-flow-postman.json) and import to POSTMAN.
 The only difference from `authen-flow` is that `data_request_list` is now not empty.
 
-The test steps is same as `authen-flow` but for these flow, when the request status is `complete`,
-AS will receive callback from platform along with message from RP via message queue and check the integrity of message and IDP's signature(s) for that request, then send data back to RP via message queue.
-**This step (AS return data to platform) is done synchronously, you will not see any data return (because there is no AS)** 
-Note that the data sent back to RP **may not** be real data, but may be a token of some kind for RP to retrieve data by another channel.
-This can be used to offload tha platform if the data is large, or to benefit AS to enforce another access control to the data.
-Example: AS may send a URL for the data to RP which is only valid for some period of time.~~
+<del>The test steps is same as `authen-flow` but for these flow, when the request status is `complete`,
+<del>AS will receive callback from platform along with message from RP via message queue and check the integrity of message and IDP's signature(s) for that request, then send data back to RP via message queue.
+<del>**This step (AS return data to platform) is done synchronously, you will not see any data return (because there is no AS)** 
+<del>Note that the data sent back to RP **may not** be real data, but may be a token of some kind for RP to retrieve data by another channel.
+<del>This can be used to offload tha platform if the data is large, or to benefit AS to enforce another access control to the data.
+<del>Example: AS may send a URL for the data to RP which is only valid for some period of time.~~
