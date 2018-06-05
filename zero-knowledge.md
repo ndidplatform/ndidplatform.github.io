@@ -34,11 +34,20 @@ Finding multiplicative inverse can be done efficiently using [extended Euclidean
 Then IDP compute `secret` using following formula 
 * secret = h<sup>d</sup> mod N
 
-For first IDP, they also random `accessor_group_id` (also unique across platform). Others IDP must ask customer's associated-IDP for this value.
+For first IDP, `ndid-api` will automatically random `accessor_group_id` (also unique across platform).
+For others IDP onboard existing user, `ndid-api` will automatically retrieve this value and create request for consent to onboard.
 
-IDP keep `secret` secret, and keep a mapping from customer's `sid` to `secret`, `accessor_id`, `accessor_group_id`, and `accessor_private_key`.
+IDP keep `secret` secret, and keep a mapping from customer's `sid` to `secret`, `accessor_id`, and `accessor_private_key`.
 
 Then provide these data to platform
+```yaml
+namespace: string
+identifier: string
+accessor_id: string
+accessor_public_key: string ;in PEM format
+``` 
+
+Data that will be stored on blockchain is
 ```yaml
 accessor_id: string
 accessor_public_key: string ;in PEM format
@@ -47,7 +56,7 @@ accessor_group_id: string
 
 ### Note: 
 * These process and calculations has reference implementation in our idp-client
-* In blockchain `accessor_id` or `accessor_public_key` is NOT tie to any customer.
+* In blockchain `accessor_id` or `accessor_public_key` is NOT tie to any customer (but tie to `accessor_group_id`).
 
 # Request creation
 
