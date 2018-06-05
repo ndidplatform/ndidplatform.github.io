@@ -87,4 +87,7 @@ If this equality holds, RP then proceeds to check that ALL `accessor_id` receive
 
 For AS to verify, RP must send `challenge` to AS to verify as well.
 
-### NOTE: All calculation and process for zero-knowledge proof can be found in reference implementation
+### NOTE
+* All calculation and process for zero-knowledge proof can be found in reference implementation
+* Blockchain is unaware of validity of zero-knowledge proof, hence, all response (valid or not) will be stored in blockchain.
+It is RP's and/or AS's responsibility to verify the proof and act accordingly (which `ndid-api` automatically verify and notify the client with the result).
