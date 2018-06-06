@@ -78,6 +78,7 @@ before proceeding to `ndid-api` directory and then run `npm run initDevKey` wait
 - idp-api
   ```
   ROLE=idp \
+  NODE_ID=idp1 \
   MQ_CONTACT_IP=127.0.0.1 \
   MQ_BINDING_PORT=5555 \
   SERVER_PORT=8080 \
@@ -87,6 +88,7 @@ before proceeding to `ndid-api` directory and then run `npm run initDevKey` wait
 - rp-api
   ```
   ROLE=rp \
+  NODE_ID=rp1 \
   MQ_CONTACT_IP=127.0.0.1 \
   MQ_BINDING_PORT=5556 \
   SERVER_PORT=8081 \

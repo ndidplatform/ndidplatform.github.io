@@ -47,6 +47,7 @@ before proceeding to `ndid-api` directory
 - as-api
   ```
   ROLE=as \
+  NODE_ID=as1 \
   MQ_CONTACT_IP=127.0.0.1 \
   MQ_BINDING_PORT=5557 \
   SERVER_PORT=8082 \
