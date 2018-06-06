@@ -33,7 +33,7 @@ When IDP onboard new user with `namespace` and `identifier`, they have to genera
 We will call string `namespace:identifier` specific-ID or `sid`.
 
 IDP now send `namespace` and `identifier` to platform.
-Platform will calculate `H = hash(sid)` with `SHA256` and use registered callback url to IDP to encrypt.
+Platform will calculate `h = hash(sid)` with `SHA256` and use registered callback url to IDP to encrypt.
 This is the `secret` IDP need to keep along with the private key. 
 
 The onboard API will automatically create request for consent (first IDP will generate request with `min_idp` = 0).
