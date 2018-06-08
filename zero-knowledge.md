@@ -96,11 +96,11 @@ For user with `hash(sid)` = `1234`, IDP generate RSA key pair with these paramet
 p = 101           ; big prime number
 q = 103           ; another big prime number
 N = p * q = 10403 ; modulus
-e = 7             ; public exponent, prime smaller that n
+e = 7             ; public exponent, prime smaller than N
 d = 8743          ; private exponent, derived from e such that (d * e) mod (p-1)(q-1) = 1
 ```
 
-Note that any number `x` smaller than `n` (foundation of RSA asymetric-key encryption)
+Note that any number `x` smaller than `N` (foundation of RSA asymetric-key encryption)
 * (x<sup>d</sup>)<sup>e</sup> mod N = x
 * (x<sup>e</sup>)<sup>d</sup> mod N = x
 
@@ -108,10 +108,10 @@ After onboard, IDP get `secret` from platform which is
 * secret = hash(sid)<sup>d</sup> mod N
 * secret = 1234<sup>8743</sup> mod 10403 = 7478
 
-When RP create request, RP random `challenge` smaller than `e` and send to IDP
+When RP create request, RP random `challenge` smaller than `e` and send to IDP. Note that RP do not know `e` yet at this time but RSA usually use 65537 as public exponent, hence, it should be safe to random bytes of length 16.
 * challenge = 3
 
-IDP receive request random `k` smaller than `n` 
+IDP receive request random `k` smaller than `N` 
 * k = 4321
 
 Then calculate two proof
