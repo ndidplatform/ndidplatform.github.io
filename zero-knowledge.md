@@ -31,7 +31,7 @@ IDP now send `namespace` and `identifier` to platform.
 Platform will calculate `h = hash(sid)` with `SHA256` and use registered callback url to IDP to encrypt. This will generate padding, platform will extract padding from encrypted-hash and concatenate with pipe charactor (`|`) and encrypted-hash.
 This is the `secret` IDP need to keep along with the private key. 
 
-* `secret` = `padding`|`encrypt(hash(sid))`
+* `secret` = `padding|encrypt(hash(sid))`
 
 The onboard API will automatically create request for consent (first IDP will generate request with `min_idp` = 0).
 
@@ -81,7 +81,7 @@ When RP receive all the proof they can verify if the proof is correspond to user
 * `identity_proof` = (H<sup>challenge</sup> * private_proof<sup>e</sup>) mod N
 
 When `H` is the multiplicative inverse of padded-hash of `sid` with modulo `N`. In other word, let `h` be hash of `sid`.
-* (h*H) mod N = 1
+* `( padding|h * H ) mod N = 1`
 
 Finding multiplicative inverse can be done efficiently using [extended Euclidean algorithm](https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm) or example in Python can be found [here](https://stackoverflow.com/questions/4798654/modular-multiplicative-inverse-function-in-python)
 
