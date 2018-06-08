@@ -35,7 +35,7 @@ To run the authentication flow, there is an issue we must discuss, the onboardin
 To visualize the flow, RP,IDP,AS must register themselves (and their customers, for IDP) to the system.
 This is not a part of the flow but has to be done. 
 In production, all parties need to contact NDID to add their public key to the system.
-In development, please run `npm run initDevKey` after platform is ready to add their pre-generated keys to the system.
+In development, please run `NODE_ID=ndid1 npm run initDevKey` after platform is ready to add their pre-generated keys to the system.
 For register customer (user onboarding) you have to run it yourself which we discuss how to do this in this page.
 
 ## To run the example flow
@@ -97,7 +97,7 @@ before proceeding to `api` directory and then run `NODE_ID=ndid1 npm run initDev
 
 After starting `api` you can start the flow, you can test with our `examples` or with `HTTP` tool of your choice ex. `POSTMAN`.
 
-## Test the flow with our client-example
+## Test the flow with our examples
 
 Go to our `examples` repositories.
 If you run the examples in the same machine, you can use these scripts.
@@ -126,11 +126,11 @@ according to `NDID_API_CALLBACK_IP` and `NDID_API_CALLBACK_PORT` set on start.
 
 Before you can test, you will need to visit `http://localhost:8080/identity` to register user associate with IDP.
 To test the flow, open a web browser and navigate to `http://localhost:8080/__namespace__/__identifier__` for IDP and `http://localhost:8081` for RP.
-When you press `verify identity` button at RP with `namespace` and `identifier` that IDP recognize,
+When you press `Request Identity Verification` button at RP with `namespace` and `identifier` that IDP recognizes,
 IDP will be notified and display options for accepting or rejecting a request.
 When you choose to either accepting or rejecting at IDP, RP will display the result accordingly.
 
-Note: to remove all register users for IDP, remove `db.json` and `dev_user_key/`.
+Note: To remove all registered users at IDP (`idp-client-app`), delete `persistent_db` directory.
 
 ## Test the flow with POSTMAN (under maintenance)
 
