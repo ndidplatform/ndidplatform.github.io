@@ -39,7 +39,7 @@ and retrieving the bank statement form the **Authoritative Source (AS)**, the ba
   - Exposes a **REST API** for integration with client applications.
   - Synchronizes the shared state (transaction history) through blockchain technology (Tendermint).
   - Stores local state specific to the node.
-  - Communicates securely with other nodes through NSQ.
+  - Communicates securely with other nodes through message queue.
 
   > ![NDID Node](images/ndid-node.png)
 
@@ -64,7 +64,7 @@ and retrieving the bank statement form the **Authoritative Source (AS)**, the ba
     @todo #2 Also give a name to each of these mappings.
   </div>
 
-  - **node_id → public_key mapping** to allow secure private data communication via NSQ.
+  - **node_id → public_key mapping** to allow secure private data communication via message queue.
 
     | node\_id | public\_key |
     | --- | --- |
@@ -211,7 +211,7 @@ data_request_list: [{
     request_params_hash: hash({ format: 'pdf' })
   },...
 ]
-message_hash: hash(challenge + 'Please allow...')
+request_message_hash: hash(challenge + 'Please allow...')
 
 # Note: Neither {ns}/{id} not its hash is stored here.
 #       We want to keep each transaction private.
@@ -235,7 +235,7 @@ Then the corresponding public key is obtained.
 | --- | --- |
 | <x-guid>IdP_f924-5069-4c6a-a4e4-134cd1a3d3d0</x-guid> | AAAAB3NzaC1yc2EAAAADAQABAAABAQC+IdP+lk1ax… |
 
-Then a message is constructed, encrypted with the public key, and sent to the nodes through NSQ:
+Then a message is constructed, encrypted with the public key, and sent to the nodes through message queue:
 
 ```yaml
 namespace: 'citizenid'
@@ -251,12 +251,12 @@ request_message: 'Please allow...'
 min_ial: 2
 min_aal: 1
 min_idp: 1
-timeout: 259200
+request_timeout: 259200
 request_id: 'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'
 challenge: 'some-randomly-generated-string'
 ```
 
-IDP Node receives the request message from NSQ and decrypts it.
+IDP Node receives the request message from message queue and decrypts it.
 
 It reads the request from the blockchain:
 
@@ -425,7 +425,7 @@ The AS replies synchronously with the requested data:
 data: '<PDF BINARY DATA>'
 ```
 
-AS node encrypts the response and sends it back to RP via NSQ.
+AS node encrypts the response and sends it back to RP via message queue.
 
 AS node adds transaction to blockchain:
 
@@ -437,7 +437,7 @@ signature: sign(<PDF BINARY DATA>, AS1’s private key)
 
 ## Platform&rarr;RP
 
-RP node receives the data via NSQ and verifies signature in blockchain.
+RP node receives the data via message queue and verifies signature in blockchain.
 RP node updates the request status and call callback to RP.
 
 ## Retrieving data: [GET /rp/requests/data/ef6f4c9c-818b-…](https://app.swaggerhub.com/apis/ndid/relying_party_api/0.1#/default/get_request_data)
@@ -446,11 +446,10 @@ Finally, RP calls the API to retrieve the request data.
 It returns with:
 
 ```yaml
-- source_node_id: AS1 
-  service_id: bank_statement
-  source_signature: sign(<PDF BINARY DATA>, AS1’s private key)
-  signature_type: "SHA256_RSA2048"
-  data: '<PDF BINARY DATA>'
+source_node_id: AS1 
+service_id: bank_statement
+source_signature: sign(<PDF BINARY DATA>, AS1’s private key)
+data: '<PDF BINARY DATA>'
 ```
 
 Now, RP has all the necessary data to process the transaction!
