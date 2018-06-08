@@ -89,6 +89,57 @@ If this equality holds, RP then proceeds to check that ALL `accessor_id` receive
 
 For AS to verify, RP must send `challenge` to AS to verify as well.
 
+# Example of calculation
+For simplicity, we don't use real hash function and any padding.
+For user with `hash(sid)` = `1234`, IDP generate RSA key pair with these parameter
+```
+p = 101           ; big prime number
+q = 103           ; another big prime number
+N = p * q = 10403 ; modulus
+e = 7             ; public exponent, prime smaller that n
+d = 8743          ; private exponent, derived from e such that (d * e) mod (p-1)(q-1) = 1
+```
+
+Note that any number `x` smaller than `n` (foundation of RSA asymetric-key encryption)
+* (x<sup>d</sup>)<sup>e</sup> mod N = x
+* (x<sup>e</sup>)<sup>d</sup> mod N = x
+
+After onboard, IDP get `secret` from platform which is
+* secret = hash(sid)<sup>d</sup> mod N
+* secret = 1234<sup>8743</sup> mod 10403 = 7478
+
+When RP create request, RP random `challenge` smaller than `e` and send to IDP
+* challenge = 3
+
+IDP receive request random `k` smaller than `n` 
+* k = 4321
+
+Then calculate two proof
+* identity_proof = k<sup>e</sup> mod N
+* identity_proof = 4321<sup>7</sup> mod 10403 = 3863
+
+IDP send `identity_proof` to blockchain and calculate `private_proof`
+* private_proof = (k * secret<sup>challenge</sup>) mod N
+* private_proof = (4321 * 7478<sup>3</sup>) mod 10403 = 7177
+
+IDP send `private proof` via message queue to RP along with `accessor_id`. Now RP retrieve public key associate with `accessor_id`, this made RP know `N` and `e`.
+
+Before RP verify integrity of proof, they calculate inverse of `hash(sid)` modulo `N`, we called it `H`
+* H * hash(sid) mod N = 1
+* H * 1234 mod 10403 = 1
+* By Extended Euclidean GCD, RP found H = 9012
+* 9012 * 1234 mod 10403 = 1
+* 11120808 mod 10403 = 1
+
+Now RP verify proof by
+* identity_proof = (H<sup>challenge</sup> * private_proof<sup>e</sup>) mod N
+* 3863 = (9012<sup>3</sup> * 7177<sup>7</sup>) mod 10403
+* 3863 = 731919889728 * 980845544477427920040460153 mod 10403
+* 3863 = 717900362754119162621081996482138008384 mod 10403
+* 3863 = 3863
+
+The equlity holds, it means IDP knows `secret` which is generated from `hash(sid)`. This scheme prevents RP from learning any properties of `secret` while be able to know for sure that IDP know `secret`.
+
 ### NOTE
 * All calculation and process for zero-knowledge proof can be found in reference implementation
 * Blockchain is unaware of validity of zero-knowledge proof, hence, all response (valid or not) will be stored in blockchain.
