@@ -14,7 +14,7 @@ title: Example data-request flow
 
 Please read [Example authentication flow](/example-authen-flow.html) before read this document.
 
-Similar to IDP's registration in authentication flow, `as-client` will automatically register itself and its service list to platform every time it start.
+Similar to IDP's registration in authentication flow, `as-client-app` will automatically register itself and its service list to platform every time it start.
 In production, however, it will only register once.
 
 Also, for backward compatability, AS's tendermint node is not acting as validator.
@@ -25,7 +25,7 @@ You need to run those processes in authentication flow and run 3 more processes 
 
 Again, if you want to run all processes on **the same machine without VM**, you can use these scripts to start addtional processes (3 terminals).
 
-At `$GOPATH/src/github.com/digital-id/ndid-smart-contract`
+At `$GOPATH/src/github.com/ndidplatform/smart-contract`
 
 - as-abci
   ```
@@ -37,12 +37,13 @@ At `$GOPATH/src/github.com/digital-id/ndid-smart-contract`
   tendermint --home ./config/tendermint/AS node --consensus.create_empty_blocks=false
   ```
 
-Wait for **both** `as-abci` to display
+Wait for `as-abci` to display
 ```
-Commit
+BeginBlock: 1
+EndBlock
 Commit
 ```
-before proceeding to `ndid-api` directory
+before proceeding to `api` directory
 
 - as-api
   ```
@@ -55,9 +56,9 @@ before proceeding to `ndid-api` directory
   npm start
   ```
 
-After starting `as-api`, wait for `Commit` to display in `ap-abci` then you can start the flow.
+After starting AS's `api`, wait for `Commit` to display in `ap-abci` then you can start the flow.
 
-## Test the flow with our client-example
+## Test the flow with our examples
 
 For those who run everything in same machine, use this script to start AS client.
 ```
@@ -67,11 +68,11 @@ NDID_API_CALLBACK_PORT=5003 \
 npm start
 ```
 
-Start `rp-client` and `idp-client` as in authentication-only flow.
-In RP webpage, instead of press `verify identity` as in authentication flow, press `verify identity with data request`. The only visible different in UI is that IDP's webpage will display what data RP request (which is mockup in this client).
+Start `rp-client-app` and `idp-client-app` as in authentication-only flow.
+In RP webpage, instead of press `Request Identity Verification` as in authentication flow, press `Request Identity Verification with Data Request`. The only visible different in UI is that IDP's webpage will display what data RP request (which is mockup in this client).
 
-When authentication complete for data-request, `as-client` will automatically return mock data (which you can change or add delay to simulate AS delay).
-You can see this data in `rp-api` terminal as well as `rp-client`.
+When authentication complete for data-request, `as-client-app` will automatically return mock data (which you can change or add delay to simulate AS delay).
+You can see this data in RP's `api` terminal as well as `rp-client-app`.
 
 ## Test the flow with POSTMAN (under maintenance)
 
