@@ -1,12 +1,6 @@
 ---
 title: Zero Knowledge Proof
 ---
-<div markdown="1" class="flash mb-3 flash-warn">
-
-**Disclaimer:** This document is currently different from reference implementation.
-The reference implementation will be updated according to this document.
-
-</div>
 
 We use [Guillou-Quisquater identity-based identification scheme](https://flylib.com/books/en/3.230.1.96/1/) for zero-knowledge proof.
 
@@ -23,7 +17,8 @@ When we encrypt some string `S` with public key we actually compute cipher `C` b
 And when we decrypt cipher `C` with private key we actually compute orginal message `S` by
 * S = C<sup>d</sup> mod N
 
-For more information of [RSA-algorithm](https://en.wikipedia.org/wiki/RSA_(cryptosystem))
+
+In pratice, message is padded to the size of key size before encrypt and the padding is removed after decrypt. For more information of [RSA-algorithm](https://en.wikipedia.org/wiki/RSA_(cryptosystem))
 
 ### Note: String can convert to number so we may use math operation on string, that mean we do operation to it when convert to number.
 
@@ -33,8 +28,10 @@ When IDP onboard new user with `namespace` and `identifier`, they have to genera
 We will call string `namespace:identifier` specific-ID or `sid`.
 
 IDP now send `namespace` and `identifier` to platform.
-Platform will calculate `h = hash(sid)` with `SHA256` and use registered callback url to IDP to encrypt.
+Platform will calculate `h = hash(sid)` with `SHA256` and use registered callback url to IDP to encrypt. This will generate padding, platform will extract padding from encrypted-hash and concatenate with pipe charactor (`|`) and encrypted-hash.
 This is the `secret` IDP need to keep along with the private key. 
+
+* `secret` = `padding`|`encrypt(hash(sid))`
 
 The onboard API will automatically create request for consent (first IDP will generate request with `min_idp` = 0).
 
@@ -63,14 +60,14 @@ accessor_group_id: string
 
 # Request creation
 
-RP need to random string call `challenge` for each request and pass it along to IDP via message queue. These `challenge`, when convert to number, must not exceeds public exponent `e` (which is usually 65537 in openssl).
+RP need to random string call `challenge` for each request and pass it along to IDP via message queue. These `challenge`, when convert to number, must not exceeds public exponent `e` (which is usually 65537 in `openssl`).
 
 # Identity proof creation
 
 When IDP create response for their customer, they have to know `challenge` and generate another random for each response call `k`
 which need to be smaller than `N`, we use crypto random of size 2048 bits.
 
-IDP then choose which `accessor_id` to use (according to `sid`) and calculate two proof, `identity_proof` which will store in blockchain, and `private_proof` which will send to RP via message queue.
+IDP then choose which `accessor_id` to use (according to `sid`) and send `secret` to platform to calculate two proof, `identity_proof` which will store in blockchain, and `private_proof` which will send to RP via message queue along with `padding`.
 
 * identity_proof = k<sup>e</sup> mod N
 * private_proof = (k * secret<sup>challenge</sup>) mod N
@@ -83,7 +80,7 @@ When RP receive all the proof they can verify if the proof is correspond to user
 
 * `identity_proof` = (H<sup>challenge</sup> * private_proof<sup>e</sup>) mod N
 
-When `H` is the multiplicative inverse of hash of `sid` with modulo `N`. In other word, let `h` be hash of `sid`.
+When `H` is the multiplicative inverse of padded-hash of `sid` with modulo `N`. In other word, let `h` be hash of `sid`.
 * (h*H) mod N = 1
 
 Finding multiplicative inverse can be done efficiently using [extended Euclidean algorithm](https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm) or example in Python can be found [here](https://stackoverflow.com/questions/4798654/modular-multiplicative-inverse-function-in-python)
