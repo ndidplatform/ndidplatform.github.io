@@ -18,7 +18,7 @@ And when we decrypt cipher `C` with private key we actually compute orginal mess
 * S = C<sup>d</sup> mod N
 
 
-In pratice, message is padded to the size of key size before encrypt and the padding is removed after decrypt. For more information of [RSA-algorithm](https://en.wikipedia.org/wiki/RSA_(cryptosystem))
+In pratice, message is padded to the size of key size before encrypt and the padding is removed after decrypt. For more information of [RSA-algorithm](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) and [padding scheme](https://tools.ietf.org/html/rfc2313)
 
 ### Note: String can convert to number so we may use math operation on string, that mean we do operation to it when convert to number.
 
