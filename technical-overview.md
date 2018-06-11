@@ -128,10 +128,11 @@ reference_id: 'e3cb44c9-8848-4dec-98c8-8083f373b1f7'
 # List of IdPs. May be empty to allow any IdP.
 idp_list: []
 
+# Support only synchronous for now
 # Synchronous mode:
-# true - Wait until transaction is finished before returning.
+# true - Wait until transaction is committed before returning.
 # false - Return immediately with `request_id`.
-synchronous: false
+# synchronous: false
 
 # If provided, this URL will be invoked when request status is updated.
 callback_url: 'https://<rp-webservice>/webhook'
