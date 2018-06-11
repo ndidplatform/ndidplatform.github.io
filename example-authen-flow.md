@@ -12,12 +12,12 @@ title: Example authentication flow
 
 ## PoC repository explanation
 
-- [ndid-smart-contract](https://github.com/ndidplatform/ndid-smart-contract)
+- [smart-contract](https://github.com/ndidplatform/smart-contract)
   is a repository for implementation of NDID platform at blockchain level.
   This contains tendermint and golang implementation responsible 
   for storing/querying data to/from blockchain. Basically, it is a tendermint ABCI app.
 
-- [ndid-api](https://github.com/ndidplatform/ndid-api)
+- [api](https://github.com/ndidplatform/api)
   is a repository for implementation of NDID platform at API level.
   This contains nodejs implementation responsible for communicating with cllient application
   via HTTP API and platform logic such as encryption/decryption and message queue.
@@ -25,7 +25,7 @@ title: Example authentication flow
   - src/main main logic
   - src/mq message queue interface
 
-- [ndid-example](https://github.com/ndidplatform/examples)
+- [examples](https://github.com/ndidplatform/examples)
   is **not** a part of the platform but examples of client application to 
   help developers understand how to communicate with the platform and handle callback.
 
@@ -35,18 +35,18 @@ To run the authentication flow, there is an issue we must discuss, the onboardin
 To visualize the flow, RP,IDP,AS must register themselves (and their customers, for IDP) to the system.
 This is not a part of the flow but has to be done. 
 In production, all parties need to contact NDID to add their public key to the system.
-In development, please run `npm run initDevKey` after platform is ready to add their pre-generated keys to the system.
+In development, please run `NODE_ID=ndid1 npm run initDevKey` after platform is ready to add their pre-generated keys to the system.
 For register customer (user onboarding) you have to run it yourself which we discuss how to do this in this page.
 
 ## To run the example flow
 
-Clone `ndid-smart-contract` and `ndid-api` to your machine. (client-app-example is optional)
-We recommend cloning `ndid-smart-contract` to `$GOPATH/src/github.com/digital-id/`.
+Clone `smart-contract` and `api` to your machine. (client-app-example is optional)
+We recommend cloning `smart-contract` to `$GOPATH/src/github.com/ndidplatform/`.
 
 Follow the setup and start steps in each repository.
 If you want to run all repository on **the same machine without VM**, you can use these scripts to start the flow (6 terminals).
 
-At `$GOPATH/src/github.com/digital-id/ndid-smart-contract`
+At `$GOPATH/src/github.com/ndidplatform/smart-contract`
 
 - idp-abci
   ```
@@ -73,7 +73,7 @@ BeginBlock: 1
 EndBlock
 Commit
 ```
-before proceeding to `ndid-api` directory and then run `npm run initDevKey` wait for it to finish and start platform by
+before proceeding to `api` directory and then run `NODE_ID=ndid1 npm run initDevKey`, wait for it to finish, then start platform by
 
 - idp-api
   ```
@@ -95,11 +95,11 @@ before proceeding to `ndid-api` directory and then run `npm run initDevKey` wait
   npm start
   ```
 
-After starting `ndid-api` you can start the flow, you can test with our `client-example` or with `HTTP` tool of your choice ex. `POSTMAN`.
+After starting `api` you can start the flow, you can test with our `examples` or with `HTTP` tool of your choice ex. `POSTMAN`.
 
-## Test the flow with our client-example
+## Test the flow with our examples
 
-Go to our `client-example` repositories.
+Go to our `examples` repositories.
 If you run the examples in the same machine, you can use these scripts.
 
 - idp-client-app
@@ -126,11 +126,11 @@ according to `NDID_API_CALLBACK_IP` and `NDID_API_CALLBACK_PORT` set on start.
 
 Before you can test, you will need to visit `http://localhost:8080/identity` to register user associate with IDP.
 To test the flow, open a web browser and navigate to `http://localhost:8080/__namespace__/__identifier__` for IDP and `http://localhost:8081` for RP.
-When you press `verify identity` button at RP with `namespace` and `identifier` that IDP recognize,
+When you press `Request Identity Verification` button at RP with `namespace` and `identifier` that IDP recognizes,
 IDP will be notified and display options for accepting or rejecting a request.
 When you choose to either accepting or rejecting at IDP, RP will display the result accordingly.
 
-Note: to remove all register users for IDP, remove `db.json` and `dev_user_key/`.
+Note: To remove all registered users at IDP (`idp-client-app`), delete `persistent_db` directory.
 
 ## Test the flow with POSTMAN (under maintenance)
 
