@@ -32,7 +32,7 @@ title: Public storage
   | --- | --- |
   | MaxIalAalNode\|IdP1 | {<br> &emsp;"max_ial": 3,<br> &emsp;"max_aal": 3<br>} |
 
-### MsqAddress|node’s node ID &rarr; Ip, port
+### MsqAddress|node’s node ID &rarr; Ip, port (JSON)
 
   | Key | Value |
   | --- | --- |
