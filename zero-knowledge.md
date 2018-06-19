@@ -64,7 +64,7 @@ RP need to random string call `challenge` for each request and pass it along to 
 
 # Identity proof creation
 
-When IDP create response for their customer, they have to know `challenge` and generate another random for each response call `k`
+When IDP want to create response for their customer, they have to know `challenge`. First they generate another random for each response call `k`
 which need to be smaller than `N`, we use crypto random of size 2048 bits.
 
 IDP then choose which `accessor_id` to use (according to `sid`) and send `secret` to platform to calculate two proof, `identity_proof` which will store in blockchain, and `private_proof` which will send to RP via message queue along with `padding`.
@@ -73,6 +73,17 @@ IDP then choose which `accessor_id` to use (according to `sid`) and send `secret
 * private_proof = (k * secret<sup>challenge</sup>) mod N
 
 `e` is public exponent derived from `accessor_public_key` corresspond to chosen `accessor_id`.
+
+# Flow in platform
+
+If RP simply send `challenge` to IDP, IDP can just forge any `rogue_private_proof` and calculate 
+* `rogue_identity_proof` = (H<sup>challenge</sup> * rogue_private_proof<sup>e</sup>) mod N
+
+Which can fools RP. Hence the flow is
+* IDP pick `k` and calculate `identity_proof`, send it to RP and declare to the blockchain
+* RP then send `challenge` to IDP via message queue after `identity_proof` is on blockchain
+* IDP calculate `private_proof` using `challenge` then send to RP via message queue and hash it to blockchain
+
 
 # Verifying proof
 
