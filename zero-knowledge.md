@@ -149,7 +149,7 @@ Now RP verify proof by
 * 3863 = 717900362754119162621081996482138008384 mod 10403
 * 3863 = 3863
 
-The equlity holds, it means IDP knows `secret` which is generated from `hash(sid)`. This scheme prevents RP from learning any properties of `secret` while be able to know for sure that IDP know `secret`.
+The equlity holds, it means IDP knows `secret` which is generated from `hash(sid)` and hold the `accessor_private_key` correspond to `accessor_id`. This scheme prevents RP from learning any properties of `secret` while be able to know for sure that IDP know `secret`.
 
 ### NOTE
 * All calculation and process for zero-knowledge proof can be found in reference implementation
