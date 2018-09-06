@@ -12,7 +12,7 @@ Development hub for Thailand National Digital ID platform.
 | **HTTP API schema**     | <https://app.swaggerhub.com/apis/NDID/>       |
 | **Facebook page**       | <https://www.facebook.com/NationalDigitalID/> |
 | **Whitepaper**          | <https://goo.gl/v4Cfpe>                       |
-| **Slack**               | <https://bit.ly/2LMD5W8>                      |
+| **Slack**               | <https://bit.ly/2MNDyLI>                      |
 
 ## Architecture overview
 
