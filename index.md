@@ -18,7 +18,7 @@ Development hub for Thailand National Digital ID platform.
 
 <div markdown="1" class="flash mb-3">
 
-**Recommended reading:** For newcomers, we highly recommend that you [watch the TEDxChiangMai talk](https://www.youtube.com/watch?v=E8HHNRRlsoo) which describes the importance and benefits of having a digital ID infrastructure in Thailand, and read the [Digital Identity Guideline for Thailand – Overview and Glossary (DRAFT)](https://standard.etda.or.th/?p=8577) document to understand the overall process of the Digital ID model.
+**Recommended reading:** For newcomers, we highly recommend that you [watch the TEDxChiangMai talk](https://www.youtube.com/watch?v=E8HHNRRlsoo) which describes the importance and benefits of having a digital ID infrastructure in Thailand.
 
 </div>
 
