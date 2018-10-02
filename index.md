@@ -46,21 +46,8 @@ There are 2 main processes when using NDID:
 
 - **Enrolment and identity proofing** (getting a digital ID): The user first needs to enrol with an **Identity Provider (IdP)** to get started. They will verify your identity (identity proofing) and then provide you a **digital identity** along with an **authenticator** that you use to verify your credential. The user can enrol with multiple IdPs for extra security.
 
-  <figure>
-    <span markdown="span">![Enrolment process](images/enrolment-model-by-etda.jpg)</span>
-    <figcaption markdown="span">
-      Enrolment process. Source: [Digital Identity Guideline for Thailand – Overview and Glossary (DRAFT)](https://standard.etda.or.th/?p=8577)
-    </figcaption>
-  </figure>
 
 - **Authentication and data access authorization** (using your digital ID): This happens when you use a service that requires authentication using digital ID. They (the **Relying Party (RP)**, who offers you service) will ask the IdP, who will in turn ask you to provide your credentials (authentication) using your authenticator and allow the RP to access the data (data access authorization) which will be provided by an **Authoritative Source (AS).**
-
-  <figure>
-    <span markdown="span">![Authentication process](images/authentication-model-by-etda.png)</span>
-    <figcaption markdown="span">
-      Authentication process. Source: [Digital Identity Guideline for Thailand – Overview and Glossary (DRAFT)](https://standard.etda.or.th/?p=8577)
-    </figcaption>
-  </figure>
 
 <div markdown="1" class="flash mb-3">
 
@@ -68,12 +55,6 @@ There are 2 main processes when using NDID:
 
 </div>
 
-<figure>
-  <span markdown="span">![Digital ID Model Diagram](images/did-model-by-etda.png)</span>
-  <figcaption markdown="span">
-    Digital ID Model. Source: [Digital Identity Guideline for Thailand – Overview and Glossary (DRAFT)](https://standard.etda.or.th/?p=8577)
-  </figcaption>
-</figure>
 
 ## Quick overview
 
