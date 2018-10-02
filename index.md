@@ -79,7 +79,7 @@ First, we define these participants:
     - A decentralized app with nodes running on each RP, IdP, and AS, connecting them together.
     - Exposing an HTTP-based API to enable integration with each party.
     - Transaction logs (without ID or private information, but contains zero-knowledge proof to verify the transaction) are recorded on the blockchain ([Tendermint](https://tendermint.com/)).
-    - Private information (ID information, data from AS) is communicated between nodes securely through [NSQ](http://nsq.io/).
+    - Private information (ID information, data from AS) is communicated between nodes securely through [ZMQ](http://zeromq.org/).
 
 <div markdown="1" class="flash mb-3">
 
