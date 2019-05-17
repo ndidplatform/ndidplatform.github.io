@@ -45,7 +45,7 @@ We recommend cloning `smart-contract` to `$GOPATH/src/github.com/ndidplatform/`.
 
 There are two ways to run the stack, using docker compose file and running each part of the platform manually. We recommend using docker compose as it is less complicated.
 
-- Docker compose
+### Docker compose
 
 Go `docker` directory in `smart-contract` project directory or `$GOPATH/src/github.com/ndidplatform/smart-contract/docker`.
 
@@ -55,7 +55,7 @@ Then go to `docker` directory in `api` project directory.
 
 Run the following command `docker-compose up`. This will run 1 NDID node, 1 RP node, 2 IdP nodes, 1 AS node along with their message queue service and redis processes. For a setup with more role nodes (1 NDID node, 1 RP node, 3 IdP nodes, 2 AS nodes, and 2 Proxy nodes) (e.g. for running end-to-end test suite found in `ndidplatform/test` repository), use `docker-compose.test.yml` file by running `docker-compose -f docker-compose.test.yml up` instead.
 
-- Manually
+### Manually
 
 Follow the setup and start steps in each repository.
 If you want to run all repository on **the same machine without VM**, you can use these scripts to start the flow.
@@ -120,13 +120,13 @@ After all necessary processes, you can start the flow. You can test with our pro
 
 Go to our `examples` repositories.
 
-- Docker compose
+### Docker compose
 
 Go `docker` directory in `examples` project directory.
 
 Run `docker-compose up`
 
-- Manually
+### Manually
 
 If you run the examples in the same machine, you can use these scripts.
 
