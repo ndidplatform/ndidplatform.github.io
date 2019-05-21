@@ -4,15 +4,15 @@ title: Home
 
 Development hub for Thailand National Digital ID platform.
 
-| Title                   | URL                                           |
-| ----------------------- | --------------------------------------------- |
-| **Official site**       | <http://www.ndid.co.th/>                 |
-| **TEDxChiangMai Talk**  | <https://www.youtube.com/watch?v=E8HHNRRlsoo> |
-| **GitHub organization** | <https://github.com/ndidplatform>             |
-| **HTTP API schema**     | <https://app.swaggerhub.com/apis/NDID/>       |
-| **Facebook page**       | <https://www.facebook.com/NationalDigitalID/> |
-| **Whitepaper**          | <https://goo.gl/v4Cfpe>                       |
-| **Slack**               | <https://bit.ly/2MNDyLI>                      |
+| Title                   | URL                                             |
+| ----------------------- | ----------------------------------------------- |
+| **Official site**       | <http://www.ndid.co.th/>                        |
+| **TEDxChiangMai Talk**  | <https://www.youtube.com/watch?v=E8HHNRRlsoo>   |
+| **GitHub organization** | <https://github.com/ndidplatform>               |
+| **HTTP API schema**     | <https://app.swaggerhub.com/organizations/NDID> |
+| **Facebook page**       | <https://www.facebook.com/NationalDigitalID/>   |
+| **Whitepaper**          | <https://goo.gl/v4Cfpe>                         |
+| **Slack**               | <https://bit.ly/2MNDyLI>                        |
 
 ## Architecture overview
 

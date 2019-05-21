@@ -13,5 +13,11 @@
 - title: Example onboarding flow
   url: /example-onboarding-flow.html
 
+- title: API
+  url: /api.html
+
+- title: Usage (Mode 2)
+  url: /usage-mode-2.html
+
 - title: Public storage
   url: /public-storage.html
