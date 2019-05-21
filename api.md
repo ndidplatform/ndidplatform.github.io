@@ -64,7 +64,7 @@ API for node management
 
 <a href="https://app.swaggerhub.com/apis/NDID/node_callback/" target="_blank">https://app.swaggerhub.com/apis/NDID/node_callback/</a>
 
-API that all roles MUST BE IMPLEMENTED to be called by the platform
+API that all roles MUST IMPLEMENT to be called by the platform
 
 ## Utility
 
