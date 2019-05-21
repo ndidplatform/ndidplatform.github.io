@@ -26,11 +26,11 @@ title: Usage (Mode 2)
 
    (RP receives request status updates)
 
-   (**Note:** The above step is repeated for every IdPs)
+   (**Note:** Step 3 is repeated for every IdPs)
 
 4. (Optional) AS(es) receive a data request.
 
-5. (Optional) AS(es) response to a data request by sending data to RP.
+5. (Optional) AS responses to a data request by sending data to RP.
 
    (AS receives data response result)
 
@@ -40,7 +40,7 @@ title: Usage (Mode 2)
 
    (RP receives request status update)
 
-   (**Note:** The above step is repeated for every ASes)
+   (**Note:** Step 5-6 is repeated for every ASes)
 
 7. RP, IdP(s), and AS(es) get private messages sent over message queue and store to their databases.
 
