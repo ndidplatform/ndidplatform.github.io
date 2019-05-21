@@ -407,7 +407,7 @@ Now, AS Node received a data request through the message queue. It then looks up
 * Verify that (number of consent ≥ min_idp in request).
 * For each consent with matching request ID:
   * Verify the signature.
-  * Verify that the `request_params_salt` is matching with the request.
+  * Verify that the `request_params_hash` is matching with the request.
   * Verify all signatures from IdP
 
 Then it sends the API call to the AS through the registered callback URL.
