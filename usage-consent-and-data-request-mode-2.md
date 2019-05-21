@@ -1,8 +1,8 @@
 ---
-title: Usage (Mode 2)
+title: Usage (Consent and data request, Mode 2)
 ---
 
-# Usage (Mode 2)
+# Usage (Consent and data request, Mode 2)
 
 <div markdown="1" class="flash mb-3 flash-warn">
 
