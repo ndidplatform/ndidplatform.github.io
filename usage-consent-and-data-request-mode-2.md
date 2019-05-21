@@ -245,7 +245,6 @@ HTTP Request Body
   "reference_id": "a066fd0d-afa9-4eb0-9fd2-3aa7eb8c89fd",
   "request_id": "10606caea38ce5ab34d0ffc94d856d622689c8bb15f45653559be5d3bc72f631",
   "accessor_id": "65ecc598-7b2c-4f56-b74b-d265d8d0c0a9",
-  "accessor_public_key": "-----BEGIN PUBLIC KEY-----\r\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzPqGBJYmQRCDrVtvqHjn\r\nXjUfHQw2ej13w//tzK3k73/NzPfyky/C/o+XEnwGpSVuwlRjIrcXEAR3d3jEigVy\r\n3IT/ng9TzyiINLBWw04bRwceQBLYnLHMpCm4KjlbDRHEDtBUffy4WdIK0UzEI0LT\r\nKZ6hT8u305KFGcCrigfrAK0r1ljrUHWLwAZmjcso1joN04YiPbrOwqQX+GQ3l2b3\r\nYKz4aHku0QtAEKpcfFqNuMtrbobhpyjwdi0vsms8U+crsEge8EDHTPONS6XOCdfD\r\n6SvNFpy2rugR2JCZkGbbYu3OSGuP04rzjoYPIxUyNzKskCa7s7n3XWRLF4AK8TMt\r\nDQIDAQAB\r\n-----END PUBLIC KEY-----\r\n",
   "key_type": "RSA",
   "padding": "none",
   "request_message_padded_hash": "SM8Cctj6q4qpxaPzLYxKDqq5qnA3BWS6sKKBgTNGpIFN+WSfK+PS9lW3b7u6Bm4TpklMEcR/ESPosTcy69E3wj3IJvxq1XuMjwOmPOO70z035pIEbH2Jn64FCF8jtiVjqsso01XETNTAoMlI0BXmAYTz5w4gxclUcr/j3NKv4UCawbb/dUOH3LbuhiZh1QpeP9ID8sqo2d7VGEZhTH6FS2a4+yqnUtGhflBh5A1Q1KzBIRx2hDgk8Jx0HOlfxRKgqRcrqwTG8FkbdkUl02w0NWTmkbBghkchNt4M2BR9DUwqBMgliuQFVWavon1bpah7o5iRVg4GHcdemPLAThu7xA=="
