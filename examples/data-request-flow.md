@@ -1,8 +1,8 @@
 ---
-title: Example data-request flow
+title: Example data Request flow
 ---
 
-# Example Data-request Flow
+# Example Data Request Flow
 
 <div markdown="1" class="flash mb-3 flash-warn">
 

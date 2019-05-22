@@ -9,6 +9,20 @@
 
 - separator: true
 
+- title: Flows
+  header: true
+
+- title: Create Identity / Onboarding
+  url: /flows/create-identity.html
+
+- title: Add Accessor
+  url: /flows/add-accessor.html
+
+- title: Data Request
+  url: /flows/data-request.html
+
+- separator: true
+
 - title: API
   header: true
 
@@ -20,18 +34,26 @@
 - title: Usage
   header: true
 
-- title: Mode 2, consent and data request
-  url: /usage-consent-and-data-request-mode-2.html
+- title: Mode 2, data request
+  url: /usage/mode-2-data-request.html
 
 - separator: true
 
-- title: Example authentication flow
-  url: /example-authen-flow.html
+- title: Examples
+  header: true
 
-- title: Example data request flow
-  url: /example-data-request-flow.html
+- title: Running Authentication Flow
+  url: /examples/authen-flow.html
 
-- title: Example onboarding flow
+- title: Running Data Request Flow
+  url: /examples/data-request-flow.html
+
+- separator: true
+
+- title: DEPRECATED
+  header: true
+
+- title: Onboarding Flow
   url: /example-onboarding-flow.html
 
 - title: Public storage

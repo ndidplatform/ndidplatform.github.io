@@ -97,21 +97,20 @@ sequenceDiagram
     User->>RP: Use service
     RP->>User: Please provide ID
     User->>RP: 1-2345-67890-12-3
-    RP->>+Platform: POST /rp/requests/citizenid/1234567890123
-    Platform-->>-RP: 200, request_id=ef6f4c9c-818b-...
-    Note over User,Platform: RP can provide webhook (callback URL) to get updated about the transaction status. RP can also poll the platform for the request status.
-    Platform->>+IdP: /idp/request/citizenid/1234567890123
-    IdP-->>-Platform: 200 (request accepted)
+    RP->>+Platform: Create request
+    Platform-->>-RP: request_id=ef6f4c9c-818b-...
+    Platform->>+IdP: Consent request
+    IdP-->>-Platform: Request accepted
     IdP->>User: Asks user to authenticate and allow RP to retrieve the bank statement from AS.
-    Note over RP,IdP: Since ID verification can take from few minutes to several days, ID verification is done in an async manner.
+    Note over RP,IdP: ID verification can take from few minutes to several days.
     User-->>IdP: Accepts the consent request
-    IdP->>Platform: /idp/response
-    Platform->>RP: Callback request status update (state=CONFIRMED)
+    IdP->>Platform: Response to consent request, status=accept
+    Platform->>RP: Callback request status update
     Note over RP,IdP: At this point, the user has confirmed their identity. But the bank statement is yet to be retrieved.
-    Platform->>+AS: /service/citizenid/1234567890123
+    Platform->>+AS: Data request
     AS-->>-Platform: Bank statement
-    Platform->>RP: Callback request status update (state=COMPLETED)
+    Platform->>RP: Callback request status update
     Note over User,Platform: At this point, data requested from AS is now available for RP to use.
-    RP->>+Platform: /rp/requests/data/ef6f4c9c-818b-...
-    Platform-->>-RP: 200 (Reply with data from AS)
+    RP->>+Platform: Get data received from AS
+    Platform-->>-RP: Data from AS
 ```

@@ -1,8 +1,8 @@
 ---
-title: Usage (Consent and data request, Mode 2)
+title: Usage (Mode 2, Data request)
 ---
 
-# Usage (Consent and data request, Mode 2)
+# Usage (Mode 2, Data request)
 
 <div markdown="1" class="flash mb-3 flash-warn">
 
@@ -52,43 +52,11 @@ title: Usage (Consent and data request, Mode 2)
 
 </div>
 
-```mermaid
-sequenceDiagram
-    participant User
-    participant RP
-    participant Platform
-    participant IdP
-    participant AS
-    User->>RP: Use service
-    RP->>+Platform: POST /rp/requests/citizen_id/1234567890123
-    Platform-->>RP: 202, request_id=10606cae...
-    Platform->>-RP: Callback, create request result, success=true
-    Platform->>RP: Callback request status update (status=pending)
-    Platform->>+IdP: /idp/request, request_id=10606cae...
-    IdP-->>-Platform: 204, Acknowledged
-    IdP->>User: Asks user to authenticate and allow RP to retrieve the bank statement from AS.
-    Note over RP,IdP: Since ID verification can take from few minutes to several days, ID verification is done in an async manner.
-    User-->>IdP: Accepts the consent request
-    IdP->>+Platform: /idp/response
-    Platform-->>-IdP: 202
-    Platform->>RP: Callback request status update (status=confirmed)
-    Note over RP,IdP: At this point, the user has confirmed their identity. But the bank statement is yet to be retrieved.
-    Platform->>+AS: /service/bank_statement
-    AS-->>-Platform: 204, Acknowledged
-    AS->>+Platform: POST /as/data/10606cae...
-    Platform-->>AS: 202
-    Platform->>-AS: Callback, response result, success=true
-    Platform->>RP: Callback request status update (status=completed)
-    Platform->>RP: Callback request status update (request closed)
-    Note over User,Platform: At this point, data requested from AS is now available for RP to use.
-    RP->>+Platform: /rp/request_data/10606cae...
-    Platform-->>-RP: 200 (Reply with data from AS)
-    RP->>+Platform: GET /utility/private_messages/10606cae...
-    Platform-->>-RP: 200
-    Note over RP,Platform: RP MUST store private messages to local DB then delete the ones cached on the platform local node.
-    RP->>+Platform: POST /utility/private_message_removal/10606cae...
-    Platform-->>-RP: 204
-```
+<div markdown="1" class="flash mb-3">
+
+For sequence diagram, see [Data Request Flows](/flows/data-request.html)
+
+</div>
 
 ## RP creates consent request (RP&rarr;Platform)
 
