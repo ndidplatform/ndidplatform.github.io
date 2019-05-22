@@ -54,7 +54,7 @@ title: Usage (Mode 2, Data request)
 
 <div markdown="1" class="flash mb-3">
 
-For sequence diagram, see [Data Request Flows](/flows/data-request.html)
+For sequence diagram, see [Data Request Flows (1 IdP, 1 AS)](/flows/data-request.html#1-idp-1-as).
 
 </div>
 
