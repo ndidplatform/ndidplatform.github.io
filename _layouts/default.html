@@ -40,7 +40,15 @@
           <h2 class="bg-gray-light border-bottom f4 text-bold text-center py-2 px-3">Navigation</h2>
           <ul class="py-1">
             {% for item in site.data.nav %}
-              <li><a class="d-block py-1 px-3{% if item.url == page.url %} text-bold text-gray-dark{% endif %}" href="{{ item.url }}" title="{{ item.title }}">{{ item.title }}</a></li>
+              <li>
+                {% if item.url %}
+                  <a class="d-block py-1 px-3{% if item.url == page.url %} text-gray-dark{% endif %}" href="{{ item.url }}" title="{{ item.title }}">{{ item.title }}</a>
+                {% elsif item.separator %}
+                  <hr />
+                {% else %}
+                  <span class="d-block py-1 px-3 text-bold f4">{{ item.title }}</span>
+                {% endif %}
+              </li>
             {% endfor %}
            </ul>
         </nav>

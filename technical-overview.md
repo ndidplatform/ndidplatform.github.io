@@ -1,5 +1,5 @@
 ---
-title: Technical overview
+title: Technical Overview
 ---
 
 # Technical Overview

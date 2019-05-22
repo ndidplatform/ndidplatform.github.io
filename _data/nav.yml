@@ -1,23 +1,38 @@
-- title: Home
+- title: Getting Started
+  header: true
+
+- title: Introduction
   url: /
 
-- title: Technical overview
+- title: Technical Overview
   url: /technical-overview.html
+
+- separator: true
+
+- title: API
+  header: true
+
+- title: API
+  url: /api.html
+
+- separator: true
+
+- title: Usage
+  header: true
+
+- title: Mode 2, consent and data request
+  url: /usage-consent-and-data-request-mode-2.html
+
+- separator: true
 
 - title: Example authentication flow
   url: /example-authen-flow.html
 
 - title: Example data request flow
   url: /example-data-request-flow.html
-  
+
 - title: Example onboarding flow
   url: /example-onboarding-flow.html
-
-- title: API
-  url: /api.html
-
-- title: Usage (Consent and data request, Mode 2)
-  url: /usage-consent-and-data-request-mode-2.html
 
 - title: Public storage
   url: /public-storage.html

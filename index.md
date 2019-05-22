@@ -1,5 +1,5 @@
 ---
-title: Home
+title: Introduction
 ---
 
 Development hub for Thailand National Digital ID platform.
@@ -14,7 +14,7 @@ Development hub for Thailand National Digital ID platform.
 | **Whitepaper**          | <https://goo.gl/v4Cfpe>                         |
 | **Slack**               | <https://bit.ly/2MNDyLI>                        |
 
-## Architecture overview
+## Architecture Overview
 
 <div markdown="1" class="flash mb-3">
 
@@ -56,7 +56,7 @@ There are 2 main processes when using NDID:
 </div>
 
 
-## Quick overview
+## Quick Overview
 
 This section gives you a quick overview of the digital identity platform, illustrated through a simple scenario.
 
