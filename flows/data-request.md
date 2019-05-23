@@ -16,6 +16,10 @@ sequenceDiagram
     User->>RP: Use service
     RP->>+Platform: POST /rp/requests/citizen_id/1234567890123
     Platform-->>RP: 202, request_id=10606cae...
+    opt Use external crypto
+        Platform->>+RP: Callback /node/sign
+        RP-->>-Platform: Signed Tx
+    end
     Platform->>-RP: Callback, create request result, success=true
     Platform->>RP: Callback request status update (status=pending)
     Platform->>+IdP: /idp/request, request_id=10606cae...
@@ -27,6 +31,10 @@ sequenceDiagram
     Platform-->>IdP: 202
     Platform->>+IdP: Callback accessor encrypt
     IdP-->>-Platform: 200, signature=<base64_string>
+    opt Use external crypto
+        Platform->>+IdP: Callback /node/sign
+        IdP-->>-Platform: Signed Tx
+    end
     Platform->>-IdP: Callback, response result
     Platform->>RP: Callback request status update (status=confirmed)
     Note over RP,IdP: At this point, the user has confirmed their identity. But the bank statement is yet to be retrieved.
@@ -34,6 +42,10 @@ sequenceDiagram
     AS-->>-Platform: 204, Acknowledged
     AS->>+Platform: POST /as/data/10606cae...
     Platform-->>AS: 202
+    opt Use external crypto
+        Platform->>+AS: Callback /node/sign
+        AS-->>-Platform: Signed Tx
+    end
     Platform->>-AS: Callback, response result, success=true
     Platform->>RP: Callback request status update (status=completed)
     Platform->>RP: Callback request status update (request closed)
