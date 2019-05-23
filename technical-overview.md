@@ -114,7 +114,7 @@ and retrieving the bank statement form the **Authoritative Source (AS)**, the ba
 
       | reference_group_code | namespace | identifier |
       | --- | --- | --- |
-      | <x-guid>0280cf8e-de45-4e4e-aec7-c7a61d11b643</x-guid>  | hash('citizen_id/1234567890123') | <x-guid>IdP_f924-5069-4c6a-a4e4-134cd1a3d3d0</x-guid> |
+      | <x-guid>0280cf8e-de45-4e4e-aec7-c7a61d11b643</x-guid>  | citizen_id | hash('1234567890123') |
 
     - **reference_group_code → node_id (IdP) and accessor mapping**
 
