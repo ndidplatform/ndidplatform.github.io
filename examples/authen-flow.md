@@ -159,16 +159,3 @@ IDP will be notified and display options for accepting or rejecting a request.
 When you choose to either accepting or rejecting at IDP, RP will display the result accordingly.
 
 Note: To remove all registered users at IDP (`idp-client-app`), delete `persistent_db` directory.
-
-## Test the flow with POSTMAN (under maintenance)
-
-<del>You can download [POSTMAN collection](/assets/authen-flow-postman.json) and import to POSTMAN.
-
-<del>at tab `http://localhost:8080/identity` you specify what user the IDP will assiciate to, and IDP will only receive request from its associated user.
-
-<del>At tab `http://localhost:8081/rp/requests/cid/1234567890123` in POSTMAN is use to create request, note that we hard-coded IDP to be responsible for only authentication request for namespace `cid` and identifier `1234567890123`. If you want IDP to be responsible for other namespaces and identifiers, edit `users.json` and restart `idp-api`.
-
-<del>After creating a request you can see at `idp-api` that IDP receive message via message queue.
-Now you can use POSTMAN tab `http://localhost:8081/rp/requests/...` and replace ... with `request_id` you get from former step to see request status in blockchain.
-
-<del>At tab `http://localhost:8080/idp/response`, replace `request_id` in body with above id and you will see at `rp-api` that the platform will try to callback to RP via `callback_url` we send in `/rp/request/`. Which may result in error if you do not have any HTTP server listening to that url.
