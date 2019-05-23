@@ -47,7 +47,16 @@ sequenceDiagram
         AS-->>-Platform: Signed Tx
     end
     Platform->>-AS: Callback, response result, success=true
+    Platform->>RP: Callback request status update (data signed)
+    opt Use external crypto
+        Platform->>+RP: Callback /node/sign
+        RP-->>-Platform: Signed Tx
+    end
     Platform->>RP: Callback request status update (status=completed)
+    opt Use external crypto
+        Platform->>+RP: Callback /node/sign
+        RP-->>-Platform: Signed Tx
+    end
     Platform->>RP: Callback request status update (request closed)
     Note over User,Platform: At this point, data requested from AS is now available for RP to use.
     RP->>+Platform: /rp/request_data/10606cae...
