@@ -26,12 +26,12 @@ sequenceDiagram
     participant User
     participant IdP 2
     participant Platform
-    participant IdP 1
+    participant Other IdPs
     User->>IdP 2: KYC
     IdP 2->>+Platform: POST /identity
     Platform-->>IdP 2: 202
     Platform->>-IdP 2: Callback, create identity result, success=true
-    Platform->>IdP 1: Callback, notify identity modification
+    Platform->>Other IdPs: Callback, notify identity modification, action=create_identity
 ```
 
 ## Mode 3
@@ -48,6 +48,7 @@ sequenceDiagram
     participant IdP 2
     participant Platform
     participant IdP 1
+    participant Other IdPs
     User->>IdP 2: KYC
     IdP 2->>+Platform: POST /identity
     Platform-->>IdP 2: 202
@@ -63,4 +64,6 @@ sequenceDiagram
     IdP 1-->>-Platform: 200, signature=<base64_string>
     Platform->>-IdP 1: Callback, response result
     Platform->>IdP 2: Callback, create identity result, success=true
+    Platform->>IdP 1: Callback, notify identity modification, action=create_identity
+    Platform->>Other IdPs: Callback, notify identity modification, action=create_identity
 ```
