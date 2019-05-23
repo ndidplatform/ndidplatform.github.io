@@ -39,9 +39,13 @@ sequenceDiagram
     Platform->>RP: Callback request status update (status=confirmed)
     Note over RP,IdP: At this point, the user has confirmed their identity. But the bank statement is yet to be retrieved.
     Platform->>+AS: /service/bank_statement
-    AS-->>-Platform: 204, Acknowledged
-    AS->>+Platform: POST /as/data/10606cae...
-    Platform-->>AS: 202
+    alt Async response
+        AS-->>-Platform: 204, Acknowledged
+        AS->>+Platform: POST /as/data/10606cae...
+        Platform-->>AS: 202
+    else Response through callback
+        AS-->>Platform: 200, Data
+    end
     opt Use external crypto
         Platform->>+AS: Callback /node/sign
         AS-->>-Platform: Signed Tx
