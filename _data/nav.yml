@@ -7,6 +7,9 @@
 - title: Technical Overview
   url: /technical-overview.html
 
+- title: Components
+  url: /components.html
+
 - separator: true
 
 - title: Flows
@@ -36,6 +39,9 @@
 
 - title: Mode 2, data request
   url: /usage/mode-2-data-request.html
+
+- title: More
+  url: /usage/more-usages.html
 
 - separator: true
 

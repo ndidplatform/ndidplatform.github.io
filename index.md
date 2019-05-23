@@ -2,6 +2,8 @@
 title: Introduction
 ---
 
+# NDID Platform
+
 Development hub for Thailand National Digital ID platform.
 
 | Title                   | URL                                             |
