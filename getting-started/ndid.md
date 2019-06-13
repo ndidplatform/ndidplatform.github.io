@@ -52,7 +52,7 @@ Run Redis server
 ### Docker
 
 ```sh
-docker run --name ndid_redis redis:4-alpine
+docker run -p 6379:6379 --name ndid_redis redis:4-alpine
 ```
 
 Run an API server

@@ -21,6 +21,9 @@
 - title: NDID
   url: /getting-started/ndid.html
 
+- title: RP
+  url: /getting-started/rp.html
+
 - separator: true
 
 - title: Flows

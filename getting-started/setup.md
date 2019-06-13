@@ -59,7 +59,7 @@ There are several options to install Tendermint and ABCI app bundle.
 
    Change the following configuration in `./ndid_tm_home/config/config.toml`.
 
-   ```yaml
+   ```toml
    recheck = false
 
    create_empty_blocks = false
@@ -67,7 +67,7 @@ There are several options to install Tendermint and ABCI app bundle.
 
    If you run on a local network, additional configuration should be changed.
 
-   ```yaml
+   ```toml
    addr_book_strict = false
 
    allow_duplicate_ip = true
@@ -105,7 +105,7 @@ Install [Docker](https://docs.docker.com/install/){:target="\_blank" rel="noopen
 
    Change the following configuration in `./ndid_tm_home/config/config.toml`.
 
-   ```yaml
+   ```toml
    recheck = false
 
    create_empty_blocks = false
@@ -113,7 +113,7 @@ Install [Docker](https://docs.docker.com/install/){:target="\_blank" rel="noopen
 
    If you run on a local network, additional configuration should be changed.
 
-   ```yaml
+   ```toml
    addr_book_strict = false
 
    allow_duplicate_ip = true
@@ -139,7 +139,7 @@ Install [Docker](https://docs.docker.com/install/){:target="\_blank" rel="noopen
 
    Change the following configuration in `./ndid_tm_home/config/config.toml`.
 
-   ```yaml
+   ```toml
    recheck = false
 
    create_empty_blocks = false
@@ -147,11 +147,47 @@ Install [Docker](https://docs.docker.com/install/){:target="\_blank" rel="noopen
 
    If you run on a local network, additional configuration should be changed.
 
-   ```yaml
+   ```toml
    addr_book_strict = false
 
    allow_duplicate_ip = true
    ```
+
+### Setup more Tendermint nodes
+
+You can setup as many Tendermint node as you like. For example, setting up Tendermint node for RP (rp1).
+
+1. Init Tendermint
+
+   ```sh
+   ./did-tendermint --home ./rp1_tm_home init
+   ```
+
+   or with Docker
+
+   ```sh
+   docker run --rm --volume $PWD/rp1_tm_home:/tendermint ndidplatform/did-tendermint init
+   ```
+
+2. Repeat the same process as above (_Configure Tendermint_ step) but with `./rp1_tm_home/config/config.toml` and change additional configurations.
+
+   - Get NDID Tendermint node ID
+
+     ```sh
+     ./did-tendermint --home ./ndid_tm_home show_node_id
+     ```
+
+     or with Docker
+
+     ```sh
+     docker run --rm --volume $PWD/ndid_tm_home:/tendermint ndidplatform/did-tendermint show_node_id
+     ```
+
+   - Copy node ID from an output of above command in place of \<TM_NODE_ID\> in config.
+
+     ```toml
+     seeds="<TM_NODE_ID>@127.0.0.1:26656"
+     ```
 
 ## API Server
 
