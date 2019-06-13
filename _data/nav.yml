@@ -12,6 +12,17 @@
 
 - separator: true
 
+- title: Getting Started
+  header: true
+
+- title: Setup
+  url: /getting-started/setup.html
+
+- title: NDID
+  url: /getting-started/ndid.html
+
+- separator: true
+
 - title: Flows
   header: true
 
