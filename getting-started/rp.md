@@ -6,9 +6,9 @@ title: Getting Started as RP
 
 ## Node keys
 
-Prepare 2 RSA key pairs, one for node key and another for node master key.
-
 If you've already followed the example in [Register other nodes](/getting-started/ndid.html#register-other-nodes) on _Getting Started as NDID_ page, skip this step.
+
+Prepare 2 RSA key pairs, one for node key and another for node master key.
 
 ```sh
 mkdir ./keys
