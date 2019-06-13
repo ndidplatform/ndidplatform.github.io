@@ -8,7 +8,7 @@ title: Getting Started as RP
 
 Prepare 2 RSA key pairs, one for node key and another for node master key.
 
-If you've already followed the example in (Register other nodes)[http://localhost:4000/getting-started/ndid.html#register-other-nodes] on _Getting Started as NDID_ page, skip this step.
+If you've already followed the example in [Register other nodes](/getting-started/ndid.html#register-other-nodes) on _Getting Started as NDID_ page, skip this step.
 
 ```sh
 mkdir ./keys
