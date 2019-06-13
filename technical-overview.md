@@ -6,13 +6,13 @@ title: Technical Overview
 
 <div markdown="1" class="flash mb-3 flash-warn">
 
-**Disclaimer:** The purpose of this page is to illustrate the scenario outlined in the [quick overview](/#quick-overview) using concrete examples, to help make it easier to grasp how the platform works. This document is **not** the definitive source of information, just a learning aid. Please look at the [whitepaper](https://docs.google.com/document/d/1SKydNM-Nyox62m3vuvYgFYCr8ABVQV8RhjwiMjdCpQ8/edit#heading=h.qf2lmu8vfgym) for the full description of the platform.
+**Disclaimer:** The purpose of this page is to illustrate the scenario outlined in the [quick overview](/#quick-overview) using concrete examples, to help make it easier to grasp how the platform works. This document is **not** the definitive source of information, just a learning aid. Please look at the [whitepaper](https://docs.google.com/document/d/1SKydNM-Nyox62m3vuvYgFYCr8ABVQV8RhjwiMjdCpQ8/edit#heading=h.qf2lmu8vfgym){:target="\_blank" rel="noopener"} for the full description of the platform.
 
 </div>
 
 <div markdown="1" class="flash mb-3">
 
-**Recommended reading:** If you haven’t read it yet, we highly recommend that you read the [Digital Identity Guideline for Thailand – Overview and Glossary (DRAFT)](https://standard.etda.or.th/?p=8577) document to understand the overall process of the Digital ID model, as well as precise meanings of each term.
+**Recommended reading:** If you haven’t read it yet, we highly recommend that you read the [Digital Identity Guideline for Thailand – Overview and Glossary (DRAFT)](https://standard.etda.or.th/?p=8577){:target="\_blank" rel="noopener"} document to understand the overall process of the Digital ID model, as well as precise meanings of each term.
 
 </div>
 
@@ -81,7 +81,7 @@ and retrieving the bank statement form the **Authoritative Source (AS)**, the ba
     | <x-guid>AS_12767-0030-4a73-9593-ffd6d010c63c</x-guid> | 64.94.137.169:5000 |
 
 - **IdP Enrolment/Onboarding:** The User must have their identities registered with an IdP (through an “enrolment” process).
-  Check out the flow [in the whitepaper](https://docs.google.com/document/d/1SKydNM-Nyox62m3vuvYgFYCr8ABVQV8RhjwiMjdCpQ8/edit#heading=h.fw1fc2xwjef7).
+  Check out the flow [in the whitepaper](https://docs.google.com/document/d/1SKydNM-Nyox62m3vuvYgFYCr8ABVQV8RhjwiMjdCpQ8/edit#heading=h.fw1fc2xwjef7){:target="\_blank" rel="noopener"}.
 
   First, the user has to apply to enrol with the IdP.
   The IdP will verify the applicant’s identity (identity proofing).
@@ -136,7 +136,7 @@ Given these data, let’s proceed with the scenario.
 
 </div>
 
-## RP&rarr;Platform: [POST /rp/requests/citizen_id/01234567890123](https://app.swaggerhub.com/apis/NDID/relying_party_api/3.0#/default/send_request_to_id)
+## RP&rarr;Platform: [POST /rp/requests/citizen_id/01234567890123](https://app.swaggerhub.com/apis/NDID/relying_party_api/3.0#/default/send_request_to_id){:target="\_blank" rel="noopener"}
 
 ```yaml
 # Reference ID is used in case of communication error between RP and platform,
@@ -201,7 +201,7 @@ The API validates the request, generates a request ID and returns a response:
 request_id: 'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'
 ```
 
-This `request_id` can be used to check the status of request through [GET /utility/requests/{request_id}](https://app.swaggerhub.com/apis/NDID/utility/3.0#/default/get_request_status) API.
+This `request_id` can be used to check the status of request through [GET /utility/requests/{request_id}](https://app.swaggerhub.com/apis/NDID/utility/3.0#/default/get_request_status){:target="\_blank" rel="noopener"} API.
 
 The `reference_id` &rarr; `request_id` mapping is stored in the node’s local storage, in case of communication error, to make this request idempotent.
 
@@ -277,7 +277,7 @@ It reads the request from the blockchain:
 - Verify that `hash(request_message | salt) === message_hash`.
 - Check with the blockchain if the request is still necessary. (Request may be fulfilled by another IdP, in case the user onboarded with multiple IdPs.)
 
-## Platform&rarr;IdP: [POST /idp/request](https://app.swaggerhub.com/apis/NDID/idp_callback/3.0#/default/consent_request)
+## Platform&rarr;IdP: [POST /idp/request](https://app.swaggerhub.com/apis/NDID/idp_callback/3.0#/default/consent_request){:target="\_blank" rel="noopener"}
 
 At this point, IDP Node has checked that the consent is still needed. It issues a webhook to IDP’s web service, passing the above message.
 
@@ -298,7 +298,7 @@ Authentication method that has higher security gets a higher **AAL (Authenticati
 
 In this example, the user gave IdP the consent.
 
-## IdP&rarr;Platform: [POST /idp/response](https://app.swaggerhub.com/apis/NDID/identity_provider/3.0#/default/respond_to_request)
+## IdP&rarr;Platform: [POST /idp/response](https://app.swaggerhub.com/apis/NDID/identity_provider/3.0#/default/respond_to_request){:target="\_blank" rel="noopener"}
 
 IdP sends a response to consent request
 
@@ -346,7 +346,7 @@ However, a request in the blockchain does not contain any identity information. 
 
 RP must verify signature that it indeed sign with private key corresponse to `accessor_id`
 
-## Platform&rarr;RP: [POST /rp/request/e3cb44c9-8848-…](https://app.swaggerhub.com/apis/NDID/rp_callback/3.0#/default/request_update)
+## Platform&rarr;RP: [POST /rp/request/e3cb44c9-8848-…](https://app.swaggerhub.com/apis/NDID/rp_callback/3.0#/default/request_update){:target="\_blank" rel="noopener"}
 
 At this point, RP-Node sees the above transaction committed in the blockchain.
 It knows that the authentication request has been approved.
@@ -400,7 +400,7 @@ response_private_data_list: [{
 }]
 ```
 
-## Platform&rarr;AS: [POST /service/bank_statement](https://app.swaggerhub.com/apis/NDID/as_callback/3.0#/default/data_request)
+## Platform&rarr;AS: [POST /service/bank_statement](https://app.swaggerhub.com/apis/NDID/as_callback/3.0#/default/data_request){:target="\_blank" rel="noopener"}
 
 Now, AS Node received a data request through the message queue. It then looks up the request and consent transactions with matching `request_id` in the blockchain.
 
@@ -455,7 +455,7 @@ signature: sign(<PDF BINARY DATA> | salt, AS1’s private key)
 RP node receives the data via message queue and verifies signature in blockchain.
 RP node updates the request status and call callback to RP.
 
-## Retrieving data: [GET /rp/request_data/ef6f4c9c-818b-…](https://app.swaggerhub.com/apis/NDID/relying_party_api/3.0#/default/get_request_data)
+## Retrieving data: [GET /rp/request_data/ef6f4c9c-818b-…](https://app.swaggerhub.com/apis/NDID/relying_party_api/3.0#/default/get_request_data){:target="\_blank" rel="noopener"}
 
 Finally, RP calls the API to retrieve the request data.
 It returns with:

@@ -6,21 +6,21 @@ title: Introduction
 
 Development hub for Thailand National Digital ID platform.
 
-| Title                   | URL                                             |
-| ----------------------- | ----------------------------------------------- |
-| **Official site**       | <http://www.ndid.co.th/>                        |
-| **TEDxChiangMai Talk**  | <https://www.youtube.com/watch?v=E8HHNRRlsoo>   |
-| **GitHub organization** | <https://github.com/ndidplatform>               |
-| **HTTP API schema**     | <https://app.swaggerhub.com/organizations/NDID> |
-| **Facebook page**       | <https://www.facebook.com/NationalDigitalID/>   |
-| **Whitepaper**          | <https://goo.gl/v4Cfpe>                         |
-| **Slack**               | <https://bit.ly/2MNDyLI>                        |
+| Title                   | URL                                                                               |
+| ----------------------- | --------------------------------------------------------------------------------- |
+| **Official site**       | <http://www.ndid.co.th/>{:target="\_blank" rel="noopener"}                        |
+| **TEDxChiangMai Talk**  | <https://www.youtube.com/watch?v=E8HHNRRlsoo>{:target="\_blank" rel="noopener"}   |
+| **GitHub organization** | <https://github.com/ndidplatform>{:target="\_blank" rel="noopener"}               |
+| **HTTP API schema**     | <https://app.swaggerhub.com/organizations/NDID>{:target="\_blank" rel="noopener"} |
+| **Facebook page**       | <https://www.facebook.com/NationalDigitalID/>{:target="\_blank" rel="noopener"}   |
+| **Whitepaper**          | <https://goo.gl/v4Cfpe>{:target="\_blank" rel="noopener"}                         |
+| **Slack**               | <https://bit.ly/2MNDyLI>{:target="\_blank" rel="noopener"}                        |
 
 ## Architecture Overview
 
 <div markdown="1" class="flash mb-3">
 
-**Recommended reading:** For newcomers, we highly recommend that you [watch the TEDxChiangMai talk](https://www.youtube.com/watch?v=E8HHNRRlsoo) which describes the importance and benefits of having a digital ID infrastructure in Thailand.
+**Recommended reading:** For newcomers, we highly recommend that you [watch the TEDxChiangMai talk](https://www.youtube.com/watch?v=E8HHNRRlsoo){:target="\_blank" rel="noopener"} which describes the importance and benefits of having a digital ID infrastructure in Thailand.
 
 </div>
 
@@ -48,15 +48,13 @@ There are 2 main processes when using NDID:
 
 - **Enrolment and identity proofing** (getting a digital ID): The user first needs to enrol with an **Identity Provider (IdP)** to get started. They will verify your identity (identity proofing) and then provide you a **digital identity** along with an **authenticator** that you use to verify your credential. The user can enrol with multiple IdPs for extra security.
 
-
 - **Authentication and data access authorization** (using your digital ID): This happens when you use a service that requires authentication using digital ID. They (the **Relying Party (RP)**, who offers you service) will ask the IdP, who will in turn ask you to provide your credentials (authentication) using your authenticator and allow the RP to access the data (data access authorization) which will be provided by an **Authoritative Source (AS).**
 
 <div markdown="1" class="flash mb-3">
 
-**Recommended reading:** [บทความเกี่ยวกับแนวคิดพื้นฐานในความแตกต่างของ Identity Proofing และ Authentication รวมทั้งความเชื่อมโยงของสองเรื่องนี้ที่เป็นเรื่องพื้นฐานของ Digital ID](https://narudomr.blogspot.com/2018/02/identity-proofing-authentication.html)
+**Recommended reading:** [บทความเกี่ยวกับแนวคิดพื้นฐานในความแตกต่างของ Identity Proofing และ Authentication รวมทั้งความเชื่อมโยงของสองเรื่องนี้ที่เป็นเรื่องพื้นฐานของ Digital ID](https://narudomr.blogspot.com/2018/02/identity-proofing-authentication.html){:target="\_blank" rel="noopener"}
 
 </div>
-
 
 ## Quick Overview
 
@@ -78,10 +76,10 @@ First, we define these participants:
 - **Identity Provider (IdP)** holds the identity of the user, and is able to prove the identity the user.
 - **Authoritative Source (AS)** holds the user’s information, such as bank statement. In this example, the bank.
 - **The NDID platform**
-    - A decentralized app with nodes running on each RP, IdP, and AS, connecting them together.
-    - Exposing an HTTP-based API to enable integration with each party.
-    - Transaction logs (without ID or private information, but contains zero-knowledge proof to verify the transaction) are recorded on the blockchain ([Tendermint](https://tendermint.com/)).
-    - Private information (ID information, data from AS) is communicated between nodes securely through [ZMQ](http://zeromq.org/).
+  - A decentralized app with nodes running on each RP, IdP, and AS, connecting them together.
+  - Exposing an HTTP-based API to enable integration with each party.
+  - Transaction logs (without ID or private information, but contains zero-knowledge proof to verify the transaction) are recorded on the blockchain ([Tendermint](https://tendermint.com/){:target="\_blank" rel="noopener"}).
+  - Private information (ID information, data from AS) is communicated between nodes securely through [ZMQ](http://zeromq.org/){:target="\_blank" rel="noopener"}.
 
 <div markdown="1" class="flash mb-3">
 
