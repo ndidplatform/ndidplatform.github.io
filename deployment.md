@@ -42,4 +42,4 @@ You can fetch data by request ID using API [GET `/rp/request_data/{request_id}`]
 
 You will most likely want to remove data by request ID through API [POST `/rp/request_data_removal/{request_id}`](https://app.swaggerhub.com/apis/NDID/relying_party_api/3.0#/default/post_rp_request_data_removal__request_id_){:target="\_blank" rel="noopener"} after you have fetched and saved data to your local database.
 
-You can also remove all data using API [POST `//rp/request_data_removal`](https://app.swaggerhub.com/apis/NDID/utility/3.0#/default/post_utility_private_message_removal){:target="\_blank" rel="noopener"}.
+You can also remove all data using API [POST `/rp/request_data_removal`](https://app.swaggerhub.com/apis/NDID/utility/3.0#/default/post_utility_private_message_removal){:target="\_blank" rel="noopener"}.
