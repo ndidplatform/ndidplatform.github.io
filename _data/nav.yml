@@ -10,6 +10,9 @@
 - title: Components
   url: /components.html
 
+- title: Deployment
+  url: /deployment.html
+
 - separator: true
 
 - title: Getting Started
@@ -23,6 +26,12 @@
 
 - title: RP
   url: /getting-started/rp.html
+
+- title: IdP
+  url: /getting-started/idp.html
+
+- title: AS
+  url: /getting-started/as.html
 
 - separator: true
 

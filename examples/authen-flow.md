@@ -32,7 +32,7 @@ title: Example authentication flow
 ## Before we start
 
 To run the authentication flow, there is an issue we must discuss, the onboarding process.
-To visualize the flow, RP,IDP,AS must register themselves (and their customers, for IDP) to the system.
+To visualize the flow, RP,IdP,AS must register themselves (and their customers, for IdP) to the system.
 This is not a part of the flow but has to be done. 
 In production, all parties need to contact NDID to add their public key to the system.
 In development, run `NODE_ID=ndid1 npm run initDevKey` after the platform is ready to add their pre-generated keys to the system.
@@ -152,10 +152,10 @@ If you run the examples in the same machine, you can use these scripts.
 `rp-client-app` will set `callback_url` (parameter when create new request) 
 according to `NDID_API_CALLBACK_IP` and `NDID_API_CALLBACK_PORT` set on start.
 
-Before you can test, you will need to visit `http://localhost:8080/identity` to register user associate with IDP.
-To test the flow, open a web browser and navigate to `http://localhost:8080/__namespace__/__identifier__` for IDP and `http://localhost:8081` for RP.
-When you press `Request Identity Verification` button at RP with `namespace` and `identifier` that IDP recognizes,
-IDP will be notified and display options for accepting or rejecting a request.
-When you choose to either accepting or rejecting at IDP, RP will display the result accordingly.
+Before you can test, you will need to visit `http://localhost:8080/identity` to register user associate with IdP.
+To test the flow, open a web browser and navigate to `http://localhost:8080/__namespace__/__identifier__` for IdP and `http://localhost:8081` for RP.
+When you press `Request Identity Verification` button at RP with `namespace` and `identifier` that IdP recognizes,
+IdP will be notified and display options for accepting or rejecting a request.
+When you choose to either accepting or rejecting at IdP, RP will display the result accordingly.
 
-Note: To remove all registered users at IDP (`idp-client-app`), delete `persistent_db` directory.
+Note: To remove all registered users at IdP (`idp-client-app`), delete `persistent_db` directory.

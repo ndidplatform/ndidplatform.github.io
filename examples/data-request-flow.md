@@ -14,7 +14,7 @@ title: Example data Request flow
 
 Please read [Example authentication flow](/example-authen-flow.html) before read this document.
 
-Similar to IDP's registration in authentication flow, `as-client-app` will automatically register itself and its service list to platform every time it start.
+Similar to IdP's registration in authentication flow, `as-client-app` will automatically register itself and its service list to platform every time it start.
 In production, however, it will only register once.
 
 Also, for backward compatability, AS's tendermint node is not acting as validator.
@@ -69,7 +69,7 @@ npm start
 ```
 
 Start `rp-client-app` and `idp-client-app` as in authentication-only flow.
-In RP webpage, instead of press `Request Identity Verification` as in authentication flow, press `Request Identity Verification with Data Request`. The only visible different in UI is that IDP's webpage will display what data RP request (which is mockup in this client).
+In RP webpage, instead of press `Request Identity Verification` as in authentication flow, press `Request Identity Verification with Data Request`. The only visible different in UI is that IdP's webpage will display what data RP request (which is mockup in this client).
 
 When authentication complete for data-request, `as-client-app` will automatically return mock data (which you can change or add delay to simulate AS delay).
 You can see this data in RP's `api` terminal as well as `rp-client-app`.

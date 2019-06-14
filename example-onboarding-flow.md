@@ -6,7 +6,7 @@
 </div>
 
 ```yaml 
-# Reference ID is used in case of communication error between IDP and platform,
+# Reference ID is used in case of communication error between IdP and platform,
 # to prevent the same request from being executed twice.
 reference_id: "e3cb44c9-8848-4dec-98c8-8083f373b1f7"
 
@@ -40,7 +40,7 @@ ial: "2.3"
 ## Scenario#1 : Onboarding new identity 
 > ![NDID Node](images/onboarding-identity.png)
 
-- IDP→Platform : POST: /identity(body) 
+- IdP→Platform : POST: /identity(body) 
 ```yaml 
 {   
   "reference_number":"123456789",
@@ -56,7 +56,7 @@ The API validates the request, generates a request ID and returns a response:
 ```yaml
 200 OK 
 request_id: 'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'
-exist: boolean; false if you are the first IDP to onboard this user
+exist: boolean; false if you are the first IdP to onboard this user
 secret: '<secret-calculated-by-platform>'
 ```
 
@@ -69,14 +69,14 @@ secret: '<secret-calculated-by-platform>'
  - This request_id can be used to check the status of request through [GET /identity/requests/{request_id}](https://app.swaggerhub.com/apis/ndid/identity/1.0#/default/get_request_status) API.
  
 
- - **IDP** will check if ns/id exists before onboarding new identity, if existed **IDP** triggers the request for user consent.
- - After obtaining user consent, **IDP** will process onboarding or reject identity addition, and respond through same IDP callback url API, but with `type: onboard_request`. 
+ - **IdP** will check if ns/id exists before onboarding new identity, if existed **IdP** triggers the request for user consent.
+ - After obtaining user consent, **IdP** will process onboarding or reject identity addition, and respond through same IdP callback url API, but with `type: onboard_request`. 
 
 
 ## Scenario#2 : Adding new accessor
 > ![NDID Node](images/add-new-accessor.png)
 
-- IDP->Platform : POST /identity/citizenid/1234567890123/accessors
+- IdP->Platform : POST /identity/citizenid/1234567890123/accessors
 ```yaml
 {
   "accessor_type": "RSA-2048",
@@ -98,8 +98,8 @@ request_id: 'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'
 400  Error: Invalid accessor type
 403  Error: Identity does not exist
 ```
-- After obtaining user consent, IDP can add new accessor to {namespace,identifier}. It will however return fail if this IDP does not associated with {namespace,identifier}.
-Respond will be send through same IDP callback url API, but with `type: onboard_request`.
+- After obtaining user consent, IdP can add new accessor to {namespace,identifier}. It will however return fail if this IdP does not associated with {namespace,identifier}.
+Respond will be send through same IdP callback url API, but with `type: onboard_request`.
 
 **POST /identity/request/ef6f4c9c-818b-42b8-8904-3d97c4c520f6**
 ```yaml 
@@ -114,7 +114,7 @@ Respond will be send through same IDP callback url API, but with `type: onboard_
 > ![NDID Node](images/add-new-identifier.png)
 
 
-- IDP/RP/AS->Platform : POST /identity/{namespace}/{identifier}
+- IdP/RP/AS->Platform : POST /identity/{namespace}/{identifier}
 ```yaml
 {
 "identifiers": [
@@ -136,7 +136,7 @@ request_id: 'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'
 400  Error: Invalid endorsement type
 404  Error: Identity does not exist
 ```
-- After obtaining user consent, IDP can add the new namespace and identifier. This scenario will fail if {namespace,identifier} does not exist at callback url [POST /identity/request/{identifier}] API. 
+- After obtaining user consent, IdP can add the new namespace and identifier. This scenario will fail if {namespace,identifier} does not exist at callback url [POST /identity/request/{identifier}] API. 
 
 **POST /identity/request/ef6f4c9c-818b-42b8-8904-3d97c4c520f6**
 ```yaml 

@@ -127,7 +127,7 @@ curl -skX POST http://127.0.0.1:8080/ndid/end_init \
 
 ## Register other nodes
 
-Nodes with RP, IDP, AS, or Proxy role can only be registered at NDID node.
+Nodes with RP, IdP, AS, or Proxy role can only be registered at NDID node.
 
 Make a HTTP call POST `/ndid/init_ndid` with JSON body.
 
@@ -219,7 +219,7 @@ curl -skX POST http://127.0.0.1:8080/ndid/register_node \
 
 ## Set node token
 
-All nodes except NDID node have blockchain transaction quota to prevent spamming. Give nodes their tokens is required since new nodes will have 0 token and cannot make any transactions to the blockchain. Appropriate amount of tokens depends on NDID discretion.
+All nodes except NDID node have blockchain transaction quota to prevent spamming. Giving nodes their tokens is required since new nodes will have 0 token and cannot make any transactions to the blockchain. Appropriate amount of tokens depends on NDID discretion. __Token does NOT related to cost incured. It is simply a mechanism to prevent transaction spamming to the blockchain.__
 
 Make a HTTP call POST `/ndid/set_node_token` with JSON body.
 

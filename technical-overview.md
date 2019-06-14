@@ -88,7 +88,7 @@ and retrieving the bank statement form the **Authoritative Source (AS)**, the ba
   If the identity proofing process is very strict,
   the registered identity will have a high **IAL (Identity Assurance Level)**.
 
-  In this scenario, the user onboarded with the IDP using his **citizen ID, 1-2345-67890-12-3**.
+  In this scenario, the user onboarded with the IdP using his **citizen ID, 1-2345-67890-12-3**.
 
   - **How identity data is stored:** Some parts of data related to each identity is stored privately by each participating party, while others are on the blockchain.
 
@@ -279,7 +279,7 @@ It reads the request from the blockchain:
 
 ## Platform&rarr;IdP: [POST /idp/request](https://app.swaggerhub.com/apis/NDID/idp_callback/3.0#/default/consent_request){:target="\_blank" rel="noopener"}
 
-At this point, IDP Node has checked that the consent is still needed. It issues a webhook to IDP’s web service, passing the above message.
+At this point, IdP Node has checked that the consent is still needed. It issues a webhook to IdP’s web service, passing the above message.
 
 ## IdP&rarr;User
 
