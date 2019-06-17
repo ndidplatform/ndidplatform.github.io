@@ -132,3 +132,7 @@ docker run \
 --name rp1_api \
 ndidplatform/api
 ```
+
+## Set Callbacks
+
+You may want to set callback to receive errors emitted from a main API server by making a HTTP call to [POST `/rp/callback`](https://app.swaggerhub.com/apis/NDID/relying_party_api/3.0#/default/set_callback_url){:target="\_blank" rel="noopener"}. API specification for callback can be found [here](https://app.swaggerhub.com/apis/NDID/rp_callback/3.0#/default/post_rp_error){:target="\_blank" rel="noopener"}.

@@ -135,4 +135,12 @@ ndidplatform/api
 
 ## Register Services
 
-Once NDID has approved your node to provide a service, you must register a service for RP to be able to make a data request by making HTTP call to [POST `/as/service/{service_id}`](https://app.swaggerhub.com/apis/NDID/authoritative_source_api/3.0#/default/register_service){:target="\_blank" rel="noopener"}.
+Once NDID has approved your node to provide a service, you must register a service for RP to be able to make a data request and API main server to callback to by making HTTP call to [POST `/as/service/{service_id}`](https://app.swaggerhub.com/apis/NDID/authoritative_source_api/3.0#/default/register_service){:target="\_blank" rel="noopener"}. API specification for callback can be found [here](https://app.swaggerhub.com/apis/NDID/as_callback/3.0#/default/data_request){:target="\_blank" rel="noopener"}.
+
+## Set Callbacks
+
+API for setting callback URLs is [POST `/as/callback`](https://app.swaggerhub.com/apis/NDID/authoritative_source_api/3.0#/default/set_callback_url){:target="\_blank" rel="noopener"}.
+
+You may want to receive request status updates `incoming_request_status_update_url` to notify your users a request progress or update your local database. API specification for callback can be found [here](https://app.swaggerhub.com/apis/NDID/as_callback/3.0#/default/post_as_request_status_update){:target="\_blank" rel="noopener"}.
+
+If you want to receive callbacks reporting errors from a main API server, set an URL using property `error_url`. API specification for callback can be found [here](https://app.swaggerhub.com/apis/NDID/as_callback/3.0#/default/post_as_error){:target="\_blank" rel="noopener"}.

@@ -132,3 +132,17 @@ docker run \
 --name idp1_api \
 ndidplatform/api
 ```
+
+## Set Callbacks
+
+API for setting callback URLs is [POST `/idp/callback`](https://app.swaggerhub.com/apis/NDID/identity_provider/3.0#/default/set_callback_url){:target="\_blank" rel="noopener"}.
+
+You need to set callback URL for receiving incoming requests from RP `incoming_request_url` otherwise the API main server will drop those requests. API specification for callback can be found [here](https://app.swaggerhub.com/apis/NDID/idp_callback/3.0#/default/consent_request){:target="\_blank" rel="noopener"}.
+
+You must set callback URL for API server to request for encrypt with user's accessor key `accessor_encrypt_url` when responding to mode 2 or 3 requests. API specification for callback can be found [here](https://app.swaggerhub.com/apis/NDID/idp_callback/3.0#/default/request_for_accessor_to_encrypt){:target="\_blank" rel="noopener"}.
+
+It is highly recommend to set callback URL for receiving identity modification notifications `identity_modification_notification_url` to notify to users onboarded with this IdP. API specification for callback can be found [here](https://app.swaggerhub.com/apis/NDID/idp_callback/3.0#/default/post_idp_identity_notification){:target="\_blank" rel="noopener"}.
+
+You may want to receive request status updates `incoming_request_status_update_url` to notify your users a request progress or update your local database. API specification for callback can be found [here](https://app.swaggerhub.com/apis/NDID/idp_callback/3.0#/default/post_idp_request_status_update){:target="\_blank" rel="noopener"}.
+
+If you want to receive callbacks reporting errors from a main API server, set an URL using property `error_url`. API specification for callback can be found [here](https://app.swaggerhub.com/apis/NDID/idp_callback/3.0#/default/post_idp_error){:target="\_blank" rel="noopener"}.
