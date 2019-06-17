@@ -92,7 +92,7 @@ Install [Docker](https://docs.docker.com/install/){:target="\_blank" rel="noopen
    ```sh
    cd ./smart-contract/docker
 
-   ./build
+   ./build.sh
    ```
 
 4. Init Tendermint
@@ -241,15 +241,21 @@ Install [Docker](https://docs.docker.com/install/){:target="\_blank" rel="noopen
    ```sh
    cd ./api/docker
 
-   ./build
+   ./build.sh
    ```
 
 ### Use Docker image provided on Docker Hub
 
 Install [Docker](https://docs.docker.com/install/){:target="\_blank" rel="noopener"} if you haven't already.
 
-1. Pull an image from [Docker Hub](https://hub.docker.com/r/ndidplatform/api){:target="\_blank" rel="noopener"}.
+- Pull an image (API main) from [Docker Hub](https://hub.docker.com/r/ndidplatform/api){:target="\_blank" rel="noopener"}.
 
    ```sh
    docker pull ndidplatform/api
+   ```
+
+- Pull an image (MQ service server) from [Docker Hub](https://hub.docker.com/r/ndidplatform/mq){:target="\_blank" rel="noopener"}.
+
+   ```sh
+   docker pull ndidplatform/mq
    ```

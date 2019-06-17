@@ -33,8 +33,8 @@ Run Tendermint and ABCI app bundle
 ```sh
 ABCI_DB_DIR_PATH=./as1_abci_data ./did-tendermint \
 --home ./as1_tm_home \
---p2p.laddr=tcp://0.0.0.0:27656 \
---rpc.laddr=tcp://0.0.0.0:27657 \
+--p2p.laddr=tcp://0.0.0.0:28656 \
+--rpc.laddr=tcp://0.0.0.0:28657 \
 node
 ```
 
@@ -42,11 +42,39 @@ node
 
 ```sh
 docker run \
--p 27656:26656 -p 27657:26657 \
+-p 27656:26656 -p 28657:26657 \
 --volume $PWD/as1_tm_home:/tendermint \
 --volume $PWD/as1_abci_data:/DID \
 --name as1_tm_1 \
 ndidplatform/did-tendermint
+```
+
+## MQ Service Server
+
+Follow steps in [Setup](/getting-started/setup.html#api-server) if you haven't already.
+
+### Built from source
+
+```sh
+cd ./api/mq-server
+
+MQ_BINDING_PORT=5755 \
+SERVER_PORT=52051 \
+NODE_ID=as1 \
+node build/server.js
+```
+
+### Docker
+
+```sh
+docker run \
+-p 52051:52051 \
+-p 5755:5755 \
+--env "MQ_BINDING_PORT=5755" \
+--env "SERVER_PORT=52051" \
+--env "NODE_ID=as1" \
+--name as1_mq \
+ndidplatform/mq
 ```
 
 ## API Server
@@ -58,7 +86,7 @@ Run Redis server
 ### Docker
 
 ```sh
-docker run -p 6479:6379 --name as1_redis redis:4-alpine
+docker run -p 6579:6379 --name as1_redis redis:4-alpine
 ```
 
 Run an API server
@@ -69,12 +97,15 @@ Run an API server
 cd ./api/main-server
 
 TENDERMINT_IP=127.0.0.1 \
-TENDERMINT_PORT=27657 \
+TENDERMINT_PORT=28657 \
 NODE_ID=as1 \
 PRIVATE_KEY_PATH=/path/to/keys/as1.pem \
 MASTER_PRIVATE_KEY_PATH=/path/to/keys/as1_master.pem \
-DB_PORT=6479 \
-SERVER_PORT=8180 \
+DB_PORT=6579 \
+MQ_CONTACT_IP=127.0.0.1 \
+MQ_BINDING_PORT=5755 \
+MQ_SERVICE_SERVER_PORT=52051 \
+SERVER_PORT=8280 \
 node build/server.js
 ```
 
@@ -82,9 +113,10 @@ node build/server.js
 
 ```sh
 docker run \
--p 8180:8180 \
+-p 8280:8280 \
 --link as1_tm_1:tendermint \
 --link as1_redis:redis \
+--link as1_mq:mq \
 --volume $PWD/keys:/keys \
 --env "TENDERMINT_IP=tendermint" \
 --env "TENDERMINT_PORT=26657" \
@@ -92,10 +124,15 @@ docker run \
 --env "NODE_ID=as1" \
 --env "PRIVATE_KEY_PATH=/keys/as1.pem" \
 --env "MASTER_PRIVATE_KEY_PATH=/keys/as1_master.pem" \
---env "SERVER_PORT=8180" \
+--env "MQ_CONTACT_IP=<YOUR_DOCKER_HOST_IP>" \
+--env "MQ_SERVICE_SERVER_IP=mq" \
+--env "MQ_BINDING_PORT=5755" \
+--env "MQ_SERVICE_SERVER_PORT=52051" \
+--env "SERVER_PORT=8280" \
 --name as1_api \
 ndidplatform/api
 ```
 
 ## Register Services
 
+Once NDID has approved your node to provide a service, you must register a service for RP to be able to make a data request by making HTTP call to [POST `/as/service/{service_id}`](https://app.swaggerhub.com/apis/NDID/authoritative_source_api/3.0#/default/register_service){:target="\_blank" rel="noopener"}.

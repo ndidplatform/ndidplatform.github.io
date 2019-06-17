@@ -49,6 +49,34 @@ docker run \
 ndidplatform/did-tendermint
 ```
 
+## MQ Service Server
+
+Follow steps in [Setup](/getting-started/setup.html#api-server) if you haven't already.
+
+### Built from source
+
+```sh
+cd ./api/mq-server
+
+MQ_BINDING_PORT=5555 \
+SERVER_PORT=50051 \
+NODE_ID=rp1 \
+node build/server.js
+```
+
+### Docker
+
+```sh
+docker run \
+-p 50051:50051 \
+-p 5555:5555 \
+--env "MQ_BINDING_PORT=5555" \
+--env "SERVER_PORT=50051" \
+--env "NODE_ID=rp1" \
+--name rp1_mq \
+ndidplatform/mq
+```
+
 ## API Server
 
 Follow steps in [Setup](/getting-started/setup.html#api-server) if you haven't already.
@@ -74,6 +102,9 @@ NODE_ID=rp1 \
 PRIVATE_KEY_PATH=/path/to/keys/rp1.pem \
 MASTER_PRIVATE_KEY_PATH=/path/to/keys/rp1_master.pem \
 DB_PORT=6479 \
+MQ_CONTACT_IP=127.0.0.1 \
+MQ_BINDING_PORT=5555 \
+MQ_SERVICE_SERVER_PORT=50051 \
 SERVER_PORT=8180 \
 node build/server.js
 ```
@@ -85,6 +116,7 @@ docker run \
 -p 8180:8180 \
 --link rp1_tm_1:tendermint \
 --link rp1_redis:redis \
+--link rp1_mq:mq \
 --volume $PWD/keys:/keys \
 --env "TENDERMINT_IP=tendermint" \
 --env "TENDERMINT_PORT=26657" \
@@ -92,6 +124,10 @@ docker run \
 --env "NODE_ID=rp1" \
 --env "PRIVATE_KEY_PATH=/keys/rp1.pem" \
 --env "MASTER_PRIVATE_KEY_PATH=/keys/rp1_master.pem" \
+--env "MQ_CONTACT_IP=<YOUR_DOCKER_HOST_IP>" \
+--env "MQ_SERVICE_SERVER_IP=mq" \
+--env "MQ_BINDING_PORT=5555" \
+--env "MQ_SERVICE_SERVER_PORT=50051" \
 --env "SERVER_PORT=8180" \
 --name rp1_api \
 ndidplatform/api
