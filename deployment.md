@@ -16,7 +16,40 @@ title: Deployment
 
 </div>
 
-## Hardware
+## Requirements Specification
+
+### Hardware
+
+Recommended:
+
+- x64 CPU with 4 cores
+- At least 8 GB of memory
+- SSD with at least 200 IOPS
+
+The specs may vary depending on the load and it may require significant disk space over time.
+
+### Operating System
+
+- Linux
+- macOS
+- Windows
+  - Not fully supported but it is possible to run the stack on Windows except for Redis which has no native support on Windows. You may use Docker for Windows to run Redis at our own risk.
+
+Another option is to run the stack in Docker containers. System requirements can be found on [Docker website](https://docs.docker.com/){:target="\_blank" rel="noopener"}.
+
+## DOS Exposure and Mitigation
+
+There are two parts that exposed to the Internet, P2P communication channel or message queue and blockchain, Tendermint.
+
+[//]: # (@todo mitigation)
+
+## Monitoring
+
+API main server and MQ service server can be configured to report and serve Prometheus metrics.
+
+ABCI app (smart-contract) Prometheus metrics are served on the same port as Tendermint.
+
+For Tendermint, refer to [Tendermint Documentation](https://tendermint.com/docs/tendermint-core/running-in-production.html#monitoring-tendermint){:target="\_blank" rel="noopener"}.
 
 ## Private Messages
 
