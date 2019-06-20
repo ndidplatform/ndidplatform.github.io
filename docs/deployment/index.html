@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Deployment · NDID Platform</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;IMPORTANT:&lt;/strong&gt; When node sending or receiving message to/from another node through private channel or message queue, it will store all messages, both inbound and outbound, to Redis (memory). Client app &lt;strong&gt;MUST&lt;/strong&gt; call an API to remove these messages after they&#x27;ve fetched the messages and store them in their local database. If client were to neglect this, node may fail to function. See &lt;a href=&quot;/deployment.html#private-messages&quot;&gt;Private Messages&lt;/a&gt; section.&lt;/p&gt;
+&lt;/blockquote&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Deployment · NDID Platform"/><meta property="og:type" content="website"/><meta property="og:url" content="https://ndidplatform.github.io/"/><meta property="og:description" content="&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;IMPORTANT:&lt;/strong&gt; When node sending or receiving message to/from another node through private channel or message queue, it will store all messages, both inbound and outbound, to Redis (memory). Client app &lt;strong&gt;MUST&lt;/strong&gt; call an API to remove these messages after they&#x27;ve fetched the messages and store them in their local database. If client were to neglect this, node may fail to function. See &lt;a href=&quot;/deployment.html#private-messages&quot;&gt;Private Messages&lt;/a&gt; section.&lt;/p&gt;
+&lt;/blockquote&gt;
+"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/undefined"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script><script type="text/javascript" src="/js/custom.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">NDID Platform</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/introduction" target="_self">Docs</a></li><li class=""><a href="/docs/api" target="_self">API</a></li><li class=""><a href="https://github.com/ndidplatform" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>NDID Platform</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">NDID Platform</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/introduction">Introduction</a></li><li class="navListItem"><a class="navItem" href="/docs/technical-overview">Technical Overview</a></li><li class="navListItem"><a class="navItem" href="/docs/components">Components</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/deployment">Deployment</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/getting-started-setup">Setup</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started-ndid">NDID</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started-rp">RP</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started-idp">IdP</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started-as">AS</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Flows</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/flow-create-identity">Create Identity / Onboarding Flows</a></li><li class="navListItem"><a class="navItem" href="/docs/flow-add-accessor">Add Accessor Flows</a></li><li class="navListItem"><a class="navItem" href="/docs/flow-data-request">Data Request Flows</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Usage</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/usage-mode-2-data-request">Usage (Mode 2, Data request)</a></li><li class="navListItem"><a class="navItem" href="/docs/usage-more-usages">More Usages</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Examples</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/examples-authen-flow">Example authentication flow</a></li><li class="navListItem"><a class="navItem" href="/docs/examples-data-request-flow">Example Data Request Flow</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">DEPRECATED</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/onboarding-story">Onboarding Story</a></li><li class="navListItem"><a class="navItem" href="/docs/public-storage">Public storage</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Deployment</h1></header><article><div><span><blockquote>
+<p><strong>IMPORTANT:</strong> When node sending or receiving message to/from another node through private channel or message queue, it will store all messages, both inbound and outbound, to Redis (memory). Client app <strong>MUST</strong> call an API to remove these messages after they've fetched the messages and store them in their local database. If client were to neglect this, node may fail to function. See <a href="/deployment.html#private-messages">Private Messages</a> section.</p>
+</blockquote>
+<blockquote>
+<p><strong>IMPORTANT:</strong> When RP node receives data from AS node, it will store data to Redis (memory). RP client app <strong>MUST</strong> call an API to remove stored data after they've fetched and store them in their local database. If client were to neglect this, node may fail to function. See <a href="/deployment.html#data-received-from-as">Data received from AS</a> section.</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="requirements-specification"></a><a href="#requirements-specification" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Requirements Specification</h2>
+<h3><a class="anchor" aria-hidden="true" id="hardware"></a><a href="#hardware" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Hardware</h3>
+<p>Recommended:</p>
+<ul>
+<li>x64 CPU with 4 cores</li>
+<li>At least 8 GB of memory</li>
+<li>SSD with at least 200 IOPS</li>
+</ul>
+<p>The specs may vary depending on the load and it may require significant disk space over time.</p>
+<h3><a class="anchor" aria-hidden="true" id="operating-system"></a><a href="#operating-system" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Operating System</h3>
+<ul>
+<li>Linux</li>
+<li>macOS</li>
+<li>Windows
+<ul>
+<li>Not fully supported but it is possible to run the stack on Windows except for Redis which has no native support on Windows. You may use Docker for Windows to run Redis at our own risk.</li>
+</ul></li>
+</ul>
+<p>Another option is to run the stack in Docker containers. System requirements can be found on <a href="https://docs.docker.com/" target="_blank" rel="nofollow noreferrer noopener">Docker website</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="dos-exposure-and-mitigation"></a><a href="#dos-exposure-and-mitigation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>DOS Exposure and Mitigation</h2>
+<p>There are two parts that exposed to the Internet, P2P communication channel or message queue and blockchain, Tendermint.</p>
+<h2><a class="anchor" aria-hidden="true" id="monitoring"></a><a href="#monitoring" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Monitoring</h2>
+<p>API main server and MQ service server can be configured to report and serve Prometheus metrics.</p>
+<p>ABCI app (smart-contract) Prometheus metrics are served on the same port as Tendermint.</p>
+<p>For Tendermint, refer to <a href="https://tendermint.com/docs/tendermint-core/running-in-production.html#monitoring-tendermint" target="_blank" rel="nofollow noreferrer noopener">Tendermint Documentation</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="private-messages"></a><a href="#private-messages" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Private Messages</h2>
+<p>Private messages are messages which is sent or received via private channel or message queue. They contain data private to participating parties/nodes in a request. These messages should be kept as an evidence in case there is a dispute later on.</p>
+<p>Messages are saved to Redis once node sent a message to another node or received a message from another node and they will not be automatically removed. Client <strong>MUST</strong> call an API to remove these messages themselves. Failure to do so may cause node to stop functioning due to out of memory error or Redis operation timeout.</p>
+<h3><a class="anchor" aria-hidden="true" id="related-apis"></a><a href="#related-apis" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Related APIs</h3>
+<p>You can fetch private messages by request ID using API <a href="https://app.swaggerhub.com/apis/NDID/utility/3.0#/default/get_utility_private_messages__request_id_" target="_blank" rel="nofollow noreferrer noopener">GET <code>/utility/private_messages/{request_id}</code></a></p>
+<p>You will most likely want to remove messages by request ID through API <a href="https://app.swaggerhub.com/apis/NDID/utility/3.0#/default/post_utility_private_message_removal__request_id_" target="_blank" rel="nofollow noreferrer noopener">POST <code>/utility/private_message_removal/{request_id}</code></a> after the request is closed or timed out and you have fetched and saved messages to your local database.</p>
+<p>You can also remove all messages using API <a href="https://app.swaggerhub.com/apis/NDID/utility/3.0#/default/post_utility_private_message_removal" target="_blank" rel="nofollow noreferrer noopener">POST <code>/utility/private_message_removal</code></a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="data-received-from-as"></a><a href="#data-received-from-as" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Data received from AS</h2>
+<p>When RP receives data message from AS and has internally checked and set data received to the blockchain, it will save data to Redis. Stored data will not be automatically removed. RP client <strong>MUST</strong> call an API to remove data themselves. Failure to do so may cause node to stop functioning due to out of memory error or Redis operation timeout.</p>
+<h3><a class="anchor" aria-hidden="true" id="related-apis-1"></a><a href="#related-apis-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Related APIs</h3>
+<p>You can fetch data by request ID using API <a href="https://app.swaggerhub.com/apis/NDID/relying_party_api/3.0#/default/get_request_data" target="_blank" rel="nofollow noreferrer noopener">GET <code>/rp/request_data/{request_id}</code></a></p>
+<p>You will most likely want to remove data by request ID through API <a href="https://app.swaggerhub.com/apis/NDID/relying_party_api/3.0#/default/post_rp_request_data_removal__request_id_" target="_blank" rel="nofollow noreferrer noopener">POST <code>/rp/request_data_removal/{request_id}</code></a> after you have fetched and saved data to your local database.</p>
+<p>You can also remove all data using API <a href="https://app.swaggerhub.com/apis/NDID/utility/3.0#/default/post_utility_private_message_removal" target="_blank" rel="nofollow noreferrer noopener">POST <code>/rp/request_data_removal</code></a>.</p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 6/17/2019</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/components"><span class="arrow-prev">← </span><span>Components</span></a><a class="docs-next button" href="/docs/getting-started-setup"><span>Setup</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#requirements-specification">Requirements Specification</a><ul class="toc-headings"><li><a href="#hardware">Hardware</a></li><li><a href="#operating-system">Operating System</a></li></ul></li><li><a href="#dos-exposure-and-mitigation">DOS Exposure and Mitigation</a></li><li><a href="#monitoring">Monitoring</a></li><li><a href="#private-messages">Private Messages</a><ul class="toc-headings"><li><a href="#related-apis">Related APIs</a></li></ul></li><li><a href="#data-received-from-as">Data received from AS</a><ul class="toc-headings"><li><a href="#related-apis-1">Related APIs</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/introduction">Introduction</a><a href="/docs/getting-started-setup">Getting Started</a><a href="/docs/api">API Reference</a></div><div><h5>Community</h5><a href="http://www.ndid.co.th/" target="_blank" rel="noreferrer noopener">Official Site</a><a href="https://www.facebook.com/NationalDigitalID/" target="_blank" rel="noreferrer noopener">Facebook</a><a href="https://national-digital-id.slack.com/" target="_blank" rel="noreferrer noopener">Slack</a></div><div><h5>More</h5><a href="https://goo.gl/v4Cfpe" target="_blank" rel="noreferrer noopener">Whitepaper</a><a href="https://github.com/ndidplatform" target="_blank" rel="noreferrer noopener">GitHub</a></div></section><section class="copyright"></section></footer></div></body></html>

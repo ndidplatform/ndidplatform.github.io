@@ -1,0 +1,202 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Onboarding Story · NDID Platform</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Disclaimer:&lt;/strong&gt; The purpose of this page is to illustrate the Onboarding scenario outlined in the &lt;a href=&quot;/#quick-overview&quot;&gt;quick overview&lt;/a&gt; using concrete examples, to help make it easier to grasp how the platform works. This document is &lt;strong&gt;not&lt;/strong&gt; the definitive source of information, just a learning aid. Please look at the &lt;a href=&quot;https://docs.google.com/document/d/1SKydNM-Nyox62m3vuvYgFYCr8ABVQV8RhjwiMjdCpQ8/edit#heading=h.qf2lmu8vfgym&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer noopener&quot;&gt;whitepaper&lt;/a&gt; for the full description of the platform.&lt;/p&gt;
+&lt;/blockquote&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Onboarding Story · NDID Platform"/><meta property="og:type" content="website"/><meta property="og:url" content="https://ndidplatform.github.io/"/><meta property="og:description" content="&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Disclaimer:&lt;/strong&gt; The purpose of this page is to illustrate the Onboarding scenario outlined in the &lt;a href=&quot;/#quick-overview&quot;&gt;quick overview&lt;/a&gt; using concrete examples, to help make it easier to grasp how the platform works. This document is &lt;strong&gt;not&lt;/strong&gt; the definitive source of information, just a learning aid. Please look at the &lt;a href=&quot;https://docs.google.com/document/d/1SKydNM-Nyox62m3vuvYgFYCr8ABVQV8RhjwiMjdCpQ8/edit#heading=h.qf2lmu8vfgym&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer noopener&quot;&gt;whitepaper&lt;/a&gt; for the full description of the platform.&lt;/p&gt;
+&lt;/blockquote&gt;
+"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/undefined"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script><script type="text/javascript" src="/js/custom.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">NDID Platform</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/introduction" target="_self">Docs</a></li><li class=""><a href="/docs/api" target="_self">API</a></li><li class=""><a href="https://github.com/ndidplatform" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>DEPRECATED</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">NDID Platform</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/introduction">Introduction</a></li><li class="navListItem"><a class="navItem" href="/docs/technical-overview">Technical Overview</a></li><li class="navListItem"><a class="navItem" href="/docs/components">Components</a></li><li class="navListItem"><a class="navItem" href="/docs/deployment">Deployment</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/getting-started-setup">Setup</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started-ndid">NDID</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started-rp">RP</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started-idp">IdP</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started-as">AS</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Flows</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/flow-create-identity">Create Identity / Onboarding Flows</a></li><li class="navListItem"><a class="navItem" href="/docs/flow-add-accessor">Add Accessor Flows</a></li><li class="navListItem"><a class="navItem" href="/docs/flow-data-request">Data Request Flows</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Usage</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/usage-mode-2-data-request">Usage (Mode 2, Data request)</a></li><li class="navListItem"><a class="navItem" href="/docs/usage-more-usages">More Usages</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Examples</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/examples-authen-flow">Example authentication flow</a></li><li class="navListItem"><a class="navItem" href="/docs/examples-data-request-flow">Example Data Request Flow</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">DEPRECATED</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/docs/onboarding-story">Onboarding Story</a></li><li class="navListItem"><a class="navItem" href="/docs/public-storage">Public storage</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Onboarding Story</h1></header><article><div><span><blockquote>
+<p><strong>Disclaimer:</strong> The purpose of this page is to illustrate the Onboarding scenario outlined in the <a href="/#quick-overview">quick overview</a> using concrete examples, to help make it easier to grasp how the platform works. This document is <strong>not</strong> the definitive source of information, just a learning aid. Please look at the <a href="https://docs.google.com/document/d/1SKydNM-Nyox62m3vuvYgFYCr8ABVQV8RhjwiMjdCpQ8/edit#heading=h.qf2lmu8vfgym" target="_blank" rel="nofollow noreferrer noopener">whitepaper</a> for the full description of the platform.</p>
+</blockquote>
+<pre><code class="hljs css language-yaml"><span class="hljs-comment"># Reference ID is used in case of communication error between IdP and platform,</span>
+<span class="hljs-comment"># to prevent the same request from being executed twice.</span>
+<span class="hljs-attr">reference_id:</span> <span class="hljs-string">"e3cb44c9-8848-4dec-98c8-8083f373b1f7"</span>
+
+<span class="hljs-comment">#The namespace of the ID (i.e. ID Card, Passport, etc)</span>
+<span class="hljs-attr">namespace:</span> <span class="hljs-string">"citizenid"</span>
+
+
+<span class="hljs-comment">#Identifier : The unique identifier under the namespace (i.e. ID Card Number, Passport Number, etc). </span>
+<span class="hljs-comment">#The list of {namespace, Identifier} pair can be grouped together to identify an individual.</span>
+<span class="hljs-attr">identifier:</span> <span class="hljs-string">"1234567890123"</span>
+
+
+<span class="hljs-comment">#Accessor method to allow zero-knowledge proof of consent</span>
+<span class="hljs-comment"># 1 device 1 accessor value</span>
+<span class="hljs-comment"># accessor_id &gt; index of accessor_key &gt; local ?</span>
+<span class="hljs-comment"># accessor_key is a public key of the user</span>
+<span class="hljs-comment">#Example</span>
+<span class="hljs-attr">accessor_type:</span> <span class="hljs-string">"RSA-2048"</span>
+<span class="hljs-attr">accessor_key:</span> <span class="hljs-string">"AAAAB3NzaC1yc2EAAAADAQABAAAB…"</span>
+<span class="hljs-attr">accessor_id:</span> <span class="hljs-string">"acc_f328-53da-4d51-a927-3cc6d3ed3feb"</span>
+
+<span class="hljs-comment"># Identity Assurance Level. Assurance level of KYC process.</span>
+<span class="hljs-comment"># Currently [as of May 2018]:</span>
+<span class="hljs-comment">#   IAL1 = minimal proof of identity = weak identity verification e.g. copy of id card</span>
+<span class="hljs-comment">#   IAL2.1-2.3 = Stronger identity verification with option to verify biometric data as a tougher measure</span>
+<span class="hljs-comment">#   IAL3 = Strongest identity assurance level requiring more than one identification documents and biometric comparison is compulsary</span>
+<span class="hljs-attr">ial:</span> <span class="hljs-string">"2.3"</span>
+
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="scenario-1-onboarding-new-identity"></a><a href="#scenario-1-onboarding-new-identity" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Scenario#1 : Onboarding new identity</h2>
+<p><img src="/img/onboarding-identity.png" alt="NDID Node"></p>
+<ul>
+<li>IdP→Platform : POST: /identity(body)</li>
+</ul>
+<pre><code class="hljs css language-yaml"><span class="hljs-string">{</span>   
+<span class="hljs-attr">  "reference_number":</span><span class="hljs-string">"123456789"</span><span class="hljs-string">,</span>
+<span class="hljs-attr">  "namespace":</span> <span class="hljs-string">"citizenid"</span><span class="hljs-string">,</span>
+<span class="hljs-attr">  "identifier":</span> <span class="hljs-string">"1234567890123"</span><span class="hljs-string">,</span>
+<span class="hljs-attr">  "accessor_type":</span> <span class="hljs-string">"RSA-2048"</span><span class="hljs-string">,</span>
+<span class="hljs-attr">  "accessor_key":</span> <span class="hljs-string">"AAAAB3NzaC1yc2EAAAADAQABAAAB…"</span><span class="hljs-string">,</span>
+<span class="hljs-attr">  "accessor_id":</span> <span class="hljs-string">"acc_f328-53da-4d51-a927-3cc6d3ed3feb"</span><span class="hljs-string">,</span>
+<span class="hljs-attr">  "ial":</span> <span class="hljs-string">"2.3"</span>
+<span class="hljs-string">}</span>
+</code></pre>
+<p>The API validates the request, generates a request ID and returns a response:</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-number">200</span> <span class="hljs-string">OK</span> 
+<span class="hljs-attr">request_id:</span> <span class="hljs-string">'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'</span>
+<span class="hljs-attr">exist:</span> <span class="hljs-string">boolean;</span> <span class="hljs-literal">false</span> <span class="hljs-string">if</span> <span class="hljs-string">you</span> <span class="hljs-string">are</span> <span class="hljs-string">the</span> <span class="hljs-string">first</span> <span class="hljs-string">IdP</span> <span class="hljs-string">to</span> <span class="hljs-string">onboard</span> <span class="hljs-string">this</span> <span class="hljs-string">user</span>
+<span class="hljs-attr">secret:</span> <span class="hljs-string">'&lt;secret-calculated-by-platform&gt;'</span>
+</code></pre>
+<ul>
+<li>response code</li>
+</ul>
+<pre><code class="hljs css language-yaml"><span class="hljs-number">200</span>  <span class="hljs-attr">Successful:</span> <span class="hljs-string">return</span> <span class="hljs-string">request_id</span>
+<span class="hljs-number">400</span>  <span class="hljs-attr">Error:</span> <span class="hljs-string">Invalid</span> <span class="hljs-string">accessor</span> <span class="hljs-string">method</span> <span class="hljs-string">or</span> <span class="hljs-string">accessor</span> <span class="hljs-string">value</span>
+</code></pre>
+<ul>
+<li>This request_id can be used to check the status of request through <a href="https://app.swaggerhub.com/apis/ndid/identity/1.0#/default/get_request_status" target="_blank" rel="nofollow noreferrer noopener">GET /identity/requests/{request_id}</a> API.</li>
+</ul>
+<ul>
+<li><strong>IdP</strong> will check if ns/id exists before onboarding new identity, if existed <strong>IdP</strong> triggers the request for user consent.</li>
+<li>After obtaining user consent, <strong>IdP</strong> will process onboarding or reject identity addition, and respond through same IdP callback url API, but with <code>type: onboard_request</code>.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="scenario-2-adding-new-accessor"></a><a href="#scenario-2-adding-new-accessor" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Scenario#2 : Adding new accessor</h2>
+<p><img src="/img/add-new-accessor.png" alt="NDID Node"></p>
+<ul>
+<li>IdP-&gt;Platform : POST /identity/citizenid/1234567890123/accessors</li>
+</ul>
+<pre><code class="hljs css language-yaml"><span class="hljs-string">{</span>
+<span class="hljs-attr">  "accessor_type":</span> <span class="hljs-string">"RSA-2048"</span><span class="hljs-string">,</span>
+<span class="hljs-attr">  "accessor_key":</span> <span class="hljs-string">"AAAAB3NzaC1yc2EAAAADAQABAAAB…"</span><span class="hljs-string">,</span>
+<span class="hljs-attr">  "accessor_id":</span> <span class="hljs-string">"acc_f328-53da-4d51-a927-3cc6d3ed3feb"</span>
+<span class="hljs-string">}</span>
+</code></pre>
+<ul>
+<li>The API validates the request, generates a request ID and returns a response:</li>
+</ul>
+<pre><code class="hljs css language-yaml"><span class="hljs-number">200</span> <span class="hljs-string">OK</span> 
+<span class="hljs-attr">request_id:</span> <span class="hljs-string">'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'</span>
+</code></pre>
+<ul>
+<li>response code</li>
+</ul>
+<pre><code class="hljs css language-yaml"><span class="hljs-number">200</span>  <span class="hljs-attr">Successful:</span> <span class="hljs-string">return</span> <span class="hljs-string">request_id</span>
+<span class="hljs-number">202</span> <span class="hljs-string">"request_id"</span> <span class="hljs-string">Request</span> <span class="hljs-string">Accepted</span> <span class="hljs-string">–</span> <span class="hljs-string">Async</span> <span class="hljs-string">processing,</span> <span class="hljs-string">please</span> <span class="hljs-string">check</span> <span class="hljs-string">back</span> <span class="hljs-string">or</span> <span class="hljs-string">wait</span> <span class="hljs-string">for</span> <span class="hljs-string">response</span> <span class="hljs-string">at</span> <span class="hljs-string">Callback</span> <span class="hljs-string">URL</span>
+<span class="hljs-number">400</span>  <span class="hljs-attr">Error:</span> <span class="hljs-string">Invalid</span> <span class="hljs-string">accessor</span> <span class="hljs-string">type</span>
+<span class="hljs-number">403</span>  <span class="hljs-attr">Error:</span> <span class="hljs-string">Identity</span> <span class="hljs-string">does</span> <span class="hljs-string">not</span> <span class="hljs-string">exist</span>
+</code></pre>
+<ul>
+<li>After obtaining user consent, IdP can add new accessor to {namespace,identifier}. It will however return fail if this IdP does not associated with {namespace,identifier}.
+Respond will be send through same IdP callback url API, but with <code>type: onboard_request</code>.</li>
+</ul>
+<p><strong>POST /identity/request/ef6f4c9c-818b-42b8-8904-3d97c4c520f6</strong></p>
+<pre><code class="hljs css language-yaml"><span class="hljs-meta">*response</span> <span class="hljs-string">code*</span>
+<span class="hljs-number">201</span> <span class="hljs-string">Status</span> <span class="hljs-string">Create/Update</span> <span class="hljs-string">Accepted</span>
+<span class="hljs-number">400</span> <span class="hljs-string">Status</span> <span class="hljs-string">User</span> <span class="hljs-string">reject</span>
+<span class="hljs-number">408</span> <span class="hljs-string">Status</span> <span class="hljs-string">Timeout</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="scenario-3-adding-new-identifier-not-support-in-phase-1"></a><a href="#scenario-3-adding-new-identifier-not-support-in-phase-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Scenario#3 : Adding new identifier (NOT SUPPORT IN PHASE 1)</h2>
+<p><img src="/img/add-new-identifier.png" alt="NDID Node"></p>
+<ul>
+<li>IdP/RP/AS-&gt;Platform : POST /identity/{namespace}/{identifier}</li>
+</ul>
+<pre><code class="hljs css language-yaml"><span class="hljs-string">{</span>
+<span class="hljs-attr">"identifiers":</span> <span class="hljs-string">[</span>
+    <span class="hljs-string">"passport|AA123456789"</span><span class="hljs-string">,"mobile|0831111111"</span>
+  <span class="hljs-string">]</span>
+<span class="hljs-string">}</span>
+</code></pre>
+<ul>
+<li>The API validates the request, generates a request ID and returns a response:</li>
+</ul>
+<pre><code class="hljs css language-yaml"><span class="hljs-number">200</span> <span class="hljs-string">OK</span> 
+<span class="hljs-attr">request_id:</span> <span class="hljs-string">'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'</span>
+</code></pre>
+<ul>
+<li>response code</li>
+</ul>
+<pre><code class="hljs css language-yaml"><span class="hljs-number">200</span>  <span class="hljs-attr">Successful:</span> <span class="hljs-string">return</span> <span class="hljs-string">request_id</span>
+<span class="hljs-number">202</span> <span class="hljs-string">"request_id"</span> <span class="hljs-string">Request</span> <span class="hljs-string">Accepted</span> <span class="hljs-string">–</span> <span class="hljs-string">Async</span> <span class="hljs-string">processing,</span> <span class="hljs-string">please</span> <span class="hljs-string">check</span> <span class="hljs-string">back</span> <span class="hljs-string">or</span> <span class="hljs-string">wait</span> <span class="hljs-string">for</span> <span class="hljs-string">response</span> <span class="hljs-string">at</span> <span class="hljs-string">Callback</span> <span class="hljs-string">URL</span>
+<span class="hljs-number">400</span>  <span class="hljs-attr">Error:</span> <span class="hljs-string">Invalid</span> <span class="hljs-string">endorsement</span> <span class="hljs-string">type</span>
+<span class="hljs-number">404</span>  <span class="hljs-attr">Error:</span> <span class="hljs-string">Identity</span> <span class="hljs-string">does</span> <span class="hljs-string">not</span> <span class="hljs-string">exist</span>
+</code></pre>
+<ul>
+<li>After obtaining user consent, IdP can add the new namespace and identifier. This scenario will fail if {namespace,identifier} does not exist at callback url [POST /identity/request/{identifier}] API.</li>
+</ul>
+<p><strong>POST /identity/request/ef6f4c9c-818b-42b8-8904-3d97c4c520f6</strong></p>
+<pre><code class="hljs css language-yaml"><span class="hljs-meta">*response</span> <span class="hljs-string">code*</span>
+<span class="hljs-number">201</span> <span class="hljs-string">Status</span> <span class="hljs-string">Create/Update</span> <span class="hljs-string">Accepted</span>
+<span class="hljs-number">400</span> <span class="hljs-string">Status</span> <span class="hljs-string">User</span> <span class="hljs-string">reject</span>
+<span class="hljs-number">408</span> <span class="hljs-string">Status</span> <span class="hljs-string">Timeout</span>
+</code></pre>
+<div class="flash mb-3 flash-warn">
+  @todo #1 which organization should have the rights authority to add new namespace?
+</div>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 6/14/2019</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/examples-data-request-flow"><span class="arrow-prev">← </span><span>Example Data Request Flow</span></a><a class="docs-next button" href="/docs/public-storage"><span>Public storage</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#scenario-1-onboarding-new-identity">Scenario#1 : Onboarding new identity</a></li><li><a href="#scenario-2-adding-new-accessor">Scenario#2 : Adding new accessor</a></li><li><a href="#scenario-3-adding-new-identifier-not-support-in-phase-1">Scenario#3 : Adding new identifier (NOT SUPPORT IN PHASE 1)</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/introduction">Introduction</a><a href="/docs/getting-started-setup">Getting Started</a><a href="/docs/api">API Reference</a></div><div><h5>Community</h5><a href="http://www.ndid.co.th/" target="_blank" rel="noreferrer noopener">Official Site</a><a href="https://www.facebook.com/NationalDigitalID/" target="_blank" rel="noreferrer noopener">Facebook</a><a href="https://national-digital-id.slack.com/" target="_blank" rel="noreferrer noopener">Slack</a></div><div><h5>More</h5><a href="https://goo.gl/v4Cfpe" target="_blank" rel="noreferrer noopener">Whitepaper</a><a href="https://github.com/ndidplatform" target="_blank" rel="noreferrer noopener">GitHub</a></div></section><section class="copyright"></section></footer></div></body></html>

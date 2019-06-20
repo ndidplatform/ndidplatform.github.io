@@ -1,0 +1,466 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Technical Overview · NDID Platform</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Disclaimer:&lt;/strong&gt; The purpose of this page is to illustrate the scenario outlined in the &lt;a href=&quot;introduction#quick-overview&quot;&gt;quick overview&lt;/a&gt; using concrete examples, to help make it easier to grasp how the platform works. This document is &lt;strong&gt;not&lt;/strong&gt; the definitive source of information, just a learning aid. Please look at the &lt;a href=&quot;https://docs.google.com/document/d/1SKydNM-Nyox62m3vuvYgFYCr8ABVQV8RhjwiMjdCpQ8/edit#heading=h.qf2lmu8vfgym&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer noopener&quot;&gt;whitepaper&lt;/a&gt; for the full description of the platform.&lt;/p&gt;
+&lt;/blockquote&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Technical Overview · NDID Platform"/><meta property="og:type" content="website"/><meta property="og:url" content="https://ndidplatform.github.io/"/><meta property="og:description" content="&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Disclaimer:&lt;/strong&gt; The purpose of this page is to illustrate the scenario outlined in the &lt;a href=&quot;introduction#quick-overview&quot;&gt;quick overview&lt;/a&gt; using concrete examples, to help make it easier to grasp how the platform works. This document is &lt;strong&gt;not&lt;/strong&gt; the definitive source of information, just a learning aid. Please look at the &lt;a href=&quot;https://docs.google.com/document/d/1SKydNM-Nyox62m3vuvYgFYCr8ABVQV8RhjwiMjdCpQ8/edit#heading=h.qf2lmu8vfgym&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer noopener&quot;&gt;whitepaper&lt;/a&gt; for the full description of the platform.&lt;/p&gt;
+&lt;/blockquote&gt;
+"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/undefined"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script><script type="text/javascript" src="/js/custom.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">NDID Platform</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/introduction" target="_self">Docs</a></li><li class=""><a href="/docs/api" target="_self">API</a></li><li class=""><a href="https://github.com/ndidplatform" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>NDID Platform</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">NDID Platform</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/introduction">Introduction</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/technical-overview">Technical Overview</a></li><li class="navListItem"><a class="navItem" href="/docs/components">Components</a></li><li class="navListItem"><a class="navItem" href="/docs/deployment">Deployment</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/getting-started-setup">Setup</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started-ndid">NDID</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started-rp">RP</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started-idp">IdP</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started-as">AS</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Flows</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/flow-create-identity">Create Identity / Onboarding Flows</a></li><li class="navListItem"><a class="navItem" href="/docs/flow-add-accessor">Add Accessor Flows</a></li><li class="navListItem"><a class="navItem" href="/docs/flow-data-request">Data Request Flows</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Usage</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/usage-mode-2-data-request">Usage (Mode 2, Data request)</a></li><li class="navListItem"><a class="navItem" href="/docs/usage-more-usages">More Usages</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Examples</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/examples-authen-flow">Example authentication flow</a></li><li class="navListItem"><a class="navItem" href="/docs/examples-data-request-flow">Example Data Request Flow</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">DEPRECATED</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/onboarding-story">Onboarding Story</a></li><li class="navListItem"><a class="navItem" href="/docs/public-storage">Public storage</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Technical Overview</h1></header><article><div><span><blockquote>
+<p><strong>Disclaimer:</strong> The purpose of this page is to illustrate the scenario outlined in the <a href="introduction#quick-overview">quick overview</a> using concrete examples, to help make it easier to grasp how the platform works. This document is <strong>not</strong> the definitive source of information, just a learning aid. Please look at the <a href="https://docs.google.com/document/d/1SKydNM-Nyox62m3vuvYgFYCr8ABVQV8RhjwiMjdCpQ8/edit#heading=h.qf2lmu8vfgym" target="_blank" rel="nofollow noreferrer noopener">whitepaper</a> for the full description of the platform.</p>
+</blockquote>
+<p><strong>Recommended reading:</strong> If you haven’t read it yet, we highly recommend that you read the <a href="https://standard.etda.or.th/?p=8577" target="_blank" rel="nofollow noreferrer noopener">Digital Identity Guideline for Thailand – Overview and Glossary (DRAFT)</a> document to understand the overall process of the Digital ID model, as well as precise meanings of each term.</p>
+<h2><a class="anchor" aria-hidden="true" id="scenario-requesting-a-bank-statement-for-visa-application"></a><a href="#scenario-requesting-a-bank-statement-for-visa-application" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Scenario: Requesting a bank statement for Visa application</h2>
+<p>In this scenario, the User is at an embassy to apply for a Visa.
+The embassy is the <strong>Relying Party (RP)</strong> as they relies on NDID platform
+to verify the user’s identity through an <strong>Identity Provider (IdP)</strong>
+and retrieving the bank statement form the <strong>Authoritative Source (AS)</strong>, the bank.</p>
+<h2><a class="anchor" aria-hidden="true" id="background"></a><a href="#background" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Background</h2>
+<ul>
+<li><p>Each participating party (RP, IdP, AS) runs the <strong>NDID Node</strong>,
+which operates the NDID Platform in a decentralized way.</p>
+<p>From the whitepaper:</p>
+<blockquote>
+<p>The system is decentralized. Every participants shall host their own digital identification platform. The platform uses blockchain to synchronize necessary database between each participant. In term of blockchain, each participant becomes a node in the blockchain system.</p>
+<p><img src="/img/architecture.png" alt="Architecture diagram"></p>
+</blockquote></li>
+<li><p>The <strong>NDID Node:</strong></p>
+<ul>
+<li>Exposes a <strong>REST API</strong> for integration with client applications.</li>
+<li>Synchronizes the shared state (transaction history) through blockchain technology (Tendermint).</li>
+<li>Stores local state specific to the node.</li>
+<li>Communicates securely with other nodes through message queue.</li>
+</ul>
+<p><img src="/img/ndid-node.png" alt="NDID Node"></p>
+<p><strong>Communication between node:</strong></p>
+<p><img src="/img/communication.png" alt="Communication between nodes"></p></li>
+<li><p>Given the following node exists:</p>
+<table>
+<thead>
+<tr><th>participant</th><th>node_id</th></tr>
+</thead>
+<tbody>
+<tr><td>RP</td><td>&lt;x-guid&gt;RP_06626-b9c7-4c52-abf2-019220637c91&lt;/x-guid&gt;</td></tr>
+<tr><td>IdP</td><td>&lt;x-guid&gt;IdP_f924-5069-4c6a-a4e4-134cd1a3d3d0&lt;/x-guid&gt;</td></tr>
+<tr><td>AS</td><td>&lt;x-guid&gt;AS_12767-0030-4a73-9593-ffd6d010c63c&lt;/x-guid&gt;</td></tr>
+</tbody>
+</table>
+<p>Note: A node ID may be a GUID, but we use this format to make the document easier to read.</p></li>
+<li><p>When a party who wants to joins the platform registers, NDID will add their node information to the blockchain</p>
+<table>
+<thead>
+<tr><th>node_id</th><th>public_key</th></tr>
+</thead>
+<tbody>
+<tr><td>&lt;x-guid&gt;RP_06626-b9c7-4c52-abf2-019220637c91&lt;/x-guid&gt;</td><td>AAAAB3NzaC1yc2EAAAADAQABAAABAQC+RP+svJPfe…</td></tr>
+<tr><td>&lt;x-guid&gt;IdP_f924-5069-4c6a-a4e4-134cd1a3d3d0&lt;/x-guid&gt;</td><td>AAAAB3NzaC1yc2EAAAADAQABAAABAQC+IdP+lk1ax…</td></tr>
+<tr><td>&lt;x-guid&gt;AS_12767-0030-4a73-9593-ffd6d010c63c&lt;/x-guid&gt;</td><td>AAAAB3NzaC1yc2EAAAADAQABAAABAQD+AS+n0IWKC…</td></tr>
+</tbody>
+</table>
+</li>
+<li><p>When an NDID Node joins the platform, they have to advertise their message queue contact address (IP address and port).
+This data will go into the blockchain:</p>
+  <div class="flash mb-3 flash-warn">
+    @todo #2 Also give a name to each of these mappings.
+  </div>
+<ul>
+<li><p><strong>node_id → message queue address mapping</strong> to allow private data communication via message queue.</p>
+<table>
+<thead>
+<tr><th>node_id</th><th>message_queue_address</th></tr>
+</thead>
+<tbody>
+<tr><td>&lt;x-guid&gt;RP_06626-b9c7-4c52-abf2-019220637c91&lt;/x-guid&gt;</td><td>129.45.112.199:5000</td></tr>
+<tr><td>&lt;x-guid&gt;IdP_f924-5069-4c6a-a4e4-134cd1a3d3d0&lt;/x-guid&gt;</td><td>65.153.47.21:5000</td></tr>
+<tr><td>&lt;x-guid&gt;AS_12767-0030-4a73-9593-ffd6d010c63c&lt;/x-guid&gt;</td><td>64.94.137.169:5000</td></tr>
+</tbody>
+</table>
+</li>
+</ul></li>
+<li><p><strong>IdP Enrolment/Onboarding:</strong> The User must have their identities registered with an IdP (through an “enrolment” process).
+Check out the flow <a href="https://docs.google.com/document/d/1SKydNM-Nyox62m3vuvYgFYCr8ABVQV8RhjwiMjdCpQ8/edit#heading=h.fw1fc2xwjef7" target="_blank" rel="nofollow noreferrer noopener">in the whitepaper</a>.</p>
+<p>First, the user has to apply to enrol with the IdP.
+The IdP will verify the applicant’s identity (identity proofing).
+If the identity proofing process is very strict,
+the registered identity will have a high <strong>IAL (Identity Assurance Level)</strong>.</p>
+<p>In this scenario, the user onboarded with the IdP using his <strong>citizen ID, 1-2345-67890-12-3</strong>.</p>
+<ul>
+<li><p><strong>How identity data is stored:</strong> Some parts of data related to each identity is stored privately by each participating party, while others are on the blockchain.</p>
+<p><img src="/img/identity-data.png" alt="Identity data"></p></li>
+<li><p>The IdP holds this data privately:</p>
+<table>
+<thead>
+<tr><th>namespace</th><th>identifier</th><th>reference_group_code</th><th>accessor_id</th><th>accessor_private_key</th></tr>
+</thead>
+<tbody>
+<tr><td>citizen_id</td><td>1234567890123</td><td>&lt;x-guid&gt;0280cf8e-de45-4e4e-aec7-c7a61d11b643&lt;/x-guid&gt;</td><td>&lt;x-guid&gt;acc_f328-53da-4d51-a927-3cc6d3ed3feb&lt;/x-guid&gt;</td><td>&lt;x-pk&gt;-----BEGIN RSA PRIVATE KEY-----<br />MIIEowIBAAKCAQEAxy/CSXWu...&lt;/x-pk&gt;</td></tr>
+</tbody>
+</table>
+<p>Note that each identity / reference_group_code may have more than one accessor (id and private key) per IdP</p></li>
+<li><p>These data are stored on the blockchain:</p>
+<p><img src="/img/identity-data-diagram.png" alt="Identity data on blockchain diagram"></p>
+<ul>
+<li><p><strong>reference_group_code → sid mapping</strong></p>
+<table>
+<thead>
+<tr><th>reference_group_code</th><th>namespace</th><th>identifier</th></tr>
+</thead>
+<tbody>
+<tr><td>&lt;x-guid&gt;0280cf8e-de45-4e4e-aec7-c7a61d11b643&lt;/x-guid&gt;</td><td>citizen_id</td><td>hash('1234567890123')</td></tr>
+</tbody>
+</table>
+</li>
+<li><p><strong>reference_group_code → node_id (IdP) and accessor mapping</strong></p>
+<p>| reference_group_code | node_id | accessor_id |
+| --- | --- |
+| &lt;x-guid&gt;0280cf8e-de45-4e4e-aec7-c7a61d11b643&lt;/x-guid&gt; | &lt;x-guid&gt;IdP_f924-5069-4c6a-a4e4-134cd1a3d3d0&lt;/x-guid&gt; | &lt;x-guid&gt;acc_f328-53da-4d51-a927-3cc6d3ed3feb&lt;/x-guid&gt; |</p></li>
+<li><p><strong>Accessor</strong> for signing a consent request response:</p>
+<p>| accessor_id | accessor_type | accessor_key |
+| --- | --- | --- | --- |
+| &lt;x-guid&gt;acc_f328-53da-4d51-a927-3cc6d3ed3feb&lt;/x-guid&gt; | RSA-2048 | AAAAB3NzaC1yc2EAAAADAQABAAAB… |</p></li>
+</ul></li>
+</ul></li>
+</ul>
+<p>Given these data, let’s proceed with the scenario.</p>
+<div markdown="1" class="flash mb-3">
+<p><strong>Note:</strong> The request body is written in a format similar to YAML, for ease of reading.</p>
+</div>
+<h2><a class="anchor" aria-hidden="true" id="rp-rarr-platform-post-rp-requests-citizen_id-01234567890123-https-appswaggerhubcom-apis-ndid-relying_party_api-30-default-send_request_to_id"></a><a href="#rp-rarr-platform-post-rp-requests-citizen_id-01234567890123-https-appswaggerhubcom-apis-ndid-relying_party_api-30-default-send_request_to_id" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RP→Platform: <a href="https://app.swaggerhub.com/apis/NDID/relying_party_api/3.0#/default/send_request_to_id" target="_blank" rel="nofollow noreferrer noopener">POST /rp/requests/citizen_id/01234567890123</a></h2>
+<pre><code class="hljs css language-yaml"><span class="hljs-comment"># Reference ID is used in case of communication error between RP and platform,</span>
+<span class="hljs-comment"># to prevent the same request from being executed twice in short timeframe.</span>
+<span class="hljs-attr">reference_id:</span> <span class="hljs-string">'e3cb44c9-8848-4dec-98c8-8083f373b1f7'</span>
+
+<span class="hljs-comment"># Callback URL to report result of creating request since an API is asynchronous and request status when there is an update</span>
+<span class="hljs-attr">callback_url:</span> <span class="hljs-string">'https://&lt;rp-webservice&gt;/webhook'</span>
+
+<span class="hljs-attr">mode:</span> <span class="hljs-number">2</span>
+
+<span class="hljs-comment"># List of IdPs. May be empty to send to all IdPs where conditions are met (knwon identity, IAL, AAL).</span>
+<span class="hljs-attr">idp_id_list:</span> <span class="hljs-string">[]</span>
+
+<span class="hljs-comment"># List of data to request from AS.</span>
+<span class="hljs-comment"># This can be empty.</span>
+<span class="hljs-comment"># Multiple as_id can be provided as a list.  If the list is empty, then the platform will send request to all AS providing the service.  All AS should provide the same interface for the same service_id, so we can send the same set of params to all of them.</span>
+<span class="hljs-comment"># Count is the number of expected response.  One service_id maybe provided by multiple ASes, but RP may require answer from only n number of them, this number is count.  If count is larger than the number of item in [as_id] list, then count is set as count([as_id]).  (e.g. count &lt;= count([as_id]))</span>
+<span class="hljs-attr">data_request_list:</span> <span class="hljs-string">[{</span> 
+<span class="hljs-attr">    service_id:</span> <span class="hljs-string">'bank_statement'</span><span class="hljs-string">,</span> 
+<span class="hljs-attr">    as_id_list:</span> <span class="hljs-string">['AS1',</span> <span class="hljs-string">'AS2'</span><span class="hljs-string">],</span>
+<span class="hljs-attr">    min_as:</span> <span class="hljs-number">1</span><span class="hljs-string">,</span>
+<span class="hljs-attr">    request_params:</span> <span class="hljs-string">{</span> <span class="hljs-attr">format:</span> <span class="hljs-string">'pdf'</span> <span class="hljs-string">}</span> 
+  <span class="hljs-string">},</span> <span class="hljs-string">...</span>
+<span class="hljs-string">]</span>
+
+<span class="hljs-comment"># Message to display to user to ask for consent.</span>
+<span class="hljs-comment"># (RP must send message in correct language.)</span>
+<span class="hljs-attr">request_message:</span> <span class="hljs-string">'Please allow the embassy to access your bank statement for purpose of obtaining a Visa.'</span>
+
+<span class="hljs-comment"># Identity Assurance Level. Assurance level of KYC process.</span>
+<span class="hljs-comment"># Examples:</span>
+<span class="hljs-comment">#   IAL1 = self-asserted. e.g. email/facebook account</span>
+<span class="hljs-comment">#   IAL2 = rudimentary identity verification. e.g. copy of id card</span>
+<span class="hljs-comment">#   IAL3 = more strict verification, utilizing biometric data</span>
+<span class="hljs-attr">min_ial:</span> <span class="hljs-number">2.1</span>
+
+<span class="hljs-comment"># Authentication assurance level. Assurance level of authentication process.</span>
+<span class="hljs-comment"># Examples:</span>
+<span class="hljs-comment">#   AAL1 = single-factor authentication. e.g. username/password</span>
+<span class="hljs-comment">#          (not allowed for IAL1)</span>
+<span class="hljs-comment">#   AAL2 = two-factor authentication. e.g. PIN + OTP</span>
+<span class="hljs-comment">#   AAL3 = multi-factor authentication, utilizing cryptographic key.</span>
+<span class="hljs-comment">#          e.g. USB token containing password-protected private key</span>
+<span class="hljs-attr">min_aal:</span> <span class="hljs-number">1</span>
+
+<span class="hljs-comment"># Minimum number of IdP approvals for auth request to be confirmed.</span>
+<span class="hljs-attr">min_idp:</span> <span class="hljs-number">1</span>
+
+<span class="hljs-comment"># Transaction timeout.</span>
+<span class="hljs-comment"># request_timeout is the request transaction timeout</span>
+<span class="hljs-attr">request_timeout:</span> <span class="hljs-number">259200</span> <span class="hljs-comment"># seconds = 3 days</span>
+
+<span class="hljs-attr">bypass_identity_check:</span> <span class="hljs-literal">false</span>
+</code></pre>
+<p>The API validates the request, generates a request ID and returns a response:</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-number">200</span> <span class="hljs-string">OK</span>
+
+<span class="hljs-attr">request_id:</span> <span class="hljs-string">'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'</span>
+</code></pre>
+<p>This <code>request_id</code> can be used to check the status of request through <a href="https://app.swaggerhub.com/apis/NDID/utility/3.0#/default/get_request_status" target="_blank" rel="nofollow noreferrer noopener">GET /utility/requests/{request_id}</a> API.</p>
+<p>The <code>reference_id</code> → <code>request_id</code> mapping is stored in the node’s local storage, in case of communication error, to make this request idempotent.</p>
+<table>
+<thead>
+<tr><th>reference_id</th><th>request_id</th></tr>
+</thead>
+<tbody>
+<tr><td>&lt;x-guid&gt;e3cb44c9-8848-4dec-98c8-8083f373b1f7&lt;/x-guid&gt;</td><td>&lt;x-guid&gt;ef6f4c9c-818b-42b8-8904-3d97c4c520f6&lt;/x-guid&gt;</td></tr>
+</tbody>
+</table>
+<p>The information about the request is stored in the blockchain.</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">request_id:</span> <span class="hljs-string">'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'</span>
+<span class="hljs-attr">mode:</span> <span class="hljs-number">2</span>
+<span class="hljs-attr">idp_id_list:</span> <span class="hljs-string">['IdP_f924-5069-4c6a-a4e4-134cd1a3d3d0']</span>
+<span class="hljs-attr">min_idp:</span> <span class="hljs-number">1</span>
+<span class="hljs-attr">min_aal:</span> <span class="hljs-number">1</span>
+<span class="hljs-attr">min_ial:</span> <span class="hljs-number">2.1</span>
+<span class="hljs-attr">request_timeout:</span> <span class="hljs-number">259200</span>
+<span class="hljs-attr">data_request_list:</span> <span class="hljs-string">[{</span> 
+<span class="hljs-attr">    service_id:</span> <span class="hljs-string">'bank_statement'</span><span class="hljs-string">,</span> 
+<span class="hljs-attr">    as_id_list:</span> <span class="hljs-string">['AS1',</span> <span class="hljs-string">'AS2'</span><span class="hljs-string">],</span>
+<span class="hljs-attr">    min_as:</span> <span class="hljs-number">1</span><span class="hljs-string">,</span>
+<span class="hljs-attr">    request_params_hash:</span> <span class="hljs-string">hash({</span> <span class="hljs-attr">format:</span> <span class="hljs-string">'pdf'</span> <span class="hljs-string">})</span>
+  <span class="hljs-string">},...</span>
+<span class="hljs-string">]</span>
+<span class="hljs-attr">request_message_hash:</span> <span class="hljs-string">hash('Please</span> <span class="hljs-string">allow...'</span> <span class="hljs-string">+</span> <span class="hljs-string">request_message_salt)</span>
+
+<span class="hljs-comment"># <span class="hljs-doctag">Note:</span> Neither {ns}/{id} nor its hash is stored here.</span>
+<span class="hljs-comment">#       We want to keep each transaction private.</span>
+<span class="hljs-comment">#       Elsewise, one could brute-force to find a transaction of any ID.</span>
+<span class="hljs-comment">#       Request message salt is random-generated by platform, it's used for </span>
+<span class="hljs-comment">#       preventing two message hash to look identical.</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="communication-from-rp-s-node-to-idp-s-node"></a><a href="#communication-from-rp-s-node-to-idp-s-node" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Communication from RP’s Node to IdP’s Node</h2>
+<p>The target node IDs are obtained.</p>
+<table>
+<thead>
+<tr><th>reference_group_code</th><th>node_id</th></tr>
+</thead>
+<tbody>
+<tr><td>&lt;x-guid&gt;0280cf8e-de45-4e4e-aec7-c7a61d11b643&lt;/x-guid&gt;</td><td>&lt;x-guid&gt;IdP_f924-5069-4c6a-a4e4-134cd1a3d3d0&lt;/x-guid&gt;</td></tr>
+</tbody>
+</table>
+<p>Then the corresponding public key is obtained.</p>
+<table>
+<thead>
+<tr><th>node_id</th><th>public_key</th></tr>
+</thead>
+<tbody>
+<tr><td>&lt;x-guid&gt;IdP_f924-5069-4c6a-a4e4-134cd1a3d3d0&lt;/x-guid&gt;</td><td>AAAAB3NzaC1yc2EAAAADAQABAAABAQC+IdP+lk1ax…</td></tr>
+</tbody>
+</table>
+<p>Then a message is constructed, encrypted with the public key, and sent to the nodes through message queue:</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">request_id:</span> <span class="hljs-string">'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'</span>
+<span class="hljs-attr">mode:</span> <span class="hljs-number">2</span>
+<span class="hljs-attr">reference_group_code:</span> <span class="hljs-string">'0280cf8e-de45-4e4e-aec7-c7a61d11b643'</span>
+<span class="hljs-attr">data_request_list:</span> <span class="hljs-string">[{</span> 
+<span class="hljs-attr">    service_id:</span> <span class="hljs-string">'bank_statement'</span><span class="hljs-string">,</span> 
+<span class="hljs-attr">    as_id_list:</span> <span class="hljs-string">['AS1',</span> <span class="hljs-string">'AS2'</span><span class="hljs-string">],</span>
+<span class="hljs-attr">    min_as:</span> <span class="hljs-number">1</span>
+  <span class="hljs-string">},...</span>
+<span class="hljs-string">]</span>
+<span class="hljs-attr">request_message:</span> <span class="hljs-string">'Please allow...'</span>
+<span class="hljs-attr">request_message_salt:</span> <span class="hljs-string">'&lt;random&gt;'</span>
+<span class="hljs-attr">min_ial:</span> <span class="hljs-number">2.1</span>
+<span class="hljs-attr">min_aal:</span> <span class="hljs-number">1</span>
+<span class="hljs-attr">min_idp:</span> <span class="hljs-number">1</span>
+<span class="hljs-attr">request_timeout:</span> <span class="hljs-number">259200</span>
+</code></pre>
+<p>IsP Node receives the request message from message queue and decrypts it.</p>
+<p>It reads the request from the blockchain:</p>
+<ul>
+<li>Verify that the parameters (<code>min_idp</code>, <code>min_aal</code>, <code>min_ial</code>, <code>timeout</code>, <code>data_request_list</code>) matches.</li>
+<li>Verify that <code>hash(request_message | salt) === message_hash</code>.</li>
+<li>Check with the blockchain if the request is still necessary. (Request may be fulfilled by another IdP, in case the user onboarded with multiple IdPs.)</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="platform-rarr-idp-post-idp-request-https-appswaggerhubcom-apis-ndid-idp_callback-30-default-consent_request"></a><a href="#platform-rarr-idp-post-idp-request-https-appswaggerhubcom-apis-ndid-idp_callback-30-default-consent_request" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Platform→IdP: <a href="https://app.swaggerhub.com/apis/NDID/idp_callback/3.0#/default/consent_request" target="_blank" rel="nofollow noreferrer noopener">POST /idp/request</a></h2>
+<p>At this point, IdP Node has checked that the consent is still needed. It issues a webhook to IdP’s web service, passing the above message.</p>
+<h2><a class="anchor" aria-hidden="true" id="idp-rarr-user"></a><a href="#idp-rarr-user" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>IdP→User</h2>
+<p>IdP asks the user to:</p>
+<ul>
+<li>Verify their identity (authentication).</li>
+<li>Give consent to allow RP to access the data from AS (data access authorization).</li>
+</ul>
+<p>The message from RP is shown to the user:<br />“Please allow the embassy to access your bank statement for purpose of obtaining a Visa.”</p>
+<p>Different ways of authentication has different security level.
+Authentication using PIN or username/password combination can be considered low security, while public-key authentication can be considered having higher security.
+Authentication method that has higher security gets a higher <strong>AAL (Authentication Assurance Level)</strong>.</p>
+<h2><a class="anchor" aria-hidden="true" id="user-rarr-idp"></a><a href="#user-rarr-idp" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>User→IdP</h2>
+<p>In this example, the user gave IdP the consent.</p>
+<h2><a class="anchor" aria-hidden="true" id="idp-rarr-platform-post-idp-response-https-appswaggerhubcom-apis-ndid-identity_provider-30-default-respond_to_request"></a><a href="#idp-rarr-platform-post-idp-response-https-appswaggerhubcom-apis-ndid-identity_provider-30-default-respond_to_request" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>IdP→Platform: <a href="https://app.swaggerhub.com/apis/NDID/identity_provider/3.0#/default/respond_to_request" target="_blank" rel="nofollow noreferrer noopener">POST /idp/response</a></h2>
+<p>IdP sends a response to consent request</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">reference_id:</span> <span class="hljs-string">'fb912b27-7ae1-4417-9f72-a192560051f7'</span>
+<span class="hljs-attr">callback_url:</span> <span class="hljs-string">'https://&lt;idp-webservice&gt;/callback'</span>
+<span class="hljs-attr">request_id:</span> <span class="hljs-string">'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'</span>
+<span class="hljs-attr">ial:</span> <span class="hljs-number">2.1</span>
+<span class="hljs-attr">aal:</span> <span class="hljs-number">3</span>
+<span class="hljs-attr">status:</span> <span class="hljs-string">'accept'</span>
+<span class="hljs-attr">accessor_id:</span> <span class="hljs-string">'acc_f328-53da-4d51-a927-3cc6d3ed3feb'</span>
+</code></pre>
+<p>Then the platform requests <code>signature</code> from IdP by calculating <code>request_message_hash</code> with custom scheme to preserve privacy and sending to IdP to encrypt (without padding) with accessor private key along with <code>accessor_id</code>.</p>
+<p>IdP retrieves the <code>accessor_id</code> and <code>accessor_private_key</code> from private storage.</p>
+<p>| namespace | identifier | accessor_id | accessor_private_key |
+| --- | --- | --- | --- | --- |
+| citizen_id | 1234567890123 | &lt;x-guid&gt;acc_f328-53da-4d51-a927-3cc6d3ed3feb&lt;/x-guid&gt; | &lt;x-pk&gt;-----BEGIN RSA PRIVATE KEY-----<br />MIIEowIBAAKCAQEAxy/CSXWu...&lt;/x-pk&gt; |</p>
+<p>It then generates a signature by encrypting (without padding) the <code>request_message_hash</code> with that private key.</p>
+<ul>
+<li><code>&lt;signature&gt;</code> = <code>RSA256_without_padding(request_message_hash, accessor_private_key)</code></li>
+</ul>
+<div class="flash mb-3 flash-warn">
+  @todo #2 Should the message to be signed also include the user’s approval status?
+   Otherwise, the signature for CONFIRM is identical to REJECT…
+</div>
+<p>Platform will then send these data to RP via message queue, and store these part of the data to blockchain.</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">request_id:</span> <span class="hljs-string">'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'</span>
+<span class="hljs-attr">mode:</span> <span class="hljs-number">2</span>
+<span class="hljs-attr">accessor_id:</span> <span class="hljs-string">'acc_f328-53da-4d51-a927-3cc6d3ed3feb'</span>
+<span class="hljs-attr">status:</span> <span class="hljs-string">'accept'</span>
+<span class="hljs-attr">idp_node_id:</span> <span class="hljs-string">'node id of idp'</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="platform-rarr-rp-via-message-queue"></a><a href="#platform-rarr-rp-via-message-queue" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Platform→RP: (via message queue)</h2>
+<p>Before AS can give out the data (or before the RP can accept this confirmation), they must verify that the user has really given the required consent and this consent is recorded in the blockchain.</p>
+<p>However, a request in the blockchain does not contain any identity information. But somehow, we need to verify that the <code>request_id</code> really corresponds to the identity in question. Thus, a custom scheme for signing a request message is used.</p>
+<p>RP must verify signature that it indeed sign with private key corresponse to <code>accessor_id</code></p>
+<h2><a class="anchor" aria-hidden="true" id="platform-rarr-rp-post-rp-request-e3cb44c9-8848-https-appswaggerhubcom-apis-ndid-rp_callback-30-default-request_update"></a><a href="#platform-rarr-rp-post-rp-request-e3cb44c9-8848-https-appswaggerhubcom-apis-ndid-rp_callback-30-default-request_update" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Platform→RP: <a href="https://app.swaggerhub.com/apis/NDID/rp_callback/3.0#/default/request_update" target="_blank" rel="nofollow noreferrer noopener">POST /rp/request/e3cb44c9-8848-…</a></h2>
+<p>At this point, RP-Node sees the above transaction committed in the blockchain.
+It knows that the authentication request has been approved.
+(However, data has not arrived yet.)</p>
+<p>It notifies the RP through callback URL.</p>
+<div markdown="1" class="flash mb-3">
+<p><strong>Note:</strong> Every time request status is updated, a callback is issued.</p>
+</div>
+<h2><a class="anchor" aria-hidden="true" id="communication-from-rp-s-node-to-as-s-node"></a><a href="#communication-from-rp-s-node-to-as-s-node" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Communication from RP’s Node to AS’s Node</h2>
+<p>Now, it’s time to fetch the data from AS.</p>
+<div class="flash mb-3 flash-warn">
+  @todo #2 Update the Background section to include this data in the setup.
+</div>
+<p>RP node looks up the <code>node_id</code> corresponding to the service in the blockchain:</p>
+<table>
+<thead>
+<tr><th>as_id</th><th>as_service_id</th><th>node_id</th></tr>
+</thead>
+<tbody>
+<tr><td>AS1</td><td>bank_statement</td><td>&lt;x-guid&gt;AS_12767-0030-4a73-9593-ffd6d010c63c&lt;/x-guid&gt;</td></tr>
+</tbody>
+</table>
+<p>Again, we look up the public key corresponding to this node from the blockchain:</p>
+<table>
+<thead>
+<tr><th>node_id</th><th>public_key</th></tr>
+</thead>
+<tbody>
+<tr><td>&lt;x-guid&gt;AS_12767-0030-4a73-9593-ffd6d010c63c&lt;/x-guid&gt;</td><td>AAAAB3NzaC1yc2EAAAADAQABAAABAQD+AS+n0IWKC…</td></tr>
+</tbody>
+</table>
+<p>It encrypts the following the message and sends it to the AS’ node via message queue. (Note: No data stored in blockchain in request phase.)</p>
+<pre><code class="hljs css language-yml"><span class="hljs-attr">request_id:</span> <span class="hljs-string">'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'</span>
+<span class="hljs-attr">namespace:</span> <span class="hljs-string">'citizen_id'</span>
+<span class="hljs-attr">identifier:</span> <span class="hljs-string">'01234567890123'</span>
+<span class="hljs-attr">rp_node_id:</span> <span class="hljs-string">&lt;node</span> <span class="hljs-string">id</span> <span class="hljs-string">of</span> <span class="hljs-string">relying</span> <span class="hljs-string">party&gt;</span>
+<span class="hljs-attr">service_data_request_list:</span> <span class="hljs-string">[{</span>
+<span class="hljs-attr">  service_id:</span> <span class="hljs-string">'bank_statement'</span><span class="hljs-string">,</span>
+<span class="hljs-attr">  request_params:</span> <span class="hljs-string">{</span> <span class="hljs-attr">format:</span> <span class="hljs-string">'pdf'</span> <span class="hljs-string">},</span>
+<span class="hljs-attr">  request_params_salt:</span> <span class="hljs-string">'&lt;random&gt;'</span>
+<span class="hljs-string">}]</span>
+<span class="hljs-attr">request_message:</span> <span class="hljs-string">'ขอ Bank statement เพื่อทำ VISA ที่สถานฑูตลาว'</span>
+<span class="hljs-attr">request_message_salt:</span> <span class="hljs-string">'&lt;random&gt;'</span>
+<span class="hljs-attr">response_private_data_list:</span> <span class="hljs-string">[{</span>
+<span class="hljs-attr">  idp_id:</span> <span class="hljs-string">'idp node id'</span><span class="hljs-string">,</span>
+<span class="hljs-attr">  accessor_id:</span> <span class="hljs-string">'&lt;some_id&gt;'</span>
+<span class="hljs-string">}]</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="platform-rarr-as-post-service-bank_statement-https-appswaggerhubcom-apis-ndid-as_callback-30-default-data_request"></a><a href="#platform-rarr-as-post-service-bank_statement-https-appswaggerhubcom-apis-ndid-as_callback-30-default-data_request" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Platform→AS: <a href="https://app.swaggerhub.com/apis/NDID/as_callback/3.0#/default/data_request" target="_blank" rel="nofollow noreferrer noopener">POST /service/bank_statement</a></h2>
+<p>Now, AS Node received a data request through the message queue. It then looks up the request and consent transactions with matching <code>request_id</code> in the blockchain.</p>
+<ul>
+<li>Verify that (number of consent ≥ min_idp in request).</li>
+<li>For each consent with matching request ID:
+<ul>
+<li>Verify the signature.</li>
+<li>Verify that the <code>request_params_hash</code> is matching with the request.</li>
+<li>Verify all signatures from IdP</li>
+</ul></li>
+</ul>
+<p>Then it sends the API call to the AS through the registered callback URL.</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">namespace:</span> <span class="hljs-string">'citizen_id'</span>
+<span class="hljs-attr">identifier:</span> <span class="hljs-string">'01234567890123'</span>
+<span class="hljs-attr">request_id:</span> <span class="hljs-string">'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'</span>
+<span class="hljs-attr">mode:</span> <span class="hljs-number">2</span>
+<span class="hljs-attr">service_id:</span> <span class="hljs-string">'bank_statement'</span>
+<span class="hljs-attr">requester_node_id:</span> <span class="hljs-string">'RP_06626-b9c7-4c52-abf2-019220637c91'</span>
+<span class="hljs-attr">request_params:</span> <span class="hljs-string">{</span> <span class="hljs-attr">format:</span> <span class="hljs-string">'pdf'</span> <span class="hljs-string">}</span>
+
+<span class="hljs-comment"># An array because signature may come from different IdPs.</span>
+<span class="hljs-attr">response_signature_list:</span> <span class="hljs-string">[</span>
+  <span class="hljs-string">'&lt;signature&gt;'</span>
+<span class="hljs-string">]</span>
+
+<span class="hljs-comment"># The IAL and AAL. In case of multiple IdPs, take the maximum.</span>
+<span class="hljs-attr">max_ial:</span> <span class="hljs-number">2.1</span>
+<span class="hljs-attr">max_aal:</span> <span class="hljs-number">3</span>
+<span class="hljs-attr">request_timeout:</span> <span class="hljs-number">259200</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="as-rarr-platform"></a><a href="#as-rarr-platform" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>AS→Platform</h2>
+<p>The AS replies synchronously with the requested data:</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">data:</span> <span class="hljs-string">'&lt;PDF BINARY DATA&gt;'</span>
+</code></pre>
+<p>AS node encrypts the response and sends it back to RP via message queue.</p>
+<p>AS node adds transaction to blockchain:</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">request_id:</span> <span class="hljs-string">'ef6f4c9c-818b-42b8-8904-3d97c4c520f6'</span>
+<span class="hljs-attr">service_id:</span> <span class="hljs-string">'bank_statement'</span>
+<span class="hljs-attr">signature:</span> <span class="hljs-string">sign(&lt;PDF</span> <span class="hljs-string">BINARY</span> <span class="hljs-string">DATA&gt;</span> <span class="hljs-string">| salt, AS1’s private key)
+</span></code></pre>
+<h2><a class="anchor" aria-hidden="true" id="platform-rarr-rp"></a><a href="#platform-rarr-rp" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Platform→RP</h2>
+<p>RP node receives the data via message queue and verifies signature in blockchain.
+RP node updates the request status and call callback to RP.</p>
+<h2><a class="anchor" aria-hidden="true" id="retrieving-data-get-rp-request_data-ef6f4c9c-818b-https-appswaggerhubcom-apis-ndid-relying_party_api-30-default-get_request_data"></a><a href="#retrieving-data-get-rp-request_data-ef6f4c9c-818b-https-appswaggerhubcom-apis-ndid-relying_party_api-30-default-get_request_data" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Retrieving data: <a href="https://app.swaggerhub.com/apis/NDID/relying_party_api/3.0#/default/get_request_data" target="_blank" rel="nofollow noreferrer noopener">GET /rp/request_data/ef6f4c9c-818b-…</a></h2>
+<p>Finally, RP calls the API to retrieve the request data.
+It returns with:</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">source_node_id:</span> <span class="hljs-string">AS1</span> 
+<span class="hljs-attr">service_id:</span> <span class="hljs-string">bank_statement</span>
+<span class="hljs-attr">source_signature:</span> <span class="hljs-string">sign(&lt;PDF</span> <span class="hljs-string">BINARY</span> <span class="hljs-string">DATA&gt;</span> <span class="hljs-string">| salt, AS1’s private key)
+</span><span class="hljs-attr">data:</span> <span class="hljs-string">'&lt;PDF BINARY DATA&gt;'</span>
+<span class="hljs-attr">data_salt:</span> <span class="hljs-string">'&lt;random&gt;'</span>
+</code></pre>
+<p>Now, RP has all the necessary data to process the transaction!</p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 6/14/2019</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/introduction"><span class="arrow-prev">← </span><span>Introduction</span></a><a class="docs-next button" href="/docs/components"><span>Components</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#scenario-requesting-a-bank-statement-for-visa-application">Scenario: Requesting a bank statement for Visa application</a></li><li><a href="#background">Background</a></li><li><a href="#rp-rarr-platform-post-rp-requests-citizen_id-01234567890123-https-appswaggerhubcom-apis-ndid-relying_party_api-30-default-send_request_to_id">RP→Platform: <a href="https://app.swaggerhub.com/apis/NDID/relying_party_api/3.0#/default/send_request_to_id">POST /rp/requests/citizen_id/01234567890123</a></a></li><li><a href="#communication-from-rp-s-node-to-idp-s-node">Communication from RP’s Node to IdP’s Node</a></li><li><a href="#platform-rarr-idp-post-idp-request-https-appswaggerhubcom-apis-ndid-idp_callback-30-default-consent_request">Platform→IdP: <a href="https://app.swaggerhub.com/apis/NDID/idp_callback/3.0#/default/consent_request">POST /idp/request</a></a></li><li><a href="#idp-rarr-user">IdP→User</a></li><li><a href="#user-rarr-idp">User→IdP</a></li><li><a href="#idp-rarr-platform-post-idp-response-https-appswaggerhubcom-apis-ndid-identity_provider-30-default-respond_to_request">IdP→Platform: <a href="https://app.swaggerhub.com/apis/NDID/identity_provider/3.0#/default/respond_to_request">POST /idp/response</a></a></li><li><a href="#platform-rarr-rp-via-message-queue">Platform→RP: (via message queue)</a></li><li><a href="#platform-rarr-rp-post-rp-request-e3cb44c9-8848-https-appswaggerhubcom-apis-ndid-rp_callback-30-default-request_update">Platform→RP: <a href="https://app.swaggerhub.com/apis/NDID/rp_callback/3.0#/default/request_update">POST /rp/request/e3cb44c9-8848-…</a></a></li><li><a href="#communication-from-rp-s-node-to-as-s-node">Communication from RP’s Node to AS’s Node</a></li><li><a href="#platform-rarr-as-post-service-bank_statement-https-appswaggerhubcom-apis-ndid-as_callback-30-default-data_request">Platform→AS: <a href="https://app.swaggerhub.com/apis/NDID/as_callback/3.0#/default/data_request">POST /service/bank_statement</a></a></li><li><a href="#as-rarr-platform">AS→Platform</a></li><li><a href="#platform-rarr-rp">Platform→RP</a></li><li><a href="#retrieving-data-get-rp-request_data-ef6f4c9c-818b-https-appswaggerhubcom-apis-ndid-relying_party_api-30-default-get_request_data">Retrieving data: <a href="https://app.swaggerhub.com/apis/NDID/relying_party_api/3.0#/default/get_request_data">GET /rp/request_data/ef6f4c9c-818b-…</a></a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/introduction">Introduction</a><a href="/docs/getting-started-setup">Getting Started</a><a href="/docs/api">API Reference</a></div><div><h5>Community</h5><a href="http://www.ndid.co.th/" target="_blank" rel="noreferrer noopener">Official Site</a><a href="https://www.facebook.com/NationalDigitalID/" target="_blank" rel="noreferrer noopener">Facebook</a><a href="https://national-digital-id.slack.com/" target="_blank" rel="noreferrer noopener">Slack</a></div><div><h5>More</h5><a href="https://goo.gl/v4Cfpe" target="_blank" rel="noreferrer noopener">Whitepaper</a><a href="https://github.com/ndidplatform" target="_blank" rel="noreferrer noopener">GitHub</a></div></section><section class="copyright"></section></footer></div></body></html>

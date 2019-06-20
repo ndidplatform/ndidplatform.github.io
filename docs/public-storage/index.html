@@ -1,0 +1,278 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Public storage · NDID Platform</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;h2&gt;&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; id=&quot;storage-key-value-store&quot;&gt;&lt;/a&gt;&lt;a href=&quot;#storage-key-value-store&quot; aria-hidden=&quot;true&quot; class=&quot;hash-link&quot;&gt;&lt;svg class=&quot;hash-link-icon&quot; aria-hidden=&quot;true&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Storage (Key-Value Store)&lt;/h2&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Public storage · NDID Platform"/><meta property="og:type" content="website"/><meta property="og:url" content="https://ndidplatform.github.io/"/><meta property="og:description" content="&lt;h2&gt;&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; id=&quot;storage-key-value-store&quot;&gt;&lt;/a&gt;&lt;a href=&quot;#storage-key-value-store&quot; aria-hidden=&quot;true&quot; class=&quot;hash-link&quot;&gt;&lt;svg class=&quot;hash-link-icon&quot; aria-hidden=&quot;true&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Storage (Key-Value Store)&lt;/h2&gt;
+"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/undefined"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script><script type="text/javascript" src="/js/custom.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">NDID Platform</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/introduction" target="_self">Docs</a></li><li class=""><a href="/docs/api" target="_self">API</a></li><li class=""><a href="https://github.com/ndidplatform" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>DEPRECATED</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">NDID Platform</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/introduction">Introduction</a></li><li class="navListItem"><a class="navItem" href="/docs/technical-overview">Technical Overview</a></li><li class="navListItem"><a class="navItem" href="/docs/components">Components</a></li><li class="navListItem"><a class="navItem" href="/docs/deployment">Deployment</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/getting-started-setup">Setup</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started-ndid">NDID</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started-rp">RP</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started-idp">IdP</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started-as">AS</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Flows</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/flow-create-identity">Create Identity / Onboarding Flows</a></li><li class="navListItem"><a class="navItem" href="/docs/flow-add-accessor">Add Accessor Flows</a></li><li class="navListItem"><a class="navItem" href="/docs/flow-data-request">Data Request Flows</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Usage</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/usage-mode-2-data-request">Usage (Mode 2, Data request)</a></li><li class="navListItem"><a class="navItem" href="/docs/usage-more-usages">More Usages</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Examples</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/examples-authen-flow">Example authentication flow</a></li><li class="navListItem"><a class="navItem" href="/docs/examples-data-request-flow">Example Data Request Flow</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">DEPRECATED</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/onboarding-story">Onboarding Story</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/public-storage">Public storage</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Public storage</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="storage-key-value-store"></a><a href="#storage-key-value-store" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Storage (Key-Value Store)</h2>
+<h3><a class="anchor" aria-hidden="true" id="er-diagram"></a><a href="#er-diagram" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ER Diagram</h3>
+<p><img src="/img/er-public-storage.png" alt="ER diagram"></p>
+<h3><a class="anchor" aria-hidden="true" id="masterndid-rarr-ndid-s-node-id"></a><a href="#masterndid-rarr-ndid-s-node-id" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&quot;MasterNDID&quot; → NDID’s node ID</h3>
+<table>
+<thead>
+<tr><th>Key</th><th>Value</th></tr>
+</thead>
+<tbody>
+<tr><td>MasterNDID</td><td>&lt;NDID’s node ID&gt;</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="nodeid-node-s-node-id-rarr-node-detail-protobuf"></a><a href="#nodeid-node-s-node-id-rarr-node-detail-protobuf" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&quot;NodeID&quot;|&lt;node’s node ID&gt; → Node detail (Protobuf)</h3>
+<table>
+<thead>
+<tr><th>Key</th><th>Protobuf</th></tr>
+</thead>
+<tbody>
+<tr><td>NodeID\</td><td>&lt;node’s node ID&gt;</td><td>message NodeDetail { <br>   string public_key = 1; <br>   string master_public_key = 2; <br>   string node_name = 3; <br>    string role = 4; <br>    double max_ial = 5; <br>    double max_aal = 6; <br>    repeated MQ mq = 7; <br>    bool active = 8; <br> } <br><br> message MQ { <br>    string ip = 1; <br>   int64 port = 2; <br> }</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="alllist-rarr-list-of-all-node-id-protobuf"></a><a href="#alllist-rarr-list-of-all-node-id-protobuf" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&quot;allList&quot; → List of all node ID (Protobuf)</h3>
+<table>
+<thead>
+<tr><th>Key</th><th>Protobuf</th></tr>
+</thead>
+<tbody>
+<tr><td>allList</td><td>message AllList { <br>   repeated string node_id = 1; <br> }</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="rplist-rarr-list-of-rp-node-id-protobuf"></a><a href="#rplist-rarr-list-of-rp-node-id-protobuf" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&quot;rpList&quot; → List of RP node ID (Protobuf)</h3>
+<table>
+<thead>
+<tr><th>Key</th><th>Protobuf</th></tr>
+</thead>
+<tbody>
+<tr><td>rpList</td><td>message RPList { <br>   repeated string node_id = 1; <br> }</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="idplist-rarr-list-of-idp-node-id-protobuf"></a><a href="#idplist-rarr-list-of-idp-node-id-protobuf" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&quot;IdPList&quot; → List of IdP node ID (Protobuf)</h3>
+<table>
+<thead>
+<tr><th>Key</th><th>Protobuf</th></tr>
+</thead>
+<tbody>
+<tr><td>IdPList</td><td>message IdPList { <br>   repeated string node_id = 1; <br> }</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="aslist-rarr-list-of-as-node-id-protobuf"></a><a href="#aslist-rarr-list-of-as-node-id-protobuf" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&quot;asList&quot; → List of AS node ID (Protobuf)</h3>
+<table>
+<thead>
+<tr><th>Key</th><th>Protobuf</th></tr>
+</thead>
+<tbody>
+<tr><td>asList</td><td>message ASList { <br>   repeated string node_id = 1; <br> }</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="timeoutblockregisteridentity-rarr-time-out-block-for-registeridentity-set-by-ndid"></a><a href="#timeoutblockregisteridentity-rarr-time-out-block-for-registeridentity-set-by-ndid" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&quot;TimeOutBlockRegisterIdentity&quot; → Time out block for RegisterIdentity set by NDID</h3>
+<table>
+<thead>
+<tr><th>Key</th><th>Protobuf</th></tr>
+</thead>
+<tbody>
+<tr><td>TimeOutBlockRegisterIdentity</td><td>message TimeOutBlockRegisterIdentity { <br>   int64 time_out_block = 1; <br> }</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="token-node-s-node-id-rarr-token-amount"></a><a href="#token-node-s-node-id-rarr-token-amount" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&quot;Token&quot;|&lt;node’s node ID&gt; → Token amount</h3>
+<table>
+<thead>
+<tr><th>Key</th><th>Value</th></tr>
+</thead>
+<tbody>
+<tr><td>Token\</td><td>&lt;node’s node ID&gt;</td><td>100.0</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="tokenpricefunc-function-name-rarr-price-of-function"></a><a href="#tokenpricefunc-function-name-rarr-price-of-function" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&quot;TokenPriceFunc&quot;|&lt;function name&gt; → Price of function</h3>
+<table>
+<thead>
+<tr><th>Key</th><th>Value</th></tr>
+</thead>
+<tbody>
+<tr><td>TokenPriceFunc\</td><td>&lt;function name&gt;</td><td>10.0</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="spendgas-node-s-node-id-rarr-list-of-spend-token-protobuf"></a><a href="#spendgas-node-s-node-id-rarr-list-of-spend-token-protobuf" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&quot;SpendGas&quot;|&lt;node’s node ID&gt; → List of spend token (Protobuf)</h3>
+<table>
+<thead>
+<tr><th>Key</th><th>Protobuf</th></tr>
+</thead>
+<tbody>
+<tr><td>SpendGas\</td><td>&lt;node’s node ID&gt;</td><td>message ReportList { <br>   repeated Report reports = 1; <br> } <br><br> message Report { <br>   string method = 1; <br>   double price = 2; <br>   string data = 3; <br> }</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="allservice-rarr-list-of-service-detail-protobuf"></a><a href="#allservice-rarr-list-of-service-detail-protobuf" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&quot;AllService&quot; → List of service detail (Protobuf)</h3>
+<table>
+<thead>
+<tr><th>Key</th><th>Protobuf</th></tr>
+</thead>
+<tbody>
+<tr><td>AllService</td><td>message ServiceDetailList { <br>   repeated ServiceDetail services = 1; <br> }</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="service-service-s-id-rarr-service-detail-protobuf"></a><a href="#service-service-s-id-rarr-service-detail-protobuf" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&quot;Service&quot;|&lt;service’s ID&gt; → Service detail (Protobuf)</h3>
+<table>
+<thead>
+<tr><th>Key</th><th>Protobuf</th></tr>
+</thead>
+<tbody>
+<tr><td>Service\</td><td>&lt;service’s ID&gt;</td><td>message ServiceDetail { <br>   string service_id = 1; <br>   string service_name = 2; <br>   string data_schema = 3; <br>   string data_schema_version = 4; <br>   bool active = 5; <br> }</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="approvekey-service-s-id-node-s-node-id-rarr-approve-value-for-regsiter-service-destination-protobuf"></a><a href="#approvekey-service-s-id-node-s-node-id-rarr-approve-value-for-regsiter-service-destination-protobuf" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&quot;ApproveKey&quot;|&lt;service’s ID&gt;|&lt;node’s node ID&gt; → Approve value for regsiter service destination (Protobuf)</h3>
+<table>
+<thead>
+<tr><th>Key</th><th>Protobuf</th></tr>
+</thead>
+<tbody>
+<tr><td>ApproveKey\</td><td>&lt;service’s ID&gt;\</td><td>&lt;node’s node ID&gt;</td><td>message ApproveService { <br>   bool active = 1; <br> }</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="provideservice-node-s-node-id-rarr-provide-service-list-in-as-node-protobuf"></a><a href="#provideservice-node-s-node-id-rarr-provide-service-list-in-as-node-protobuf" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&quot;ProvideService&quot;|&lt;node’s node ID&gt; → Provide service list in AS node (Protobuf)</h3>
+<table>
+<thead>
+<tr><th>Key</th><th>Protobuf</th></tr>
+</thead>
+<tbody>
+<tr><td>ProvideService\</td><td>&lt;node’s node ID&gt;</td><td>message ServiceList { <br>   repeated Service services = 1; <br> } <br><br> message Service { <br>   string service_id = 1; <br>   double min_ial = 2; <br>   double min_aal = 3; <br>   bool active = 4; <br>   bool suspended = 5; <br> }</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="servicedestination-service-s-id-rarr-list-of-service-destination-protobuf"></a><a href="#servicedestination-service-s-id-rarr-list-of-service-destination-protobuf" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&quot;ServiceDestination&quot;|&lt;service’s ID&gt; → List of service destination (Protobuf)</h3>
+<table>
+<thead>
+<tr><th>Key</th><th>Protobuf</th></tr>
+</thead>
+<tbody>
+<tr><td>ServiceDestination\</td><td>&lt;service’s ID&gt;</td><td>message ServiceDesList { <br>   repeated ASNode node = 1; <br> } <br><br> message ASNode { <br>   string node_id = 1; <br>   double min_ial = 2; <br>   double min_aal = 3; <br>   string service_id = 4; <br>   bool active = 5; <br> }</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="allnamespace-rarr-list-of-namespace-protobuf"></a><a href="#allnamespace-rarr-list-of-namespace-protobuf" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&quot;AllNamespace&quot; → List of namespace (Protobuf)</h3>
+<table>
+<thead>
+<tr><th>Key</th><th>Protobuf</th></tr>
+</thead>
+<tbody>
+<tr><td>AllNamespace</td><td>message NamespaceList { <br>   repeated Namespace namespaces = 1; <br> } <br><br> message Namespace { <br>   string namespace = 1; <br>   string description = 2; <br>   bool active = 3; <br> }</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="msqdestination-hash-id-rarr-list-of-msq-destination-protobuf"></a><a href="#msqdestination-hash-id-rarr-list-of-msq-destination-protobuf" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&quot;MsqDestination&quot;|&lt;hash ID&gt; → List of msq destination (Protobuf)</h3>
+<table>
+<thead>
+<tr><th>Key</th><th>Protobuf</th></tr>
+</thead>
+<tbody>
+<tr><td>MsqDestination\</td><td>&lt;hash ID&gt;</td><td>message MsqDesList { <br>   repeated Node nodes = 1; <br> } <br><br> message Node { <br>   double ial = 1; <br>   string node_id = 2; <br>   bool active = 3; <br>   bool first = 4; <br>   int64 timeout_block = 5; <br> }</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="request-request-id-rarr-request-detail-protobuf"></a><a href="#request-request-id-rarr-request-detail-protobuf" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&quot;Request&quot;|&lt;request ID&gt; → Request detail (Protobuf)</h3>
+<table>
+<thead>
+<tr><th>Key</th><th>Protobuf</th></tr>
+</thead>
+<tbody>
+<tr><td>Request\</td><td>&lt;request ID&gt;</td><td>message Request { <br>   string request_id = 1; <br>   int64 min_idp = 2; <br>   double min_aal = 3; <br>   double min_ial = 4; <br>   int64 request_timeout = 5; <br>   repeated string idp_id_list = 6; <br>   repeated DataRequest data_request_list = 7; <br>   string request_message_hash = 8; <br>   repeated Response response_list = 9; <br>   bool closed = 10; <br>   bool timed_out = 11; <br>   string purpose = 12; <br>   string owner = 13; <br>   int64 mode = 14; <br>   int64 use_count = 15; <br>   int64 creation_block_height = 16; <br> } <br><br> message DataRequest { <br>   string service_id = 1; <br>   repeated string as_id_list = 2; <br>   int64 min_as = 3; <br>   string request_params_hash = 4; <br>   repeated string answered_as_id_list = 5; <br>   repeated string received_data_from_list = 6; <br> } <br><br> message Response { <br>   double ial = 1; <br>   double aal = 2; <br>   string status = 3; <br>   string signature = 4; <br>   string identity_proof = 5; <br>   string private_proof_hash = 6; <br>   string idp_id = 7; <br>   string valid_proof = 8; <br>   string valid_ial = 9; <br>   string valid_signature = 10; <br> }</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="signdata-node-id-service-id-request-id-rarr-signature-of-data-from-as"></a><a href="#signdata-node-id-service-id-request-id-rarr-signature-of-data-from-as" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&quot;SignData&quot;|&lt;node ID&gt;|&lt;service ID&gt;|&lt;request ID&gt; → Signature of data from AS</h3>
+<table>
+<thead>
+<tr><th>Key</th><th>Value</th></tr>
+</thead>
+<tbody>
+<tr><td>SignData\</td><td>AS1\</td><td>statement\</td><td>ef6f4c9c-818b-42b8-8904-3d97c4c520f6</td><td>e8921066562be0sadasd...</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="accessorgroup-accessor-group-id-rarr-accessor-group-id"></a><a href="#accessorgroup-accessor-group-id-rarr-accessor-group-id" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&quot;AccessorGroup&quot;|&lt;accessor group ID&gt; → Accessor group ID</h3>
+<table>
+<thead>
+<tr><th>Key</th><th>Value</th></tr>
+</thead>
+<tbody>
+<tr><td>AccessorGroup\</td><td>&lt;accessor group ID&gt;</td><td>&lt;accessor group ID&gt;</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="accessor-accessor-id-rarr-accessor-detail-protobuf"></a><a href="#accessor-accessor-id-rarr-accessor-detail-protobuf" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&quot;Accessor&quot;|&lt;accessor ID&gt; → Accessor detail (Protobuf)</h3>
+<table>
+<thead>
+<tr><th>Key</th><th>Protobuf</th></tr>
+</thead>
+<tbody>
+<tr><td>Accessor\</td><td>&lt;accessor ID&gt;</td><td>message Accessor { <br>   string accessor_type = 1; <br>   string accessor_public_key = 2; <br>   string accessor_group_id = 3; <br>   bool active = 4; <br>   string owner = 5; <br> }</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="accessoringroup-accessor-group-id-rarr-list-of-accessor-id-in-accessor-group-protobuf"></a><a href="#accessoringroup-accessor-group-id-rarr-list-of-accessor-id-in-accessor-group-protobuf" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&quot;AccessorInGroup&quot;|&lt;accessor group ID&gt; → List of accessor ID in Accessor group (Protobuf)</h3>
+<table>
+<thead>
+<tr><th>Key</th><th>Protobuf</th></tr>
+</thead>
+<tbody>
+<tr><td>AccessorInGroup\</td><td>&lt;accessor group ID&gt;</td><td>message AccessorInGroup { <br>   repeated string accessors = 1; <br> }</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="proxy-node-s-node-id-rarr-proxy-of-node-protobuf"></a><a href="#proxy-node-s-node-id-rarr-proxy-of-node-protobuf" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&quot;Proxy&quot;|&lt;node’s node ID&gt; → Proxy of node (Protobuf)</h3>
+<table>
+<thead>
+<tr><th>Key</th><th>Protobuf</th></tr>
+</thead>
+<tbody>
+<tr><td>Proxy\</td><td>&lt;node’s node ID&gt;</td><td>message Proxy { <br>   string proxy_node_id = 1; <br>   string config = 2; <br> }</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="behindproxynode-proxy-node-s-node-id-rarr-list-of-node-id-behind-proxy-protobuf"></a><a href="#behindproxynode-proxy-node-s-node-id-rarr-list-of-node-id-behind-proxy-protobuf" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>&quot;BehindProxyNode&quot;|&lt;proxy node’s node ID&gt; → List of node ID behind proxy (Protobuf)</h3>
+<table>
+<thead>
+<tr><th>Key</th><th>Protobuf</th></tr>
+</thead>
+<tbody>
+<tr><td>BehindProxyNode\</td><td>&lt;proxy node’s node ID&gt;</td><td>message BehindNodeList { <br>   repeated string nodes = 1; <br> }</td></tr>
+</tbody>
+</table>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 10/22/2018</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/onboarding-story"><span class="arrow-prev">← </span><span>Onboarding Story</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#storage-key-value-store">Storage (Key-Value Store)</a><ul class="toc-headings"><li><a href="#er-diagram">ER Diagram</a></li><li><a href="#masterndid-rarr-ndid-s-node-id">&quot;MasterNDID&quot; → NDID’s node ID</a></li><li><a href="#nodeid-node-s-node-id-rarr-node-detail-protobuf">&quot;NodeID&quot;|&lt;node’s node ID&gt; → Node detail (Protobuf)</a></li><li><a href="#alllist-rarr-list-of-all-node-id-protobuf">&quot;allList&quot; → List of all node ID (Protobuf)</a></li><li><a href="#rplist-rarr-list-of-rp-node-id-protobuf">&quot;rpList&quot; → List of RP node ID (Protobuf)</a></li><li><a href="#idplist-rarr-list-of-idp-node-id-protobuf">&quot;IdPList&quot; → List of IdP node ID (Protobuf)</a></li><li><a href="#aslist-rarr-list-of-as-node-id-protobuf">&quot;asList&quot; → List of AS node ID (Protobuf)</a></li><li><a href="#timeoutblockregisteridentity-rarr-time-out-block-for-registeridentity-set-by-ndid">&quot;TimeOutBlockRegisterIdentity&quot; → Time out block for RegisterIdentity set by NDID</a></li><li><a href="#token-node-s-node-id-rarr-token-amount">&quot;Token&quot;|&lt;node’s node ID&gt; → Token amount</a></li><li><a href="#tokenpricefunc-function-name-rarr-price-of-function">&quot;TokenPriceFunc&quot;|&lt;function name&gt; → Price of function</a></li><li><a href="#spendgas-node-s-node-id-rarr-list-of-spend-token-protobuf">&quot;SpendGas&quot;|&lt;node’s node ID&gt; → List of spend token (Protobuf)</a></li><li><a href="#allservice-rarr-list-of-service-detail-protobuf">&quot;AllService&quot; → List of service detail (Protobuf)</a></li><li><a href="#service-service-s-id-rarr-service-detail-protobuf">&quot;Service&quot;|&lt;service’s ID&gt; → Service detail (Protobuf)</a></li><li><a href="#approvekey-service-s-id-node-s-node-id-rarr-approve-value-for-regsiter-service-destination-protobuf">&quot;ApproveKey&quot;|&lt;service’s ID&gt;|&lt;node’s node ID&gt; → Approve value for regsiter service destination (Protobuf)</a></li><li><a href="#provideservice-node-s-node-id-rarr-provide-service-list-in-as-node-protobuf">&quot;ProvideService&quot;|&lt;node’s node ID&gt; → Provide service list in AS node (Protobuf)</a></li><li><a href="#servicedestination-service-s-id-rarr-list-of-service-destination-protobuf">&quot;ServiceDestination&quot;|&lt;service’s ID&gt; → List of service destination (Protobuf)</a></li><li><a href="#allnamespace-rarr-list-of-namespace-protobuf">&quot;AllNamespace&quot; → List of namespace (Protobuf)</a></li><li><a href="#msqdestination-hash-id-rarr-list-of-msq-destination-protobuf">&quot;MsqDestination&quot;|&lt;hash ID&gt; → List of msq destination (Protobuf)</a></li><li><a href="#request-request-id-rarr-request-detail-protobuf">&quot;Request&quot;|&lt;request ID&gt; → Request detail (Protobuf)</a></li><li><a href="#signdata-node-id-service-id-request-id-rarr-signature-of-data-from-as">&quot;SignData&quot;|&lt;node ID&gt;|&lt;service ID&gt;|&lt;request ID&gt; → Signature of data from AS</a></li><li><a href="#accessorgroup-accessor-group-id-rarr-accessor-group-id">&quot;AccessorGroup&quot;|&lt;accessor group ID&gt; → Accessor group ID</a></li><li><a href="#accessor-accessor-id-rarr-accessor-detail-protobuf">&quot;Accessor&quot;|&lt;accessor ID&gt; → Accessor detail (Protobuf)</a></li><li><a href="#accessoringroup-accessor-group-id-rarr-list-of-accessor-id-in-accessor-group-protobuf">&quot;AccessorInGroup&quot;|&lt;accessor group ID&gt; → List of accessor ID in Accessor group (Protobuf)</a></li><li><a href="#proxy-node-s-node-id-rarr-proxy-of-node-protobuf">&quot;Proxy&quot;|&lt;node’s node ID&gt; → Proxy of node (Protobuf)</a></li><li><a href="#behindproxynode-proxy-node-s-node-id-rarr-list-of-node-id-behind-proxy-protobuf">&quot;BehindProxyNode&quot;|&lt;proxy node’s node ID&gt; → List of node ID behind proxy (Protobuf)</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/introduction">Introduction</a><a href="/docs/getting-started-setup">Getting Started</a><a href="/docs/api">API Reference</a></div><div><h5>Community</h5><a href="http://www.ndid.co.th/" target="_blank" rel="noreferrer noopener">Official Site</a><a href="https://www.facebook.com/NationalDigitalID/" target="_blank" rel="noreferrer noopener">Facebook</a><a href="https://national-digital-id.slack.com/" target="_blank" rel="noreferrer noopener">Slack</a></div><div><h5>More</h5><a href="https://goo.gl/v4Cfpe" target="_blank" rel="noreferrer noopener">Whitepaper</a><a href="https://github.com/ndidplatform" target="_blank" rel="noreferrer noopener">GitHub</a></div></section><section class="copyright"></section></footer></div></body></html>

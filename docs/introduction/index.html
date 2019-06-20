@@ -1,0 +1,149 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>NDID Platform · NDID Platform</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;Development hub for Thailand National Digital ID platform.&lt;/p&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="NDID Platform · NDID Platform"/><meta property="og:type" content="website"/><meta property="og:url" content="https://ndidplatform.github.io/"/><meta property="og:description" content="&lt;p&gt;Development hub for Thailand National Digital ID platform.&lt;/p&gt;
+"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/undefined"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script><script type="text/javascript" src="/js/custom.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">NDID Platform</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive siteNavItemActive"><a href="/docs/introduction" target="_self">Docs</a></li><li class=""><a href="/docs/api" target="_self">API</a></li><li class=""><a href="https://github.com/ndidplatform" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>NDID Platform</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">NDID Platform</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/docs/introduction">Introduction</a></li><li class="navListItem"><a class="navItem" href="/docs/technical-overview">Technical Overview</a></li><li class="navListItem"><a class="navItem" href="/docs/components">Components</a></li><li class="navListItem"><a class="navItem" href="/docs/deployment">Deployment</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/getting-started-setup">Setup</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started-ndid">NDID</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started-rp">RP</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started-idp">IdP</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started-as">AS</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Flows</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/flow-create-identity">Create Identity / Onboarding Flows</a></li><li class="navListItem"><a class="navItem" href="/docs/flow-add-accessor">Add Accessor Flows</a></li><li class="navListItem"><a class="navItem" href="/docs/flow-data-request">Data Request Flows</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Usage</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/usage-mode-2-data-request">Usage (Mode 2, Data request)</a></li><li class="navListItem"><a class="navItem" href="/docs/usage-more-usages">More Usages</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Examples</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/examples-authen-flow">Example authentication flow</a></li><li class="navListItem"><a class="navItem" href="/docs/examples-data-request-flow">Example Data Request Flow</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">DEPRECATED</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/onboarding-story">Onboarding Story</a></li><li class="navListItem"><a class="navItem" href="/docs/public-storage">Public storage</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">NDID Platform</h1></header><article><div><span><p>Development hub for Thailand National Digital ID platform.</p>
+<table>
+<thead>
+<tr><th>Title</th><th>URL</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Official site</strong></td><td><a href="http://www.ndid.co.th/" target="_blank" rel="nofollow noreferrer noopener">http://www.ndid.co.th/</a></td></tr>
+<tr><td><strong>TEDxChiangMai Talk</strong></td><td><a href="https://www.youtube.com/watch?v=E8HHNRRlsoo" target="_blank" rel="nofollow noreferrer noopener">https://www.youtube.com/watch?v=E8HHNRRlsoo</a></td></tr>
+<tr><td><strong>GitHub organization</strong></td><td><a href="https://github.com/ndidplatform" target="_blank" rel="nofollow noreferrer noopener">https://github.com/ndidplatform</a></td></tr>
+<tr><td><strong>HTTP API schema</strong></td><td><a href="https://app.swaggerhub.com/organizations/NDID" target="_blank" rel="nofollow noreferrer noopener">https://app.swaggerhub.com/organizations/NDID</a></td></tr>
+<tr><td><strong>Facebook page</strong></td><td><a href="https://www.facebook.com/NationalDigitalID/" target="_blank" rel="nofollow noreferrer noopener">https://www.facebook.com/NationalDigitalID/</a></td></tr>
+<tr><td><strong>Whitepaper</strong></td><td><a href="https://goo.gl/v4Cfpe" target="_blank" rel="nofollow noreferrer noopener">https://goo.gl/v4Cfpe</a></td></tr>
+<tr><td><strong>Slack</strong></td><td><a href="https://bit.ly/2MNDyLI" target="_blank" rel="nofollow noreferrer noopener">https://bit.ly/2MNDyLI</a></td></tr>
+</tbody>
+</table>
+<h2><a class="anchor" aria-hidden="true" id="architecture-overview"></a><a href="#architecture-overview" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Architecture Overview</h2>
+<p><strong>Recommended reading:</strong> For newcomers, we highly recommend that you <a href="https://www.youtube.com/watch?v=E8HHNRRlsoo" target="_blank" rel="nofollow noreferrer noopener">watch the TEDxChiangMai talk</a> which describes the importance and benefits of having a digital ID infrastructure in Thailand.</p>
+<p>From the whitepaper:</p>
+<blockquote>
+<p>The Digital Identity Platform is intended to provide a flexible and highly
+secured method of self-identification for any Thai citizen personal. The
+platform must be able to leverage any reliable identity the user currently
+holds. Examples of reliable identity could be, for example, Citizen Id, Bank
+Accounts, Passport Number, Tax ID, Biometric Data.</p>
+<p>The users will interact with a <strong>Relying Party (RP)</strong> to receive services –
+offline or online. In order to successfully receive the services, the users
+are obliged to prove their identities in the form of online or offline
+identity confirmation with any available <strong>Identity Provider (IdP)</strong> who hold
+their identities.</p>
+<p>An <strong>Authoritative Source (AS)</strong> is considered as Source of Truth for any
+information relevant to the users. There are currently multiple Source of
+Truth entities. Each entity may keep one or multiple classification of user
+information. The RP can request more user information from AS, if necessary,
+under the permission granted by the users.</p>
+</blockquote>
+<p>There are 2 main processes when using NDID:</p>
+<ul>
+<li><p><strong>Enrolment and identity proofing</strong> (getting a digital ID): The user first needs to enrol with an <strong>Identity Provider (IdP)</strong> to get started. They will verify your identity (identity proofing) and then provide you a <strong>digital identity</strong> along with an <strong>authenticator</strong> that you use to verify your credential. The user can enrol with multiple IdPs for extra security.</p></li>
+<li><p><strong>Authentication and data access authorization</strong> (using your digital ID): This happens when you use a service that requires authentication using digital ID. They (the <strong>Relying Party (RP)</strong>, who offers you service) will ask the IdP, who will in turn ask you to provide your credentials (authentication) using your authenticator and allow the RP to access the data (data access authorization) which will be provided by an <strong>Authoritative Source (AS).</strong></p></li>
+</ul>
+<p><strong>Recommended reading:</strong> <a href="https://narudomr.blogspot.com/2018/02/identity-proofing-authentication.html" target="_blank" rel="nofollow noreferrer noopener">บทความเกี่ยวกับแนวคิดพื้นฐานในความแตกต่างของ Identity Proofing และ Authentication รวมทั้งความเชื่อมโยงของสองเรื่องนี้ที่เป็นเรื่องพื้นฐานของ Digital ID</a></p>
+<h2><a class="anchor" aria-hidden="true" id="quick-overview"></a><a href="#quick-overview" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Quick Overview</h2>
+<p>This section gives you a quick overview of the digital identity platform, illustrated through a simple scenario.</p>
+<p>Let's consider a use case where you're applying for a Visa at an embassy. They need your identity and bank statement. Without a digital identity platform, this would require a lot of paperwork.</p>
+<div markdown="1" class="flash mb-3">
+<p><strong>Note:</strong> This is a concrete scenario designed to help readers understand the system more easily, but the platform is <em>very flexible</em>, supporting vast amount of use cases.</p>
+</div>
+<p>With a digital identity platform, this process is much simpler.
+First, we define these participants:</p>
+<ul>
+<li><strong>User</strong>, in this example, the applicant.</li>
+<li><strong>Relying Party (RP)</strong> relies on the NDID platform to provide service to users. In this example, the embassy.</li>
+<li><strong>Identity Provider (IdP)</strong> holds the identity of the user, and is able to prove the identity the user.</li>
+<li><strong>Authoritative Source (AS)</strong> holds the user’s information, such as bank statement. In this example, the bank.</li>
+<li><strong>The NDID platform</strong>
+<ul>
+<li>A decentralized app with nodes running on each RP, IdP, and AS, connecting them together.</li>
+<li>Exposing an HTTP-based API to enable integration with each party.</li>
+<li>Transaction logs (without ID or private information, but contains zero-knowledge proof to verify the transaction) are recorded on the blockchain (<a href="https://tendermint.com/" target="_blank" rel="nofollow noreferrer noopener">Tendermint</a>).</li>
+<li>Private information (ID information, data from AS) is communicated between nodes securely through <a href="http://zeromq.org/" target="_blank" rel="nofollow noreferrer noopener">ZMQ</a>.</li>
+</ul></li>
+</ul>
+<div markdown="1" class="flash mb-3">
+<p><strong>Note:</strong> The following diagram treats the NDID platform as a black box, only showing the interaction between parties (Users, RP, IdP and AS). For more technical information about how the platform works and communicate securely under the hood, please see the <a href="technical-overview.html">technical overview</a>.</p>
+</div>
+<div class="mermaid">sequenceDiagram
+    participant User
+    participant RP
+    participant Platform
+    participant IdP
+    participant AS
+    User-&gt;&gt;RP: Use service
+    RP-&gt;&gt;User: Please provide ID
+    User-&gt;&gt;RP: 1-2345-67890-12-3
+    RP-&gt;&gt;+Platform: Create request
+    Platform--&gt;&gt;-RP: request_id=ef6f4c9c-818b-...
+    Platform-&gt;&gt;+IdP: Consent request
+    IdP--&gt;&gt;-Platform: Request accepted
+    IdP-&gt;&gt;User: Asks user to authenticate and allow RP to retrieve the bank statement from AS.
+    Note over RP,IdP: ID verification can take from few minutes to several days.
+    User--&gt;&gt;IdP: Accepts the consent request
+    IdP-&gt;&gt;Platform: Response to consent request, status=accept
+    Platform-&gt;&gt;RP: Callback request status update
+    Note over RP,IdP: At this point, the user has confirmed their identity. But the bank statement is yet to be retrieved.
+    Platform-&gt;&gt;+AS: Data request
+    AS--&gt;&gt;-Platform: Bank statement
+    Platform-&gt;&gt;RP: Callback request status update
+    Note over User,Platform: At this point, data requested from AS is now available for RP to use.
+    RP-&gt;&gt;+Platform: Get data received from AS
+    Platform--&gt;&gt;-RP: Data from AS
+</div></span></div></article></div><div class="docLastUpdate"><em>Last updated on 6/13/2019</em></div><div class="docs-prevnext"><a class="docs-next button" href="/docs/technical-overview"><span>Technical Overview</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#architecture-overview">Architecture Overview</a></li><li><a href="#quick-overview">Quick Overview</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/introduction">Introduction</a><a href="/docs/getting-started-setup">Getting Started</a><a href="/docs/api">API Reference</a></div><div><h5>Community</h5><a href="http://www.ndid.co.th/" target="_blank" rel="noreferrer noopener">Official Site</a><a href="https://www.facebook.com/NationalDigitalID/" target="_blank" rel="noreferrer noopener">Facebook</a><a href="https://national-digital-id.slack.com/" target="_blank" rel="noreferrer noopener">Slack</a></div><div><h5>More</h5><a href="https://goo.gl/v4Cfpe" target="_blank" rel="noreferrer noopener">Whitepaper</a><a href="https://github.com/ndidplatform" target="_blank" rel="noreferrer noopener">GitHub</a></div></section><section class="copyright"></section></footer></div></body></html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Getting Started as NDID · NDID Platform</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;h2&gt;&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; id=&quot;node-keys&quot;&gt;&lt;/a&gt;&lt;a href=&quot;#node-keys&quot; aria-hidden=&quot;true&quot; class=&quot;hash-link&quot;&gt;&lt;svg class=&quot;hash-link-icon&quot; aria-hidden=&quot;true&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Node keys&lt;/h2&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Getting Started as NDID · NDID Platform"/><meta property="og:type" content="website"/><meta property="og:url" content="https://ndidplatform.github.io/"/><meta property="og:description" content="&lt;h2&gt;&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; id=&quot;node-keys&quot;&gt;&lt;/a&gt;&lt;a href=&quot;#node-keys&quot; aria-hidden=&quot;true&quot; class=&quot;hash-link&quot;&gt;&lt;svg class=&quot;hash-link-icon&quot; aria-hidden=&quot;true&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Node keys&lt;/h2&gt;
+"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/undefined"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script><script type="text/javascript" src="/js/custom.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">NDID Platform</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/introduction" target="_self">Docs</a></li><li class=""><a href="/docs/api" target="_self">API</a></li><li class=""><a href="https://github.com/ndidplatform" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Getting Started</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">NDID Platform</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/introduction">Introduction</a></li><li class="navListItem"><a class="navItem" href="/docs/technical-overview">Technical Overview</a></li><li class="navListItem"><a class="navItem" href="/docs/components">Components</a></li><li class="navListItem"><a class="navItem" href="/docs/deployment">Deployment</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/getting-started-setup">Setup</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/getting-started-ndid">NDID</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started-rp">RP</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started-idp">IdP</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started-as">AS</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Flows</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/flow-create-identity">Create Identity / Onboarding Flows</a></li><li class="navListItem"><a class="navItem" href="/docs/flow-add-accessor">Add Accessor Flows</a></li><li class="navListItem"><a class="navItem" href="/docs/flow-data-request">Data Request Flows</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Usage</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/usage-mode-2-data-request">Usage (Mode 2, Data request)</a></li><li class="navListItem"><a class="navItem" href="/docs/usage-more-usages">More Usages</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Examples</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/examples-authen-flow">Example authentication flow</a></li><li class="navListItem"><a class="navItem" href="/docs/examples-data-request-flow">Example Data Request Flow</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">DEPRECATED</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/onboarding-story">Onboarding Story</a></li><li class="navListItem"><a class="navItem" href="/docs/public-storage">Public storage</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Getting Started as NDID</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="node-keys"></a><a href="#node-keys" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Node keys</h2>
+<p>Prepare 2 RSA key pairs, one for node key and another for node master key.</p>
+<pre><code class="hljs css language-sh">mkdir ./keys
+
+<span class="hljs-comment"># Generate node key pair</span>
+openssl genrsa -out ./keys/ndid.pem 2048
+openssl rsa -<span class="hljs-keyword">in</span> ./keys/ndid.pem -outform PEM -pubout -out ./keys/ndid_pub.pem
+
+<span class="hljs-comment"># Generate node master key pair</span>
+openssl genrsa -out ./keys/ndid_master.pem 2048
+openssl rsa -<span class="hljs-keyword">in</span> ./keys/ndid_master.pem -outform PEM -pubout -out ./keys/ndid_master_pub.pem
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="tendermint-and-abci-app"></a><a href="#tendermint-and-abci-app" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tendermint and ABCI app</h2>
+<p>Follow steps in <a href="/getting-started/setup.html#tendermint-and-abci-app">Setup</a> if you haven't already.</p>
+<p>Run Tendermint and ABCI app bundle</p>
+<h3><a class="anchor" aria-hidden="true" id="built-from-source"></a><a href="#built-from-source" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Built from source</h3>
+<pre><code class="hljs css language-sh">ABCI_DB_DIR_PATH=./ndid_abci_data ./did-tendermint --home ./ndid_tm_home node
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="docker"></a><a href="#docker" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Docker</h3>
+<pre><code class="hljs css language-sh">docker run \
+-p 26656:26656 -p 26657:26657 \
+--volume <span class="hljs-variable">$PWD</span>/ndid_tm_home:/tendermint \
+--volume <span class="hljs-variable">$PWD</span>/ndid_abci_data:/DID \
+--name ndid_tm_1 \
+ndidplatform/did-tendermint
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="api-server"></a><a href="#api-server" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>API Server</h2>
+<p>Follow steps in <a href="/getting-started/setup.html#api-server">Setup</a> if you haven't already.</p>
+<p>Run Redis server</p>
+<h3><a class="anchor" aria-hidden="true" id="docker-1"></a><a href="#docker-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Docker</h3>
+<pre><code class="hljs css language-sh">docker run -p 6379:6379 --name ndid_redis redis:4-alpine
+</code></pre>
+<p>Run an API server</p>
+<h3><a class="anchor" aria-hidden="true" id="built-from-source-1"></a><a href="#built-from-source-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Built from source</h3>
+<pre><code class="hljs css language-sh"><span class="hljs-built_in">cd</span> ./api/main-server
+
+TENDERMINT_IP=127.0.0.1 \
+TENDERMINT_PORT=26657 \
+NODE_ID=ndid \
+PRIVATE_KEY_PATH=/path/to/keys/ndid.pem \
+MASTER_PRIVATE_KEY_PATH=/path/to/keys/ndid_master.pem \
+SERVER_PORT=8080 \
+NDID_NODE=<span class="hljs-literal">true</span> \
+node build/server.js
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="docker-2"></a><a href="#docker-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Docker</h3>
+<pre><code class="hljs css language-sh">docker run \
+-p 8080:8080 \
+--link ndid_tm_1:tendermint \
+--link ndid_redis:redis \
+--volume <span class="hljs-variable">$PWD</span>/keys:/keys \
+--env <span class="hljs-string">"TENDERMINT_IP=tendermint"</span> \
+--env <span class="hljs-string">"TENDERMINT_PORT=26657"</span> \
+--env <span class="hljs-string">"DB_IP=redis"</span> \
+--env <span class="hljs-string">"NODE_ID=ndid"</span> \
+--env <span class="hljs-string">"PRIVATE_KEY_PATH=/keys/ndid.pem"</span> \
+--env <span class="hljs-string">"MASTER_PRIVATE_KEY_PATH=/keys/ndid_master.pem"</span> \
+--env <span class="hljs-string">"SERVER_PORT=8080"</span> \
+--env <span class="hljs-string">"NDID_NODE=true"</span> \
+--name ndid_api \
+ndidplatform/api
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="register-ndid-node"></a><a href="#register-ndid-node" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Register NDID node</h2>
+<p>Make a HTTP call to POST <code>/ndid/init_ndid</code> with node public key and node master public key in JSON body.</p>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"public_key"</span>: <span class="hljs-string">"&lt;CONTENT_OF_ndid_pub.pem&gt;"</span>,
+    <span class="hljs-attr">"master_public_key"</span>: <span class="hljs-string">"&lt;CONTENT_OF_ndid_master_pub.pem&gt;"</span>
+}
+</code></pre>
+<p>Example:</p>
+<pre><code class="hljs css language-sh">curl -skX POST http://127.0.0.1:8080/ndid/init_ndid \
+    -H <span class="hljs-string">"Content-Type: application/json"</span> \
+    -d <span class="hljs-string">"{\"public_key\":\"<span class="hljs-variable">$(cat ./keys/ndid_pub.pem)</span>\",\"master_public_key\":\"<span class="hljs-variable">$(cat ./keys/ndid_master_pub.pem)</span>\"}"</span> \
+    -w <span class="hljs-string">'%{http_code}'</span> \
+    -o /dev/null
+<span class="hljs-comment"># Output: 204</span>
+</code></pre>
+<p>After that, make a HTTP call to POST <code>/ndid/end_init</code> with empty body.</p>
+<p>Example:</p>
+<pre><code class="hljs css language-sh">curl -skX POST http://127.0.0.1:8080/ndid/end_init \
+    -w <span class="hljs-string">'%{http_code}'</span> \
+    -o /dev/null
+<span class="hljs-comment"># Output: 204</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="register-other-nodes"></a><a href="#register-other-nodes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Register other nodes</h2>
+<p>Nodes with RP, IdP, AS, or Proxy role can only be registered at NDID node.</p>
+<p>Make a HTTP call POST <code>/ndid/init_ndid</code> with JSON body.</p>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"node_key"</span>: <span class="hljs-string">"&lt;CONTENT_OF_NODE_PUBLIC_KEY&gt;"</span>,
+    <span class="hljs-attr">"node_master_key"</span>: <span class="hljs-string">"&lt;CONTENT_OF_NODE_MASTER_PUBLIC_KEY&gt;"</span>,
+    <span class="hljs-attr">"node_id"</span>: <span class="hljs-string">"&lt;NODE_ID&gt;"</span>,
+    <span class="hljs-attr">"node_name"</span>: <span class="hljs-string">"&lt;NODE_NAME&gt;"</span>,
+    <span class="hljs-attr">"role"</span>: <span class="hljs-string">"&lt;ROLE&gt;"</span>
+}
+</code></pre>
+<p>There are 2 additional required fields for IdP nodes.</p>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"node_key"</span>: <span class="hljs-string">"&lt;CONTENT_OF_NODE_PUBLIC_KEY&gt;"</span>,
+    <span class="hljs-attr">"node_master_key"</span>: <span class="hljs-string">"&lt;CONTENT_OF_NODE_MASTER_PUBLIC_KEY&gt;"</span>,
+    <span class="hljs-attr">"node_id"</span>: <span class="hljs-string">"&lt;NODE_ID&gt;"</span>,
+    <span class="hljs-attr">"node_name"</span>: <span class="hljs-string">"&lt;NODE_NAME&gt;"</span>,
+    <span class="hljs-attr">"role"</span>: <span class="hljs-string">"&lt;ROLE&gt;"</span>,
+    <span class="hljs-attr">"max_ial"</span>: &lt;MAX_IAL&gt;,
+    <span class="hljs-attr">"max_aal"</span>: &lt;MAX_AAL&gt;
+}
+</code></pre>
+<p>Example:</p>
+<p>Register RP (rp1) node.</p>
+<pre><code class="hljs css language-sh"><span class="hljs-comment"># Generate node key pair</span>
+openssl genrsa -out ./keys/rp1.pem 2048
+openssl rsa -<span class="hljs-keyword">in</span> ./keys/rp1.pem -outform PEM -pubout -out ./keys/rp1_pub.pem
+
+<span class="hljs-comment"># Generate node master key pair</span>
+openssl genrsa -out ./keys/rp1_master.pem 2048
+openssl rsa -<span class="hljs-keyword">in</span> ./keys/rp1_master.pem -outform PEM -pubout -out ./keys/rp1_master_pub.pem
+
+<span class="hljs-comment"># Register node</span>
+curl -skX POST http://127.0.0.1:8080/ndid/register_node \
+    -H <span class="hljs-string">"Content-Type: application/json"</span> \
+    -d <span class="hljs-string">"{\"node_key\":\"<span class="hljs-variable">$(cat ./keys/rp1_pub.pem)</span>\",\"node_master_key\":\"<span class="hljs-variable">$(cat ./keys/rp1_master_pub.pem)</span>\",\"node_id\":\"rp1\",\"node_name\":\"RP 1 Node\",\"role\":\"rp\"}"</span> \
+    -w <span class="hljs-string">'%{http_code}'</span> \
+    -o /dev/null
+<span class="hljs-comment"># Output: 204</span>
+</code></pre>
+<p>Register IdP (idp1) node.</p>
+<pre><code class="hljs css language-sh"><span class="hljs-comment"># Generate node key pair</span>
+openssl genrsa -out ./keys/idp1.pem 2048
+openssl rsa -<span class="hljs-keyword">in</span> ./keys/idp1.pem -outform PEM -pubout -out ./keys/idp1_pub.pem
+
+<span class="hljs-comment"># Generate node master key pair</span>
+openssl genrsa -out ./keys/idp1_master.pem 2048
+openssl rsa -<span class="hljs-keyword">in</span> ./keys/idp1_master.pem -outform PEM -pubout -out ./keys/idp1_master_pub.pem
+
+<span class="hljs-comment"># Register node</span>
+curl -skX POST http://127.0.0.1:8080/ndid/register_node \
+    -H <span class="hljs-string">"Content-Type: application/json"</span> \
+    -d <span class="hljs-string">"{\"node_key\":\"<span class="hljs-variable">$(cat ./keys/idp1_pub.pem)</span>\",\"node_master_key\":\"<span class="hljs-variable">$(cat ./keys/idp1_master_pub.pem)</span>\",\"node_id\":\"idp1\",\"node_name\":\"IdP 1 Node\",\"role\":\"idp\",\"max_ial\":3,\"max_aal\":3"</span> \
+    -w <span class="hljs-string">'%{http_code}'</span> \
+    -o /dev/null
+<span class="hljs-comment"># Output: 204</span>
+</code></pre>
+<p>Register AS (as1) node.</p>
+<pre><code class="hljs css language-sh"><span class="hljs-comment"># Generate node key pair</span>
+openssl genrsa -out ./keys/as1.pem 2048
+openssl rsa -<span class="hljs-keyword">in</span> ./keys/as1.pem -outform PEM -pubout -out ./keys/as1_pub.pem
+
+<span class="hljs-comment"># Generate node master key pair</span>
+openssl genrsa -out ./keys/as1_master.pem 2048
+openssl rsa -<span class="hljs-keyword">in</span> ./keys/as1_master.pem -outform PEM -pubout -out ./keys/as1_master_pub.pem
+
+<span class="hljs-comment"># Register node</span>
+curl -skX POST http://127.0.0.1:8080/ndid/register_node \
+    -H <span class="hljs-string">"Content-Type: application/json"</span> \
+    -d <span class="hljs-string">"{\"node_key\":\"<span class="hljs-variable">$(cat ./keys/as1_pub.pem)</span>\",\"node_master_key\":\"<span class="hljs-variable">$(cat ./keys/as1_master_pub.pem)</span>\",\"node_id\":\"as1\",\"node_name\":\"AS 1 Node\",\"role\":\"as\"}"</span> \
+    -w <span class="hljs-string">'%{http_code}'</span> \
+    -o /dev/null
+<span class="hljs-comment"># Output: 204</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="set-node-token"></a><a href="#set-node-token" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Set node token</h2>
+<p>All nodes except NDID node have blockchain transaction quota to prevent spamming. Giving nodes their tokens is required since new nodes will have 0 token and cannot make any transactions to the blockchain. Appropriate amount of tokens depends on NDID discretion. <strong>Token does NOT related to cost incured. It is simply a mechanism to prevent transaction spamming to the blockchain.</strong></p>
+<p>Make a HTTP call POST <code>/ndid/set_node_token</code> with JSON body.</p>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"node_id"</span>: <span class="hljs-string">"&lt;NODE_ID&gt;"</span>,
+    <span class="hljs-attr">"amount"</span>: &lt;AMOUNT&gt;,
+}
+</code></pre>
+<p>Example:</p>
+<pre><code class="hljs css language-sh"><span class="hljs-comment"># Give node "rp1" 10000 tokens</span>
+curl -skX POST http://127.0.0.1:8080/ndid/set_node_token \
+    -H <span class="hljs-string">"Content-Type: application/json"</span> \
+    -d <span class="hljs-string">"{\"node_id\":\"rp1\",\"amount\":10000}"</span> \
+    -w <span class="hljs-string">'%{http_code}'</span> \
+    -o /dev/null
+<span class="hljs-comment"># Output: 204</span>
+
+<span class="hljs-comment"># Give node "idp1" 10000 tokens</span>
+curl -skX POST http://127.0.0.1:8080/ndid/set_node_token \
+    -H <span class="hljs-string">"Content-Type: application/json"</span> \
+    -d <span class="hljs-string">"{\"node_id\":\"idp1\",\"amount\":10000}"</span> \
+    -w <span class="hljs-string">'%{http_code}'</span> \
+    -o /dev/null
+<span class="hljs-comment"># Output: 204</span>
+
+<span class="hljs-comment"># Give node "as1" 10000 tokens</span>
+curl -skX POST http://127.0.0.1:8080/ndid/set_node_token \
+    -H <span class="hljs-string">"Content-Type: application/json"</span> \
+    -d <span class="hljs-string">"{\"node_id\":\"as1\",\"amount\":10000}"</span> \
+    -w <span class="hljs-string">'%{http_code}'</span> \
+    -o /dev/null
+<span class="hljs-comment"># Output: 204</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="create-namespaces"></a><a href="#create-namespaces" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Create Namespaces</h2>
+<p>Create allowed namespace for SIDs on the platform by making HTTP call to POST <code>/ndid/create_namespace</code> with JSON body.</p>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"namespace"</span>: <span class="hljs-string">"&lt;NAMESPACE&gt;"</span>,
+    <span class="hljs-attr">"description"</span>: <span class="hljs-string">"&lt;NAMEPSACE_DESCRIPTION&gt;"</span>
+}
+</code></pre>
+<p>IdPs can create identity or onboard user to the platform with created namespace only.</p>
+<p>Example:</p>
+<pre><code class="hljs css language-sh">curl -skX POST http://127.0.0.1:8080/ndid/create_namespace \
+    -H <span class="hljs-string">"Content-Type: application/json"</span> \
+    -d <span class="hljs-string">"{\"namespace\":\"citizen_id\",\"description\":\"Thai citizen ID\"}"</span> \
+    -w <span class="hljs-string">'%{http_code}'</span> \
+    -o /dev/null
+<span class="hljs-comment"># Output: 204</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="add-services"></a><a href="#add-services" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Add Services</h2>
+<p>Create allowed service on the platform by making HTTP call to POST <code>/ndid/create_service</code> with JSON body.</p>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"service_id"</span>: <span class="hljs-string">"&lt;SERVICE_ID&gt;"</span>,
+    <span class="hljs-attr">"service_name"</span>: <span class="hljs-string">"&lt;SERVICE_NAME&gt;"</span>
+}
+</code></pre>
+<p>Example:</p>
+<pre><code class="hljs css language-sh">curl -skX POST http://127.0.0.1:8080/ndid/create_service \
+    -H <span class="hljs-string">"Content-Type: application/json"</span> \
+    -d <span class="hljs-string">"{\"service_id\":\"bank_statement\",\"service_name\":\"Bank statement\"}"</span> \
+    -w <span class="hljs-string">'%{http_code}'</span> \
+    -o /dev/null)
+<span class="hljs-comment"># Output: 204</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="approve-services"></a><a href="#approve-services" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Approve Services</h2>
+<p>ASes can only register their provided services after NDID approves. NDID approves an AS service by making HTTP call to POST <code>/ndid/approve_service</code> with JSON body.</p>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"service_id"</span>: <span class="hljs-string">"&lt;SERVICE_ID&gt;"</span>,
+    <span class="hljs-attr">"node_id"</span>: <span class="hljs-string">"&lt;NODE_ID&gt;"</span>
+}
+</code></pre>
+<p>Example:</p>
+<pre><code class="hljs css language-sh"><span class="hljs-comment"># Approve/allow node "as1" to be able to register their service "bank_statement"</span>
+curl -skX POST http://127.0.0.1:8080/ndid/approve_service \
+    -H <span class="hljs-string">"Content-Type: application/json"</span> \
+    -d <span class="hljs-string">"{\"service_id\":\"bank_statement\",\"node_id\":\"as1\"}"</span> \
+    -w <span class="hljs-string">'%{http_code}'</span> \
+    -o /dev/null)
+<span class="hljs-comment"># Output: 204</span>
+</code></pre>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 6/14/2019</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/getting-started-setup"><span class="arrow-prev">← </span><span>Setup</span></a><a class="docs-next button" href="/docs/getting-started-rp"><span>RP</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#node-keys">Node keys</a></li><li><a href="#tendermint-and-abci-app">Tendermint and ABCI app</a><ul class="toc-headings"><li><a href="#built-from-source">Built from source</a></li><li><a href="#docker">Docker</a></li></ul></li><li><a href="#api-server">API Server</a><ul class="toc-headings"><li><a href="#docker-1">Docker</a></li><li><a href="#built-from-source-1">Built from source</a></li><li><a href="#docker-2">Docker</a></li></ul></li><li><a href="#register-ndid-node">Register NDID node</a></li><li><a href="#register-other-nodes">Register other nodes</a></li><li><a href="#set-node-token">Set node token</a></li><li><a href="#create-namespaces">Create Namespaces</a></li><li><a href="#add-services">Add Services</a></li><li><a href="#approve-services">Approve Services</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/introduction">Introduction</a><a href="/docs/getting-started-setup">Getting Started</a><a href="/docs/api">API Reference</a></div><div><h5>Community</h5><a href="http://www.ndid.co.th/" target="_blank" rel="noreferrer noopener">Official Site</a><a href="https://www.facebook.com/NationalDigitalID/" target="_blank" rel="noreferrer noopener">Facebook</a><a href="https://national-digital-id.slack.com/" target="_blank" rel="noreferrer noopener">Slack</a></div><div><h5>More</h5><a href="https://goo.gl/v4Cfpe" target="_blank" rel="noreferrer noopener">Whitepaper</a><a href="https://github.com/ndidplatform" target="_blank" rel="noreferrer noopener">GitHub</a></div></section><section class="copyright"></section></footer></div></body></html>

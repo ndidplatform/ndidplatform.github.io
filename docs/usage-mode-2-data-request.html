@@ -1,0 +1,484 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Usage (Mode 2, Data request) · NDID Platform</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Disclaimer:&lt;/strong&gt; The purpose of this page is to illustrate the scenario outlined in the &lt;a href=&quot;/#quick-overview&quot;&gt;quick overview&lt;/a&gt; using concrete examples, to help make it easier to grasp how the platform works. This document is &lt;strong&gt;not&lt;/strong&gt; the definitive source of information, just a learning aid. Please look at the &lt;a href=&quot;https://docs.google.com/document/d/1SKydNM-Nyox62m3vuvYgFYCr8ABVQV8RhjwiMjdCpQ8/edit#heading=h.qf2lmu8vfgym&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer noopener&quot;&gt;whitepaper&lt;/a&gt; for the full description of the platform.&lt;/p&gt;
+&lt;/blockquote&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Usage (Mode 2, Data request) · NDID Platform"/><meta property="og:type" content="website"/><meta property="og:url" content="https://ndidplatform.github.io/"/><meta property="og:description" content="&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Disclaimer:&lt;/strong&gt; The purpose of this page is to illustrate the scenario outlined in the &lt;a href=&quot;/#quick-overview&quot;&gt;quick overview&lt;/a&gt; using concrete examples, to help make it easier to grasp how the platform works. This document is &lt;strong&gt;not&lt;/strong&gt; the definitive source of information, just a learning aid. Please look at the &lt;a href=&quot;https://docs.google.com/document/d/1SKydNM-Nyox62m3vuvYgFYCr8ABVQV8RhjwiMjdCpQ8/edit#heading=h.qf2lmu8vfgym&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer noopener&quot;&gt;whitepaper&lt;/a&gt; for the full description of the platform.&lt;/p&gt;
+&lt;/blockquote&gt;
+"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/undefined"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script><script type="text/javascript" src="/js/custom.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">NDID Platform</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/introduction" target="_self">Docs</a></li><li class=""><a href="/docs/api" target="_self">API</a></li><li class=""><a href="https://github.com/ndidplatform" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Usage</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">NDID Platform</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/introduction">Introduction</a></li><li class="navListItem"><a class="navItem" href="/docs/technical-overview">Technical Overview</a></li><li class="navListItem"><a class="navItem" href="/docs/components">Components</a></li><li class="navListItem"><a class="navItem" href="/docs/deployment">Deployment</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/getting-started-setup">Setup</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started-ndid">NDID</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started-rp">RP</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started-idp">IdP</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started-as">AS</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Flows</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/flow-create-identity">Create Identity / Onboarding Flows</a></li><li class="navListItem"><a class="navItem" href="/docs/flow-add-accessor">Add Accessor Flows</a></li><li class="navListItem"><a class="navItem" href="/docs/flow-data-request">Data Request Flows</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Usage</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/docs/usage-mode-2-data-request">Usage (Mode 2, Data request)</a></li><li class="navListItem"><a class="navItem" href="/docs/usage-more-usages">More Usages</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Examples</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/examples-authen-flow">Example authentication flow</a></li><li class="navListItem"><a class="navItem" href="/docs/examples-data-request-flow">Example Data Request Flow</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">DEPRECATED</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/onboarding-story">Onboarding Story</a></li><li class="navListItem"><a class="navItem" href="/docs/public-storage">Public storage</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Usage (Mode 2, Data request)</h1></header><article><div><span><blockquote>
+<p><strong>Disclaimer:</strong> The purpose of this page is to illustrate the scenario outlined in the <a href="/#quick-overview">quick overview</a> using concrete examples, to help make it easier to grasp how the platform works. This document is <strong>not</strong> the definitive source of information, just a learning aid. Please look at the <a href="https://docs.google.com/document/d/1SKydNM-Nyox62m3vuvYgFYCr8ABVQV8RhjwiMjdCpQ8/edit#heading=h.qf2lmu8vfgym" target="_blank" rel="nofollow noreferrer noopener">whitepaper</a> for the full description of the platform.</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="flow-overview"></a><a href="#flow-overview" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Flow Overview</h2>
+<ol>
+<li><p>RP creates a consent request.</p>
+<p>(RP receives create consent request result)</p>
+<p>(RP receives request status update)</p></li>
+<li><p>IdP(s) receive a consent request.</p></li>
+<li><p>IdP responses to a consent request.</p>
+<p>(IdP receives consent request response result)</p>
+<p>(RP receives request status updates)</p>
+<p>(<strong>Note:</strong> Step 3 is repeated for every IdPs)</p></li>
+<li><p>(Optional) AS(es) receive a data request.</p></li>
+<li><p>(Optional) AS responses to a data request by sending data to RP.</p>
+<p>(AS receives data response result)</p>
+<p>(RP receives request status updates)</p></li>
+<li><p>(Optional) RP get data received from AS(es).</p>
+<p>(RP receives request status update)</p>
+<p>(<strong>Note:</strong> Step 5-6 is repeated for every ASes)</p></li>
+<li><p>RP, IdP(s), and AS(es) get private messages sent over message queue and store to their databases.</p></li>
+<li><p>RP, IdP(s), and AS(es) delete private messages sent over message queue.</p></li>
+</ol>
+<div markdown="1" class="flash mb-3">
+<p><strong>Note:</strong> In the following example usage, RP requests a consent from 1 IdP and data from 1 AS. It is assumed that <code>as1</code> has <code>bank_statement</code> service provided.</p>
+</div>
+<div markdown="1" class="flash mb-3">
+<p>For sequence diagram, see <a href="/flows/data-request.html#1-idp-1-as">Data Request Flows (1 IdP, 1 AS)</a>.</p>
+</div>
+<h2><a class="anchor" aria-hidden="true" id="rp-creates-consent-request-rp-rarr-platform"></a><a href="#rp-creates-consent-request-rp-rarr-platform" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RP creates consent request (RP→Platform)</h2>
+<p><a href="https://app.swaggerhub.com/apis/NDID/relying_party_api/3.0#/default/send_request_to_id" target="_blank" rel="nofollow noreferrer noopener">POST /rp/requests/citizen_id/1234567890123</a></p>
+<p>HTTP Request Body</p>
+<pre><code class="hljs css language-json">{
+  <span class="hljs-attr">"reference_id"</span>: <span class="hljs-string">"28c3bb92-3721-4b99-98db-23d84faeb388"</span>,
+  <span class="hljs-attr">"callback_url"</span>: <span class="hljs-string">"http://localhost:9200/rp/callback"</span>,
+  <span class="hljs-attr">"mode"</span>: <span class="hljs-number">2</span>,
+  <span class="hljs-attr">"idp_id_list"</span>: [<span class="hljs-string">"idp1"</span>],
+  <span class="hljs-attr">"data_request_list"</span>: [
+    {
+      <span class="hljs-attr">"service_id"</span>: <span class="hljs-string">"bank_statement"</span>,
+      <span class="hljs-attr">"as_id_list"</span>: [<span class="hljs-string">"as1"</span>],
+      <span class="hljs-attr">"min_as"</span>: <span class="hljs-number">1</span>,
+      <span class="hljs-attr">"request_params"</span>: <span class="hljs-string">"{\"format\":\"pdf\"}"</span>
+    }
+  ],
+  <span class="hljs-attr">"request_message"</span>: <span class="hljs-string">"Test request message (data request) (mode 2)"</span>,
+  <span class="hljs-attr">"min_ial"</span>: <span class="hljs-number">1.1</span>,
+  <span class="hljs-attr">"min_aal"</span>: <span class="hljs-number">1</span>,
+  <span class="hljs-attr">"min_idp"</span>: <span class="hljs-number">1</span>,
+  <span class="hljs-attr">"request_timeout"</span>: <span class="hljs-number">86400</span>,
+  <span class="hljs-attr">"bypass_identity_check"</span>: <span class="hljs-literal">false</span>
+}
+</code></pre>
+<p>HTTP Response Body (Status code: <code>202</code>)</p>
+<pre><code class="hljs css language-json">{
+  <span class="hljs-attr">"request_id"</span>: <span class="hljs-string">"10606caea38ce5ab34d0ffc94d856d622689c8bb15f45653559be5d3bc72f631"</span>,
+  <span class="hljs-attr">"initial_salt"</span>: <span class="hljs-string">"y4F7V7kcrfQdFTLU4Mx4XA=="</span>
+}
+</code></pre>
+<p><strong><em>IMPORTANT</em></strong>: RP <strong>MUST</strong> store <code>request_id</code> and <code>initial_salt</code> to their database for verification and auditing later if necessary.</p>
+<h2><a class="anchor" aria-hidden="true" id="rp-receives-create-consent-request-result-platform-rarr-rp"></a><a href="#rp-receives-create-consent-request-result-platform-rarr-rp" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RP receives create consent request result (Platform→RP)</h2>
+<p><a href="https://app.swaggerhub.com/apis/NDID/rp_callback/3.0#/default/request_update" target="_blank" rel="nofollow noreferrer noopener">POST /rp/request/a8ccb88e-4873-4c24-a1fc-5148e0a56965</a></p>
+<p>HTTP Request Body</p>
+<pre><code class="hljs css language-json">{
+  <span class="hljs-attr">"node_id"</span>: <span class="hljs-string">"rp1"</span>,
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"create_request_result"</span>,
+  <span class="hljs-attr">"success"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">"reference_id"</span>: <span class="hljs-string">"28c3bb92-3721-4b99-98db-23d84faeb388"</span>,
+  <span class="hljs-attr">"request_id"</span>: <span class="hljs-string">"10606caea38ce5ab34d0ffc94d856d622689c8bb15f45653559be5d3bc72f631"</span>,
+  <span class="hljs-attr">"creation_block_height"</span>: <span class="hljs-string">"test-chain-NDID:101"</span>
+}
+</code></pre>
+<p>HTTP Response (Status code: <code>204</code>)</p>
+<h2><a class="anchor" aria-hidden="true" id="rp-receives-request-status-update-platform-rarr-rp"></a><a href="#rp-receives-request-status-update-platform-rarr-rp" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RP receives request status update (Platform→RP)</h2>
+<p><a href="https://app.swaggerhub.com/apis/NDID/rp_callback/3.0#/default/request_update" target="_blank" rel="nofollow noreferrer noopener">POST /rp/request/a8ccb88e-4873-4c24-a1fc-5148e0a56965</a></p>
+<p>HTTP Request Body</p>
+<pre><code class="hljs css language-json">{
+  <span class="hljs-attr">"node_id"</span>: <span class="hljs-string">"rp1"</span>,
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"request_status"</span>,
+  <span class="hljs-attr">"mode"</span>: <span class="hljs-number">2</span>,
+  <span class="hljs-attr">"request_id"</span>: <span class="hljs-string">"10606caea38ce5ab34d0ffc94d856d622689c8bb15f45653559be5d3bc72f631"</span>,
+  <span class="hljs-attr">"status"</span>: <span class="hljs-string">"pending"</span>,
+  <span class="hljs-attr">"min_idp"</span>: <span class="hljs-number">1</span>,
+  <span class="hljs-attr">"answered_idp_count"</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">"closed"</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-attr">"timed_out"</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-attr">"service_list"</span>: [
+    {
+      <span class="hljs-attr">"service_id"</span>: <span class="hljs-string">"bank_statement"</span>,
+      <span class="hljs-attr">"min_as"</span>: <span class="hljs-number">1</span>,
+      <span class="hljs-attr">"signed_data_count"</span>: <span class="hljs-number">0</span>,
+      <span class="hljs-attr">"received_data_count"</span>: <span class="hljs-number">0</span>
+    }
+  ],
+  <span class="hljs-attr">"response_valid_list"</span>: [],
+  <span class="hljs-attr">"block_height"</span>: <span class="hljs-string">"test-chain-NDID:101"</span>
+}
+</code></pre>
+<p>HTTP Response (Status code: <code>204</code>)</p>
+<h2><a class="anchor" aria-hidden="true" id="idp-receives-consent-request-platform-rarr-idp"></a><a href="#idp-receives-consent-request-platform-rarr-idp" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>IdP receives consent request (Platform→IdP)</h2>
+<p><a href="https://app.swaggerhub.com/apis/NDID/idp_callback/3.0#/default/consent_request" target="_blank" rel="nofollow noreferrer noopener">POST /idp/request</a></p>
+<p>HTTP Request Body</p>
+<ul>
+<li><p>IdP has onboarded an identity in consent request (SID <code>citizen_id</code>:<code>1234567890123</code> or other SID in the same reference group).</p>
+<pre><code class="hljs css language-json">{
+  <span class="hljs-attr">"node_id"</span>: <span class="hljs-string">"idp1"</span>,
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"incoming_request"</span>,
+  <span class="hljs-attr">"mode"</span>: <span class="hljs-number">2</span>,
+  <span class="hljs-attr">"request_id"</span>: <span class="hljs-string">"10606caea38ce5ab34d0ffc94d856d622689c8bb15f45653559be5d3bc72f631"</span>,
+  <span class="hljs-attr">"request_message"</span>: <span class="hljs-string">"Test request message (data request) (mode 2)"</span>,
+  <span class="hljs-attr">"request_message_hash"</span>: <span class="hljs-string">"o6PtyIkzQm5l7kYKIb7BwVfTldqSHhNyOx/LH4trQqA="</span>,
+  <span class="hljs-attr">"request_message_salt"</span>: <span class="hljs-string">"TI1123/BKXQI6ou0EB0M6A=="</span>,
+  <span class="hljs-attr">"requester_node_id"</span>: <span class="hljs-string">"rp1"</span>,
+  <span class="hljs-attr">"min_ial"</span>: <span class="hljs-number">1.1</span>,
+  <span class="hljs-attr">"min_aal"</span>: <span class="hljs-number">1</span>,
+  <span class="hljs-attr">"data_request_list"</span>: [
+    {
+      <span class="hljs-attr">"service_id"</span>: <span class="hljs-string">"bank_statement"</span>,
+      <span class="hljs-attr">"as_id_list"</span>: [<span class="hljs-string">"as1"</span>],
+      <span class="hljs-attr">"min_as"</span>: <span class="hljs-number">1</span>
+    }
+  ],
+  <span class="hljs-attr">"initial_salt"</span>: <span class="hljs-string">"y4F7V7kcrfQdFTLU4Mx4XA=="</span>,
+  <span class="hljs-attr">"creation_time"</span>: <span class="hljs-number">1558426238703</span>,
+  <span class="hljs-attr">"creation_block_height"</span>: <span class="hljs-string">"test-chain-NDID:101"</span>,
+  <span class="hljs-attr">"request_timeout"</span>: <span class="hljs-number">86400</span>,
+  <span class="hljs-attr">"reference_group_code"</span>: <span class="hljs-string">"523bfc25-2451-49a7-8c5c-e83cb0823cf6"</span>
+}
+</code></pre></li>
+<li><p>RP create request with option <code>&quot;bypass_identity_check&quot;: true</code> and IdP has not onboarded an identity in consent request.</p>
+<pre><code class="hljs css language-json">{
+  <span class="hljs-attr">"node_id"</span>: <span class="hljs-string">"idp1"</span>,
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"incoming_request"</span>,
+  <span class="hljs-attr">"mode"</span>: <span class="hljs-number">2</span>,
+  <span class="hljs-attr">"request_id"</span>: <span class="hljs-string">"10606caea38ce5ab34d0ffc94d856d622689c8bb15f45653559be5d3bc72f631"</span>,
+  <span class="hljs-attr">"request_message"</span>: <span class="hljs-string">"Test request message (data request) (mode 2)"</span>,
+  <span class="hljs-attr">"request_message_hash"</span>: <span class="hljs-string">"o6PtyIkzQm5l7kYKIb7BwVfTldqSHhNyOx/LH4trQqA="</span>,
+  <span class="hljs-attr">"request_message_salt"</span>: <span class="hljs-string">"TI1123/BKXQI6ou0EB0M6A=="</span>,
+  <span class="hljs-attr">"requester_node_id"</span>: <span class="hljs-string">"rp1"</span>,
+  <span class="hljs-attr">"min_ial"</span>: <span class="hljs-number">1.1</span>,
+  <span class="hljs-attr">"min_aal"</span>: <span class="hljs-number">1</span>,
+  <span class="hljs-attr">"data_request_list"</span>: [
+    {
+      <span class="hljs-attr">"service_id"</span>: <span class="hljs-string">"bank_statement"</span>,
+      <span class="hljs-attr">"as_id_list"</span>: [<span class="hljs-string">"as1"</span>],
+      <span class="hljs-attr">"min_as"</span>: <span class="hljs-number">1</span>
+    }
+  ],
+  <span class="hljs-attr">"initial_salt"</span>: <span class="hljs-string">"y4F7V7kcrfQdFTLU4Mx4XA=="</span>,
+  <span class="hljs-attr">"creation_time"</span>: <span class="hljs-number">1558426238703</span>,
+  <span class="hljs-attr">"creation_block_height"</span>: <span class="hljs-string">"test-chain-NDID:101"</span>,
+  <span class="hljs-attr">"request_timeout"</span>: <span class="hljs-number">86400</span>,
+  <span class="hljs-attr">"namespace"</span>: <span class="hljs-string">"citizen_id"</span>,
+  <span class="hljs-attr">"identifier"</span>: <span class="hljs-string">"1234567890123"</span>
+}
+</code></pre></li>
+</ul>
+<p>HTTP Response (Status code: <code>204</code>)</p>
+<h2><a class="anchor" aria-hidden="true" id="idp-responses-to-consent-request-idp-rarr-platform"></a><a href="#idp-responses-to-consent-request-idp-rarr-platform" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>IdP responses to consent request (IdP→Platform)</h2>
+<p>IdP may or may not response to consent request. IdP response with status either <code>accept</code> or <code>reject</code> only when an individual has granted or gave consent to do so.</p>
+<p><a href="https://app.swaggerhub.com/apis/NDID/idp_callback/3.0#/default/consent_request" target="_blank" rel="nofollow noreferrer noopener">POST /idp/response</a></p>
+<p>HTTP Request Body</p>
+<pre><code class="hljs css language-json">{
+  <span class="hljs-attr">"reference_id"</span>: <span class="hljs-string">"a066fd0d-afa9-4eb0-9fd2-3aa7eb8c89fd"</span>,
+  <span class="hljs-attr">"callback_url"</span>: <span class="hljs-string">"http://localhost:9100/idp/callback"</span>,
+  <span class="hljs-attr">"request_id"</span>: <span class="hljs-string">"10606caea38ce5ab34d0ffc94d856d622689c8bb15f45653559be5d3bc72f631"</span>,
+  <span class="hljs-attr">"ial"</span>: <span class="hljs-number">2.3</span>,
+  <span class="hljs-attr">"aal"</span>: <span class="hljs-number">3</span>,
+  <span class="hljs-attr">"status"</span>: <span class="hljs-string">"accept"</span>,
+  <span class="hljs-attr">"accessor_id"</span>: <span class="hljs-string">"65ecc598-7b2c-4f56-b74b-d265d8d0c0a9"</span>
+}
+</code></pre>
+<p>HTTP Response (Status code: <code>202</code>)</p>
+<h2><a class="anchor" aria-hidden="true" id="idp-receives-accessor-encrypt-callback-platform-rarr-idp"></a><a href="#idp-receives-accessor-encrypt-callback-platform-rarr-idp" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>IdP receives accessor encrypt callback (Platform→IdP)</h2>
+<p><a href="https://app.swaggerhub.com/apis/NDID/idp_callback/3.0#/default/request_for_accessor_to_encrypt" target="_blank" rel="nofollow noreferrer noopener">POST /idp/accessor/encrypt</a></p>
+<p>HTTP Request Body</p>
+<pre><code class="hljs css language-json">{
+  <span class="hljs-attr">"node_id"</span>: <span class="hljs-string">"idp1"</span>,
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"accessor_encrypt"</span>,
+  <span class="hljs-attr">"reference_id"</span>: <span class="hljs-string">"a066fd0d-afa9-4eb0-9fd2-3aa7eb8c89fd"</span>,
+  <span class="hljs-attr">"request_id"</span>: <span class="hljs-string">"10606caea38ce5ab34d0ffc94d856d622689c8bb15f45653559be5d3bc72f631"</span>,
+  <span class="hljs-attr">"accessor_id"</span>: <span class="hljs-string">"65ecc598-7b2c-4f56-b74b-d265d8d0c0a9"</span>,
+  <span class="hljs-attr">"key_type"</span>: <span class="hljs-string">"RSA"</span>,
+  <span class="hljs-attr">"padding"</span>: <span class="hljs-string">"none"</span>,
+  <span class="hljs-attr">"request_message_padded_hash"</span>: <span class="hljs-string">"SM8Cctj6q4qpxaPzLYxKDqq5qnA3BWS6sKKBgTNGpIFN+WSfK+PS9lW3b7u6Bm4TpklMEcR/ESPosTcy69E3wj3IJvxq1XuMjwOmPOO70z035pIEbH2Jn64FCF8jtiVjqsso01XETNTAoMlI0BXmAYTz5w4gxclUcr/j3NKv4UCawbb/dUOH3LbuhiZh1QpeP9ID8sqo2d7VGEZhTH6FS2a4+yqnUtGhflBh5A1Q1KzBIRx2hDgk8Jx0HOlfxRKgqRcrqwTG8FkbdkUl02w0NWTmkbBghkchNt4M2BR9DUwqBMgliuQFVWavon1bpah7o5iRVg4GHcdemPLAThu7xA=="</span>
+}
+</code></pre>
+<p>HTTP Response Body (Status code: <code>200</code>)</p>
+<pre><code class="hljs css language-json">{
+  <span class="hljs-attr">"signature"</span>: <span class="hljs-string">"Cx5lCka1cMImvFFbfpyniolyBYxgozH6QrBNEmf1jNsWO2KzHcC4qAVYce0n5+LvQVfnZnkrwB3Lz8Au4sy6a7FjeEGL0aABi1m68P/Dez3mPXsq5N6XZd0GvLHmGvjrqd0xYNtRwXmNyB0W7kzLqzOGv0FiwG6o2m1VxjjkTXoJyASafOVrTx//OH+LjSdFA79hcL68KggyRMJS2IiKWMYWPsUXyB3i43rH1zqYhuADPGmbWk/+JqQCXXY0Ry4j1qADkrNkuO98RGTzb2A0OqtRb6YC2nBdKLDENrDvI85DRo9Bp6gjbgbaYocwnCPYD2dsgFWcFJXHDklvX7VWSg=="</span>
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="idp-receives-response-result-platform-rarr-idp"></a><a href="#idp-receives-response-result-platform-rarr-idp" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>IdP receives response result (Platform→IdP)</h2>
+<p><a href="https://app.swaggerhub.com/apis/NDID/idp_callback/3.0#/default/post_idp_response" target="_blank" rel="nofollow noreferrer noopener">POST /idp/response</a></p>
+<p>HTTP Request Body</p>
+<pre><code class="hljs css language-json">{
+  <span class="hljs-attr">"node_id"</span>: <span class="hljs-string">"idp1"</span>,
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"response_result"</span>,
+  <span class="hljs-attr">"success"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">"reference_id"</span>: <span class="hljs-string">"a066fd0d-afa9-4eb0-9fd2-3aa7eb8c89fd"</span>,
+  <span class="hljs-attr">"request_id"</span>: <span class="hljs-string">"10606caea38ce5ab34d0ffc94d856d622689c8bb15f45653559be5d3bc72f631"</span>
+}
+</code></pre>
+<p>HTTP Response (Status code: <code>204</code>)</p>
+<h2><a class="anchor" aria-hidden="true" id="rp-receives-request-status-update-platform-rarr-rp-1"></a><a href="#rp-receives-request-status-update-platform-rarr-rp-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RP receives request status update (Platform→RP)</h2>
+<p><a href="https://app.swaggerhub.com/apis/NDID/rp_callback/3.0#/default/request_update" target="_blank" rel="nofollow noreferrer noopener">POST /rp/request/e3cb44c9-8848-4dec-98c8-8083f373b1f7</a></p>
+<p>HTTP Request Body</p>
+<pre><code class="hljs css language-json">{
+  <span class="hljs-attr">"node_id"</span>: <span class="hljs-string">"rp1"</span>,
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"request_status"</span>,
+  <span class="hljs-attr">"mode"</span>: <span class="hljs-number">2</span>,
+  <span class="hljs-attr">"request_id"</span>: <span class="hljs-string">"10606caea38ce5ab34d0ffc94d856d622689c8bb15f45653559be5d3bc72f631"</span>,
+  <span class="hljs-attr">"status"</span>: <span class="hljs-string">"confirmed"</span>,
+  <span class="hljs-attr">"min_idp"</span>: <span class="hljs-number">1</span>,
+  <span class="hljs-attr">"answered_idp_count"</span>: <span class="hljs-number">1</span>,
+  <span class="hljs-attr">"closed"</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-attr">"timed_out"</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-attr">"service_list"</span>: [
+    {
+      <span class="hljs-attr">"service_id"</span>: <span class="hljs-string">"bank_statement"</span>,
+      <span class="hljs-attr">"min_as"</span>: <span class="hljs-number">1</span>,
+      <span class="hljs-attr">"signed_data_count"</span>: <span class="hljs-number">0</span>,
+      <span class="hljs-attr">"received_data_count"</span>: <span class="hljs-number">0</span>
+    }
+  ],
+  <span class="hljs-attr">"response_valid_list"</span>: [
+    {
+      <span class="hljs-attr">"idp_id"</span>: <span class="hljs-string">"idp1"</span>,
+      <span class="hljs-attr">"valid_signature"</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">"valid_ial"</span>: <span class="hljs-literal">true</span>
+    }
+  ],
+  <span class="hljs-attr">"block_height"</span>: <span class="hljs-string">"test-chain-NDID:103"</span>
+}
+</code></pre>
+<p>HTTP Response (Status code: <code>204</code>)</p>
+<h2><a class="anchor" aria-hidden="true" id="as-receives-data-request-platform-rarr-as"></a><a href="#as-receives-data-request-platform-rarr-as" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>AS receives data request (Platform→AS)</h2>
+<p><a href="https://app.swaggerhub.com/apis/NDID/as_callback/3.0#/default/data_request" target="_blank" rel="nofollow noreferrer noopener">POST /service/bank_statement</a></p>
+<p>HTTP Request Body</p>
+<pre><code class="hljs css language-json">{
+  <span class="hljs-attr">"node_id"</span>: <span class="hljs-string">"as1"</span>,
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"data_request"</span>,
+  <span class="hljs-attr">"request_id"</span>: <span class="hljs-string">"10606caea38ce5ab34d0ffc94d856d622689c8bb15f45653559be5d3bc72f631"</span>,
+  <span class="hljs-attr">"mode"</span>: <span class="hljs-number">2</span>,
+  <span class="hljs-attr">"namespace"</span>: <span class="hljs-string">"citizen_id"</span>,
+  <span class="hljs-attr">"identifier"</span>: <span class="hljs-string">"eed63657-d880-4ebb-81c9-5f7be9200019"</span>,
+  <span class="hljs-attr">"service_id"</span>: <span class="hljs-string">"bank_statement"</span>,
+  <span class="hljs-attr">"request_params"</span>: <span class="hljs-string">"{\"format\":\"pdf\"}"</span>,
+  <span class="hljs-attr">"requester_node_id"</span>: <span class="hljs-string">"rp1"</span>,
+  <span class="hljs-attr">"response_signature_list"</span>: [
+    <span class="hljs-string">"Cx5lCka1cMImvFFbfpyniolyBYxgozH6QrBNEmf1jNsWO2KzHcC4qAVYce0n5+LvQVfnZnkrwB3Lz8Au4sy6a7FjeEGL0aABi1m68P/Dez3mPXsq5N6XZd0GvLHmGvjrqd0xYNtRwXmNyB0W7kzLqzOGv0FiwG6o2m1VxjjkTXoJyASafOVrTx//OH+LjSdFA79hcL68KggyRMJS2IiKWMYWPsUXyB3i43rH1zqYhuADPGmbWk/+JqQCXXY0Ry4j1qADkrNkuO98RGTzb2A0OqtRb6YC2nBdKLDENrDvI85DRo9Bp6gjbgbaYocwnCPYD2dsgFWcFJXHDklvX7VWSg=="</span>
+  ],
+  <span class="hljs-attr">"max_aal"</span>: <span class="hljs-number">3</span>,
+  <span class="hljs-attr">"max_ial"</span>: <span class="hljs-number">2.3</span>,
+  <span class="hljs-attr">"creation_time"</span>: <span class="hljs-number">1558426238703</span>,
+  <span class="hljs-attr">"creation_block_height"</span>: <span class="hljs-string">"test-chain-NDID:101"</span>,
+  <span class="hljs-attr">"request_timeout"</span>: <span class="hljs-number">86400</span>
+}
+</code></pre>
+<p>HTTP Response (Status code: <code>204</code>)</p>
+<h2><a class="anchor" aria-hidden="true" id="as-responses-to-data-request-as-rarr-platform"></a><a href="#as-responses-to-data-request-as-rarr-platform" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>AS responses to data request (AS→Platform)</h2>
+<p><a href="https://app.swaggerhub.com/apis/NDID/authoritative_source_api/3.0#/default/send_data" target="_blank" rel="nofollow noreferrer noopener">POST /as/data/10606caea38ce5ab34d0ffc94d856d622689c8bb15f45653559be5d3bc72f631/bank_statement</a></p>
+<p>HTTP Request Body</p>
+<pre><code class="hljs css language-json">{
+  <span class="hljs-attr">"reference_id"</span>: <span class="hljs-string">"7ed191f5-ccdf-4403-a229-6a2407d2b847"</span>,
+  <span class="hljs-attr">"callback_url"</span>: <span class="hljs-string">"http://localhost:9300/as/callback"</span>,
+  <span class="hljs-attr">"data"</span>: <span class="hljs-string">"{\"test\":\"test\",\"withEscapedChar\":\"test|fff||ss\\\\|NN\\\\\\\\|\",\"arr\":[1,2,3]}"</span>
+}
+</code></pre>
+<p>HTTP Response (Status code: <code>202</code>)</p>
+<h2><a class="anchor" aria-hidden="true" id="as-receive-data-response-result-as-rarr-platform"></a><a href="#as-receive-data-response-result-as-rarr-platform" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>AS receive data response result (AS→Platform)</h2>
+<p><a href="https://app.swaggerhub.com/apis/NDID/as_callback/3.0#/default/post_as_data" target="_blank" rel="nofollow noreferrer noopener">POST /as/data</a></p>
+<p>HTTP Request Body</p>
+<pre><code class="hljs css language-json">{
+  <span class="hljs-attr">"node_id"</span>: <span class="hljs-string">"as1"</span>,
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"send_data_result"</span>,
+  <span class="hljs-attr">"success"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">"reference_id"</span>: <span class="hljs-string">"7ed191f5-ccdf-4403-a229-6a2407d2b847"</span>,
+  <span class="hljs-attr">"request_id"</span>: <span class="hljs-string">"10606caea38ce5ab34d0ffc94d856d622689c8bb15f45653559be5d3bc72f631"</span>
+}
+</code></pre>
+<p>HTTP Response (Status code: <code>204</code>)</p>
+<h2><a class="anchor" aria-hidden="true" id="rp-receives-request-status-update-platform-rarr-rp-2"></a><a href="#rp-receives-request-status-update-platform-rarr-rp-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RP receives request status update (Platform→RP)</h2>
+<p><a href="https://app.swaggerhub.com/apis/NDID/rp_callback/3.0#/default/request_update" target="_blank" rel="nofollow noreferrer noopener">POST /rp/request/e3cb44c9-8848-4dec-98c8-8083f373b1f7</a></p>
+<p>HTTP Request Body</p>
+<pre><code class="hljs css language-json">{
+  <span class="hljs-attr">"node_id"</span>: <span class="hljs-string">"rp1"</span>,
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"request_status"</span>,
+  <span class="hljs-attr">"mode"</span>: <span class="hljs-number">2</span>,
+  <span class="hljs-attr">"request_id"</span>: <span class="hljs-string">"10606caea38ce5ab34d0ffc94d856d622689c8bb15f45653559be5d3bc72f631"</span>,
+  <span class="hljs-attr">"status"</span>: <span class="hljs-string">"confirmed"</span>,
+  <span class="hljs-attr">"min_idp"</span>: <span class="hljs-number">1</span>,
+  <span class="hljs-attr">"answered_idp_count"</span>: <span class="hljs-number">1</span>,
+  <span class="hljs-attr">"closed"</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-attr">"timed_out"</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-attr">"service_list"</span>: [
+    {
+      <span class="hljs-attr">"service_id"</span>: <span class="hljs-string">"bank_statement"</span>,
+      <span class="hljs-attr">"min_as"</span>: <span class="hljs-number">1</span>,
+      <span class="hljs-attr">"signed_data_count"</span>: <span class="hljs-number">1</span>,
+      <span class="hljs-attr">"received_data_count"</span>: <span class="hljs-number">0</span>
+    }
+  ],
+  <span class="hljs-attr">"response_valid_list"</span>: [
+    {
+      <span class="hljs-attr">"idp_id"</span>: <span class="hljs-string">"idp1"</span>,
+      <span class="hljs-attr">"valid_signature"</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">"valid_ial"</span>: <span class="hljs-literal">true</span>
+    }
+  ],
+  <span class="hljs-attr">"block_height"</span>: <span class="hljs-string">"test-chain-NDID:105"</span>
+}
+</code></pre>
+<p>HTTP Response (Status code: <code>204</code>)</p>
+<h2><a class="anchor" aria-hidden="true" id="rp-receives-request-status-update-platform-rarr-rp-3"></a><a href="#rp-receives-request-status-update-platform-rarr-rp-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RP receives request status update (Platform→RP)</h2>
+<p><a href="https://app.swaggerhub.com/apis/NDID/rp_callback/3.0#/default/request_update" target="_blank" rel="nofollow noreferrer noopener">POST /rp/request/e3cb44c9-8848-4dec-98c8-8083f373b1f7</a></p>
+<p>HTTP Request Body</p>
+<pre><code class="hljs css language-json">{
+  <span class="hljs-attr">"node_id"</span>: <span class="hljs-string">"rp1"</span>,
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"request_status"</span>,
+  <span class="hljs-attr">"mode"</span>: <span class="hljs-number">2</span>,
+  <span class="hljs-attr">"request_id"</span>: <span class="hljs-string">"10606caea38ce5ab34d0ffc94d856d622689c8bb15f45653559be5d3bc72f631"</span>,
+  <span class="hljs-attr">"status"</span>: <span class="hljs-string">"completed"</span>,
+  <span class="hljs-attr">"min_idp"</span>: <span class="hljs-number">1</span>,
+  <span class="hljs-attr">"answered_idp_count"</span>: <span class="hljs-number">1</span>,
+  <span class="hljs-attr">"closed"</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-attr">"timed_out"</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-attr">"service_list"</span>: [
+    {
+      <span class="hljs-attr">"service_id"</span>: <span class="hljs-string">"bank_statement"</span>,
+      <span class="hljs-attr">"min_as"</span>: <span class="hljs-number">1</span>,
+      <span class="hljs-attr">"signed_data_count"</span>: <span class="hljs-number">1</span>,
+      <span class="hljs-attr">"received_data_count"</span>: <span class="hljs-number">1</span>
+    }
+  ],
+  <span class="hljs-attr">"response_valid_list"</span>: [
+    {
+      <span class="hljs-attr">"idp_id"</span>: <span class="hljs-string">"idp1"</span>,
+      <span class="hljs-attr">"valid_signature"</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">"valid_ial"</span>: <span class="hljs-literal">true</span>
+    }
+  ],
+  <span class="hljs-attr">"block_height"</span>: <span class="hljs-string">"test-chain-NDID:107"</span>
+}
+</code></pre>
+<p>HTTP Response (Status code: <code>204</code>)</p>
+<h2><a class="anchor" aria-hidden="true" id="rp-receives-request-status-update-platform-rarr-rp-4"></a><a href="#rp-receives-request-status-update-platform-rarr-rp-4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RP receives request status update (Platform→RP)</h2>
+<p><a href="https://app.swaggerhub.com/apis/NDID/rp_callback/3.0#/default/request_update" target="_blank" rel="nofollow noreferrer noopener">POST /rp/request/e3cb44c9-8848-4dec-98c8-8083f373b1f7</a></p>
+<p>HTTP Request Body</p>
+<pre><code class="hljs css language-json">{
+  <span class="hljs-attr">"node_id"</span>: <span class="hljs-string">"rp1"</span>,
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"request_status"</span>,
+  <span class="hljs-attr">"mode"</span>: <span class="hljs-number">2</span>,
+  <span class="hljs-attr">"request_id"</span>: <span class="hljs-string">"10606caea38ce5ab34d0ffc94d856d622689c8bb15f45653559be5d3bc72f631"</span>,
+  <span class="hljs-attr">"status"</span>: <span class="hljs-string">"completed"</span>,
+  <span class="hljs-attr">"min_idp"</span>: <span class="hljs-number">1</span>,
+  <span class="hljs-attr">"answered_idp_count"</span>: <span class="hljs-number">1</span>,
+  <span class="hljs-attr">"closed"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">"timed_out"</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-attr">"service_list"</span>: [
+    {
+      <span class="hljs-attr">"service_id"</span>: <span class="hljs-string">"bank_statement"</span>,
+      <span class="hljs-attr">"min_as"</span>: <span class="hljs-number">1</span>,
+      <span class="hljs-attr">"signed_data_count"</span>: <span class="hljs-number">1</span>,
+      <span class="hljs-attr">"received_data_count"</span>: <span class="hljs-number">1</span>
+    }
+  ],
+  <span class="hljs-attr">"response_valid_list"</span>: [
+    {
+      <span class="hljs-attr">"idp_id"</span>: <span class="hljs-string">"idp1"</span>,
+      <span class="hljs-attr">"valid_signature"</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">"valid_ial"</span>: <span class="hljs-literal">true</span>
+    }
+  ],
+  <span class="hljs-attr">"block_height"</span>: <span class="hljs-string">"test-chain-NDID:109"</span>
+}
+</code></pre>
+<p>HTTP Response (Status code: <code>204</code>)</p>
+<h2><a class="anchor" aria-hidden="true" id="rp-gets-data-received-from-as-rp-rarr-platform"></a><a href="#rp-gets-data-received-from-as-rp-rarr-platform" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RP gets data received from AS (RP→Platform)</h2>
+<p><a href="https://app.swaggerhub.com/apis/NDID/relying_party_api/3.0#/default/get_request_data" target="_blank" rel="nofollow noreferrer noopener">GET /rp/request_data/10606caea38ce5ab34d0ffc94d856d622689c8bb15f45653559be5d3bc72f631</a></p>
+<p>HTTP Response Body (Status code: <code>200</code>)</p>
+<pre><code class="hljs css language-json">[
+  {
+    <span class="hljs-attr">"source_node_id"</span>: <span class="hljs-string">"as1"</span>,
+    <span class="hljs-attr">"service_id"</span>: <span class="hljs-string">"bank_statement"</span>,
+    <span class="hljs-attr">"source_signature"</span>: <span class="hljs-string">"PqfwdzUIekBzsAVkGS1k34PPR4NShSm9KjjEuWZ4fPaUe4E/cOtxOsW2vPQXZgAq6bkgcmtoyHxYCi4z9OpRIGfr1yVVOUhZCOIkpYvE7rmjPP7yQlDcYUw4kwEgVAQpow/qmnV2Aaf/9HJRDnrnpVNAEJeafQNEtzvx2N1u0w9Ymm6GLZs7O6dfOwr6zq1Jdk6u8fFW1Uyhflq2o5u6airpZ5GZwCuRU/OjxU4k/MhYiO4szAR3OYXfPyxVk/YFRXb+xdhZjUwdY1ggPLNMJzzWcF93jolyo7tp3GPUfu+2uwoivFo1YPHTGeBEp97rk+bKF25+pwwckWrv8WbkYw=="</span>,
+    <span class="hljs-attr">"signature_sign_method"</span>: <span class="hljs-string">"RSA-SHA256"</span>,
+    <span class="hljs-attr">"data_salt"</span>: <span class="hljs-string">"kl7zyO1pS54WQvqZ4DOfaA=="</span>,
+    <span class="hljs-attr">"data"</span>: <span class="hljs-string">"{\"test\":\"test\",\"withEscapedChar\":\"test|fff||ss\\\\|NN\\\\\\\\|\",\"arr\":[1,2,3]}"</span>
+  }
+]
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="rp-idp-and-as-get-private-messages-sent-over-message-queue-rp-idp-as-rarr-platform"></a><a href="#rp-idp-and-as-get-private-messages-sent-over-message-queue-rp-idp-as-rarr-platform" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RP, IdP, and AS get private messages sent over message queue (RP,IdP,AS→Platform)</h2>
+<p>RP, IdP(s), and AS(es) <strong>MUST</strong> get messages sent over message queue and store to their databases for verification and auditing later.</p>
+<p><a href="https://app.swaggerhub.com/apis/NDID/utility/3.0#/default/get_utility_private_messages__request_id_" target="_blank" rel="nofollow noreferrer noopener">GET /utility/private_messages/10606caea38ce5ab34d0ffc94d856d622689c8bb15f45653559be5d3bc72f631</a></p>
+<p>HTTP Response Body (Status code: <code>200</code>)</p>
+<pre><code class="hljs css language-json">[
+  {
+    <span class="hljs-attr">"message"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"idp_response"</span>,
+      <span class="hljs-attr">"request_id"</span>: <span class="hljs-string">"10606caea38ce5ab34d0ffc94d856d622689c8bb15f45653559be5d3bc72f631"</span>,
+      <span class="hljs-attr">"mode"</span>: <span class="hljs-number">2</span>,
+      <span class="hljs-attr">"accessor_id"</span>: <span class="hljs-string">"65ecc598-7b2c-4f56-b74b-d265d8d0c0a9"</span>,
+      <span class="hljs-attr">"idp_id"</span>: <span class="hljs-string">"idp1"</span>,
+      <span class="hljs-attr">"chain_id"</span>: <span class="hljs-string">"test-chain-NDID"</span>,
+      <span class="hljs-attr">"height"</span>: <span class="hljs-number">103</span>
+    },
+    <span class="hljs-attr">"direction"</span>: <span class="hljs-string">"inbound"</span>,
+    <span class="hljs-attr">"source"</span>: {
+      <span class="hljs-attr">"node_id"</span>: <span class="hljs-string">"idp1"</span>
+    },
+    <span class="hljs-attr">"signature"</span>: <span class="hljs-string">"qVZS1oETp4/YWokjvcfDmof2QVGa91Tj/g/ulS2Uj2YxuXxZU15ZJ3nhqQprANiguAnYUFBftOeeCXCRHNUZvAWYPsDfN2LYmJ1oIU9wJlRQIPr4xTiu1KNwWbo06M3hixB7dAyaUjNCrzcZimlkF4dTbNc04qYD3bXwfx3OA+37MrX8lMyO+6njteqSQLqdruzc3YgXshkTX9ArMM+80htsCAZhYIubDlfaFHCLT5jEfiFre9A9HmzPl4o/pktZOkQFysHIidOBlRULLFyvMn4QDFySVfvyyc8m6k1Ux8yULD1EK8dKFAbScqRCxpYoUwQzSl4l0Vuh9+zzXQ6niA=="</span>,
+    <span class="hljs-attr">"timestamp"</span>: <span class="hljs-number">1558426239945</span>
+  },
+  ...
+]
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="rp-idp-and-as-delete-private-messages-sent-over-message-queue-rp-idp-as-rarr-platform"></a><a href="#rp-idp-and-as-delete-private-messages-sent-over-message-queue-rp-idp-as-rarr-platform" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RP, IdP, and AS delete private messages sent over message queue (RP,IdP,AS→Platform)</h2>
+<p>After RP, IdP(s), and AS(es) get messages sent over message queue and store to their databases, they <strong>MUST</strong> delete private messages cached on the platform local node.</p>
+<p><a href="https://app.swaggerhub.com/apis/NDID/utility/3.0#/default/post_utility_private_message_removal__request_id_" target="_blank" rel="nofollow noreferrer noopener">POST /utility/private_message_removal/10606caea38ce5ab34d0ffc94d856d622689c8bb15f45653559be5d3bc72f631</a></p>
+<p>HTTP Response Body (Status code: <code>204</code>)</p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 5/22/2019</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/flow-data-request"><span class="arrow-prev">← </span><span>Data Request Flows</span></a><a class="docs-next button" href="/docs/usage-more-usages"><span>More Usages</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#flow-overview">Flow Overview</a></li><li><a href="#rp-creates-consent-request-rp-rarr-platform">RP creates consent request (RP→Platform)</a></li><li><a href="#rp-receives-create-consent-request-result-platform-rarr-rp">RP receives create consent request result (Platform→RP)</a></li><li><a href="#rp-receives-request-status-update-platform-rarr-rp">RP receives request status update (Platform→RP)</a></li><li><a href="#idp-receives-consent-request-platform-rarr-idp">IdP receives consent request (Platform→IdP)</a></li><li><a href="#idp-responses-to-consent-request-idp-rarr-platform">IdP responses to consent request (IdP→Platform)</a></li><li><a href="#idp-receives-accessor-encrypt-callback-platform-rarr-idp">IdP receives accessor encrypt callback (Platform→IdP)</a></li><li><a href="#idp-receives-response-result-platform-rarr-idp">IdP receives response result (Platform→IdP)</a></li><li><a href="#rp-receives-request-status-update-platform-rarr-rp-1">RP receives request status update (Platform→RP)</a></li><li><a href="#as-receives-data-request-platform-rarr-as">AS receives data request (Platform→AS)</a></li><li><a href="#as-responses-to-data-request-as-rarr-platform">AS responses to data request (AS→Platform)</a></li><li><a href="#as-receive-data-response-result-as-rarr-platform">AS receive data response result (AS→Platform)</a></li><li><a href="#rp-receives-request-status-update-platform-rarr-rp-2">RP receives request status update (Platform→RP)</a></li><li><a href="#rp-receives-request-status-update-platform-rarr-rp-3">RP receives request status update (Platform→RP)</a></li><li><a href="#rp-receives-request-status-update-platform-rarr-rp-4">RP receives request status update (Platform→RP)</a></li><li><a href="#rp-gets-data-received-from-as-rp-rarr-platform">RP gets data received from AS (RP→Platform)</a></li><li><a href="#rp-idp-and-as-get-private-messages-sent-over-message-queue-rp-idp-as-rarr-platform">RP, IdP, and AS get private messages sent over message queue (RP,IdP,AS→Platform)</a></li><li><a href="#rp-idp-and-as-delete-private-messages-sent-over-message-queue-rp-idp-as-rarr-platform">RP, IdP, and AS delete private messages sent over message queue (RP,IdP,AS→Platform)</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/introduction">Introduction</a><a href="/docs/getting-started-setup">Getting Started</a><a href="/docs/api">API Reference</a></div><div><h5>Community</h5><a href="http://www.ndid.co.th/" target="_blank" rel="noreferrer noopener">Official Site</a><a href="https://www.facebook.com/NationalDigitalID/" target="_blank" rel="noreferrer noopener">Facebook</a><a href="https://national-digital-id.slack.com/" target="_blank" rel="noreferrer noopener">Slack</a></div><div><h5>More</h5><a href="https://goo.gl/v4Cfpe" target="_blank" rel="noreferrer noopener">Whitepaper</a><a href="https://github.com/ndidplatform" target="_blank" rel="noreferrer noopener">GitHub</a></div></section><section class="copyright"></section></footer></div></body></html>
