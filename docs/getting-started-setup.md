@@ -168,7 +168,9 @@ You can setup as many Tendermint node as you like. For example, setting up Tende
    docker run --rm --volume $PWD/rp1_tm_home:/tendermint ndidplatform/did-tendermint init
    ```
 
-2. Repeat the same process as above (_Configure Tendermint_ step) but with `./rp1_tm_home/config/config.toml` and change additional configurations.
+2. Copy and replace `genesis.json` in `./rp1_tm_home/config/` with the one from NDID node config directory `./ndid_tm_home/config/genesis.json`
+
+3. Repeat the same process as above (_Configure Tendermint_ step) but with `./rp1_tm_home/config/config.toml` and change additional configurations.
 
    - Get NDID Tendermint node ID
 
@@ -249,12 +251,12 @@ Install [Docker](https://docs.docker.com/install/) if you haven't already.
 
 - Pull an image (API main) from [Docker Hub](https://hub.docker.com/r/ndidplatform/api).
 
-   ```sh
-   docker pull ndidplatform/api
-   ```
+  ```sh
+  docker pull ndidplatform/api
+  ```
 
 - Pull an image (MQ service server) from [Docker Hub](https://hub.docker.com/r/ndidplatform/mq).
 
-   ```sh
-   docker pull ndidplatform/mq
-   ```
+  ```sh
+  docker pull ndidplatform/mq
+  ```
