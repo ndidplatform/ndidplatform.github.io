@@ -18,7 +18,11 @@ Development hub for Thailand National Digital ID platform.
 
 ## Architecture Overview
 
+<div class="blockquote info">
+
 **Recommended reading:** For newcomers, we highly recommend that you [watch the TEDxChiangMai talk](https://www.youtube.com/watch?v=E8HHNRRlsoo) which describes the importance and benefits of having a digital ID infrastructure in Thailand.
+
+</div>
 
 From the whitepaper:
 
@@ -46,7 +50,11 @@ There are 2 main processes when using NDID:
 
 - **Authentication and data access authorization** (using your digital ID): This happens when you use a service that requires authentication using digital ID. They (the **Relying Party (RP)**, who offers you service) will ask the IdP, who will in turn ask you to provide your credentials (authentication) using your authenticator and allow the RP to access the data (data access authorization) which will be provided by an **Authoritative Source (AS).**
 
+<div class="blockquote info">
+
 **Recommended reading:** [บทความเกี่ยวกับแนวคิดพื้นฐานในความแตกต่างของ Identity Proofing และ Authentication รวมทั้งความเชื่อมโยงของสองเรื่องนี้ที่เป็นเรื่องพื้นฐานของ Digital ID](https://narudomr.blogspot.com/2018/02/identity-proofing-authentication.html)
+
+</div>
 
 ## Quick Overview
 
@@ -54,7 +62,7 @@ This section gives you a quick overview of the digital identity platform, illust
 
 Let's consider a use case where you're applying for a Visa at an embassy. They need your identity and bank statement. Without a digital identity platform, this would require a lot of paperwork.
 
-<div markdown="1" class="flash mb-3">
+<div class="blockquote info">
 
 **Note:** This is a concrete scenario designed to help readers understand the system more easily, but the platform is _very flexible_, supporting vast amount of use cases.
 
@@ -73,7 +81,7 @@ First, we define these participants:
   - Transaction logs (without ID or private information, but contains zero-knowledge proof to verify the transaction) are recorded on the blockchain ([Tendermint](https://tendermint.com/)).
   - Private information (ID information, data from AS) is communicated between nodes securely through [ZMQ](http://zeromq.org/).
 
-<div markdown="1" class="flash mb-3">
+<div class="blockquote info">
 
 **Note:** The following diagram treats the NDID platform as a black box, only showing the interaction between parties (Users, RP, IdP and AS). For more technical information about how the platform works and communicate securely under the hood, please see the [technical overview](technical-overview.html).
 

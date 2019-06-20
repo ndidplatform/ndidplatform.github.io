@@ -41,13 +41,13 @@ title: Usage (Mode 2, Data request)
 
 8. RP, IdP(s), and AS(es) delete private messages sent over message queue.
 
-<div markdown="1" class="flash mb-3">
+<div class="blockquote info">
 
 **Note:** In the following example usage, RP requests a consent from 1 IdP and data from 1 AS. It is assumed that `as1` has `bank_statement` service provided.
 
 </div>
 
-<div markdown="1" class="flash mb-3">
+<div class="blockquote info">
 
 For sequence diagram, see [Data Request Flows (1 IdP, 1 AS)](flow-data-request#1-idp-1-as).
 

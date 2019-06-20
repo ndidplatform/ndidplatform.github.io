@@ -5,7 +5,11 @@ title: Technical Overview
 
 > **Disclaimer:** The purpose of this page is to illustrate the scenario outlined in the [quick overview](introduction#quick-overview) using concrete examples, to help make it easier to grasp how the platform works. This document is **not** the definitive source of information, just a learning aid. Please look at the [whitepaper](https://docs.google.com/document/d/1SKydNM-Nyox62m3vuvYgFYCr8ABVQV8RhjwiMjdCpQ8/edit#heading=h.qf2lmu8vfgym) for the full description of the platform.
 
+<div class="blockquote info">
+
 **Recommended reading:** If you haven’t read it yet, we highly recommend that you read the [Digital Identity Guideline for Thailand – Overview and Glossary (DRAFT)](https://standard.etda.or.th/?p=8577) document to understand the overall process of the Digital ID model, as well as precise meanings of each term.
+
+</div>
 
 ## Scenario: Requesting a bank statement for Visa application
 
@@ -119,7 +123,7 @@ and retrieving the bank statement form the **Authoritative Source (AS)**, the ba
 
 Given these data, let’s proceed with the scenario.
 
-<div markdown="1" class="flash mb-3">
+<div class="blockquote info">
 
 **Note:** The request body is written in a format similar to YAML, for ease of reading.
 
@@ -343,7 +347,7 @@ It knows that the authentication request has been approved.
 
 It notifies the RP through callback URL.
 
-<div markdown="1" class="flash mb-3">
+<div class="blockquote info">
 
 **Note:** Every time request status is updated, a callback is issued.
 

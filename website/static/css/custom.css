@@ -1,5 +1,22 @@
 /* your custom css */
 
+.blockquote {
+  color: #6a737d;
+  font-size: 16px;
+  margin: 0;
+  margin-bottom: 16px;
+  padding: 15px 30px 15px 15px;
+}
+
+.blockquote > p {
+  margin-bottom: 0;
+}
+
+.blockquote.info {
+  background-color: rgba(100, 169, 255, 0.3);
+  border-left: 8px solid #64a9ff;
+}
+
 @media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
 }
 
