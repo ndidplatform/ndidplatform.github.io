@@ -3,11 +3,11 @@ id: examples-data-request-flow
 title: Example Data Request Flow
 ---
 
-> **Disclaimer:** The purpose of this page is to explain the PoC for data-request scenario outlined in [Technical overview](/technical-overview) for better understanding for further implementation. This document is **not** the definitive source of information, also the PoC mention here is **may or may not** use in production system.
+> **Disclaimer:** The purpose of this page is to explain the PoC for data-request scenario outlined in [Technical overview](technical-overview) for better understanding for further implementation. This document is **not** the definitive source of information, also the PoC mention here is **may or may not** use in production system.
 
 ## Before we start
 
-Please read [Example authentication flow](/example-authen-flow.html) before read this document.
+Please read [Example authentication flow](examples-authen-flow) before read this document.
 
 Similar to IdP's registration in authentication flow, `as-client-app` will automatically register itself and its service list to platform every time it start.
 In production, however, it will only register once.

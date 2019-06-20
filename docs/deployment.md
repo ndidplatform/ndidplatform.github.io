@@ -3,9 +3,9 @@ id: deployment
 title: Deployment
 ---
 
-> **IMPORTANT:** When node sending or receiving message to/from another node through private channel or message queue, it will store all messages, both inbound and outbound, to Redis (memory). Client app **MUST** call an API to remove these messages after they've fetched the messages and store them in their local database. If client were to neglect this, node may fail to function. See [Private Messages](/deployment.html#private-messages) section.
+> **IMPORTANT:** When node sending or receiving message to/from another node through private channel or message queue, it will store all messages, both inbound and outbound, to Redis (memory). Client app **MUST** call an API to remove these messages after they've fetched the messages and store them in their local database. If client were to neglect this, node may fail to function. See [Private Messages](#private-messages) section.
 
-> **IMPORTANT:** When RP node receives data from AS node, it will store data to Redis (memory). RP client app **MUST** call an API to remove stored data after they've fetched and store them in their local database. If client were to neglect this, node may fail to function. See [Data received from AS](/deployment.html#data-received-from-as) section.
+> **IMPORTANT:** When RP node receives data from AS node, it will store data to Redis (memory). RP client app **MUST** call an API to remove stored data after they've fetched and store them in their local database. If client were to neglect this, node may fail to function. See [Data received from AS](#data-received-from-as) section.
 
 ## Requirements Specification
 

@@ -3,7 +3,7 @@ id: examples-authen-flow
 title: Example Authentication Flow
 ---
 
-> **Disclaimer:** The purpose of this page is to explain the PoC for authentication scenario outlined in [Technical overview](/technical-overview) for better understanding for further implementation. This document is **not** the definitive source of information, also the PoC mention here is **may or may not** use in production system.
+> **Disclaimer:** The purpose of this page is to explain the PoC for authentication scenario outlined in [Technical overview](technical-overview) for better understanding for further implementation. This document is **not** the definitive source of information, also the PoC mention here is **may or may not** use in production system.
 
 ## PoC repository explanation
 

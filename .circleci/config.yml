@@ -14,7 +14,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "a0:fa:43:98:bd:25:86:87:47:78:90:dd:5f:ac:af:df"
+            - 'a0:fa:43:98:bd:25:86:87:47:78:90:dd:5f:ac:af:df'
       - checkout
       - run:
           name: Deploying to GitHub Pages

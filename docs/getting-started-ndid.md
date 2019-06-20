@@ -22,7 +22,7 @@ openssl rsa -in ./keys/ndid_master.pem -outform PEM -pubout -out ./keys/ndid_mas
 
 ## Tendermint and ABCI app
 
-Follow steps in [Setup](/getting-started/setup.html#tendermint-and-abci-app) if you haven't already.
+Follow steps in [Setup](getting-started-setup#tendermint-and-abci-app) if you haven't already.
 
 Run Tendermint and ABCI app bundle
 
@@ -45,7 +45,7 @@ ndidplatform/did-tendermint
 
 ## API Server
 
-Follow steps in [Setup](/getting-started/setup.html#api-server) if you haven't already.
+Follow steps in [Setup](getting-started-setup#api-server) if you haven't already.
 
 Run Redis server
 

@@ -6,7 +6,7 @@ sidebar_label: RP
 
 ## Node keys
 
-If you've already followed the example in [Register other nodes](/getting-started/ndid.html#register-other-nodes) on _Getting Started as NDID_ page, skip this step.
+If you've already followed the example in [Register other nodes](getting-started-ndid#register-other-nodes) on _Getting Started as NDID_ page, skip this step.
 
 Prepare 2 RSA key pairs, one for node key and another for node master key.
 
@@ -24,7 +24,7 @@ openssl rsa -in ./keys/rp1_master.pem -outform PEM -pubout -out ./keys/rp1_maste
 
 ## Tendermint and ABCI app
 
-Follow steps in [Setup](/getting-started/setup.html#setup-more-tendermint-nodes) if you haven't already.
+Follow steps in [Setup](getting-started-setup#setup-more-tendermint-nodes) if you haven't already.
 
 Run Tendermint and ABCI app bundle
 
@@ -51,7 +51,7 @@ ndidplatform/did-tendermint
 
 ## MQ Service Server
 
-Follow steps in [Setup](/getting-started/setup.html#api-server) if you haven't already.
+Follow steps in [Setup](getting-started-setup#api-server) if you haven't already.
 
 ### Built from source
 
@@ -79,7 +79,7 @@ ndidplatform/mq
 
 ## API Server
 
-Follow steps in [Setup](/getting-started/setup.html#api-server) if you haven't already.
+Follow steps in [Setup](getting-started-setup#api-server) if you haven't already.
 
 Run Redis server
 

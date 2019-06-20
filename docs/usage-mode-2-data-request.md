@@ -3,7 +3,7 @@ id: usage-mode-2-data-request
 title: Usage (Mode 2, Data request)
 ---
 
-> **Disclaimer:** The purpose of this page is to illustrate the scenario outlined in the [quick overview](/#quick-overview) using concrete examples, to help make it easier to grasp how the platform works. This document is **not** the definitive source of information, just a learning aid. Please look at the [whitepaper](https://docs.google.com/document/d/1SKydNM-Nyox62m3vuvYgFYCr8ABVQV8RhjwiMjdCpQ8/edit#heading=h.qf2lmu8vfgym) for the full description of the platform.
+> **Disclaimer:** The purpose of this page is to illustrate the scenario outlined in the [quick overview](introduction#quick-overview) using concrete examples, to help make it easier to grasp how the platform works. This document is **not** the definitive source of information, just a learning aid. Please look at the [whitepaper](https://docs.google.com/document/d/1SKydNM-Nyox62m3vuvYgFYCr8ABVQV8RhjwiMjdCpQ8/edit#heading=h.qf2lmu8vfgym) for the full description of the platform.
 
 ## Flow Overview
 
@@ -49,7 +49,7 @@ title: Usage (Mode 2, Data request)
 
 <div markdown="1" class="flash mb-3">
 
-For sequence diagram, see [Data Request Flows (1 IdP, 1 AS)](/flows/data-request.html#1-idp-1-as).
+For sequence diagram, see [Data Request Flows (1 IdP, 1 AS)](flow-data-request#1-idp-1-as).
 
 </div>
 
