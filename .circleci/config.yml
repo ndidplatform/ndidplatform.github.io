@@ -19,6 +19,8 @@ jobs:
       - run:
           name: Deploying to GitHub Pages
           command: |
+            git config --global user.email "ndid-dev@users.noreply.github.com"
+            git config --global user.name "ndid-dev"
             cd website && npm install && GIT_USER=ndid-dev CURRENT_BRANCH=master USE_SSH=true npm run publish-gh-pages
 
 workflows:
