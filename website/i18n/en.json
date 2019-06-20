@@ -5,6 +5,10 @@
     "previous": "Previous",
     "tagline": "Digital Identity Platform",
     "docs": {
+      "api-ndid": {
+        "title": "API (NDID)",
+        "sidebar_label": "NDID"
+      },
       "api": {
         "title": "API"
       },

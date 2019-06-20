@@ -19,6 +19,6 @@
     "DEPRECATED": ["onboarding-story", "public-storage"]
   },
   "api": {
-    "API": ["api"]
+    "API": ["api", "api-ndid"]
   }
 }
