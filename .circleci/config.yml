@@ -1,0 +1,32 @@
+# If you only want circle to run on direct commits to master, you can uncomment this out
+# and uncomment the filters: *filter-only-master down below too
+#
+aliases:
+ - &filter-only-source
+   branches:
+     only:
+       - source
+
+version: 2
+jobs:
+  deploy-website:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:8.11.1
+
+    steps:
+      - checkout
+      - run:
+          name: Deploying to GitHub Pages
+          command: |
+            cd website && npm install && GIT_USER=ndid-dev CURRENT_BRANCH=master USE_SSH=true npm run publish-gh-pages
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - add_ssh_keys:
+          fingerprints:
+            - "a0:fa:43:98:bd:25:86:87:47:78:90:dd:5f:ac:af:df"
+      - deploy-website:
+        filters: *filter-only-source
