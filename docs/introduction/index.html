@@ -72,7 +72,9 @@
 </tbody>
 </table>
 <h2><a class="anchor" aria-hidden="true" id="architecture-overview"></a><a href="#architecture-overview" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Architecture Overview</h2>
+<div class="blockquote info">
 <p><strong>Recommended reading:</strong> For newcomers, we highly recommend that you <a href="https://www.youtube.com/watch?v=E8HHNRRlsoo" target="_blank" rel="nofollow noreferrer noopener">watch the TEDxChiangMai talk</a> which describes the importance and benefits of having a digital ID infrastructure in Thailand.</p>
+</div>
 <p>From the whitepaper:</p>
 <blockquote>
 <p>The Digital Identity Platform is intended to provide a flexible and highly
@@ -96,11 +98,13 @@ under the permission granted by the users.</p>
 <li><p><strong>Enrolment and identity proofing</strong> (getting a digital ID): The user first needs to enrol with an <strong>Identity Provider (IdP)</strong> to get started. They will verify your identity (identity proofing) and then provide you a <strong>digital identity</strong> along with an <strong>authenticator</strong> that you use to verify your credential. The user can enrol with multiple IdPs for extra security.</p></li>
 <li><p><strong>Authentication and data access authorization</strong> (using your digital ID): This happens when you use a service that requires authentication using digital ID. They (the <strong>Relying Party (RP)</strong>, who offers you service) will ask the IdP, who will in turn ask you to provide your credentials (authentication) using your authenticator and allow the RP to access the data (data access authorization) which will be provided by an <strong>Authoritative Source (AS).</strong></p></li>
 </ul>
+<div class="blockquote info">
 <p><strong>Recommended reading:</strong> <a href="https://narudomr.blogspot.com/2018/02/identity-proofing-authentication.html" target="_blank" rel="nofollow noreferrer noopener">บทความเกี่ยวกับแนวคิดพื้นฐานในความแตกต่างของ Identity Proofing และ Authentication รวมทั้งความเชื่อมโยงของสองเรื่องนี้ที่เป็นเรื่องพื้นฐานของ Digital ID</a></p>
+</div>
 <h2><a class="anchor" aria-hidden="true" id="quick-overview"></a><a href="#quick-overview" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Quick Overview</h2>
 <p>This section gives you a quick overview of the digital identity platform, illustrated through a simple scenario.</p>
 <p>Let's consider a use case where you're applying for a Visa at an embassy. They need your identity and bank statement. Without a digital identity platform, this would require a lot of paperwork.</p>
-<div markdown="1" class="flash mb-3">
+<div class="blockquote info">
 <p><strong>Note:</strong> This is a concrete scenario designed to help readers understand the system more easily, but the platform is <em>very flexible</em>, supporting vast amount of use cases.</p>
 </div>
 <p>With a digital identity platform, this process is much simpler.
@@ -118,7 +122,7 @@ First, we define these participants:</p>
 <li>Private information (ID information, data from AS) is communicated between nodes securely through <a href="http://zeromq.org/" target="_blank" rel="nofollow noreferrer noopener">ZMQ</a>.</li>
 </ul></li>
 </ul>
-<div markdown="1" class="flash mb-3">
+<div class="blockquote info">
 <p><strong>Note:</strong> The following diagram treats the NDID platform as a black box, only showing the interaction between parties (Users, RP, IdP and AS). For more technical information about how the platform works and communicate securely under the hood, please see the <a href="technical-overview.html">technical overview</a>.</p>
 </div>
 <div class="mermaid">sequenceDiagram
@@ -146,4 +150,4 @@ First, we define these participants:</p>
     Note over User,Platform: At this point, data requested from AS is now available for RP to use.
     RP-&gt;&gt;+Platform: Get data received from AS
     Platform--&gt;&gt;-RP: Data from AS
-</div></span></div></article></div><div class="docLastUpdate"><em>Last updated on 2019-6-13</em></div><div class="docs-prevnext"><a class="docs-next button" href="/docs/technical-overview"><span>Technical Overview</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#architecture-overview">Architecture Overview</a></li><li><a href="#quick-overview">Quick Overview</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/introduction">Introduction</a><a href="/docs/getting-started-setup">Getting Started</a><a href="/docs/api">API Reference</a></div><div><h5>Community</h5><a href="http://www.ndid.co.th/" target="_blank" rel="noreferrer noopener">Official Site</a><a href="https://www.facebook.com/NationalDigitalID/" target="_blank" rel="noreferrer noopener">Facebook</a><a href="https://national-digital-id.slack.com/" target="_blank" rel="noreferrer noopener">Slack</a></div><div><h5>More</h5><a href="https://goo.gl/v4Cfpe" target="_blank" rel="noreferrer noopener">Whitepaper</a><a href="https://github.com/ndidplatform" target="_blank" rel="noreferrer noopener">GitHub</a></div></section><section class="copyright"></section></footer></div></body></html>
+</div></span></div></article></div><div class="docLastUpdate"><em>Last updated on 2019-6-20</em></div><div class="docs-prevnext"><a class="docs-next button" href="/docs/technical-overview"><span>Technical Overview</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#architecture-overview">Architecture Overview</a></li><li><a href="#quick-overview">Quick Overview</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/introduction">Introduction</a><a href="/docs/getting-started-setup">Getting Started</a><a href="/docs/api">API Reference</a></div><div><h5>Community</h5><a href="http://www.ndid.co.th/" target="_blank" rel="noreferrer noopener">Official Site</a><a href="https://www.facebook.com/NationalDigitalID/" target="_blank" rel="noreferrer noopener">Facebook</a><a href="https://national-digital-id.slack.com/" target="_blank" rel="noreferrer noopener">Slack</a></div><div><h5>More</h5><a href="https://goo.gl/v4Cfpe" target="_blank" rel="noreferrer noopener">Whitepaper</a><a href="https://github.com/ndidplatform" target="_blank" rel="noreferrer noopener">GitHub</a></div></section><section class="copyright"></section></footer></div></body></html>
