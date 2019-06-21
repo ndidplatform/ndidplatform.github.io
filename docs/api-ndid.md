@@ -10,6 +10,16 @@ API specific to NDID role
 
 Initialize blockchain with public keys (node key and master node key) of NDID node.
 
+#### Body Parameters
+
+| Property               | Type   | Required | Description                                                                |
+| ---------------------- | ------ | -------- | -------------------------------------------------------------------------- |
+| public_key             | string | true     | Node public key                                                            |
+| public_key_type        | string |          | Key type of `public_key`. Allowed value is `RSA`.                          |
+| master_public_key      | string | true     | Node master public key                                                     |
+| master_public_key_type | string |          | Key type of `public_key`. Allowed value is `RSA`.                          |
+| chain_history_info     | string |          | Arbitrary string containing information of previous chains from migration. |
+
 ## POST `/ndid/end_init`
 
 Call when initialization is done (e.g. after set initial data to blockchain on chain migration).
@@ -17,6 +27,12 @@ Call when initialization is done (e.g. after set initial data to blockchain on c
 ## POST `/ndid/register_node`
 
 Register a new node to the platform.
+
+#### Body Parameters
+
+| Property | Type | Required | Description |
+| -------- | ---- | -------- | ----------- |
+|          |      |          |             |
 
 ## POST `/ndid/update_node`
 

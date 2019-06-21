@@ -6,8 +6,8 @@ sidebar_label: Introduction
 
 Development hub for Thailand National Digital ID platform.
 
-| Title                   | URL                                                                               |
-| ----------------------- | --------------------------------------------------------------------------------- |
+| Title                   | URL                                             |
+| ----------------------- | ----------------------------------------------- |
 | **Official site**       | <http://www.ndid.co.th/>                        |
 | **TEDxChiangMai Talk**  | <https://www.youtube.com/watch?v=E8HHNRRlsoo>   |
 | **GitHub organization** | <https://github.com/ndidplatform>               |
