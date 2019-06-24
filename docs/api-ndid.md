@@ -56,7 +56,7 @@ HTTP Status: 201 Created
 
 ## POST `/ndid/update_node`
 
-Update node's properties on the platform. Currently use for updating IdP nodes' `max_ial` and `max_aal`.
+Update node's properties on the platform. Currently use for updating IdP node's `max_ial` and `max_aal`.
 
 #### Body Parameters
 
