@@ -28,6 +28,10 @@ The specs may vary depending on the load and it may require significant disk spa
 
 Another option is to run the stack in Docker containers. System requirements can be found on [Docker website](https://docs.docker.com/).
 
+## Security
+
+The software stack is designed to run in a secure controlled environment e.g. behind correctly configured firewall. Connections between processes (Tendermint RPC, API main server, MQ service server, Redis) do not use secure connection by default and some may not have an option to do so.
+
 ## DOS Exposure and Mitigation
 
 There are two parts that exposed to the Internet, P2P communication channel or message queue and blockchain, Tendermint.
