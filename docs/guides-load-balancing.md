@@ -98,6 +98,7 @@ docker run \
 --link idp1_tm_1:tendermint \
 --link idp1_redis:redis \
 --link idp1_mq:mq \
+--link idp1_api_master:idp1_api_master \
 --volume $PWD/keys:/keys \
 --env "TENDERMINT_IP=tendermint" \
 --env "TENDERMINT_PORT=26657" \
