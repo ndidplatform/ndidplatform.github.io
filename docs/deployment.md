@@ -30,7 +30,7 @@ Another option is to run the stack in Docker containers. System requirements can
 
 ## Security
 
-The software stack is designed to run in a secure controlled environment e.g. behind correctly configured firewall. Connections between processes (Tendermint RPC, API main server, MQ service server, Redis) do not use secure connection by default and some may not have an option to do so. Only connections between nodes are designed to be secured e.g. Tendermint<->Tendermint, MQ<->MQ.
+The software stack is designed to run in a secure controlled environment e.g. behind correctly configured firewall. Connections between processes within a node (Tendermint RPC, API main server, MQ service server, Redis) do not use secure connection by default and some may not have an option to do so. Only connections between nodes are designed to be secured e.g. Tendermint<->Tendermint, MQ<->MQ.
 
 ## DOS Exposure and Mitigation
 
