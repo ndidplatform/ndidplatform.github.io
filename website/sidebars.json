@@ -15,6 +15,7 @@
     ],
     "Flows": ["flow-create-identity", "flow-add-accessor", "flow-data-request"],
     "Usage": ["usage-mode-2-data-request", "usage-more-usages"],
+    "Guides": ["guides-load-balancing"],
     "Examples": ["examples-authen-flow", "examples-data-request-flow"],
     "DEPRECATED": ["onboarding-story", "public-storage"]
   },

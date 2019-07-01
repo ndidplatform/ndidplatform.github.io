@@ -58,6 +58,9 @@
       "getting-started-setup": {
         "title": "Setup"
       },
+      "guides-load-balancing": {
+        "title": "Load Balancing"
+      },
       "introduction": {
         "title": "NDID Platform",
         "sidebar_label": "Introduction"
@@ -82,6 +85,7 @@
       "Getting Started": "Getting Started",
       "Flows": "Flows",
       "Usage": "Usage",
+      "Guides": "Guides",
       "Examples": "Examples",
       "DEPRECATED": "DEPRECATED",
       "API": "API"
