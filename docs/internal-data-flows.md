@@ -179,7 +179,7 @@ JSON
 | service_id    | string    |             |        |
 | as_id         | string    | AS node ID  |        |
 
-## RP (Close request)
+### RP (Close request)
 
 #### Blockchain
 
