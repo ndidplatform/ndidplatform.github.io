@@ -61,6 +61,9 @@
       "guides-load-balancing": {
         "title": "Load Balancing"
       },
+      "internal-data-flows": {
+        "title": "Internal Data Flows"
+      },
       "introduction": {
         "title": "NDID Platform",
         "sidebar_label": "Introduction"
