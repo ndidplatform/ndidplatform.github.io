@@ -5,6 +5,28 @@ title: Internal Data Flows
 
 ## Request Flow
 
+```mermaid
+sequenceDiagram
+    participant RP
+    participant Blockchain
+    participant IdP
+    participant AS
+    RP->>Blockchain: Create request
+    RP->>IdP: Send request (with private data) through private channel (MQ)
+    IdP->>IdP: Check request integrity against blockchain
+    IdP->>Blockchain: Create response to the request
+    IdP->>RP: Send response (with private data)
+    RP->>RP: Check IdP responses
+    opt With data request
+      RP->>AS: Send data request (with private data) through private channel (MQ)
+      AS->>AS: Check request and IdP responses integrity against blockchain
+      AS->>RP: Data response
+      RP->>RP: Check data response integrity against blockchain
+      RP->>Blockchain: Set data received
+    end
+    RP->>Blockchain: Close request
+```
+
 ### RP&rarr;IdP
 
 RP creates a request and send to IdP
