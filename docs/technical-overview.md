@@ -16,7 +16,7 @@ title: Technical Overview
 In this scenario, the User is at an embassy to apply for a Visa.
 The embassy is the **Relying Party (RP)** as they relies on NDID platform
 to verify the user’s identity through an **Identity Provider (IdP)**
-and retrieving the bank statement form the **Authoritative Source (AS)**, the bank.
+and retrieving the bank statement from the **Authoritative Source (AS)**, the bank.
 
 ## Background
 
@@ -262,7 +262,7 @@ min_idp: 1
 request_timeout: 259200
 ```
 
-IsP Node receives the request message from message queue and decrypts it.
+IdP Node receives the request message from message queue and decrypts it.
 
 It reads the request from the blockchain:
 
