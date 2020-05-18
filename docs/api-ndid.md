@@ -38,17 +38,20 @@ Register a new node to the platform.
 
 #### Body Parameters
 
-| Property             | Type   | Required | Description                                                                              |
-| -------------------- | ------ | -------- | ---------------------------------------------------------------------------------------- |
-| node_id              | string | true     | Node ID                                                                                  |
-| node_name            | string | true     | Node name                                                                                |
-| node_key             | string | true     | Node public key                                                                          |
-| node_key_type        | string |          | Key type of `public_key`. Allowed value is `RSA`.                                        |
-| node_master_key      | string | true     | Node master public key                                                                   |
-| node_master_key_type | string |          | Key type of `master_public_key`. Allowed value is `RSA`.                                 |
-| role                 | string | true     | Allowed values are `rp`, `idp`, `as`, and `proxy`                                        |
-| max_aal              | number |          | For IdP nodes only. Allowed values are `1`, `2.1`, `2.2`, and `3`                        |
-| max_ial              | number |          | For IdP nodes only. Allowed values are `1.1`, `1.2`, `1.3`, `2.1`, `2.2`, `2.3`, and `3` |
+| Property                 | Type             | Required | Description                                                                              |
+| ------------------------ | ---------------- | -------- | ---------------------------------------------------------------------------------------- |
+| node_id                  | string           | true     | Node ID                                                                                  |
+| node_name                | string           | true     | Node name                                                                                |
+| node_key                 | string           | true     | Node public key                                                                          |
+| node_key_type            | string           |          | Key type of `public_key`. Allowed value is `RSA`.                                        |
+| node_master_key          | string           | true     | Node master public key                                                                   |
+| node_master_key_type     | string           |          | Key type of `master_public_key`. Allowed value is `RSA`.                                 |
+| role                     | string           | true     | Allowed values are `rp`, `idp`, `as`, and `proxy`                                        |
+| max_aal                  | number           |          | For IdP nodes only. Allowed values are `1`, `2.1`, `2.2`, and `3`                        |
+| max_ial                  | number           |          | For IdP nodes only. Allowed values are `1.1`, `1.2`, `1.3`, `2.1`, `2.2`, `2.3`, and `3` |
+| agent                    | boolean          |          | For IdP nodes only. Indicate IdP agent.                                                  |
+| node_id_whitelist_active | boolean          |          | Activate/deactivate the use of `node_id_whitelist`                                       |
+| node_id_whitelist        | array of strings |          | Whitelist node IDs                                                                       |
 
 #### Success Response
 
@@ -60,12 +63,15 @@ Update node's properties on the platform. Currently use for updating IdP node's 
 
 #### Body Parameters
 
-| Property  | Type   | Required | Description                                                                              |
-| --------- | ------ | -------- | ---------------------------------------------------------------------------------------- |
-| node_id   | string | true     | Node ID                                                                                  |
-| node_name | string |          | Node name                                                                                |
-| max_aal   | number |          | For IdP nodes only. Allowed values are `1`, `2.1`, `2.2`, and `3`                        |
-| max_ial   | number |          | For IdP nodes only. Allowed values are `1.1`, `1.2`, `1.3`, `2.1`, `2.2`, `2.3`, and `3` |
+| Property                 | Type             | Required | Description                                                                              |
+| ------------------------ | ---------------- | -------- | ---------------------------------------------------------------------------------------- |
+| node_id                  | string           | true     | Node ID                                                                                  |
+| node_name                | string           |          | Node name                                                                                |
+| max_aal                  | number           |          | For IdP nodes only. Allowed values are `1`, `2.1`, `2.2`, and `3`                        |
+| max_ial                  | number           |          | For IdP nodes only. Allowed values are `1.1`, `1.2`, `1.3`, `2.1`, `2.2`, `2.3`, and `3` |
+| agent                    | boolean          |          | For IdP nodes only. Indicate IdP agent.                                                  |
+| node_id_whitelist_active | boolean          |          | Activate/deactivate the use of `node_id_whitelist`                                       |
+| node_id_whitelist        | array of strings |          | Whitelist node IDs                                                                       |
 
 #### Success Response
 
@@ -150,10 +156,10 @@ Set allowed modes for create request.
 
 #### Body Parameters
 
-| Property          | Type   | Required | Description                                                       |
-| ----------------- | ------ | -------- | ----------------------------------------------------------------- |
-| purpose           | string | true     | Request purpose                                                   |
-| allowed_mode_list | array  | true     | Allowed modes. Allowed values in the array are `1`, `2`, and `3`. |
+| Property          | Type             | Required | Description                                                       |
+| ----------------- | ---------------- | -------- | ----------------------------------------------------------------- |
+| purpose           | string           | true     | Request purpose                                                   |
+| allowed_mode_list | array of numbers | true     | Allowed modes. Allowed values in the array are `1`, `2`, and `3`. |
 
 #### Success Response
 
@@ -330,11 +336,11 @@ Add node to be a child of proxy node.
 
 #### Body Parameters
 
-| Property      | Type   | Required | Description                                                       |
-| ------------- | ------ | -------- | ----------------------------------------------------------------- |
-| node_id       | string | true     | Node ID to set as proxy node child                                |
-| proxy_node_id | string | true     | Proxy node ID                                                     |
-| config        | string | true     | Allowed values in the array are `KEY_ON_PROXY` and `KEY_ON_NODE`. |
+| Property      | Type   | Required | Description                                          |
+| ------------- | ------ | -------- | ---------------------------------------------------- |
+| node_id       | string | true     | Node ID to set as proxy node child                   |
+| proxy_node_id | string | true     | Proxy node ID                                        |
+| config        | string | true     | Allowed values are `KEY_ON_PROXY` and `KEY_ON_NODE`. |
 
 #### Success Response
 
@@ -346,11 +352,11 @@ Update a child node of proxy node specific properties.
 
 #### Body Parameters
 
-| Property      | Type   | Required | Description                                                       |
-| ------------- | ------ | -------- | ----------------------------------------------------------------- |
-| node_id       | string | true     | Node ID of proxy child node                                       |
-| proxy_node_id | string | true     | Proxy node ID                                                     |
-| config        | string |          | Allowed values in the array are `KEY_ON_PROXY` and `KEY_ON_NODE`. |
+| Property      | Type   | Required | Description                                          |
+| ------------- | ------ | -------- | ---------------------------------------------------- |
+| node_id       | string | true     | Node ID of proxy child node                          |
+| proxy_node_id | string | true     | Proxy node ID                                        |
+| config        | string |          | Allowed values are `KEY_ON_PROXY` and `KEY_ON_NODE`. |
 
 #### Success Response
 
@@ -428,6 +434,37 @@ Set Tendermint node as validator node.
 | ---------- | ------ | -------- | -------------------------- |
 | public_key | string | true     | Tendermint node public key |
 | power      | number | true     | Validator power            |
+
+#### Success Response
+
+HTTP Status: 204 No Content
+
+## POST `/ndid/add_error_code`
+
+Add allowed IdP or AS error code for error response.
+
+#### Body Parameters
+
+| Property    | Type   | Required | Description                       |
+| ----------- | ------ | -------- | --------------------------------- |
+| error_code  | number | true     |                                   |
+| type        | string | true     | Allowed values are `idp` and `as` |
+| description | string | true     |                                   |
+
+#### Success Response
+
+HTTP Status: 204 No Content
+
+## POST `/ndid/remove_error_code`
+
+Remove allowed IdP or AS error code for error response.
+
+#### remove_error_code Parameters
+
+| Property   | Type   | Required | Description                       |
+| ---------- | ------ | -------- | --------------------------------- |
+| error_code | number | true     |                                   |
+| type       | string | true     | Allowed values are `idp` and `as` |
 
 #### Success Response
 
